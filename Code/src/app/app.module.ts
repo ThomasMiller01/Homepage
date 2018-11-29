@@ -16,7 +16,9 @@ import { LoginComponent } from './Components/public/login/login.component';
 import { FooterComponent } from './Components/public/footer/footer.component';
 import { ImpressumComponent } from './Components/public/Content/Impressum/impressum.component';
 import { HeaderComponent } from './Components/public/header/header.component';
-import { HomeComponent } from './Components/public/Content/Home/home.components';
+import { HomeComponent } from './Components/public/Content/Home/home.component';
+import { ProjectsComponent } from './Components/public/Content/Project/projects.component';
+import { AboutmeComponent } from './Components/public/Content/AboutMe/aboutme.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { HomeComponent } from './Components/public/Content/Home/home.components'
     ImpressumComponent,
     HeaderComponent,
     HomeComponent,
+    ProjectsComponent,
+    AboutmeComponent,
   ],
   imports: [
     BrowserModule,  
@@ -36,10 +40,12 @@ import { HomeComponent } from './Components/public/Content/Home/home.components'
     HttpModule,
     CommonModule,
     RouterModule.forRoot([
-			{ path: '', redirectTo: 'main', pathMatch: 'full' },
+			{ path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'main', component: mainComponent,
         children: [
           { path: 'home', component: HomeComponent, outlet:'content' },
+          { path: 'projects', component: ProjectsComponent, outlet:'content' },
+          { path: 'aboutme', component: AboutmeComponent, outlet:'content' },
           { path: 'impressum', component: ImpressumComponent, outlet:'content' },
         ] 
       },

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './home.components.html'
+  templateUrl: './home.component.html'
 })
 export class HomeComponent { }
