@@ -21,4 +21,70 @@
 /
 / Login-Module End
 /
+/----------------------------
+/
+/ Footer-Module Start
+/
+*/
+
+.footer {
+	background-color: rgb(39, 52, 58);
+	color: #c6c6c6 !important;	
+}
+
+/*
+/
+/ Footer-Module End
+/
+/----------------------------
+/
+/ Impressum-Module Start
+/
+*/
+
+.impressum {
+    text-align: left;
+    width: 75%;
+    padding: 10px;
+    margin: 0 auto;
+    font-size: 20px;
+    border-style: solid;
+}
+
+/*
+/
+/ Impressum-Module End
+/
+/----------------------------
+/
+/ Header-Module Start
+/
+*/
+
+.header{
+    background-color: rgb(111, 137, 150);
+    width: 100%;
+}
+
+/*
+/
+/ Header-Module End
+/
+/----------------------------
+/
+/ Content-Module Start
+/
+*/
+
+.content{
+    width: 100%;
+    padding: 15px;
+    background-color: rgb(215, 224, 233);
+}
+
+/*
+/
+/ Content-Module End
+/
+/----------------------------
 */
