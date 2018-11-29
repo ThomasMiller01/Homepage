@@ -44,10 +44,10 @@
 
 .impressum {
     text-align: left;
-    width: 75%;
+    width: 95%;
     padding: 10px;
     margin: 0 auto;
-    font-size: 20px;
+    font-size: 15px;
     border-style: solid;
 }
 
@@ -64,6 +64,18 @@
 .header{
     background-color: rgb(111, 137, 150);
     width: 100%;
+    font-size: 20px;
+}
+
+.header-input{
+    width: 75%;
+    margin-right: 2%;
+}
+
+.header-submit{
+    width: 23%;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 /*
@@ -87,4 +99,65 @@
 / Content-Module End
 /
 /----------------------------
+/
+/ Media-Module Start
+/
 */
+
+@media (max-width: 324px) {
+	
+}
+
+@media (max-width: 350px) and (min-width: 325px) {
+	
+}
+
+@media (max-width: 370px) and (min-width: 351px) {
+	
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+	.header-input{
+        width: 100%;
+    }
+
+    .header-submit{
+        width: auto;
+    }
+
+    .impressum {
+        width: 75%;
+        font-size: 20px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+	
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {	
+    .header-input{
+        width: 100%;
+    }
+
+    .header-submit{
+        width: auto;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+	
+}
+
+@media (min-width: 1500px) {
+	
+}
+
+/* Extra extra large devices (extra large desktops, 1800px and up) */
+@media (min-width: 1800px) {
+	
+}
