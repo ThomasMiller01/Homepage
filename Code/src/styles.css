@@ -21,7 +21,7 @@ html, body{
 .header{
     width: 100%;
     font-size: 20px;
-    background-color: #272822;   
+    background-color: #010005;   
     min-height: 6.5vh;
 }
 
@@ -85,23 +85,22 @@ html, body{
 .top-home-header{
     width: 100%;
     height: 93.5vh;
-    background-color: #272822;  
+    background-image: url('./img/test2.jpg');
+    background-repeat: no-repeat;      
 }
 
 .profile_name_div{
-    position:absolute;
-    top:30%;
-    width:100%;
-    text-align:center;
+    width: 100%;
+    height: 100%;
+    text-align: center;    
 }
 
-.profile_name_div h1{
-    color:#E2E07B;
-    font-size:60px;
-    font-weight:300;
-    margin-bottom:0;
-    font-family:'Work Sans',sans-serif;
-    line-height:56px
+.profile_name_div h1{    
+    color: #E2E07B;
+    font-size: 60px;
+    font-weight: 300;
+    font-family: 'Work Sans',sans-serif;
+    line-height: 56px;
 }
 
 /*
@@ -181,7 +180,9 @@ html, body{
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {	
-
+    .top-home-header{
+        background-size: 100%;  
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
