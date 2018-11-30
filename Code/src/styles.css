@@ -21,23 +21,12 @@ html, body{
 .header{
     width: 100%;
     font-size: 20px;
-    background-color: #34383d;   
+    background-color: #272822;   
     min-height: 6.5vh;
 }
 
 .header a{
     color: rgb(189, 189, 189) !important;
-}
-
-.header-input{
-    width: 75%;
-    margin-right: 2%;
-}
-
-.header-submit{
-    width: 23%;
-    padding-left: 5px;
-    padding-right: 5px;
 }
 
 .toolbar-ul{
@@ -96,7 +85,23 @@ html, body{
 .top-home-header{
     width: 100%;
     height: 93.5vh;
-    background-color: #34383d;
+    background-color: #272822;  
+}
+
+.profile_name_div{
+    position:absolute;
+    top:30%;
+    width:100%;
+    text-align:center;
+}
+
+.profile_name_div h1{
+    color:#E2E07B;
+    font-size:60px;
+    font-weight:300;
+    margin-bottom:0;
+    font-family:'Work Sans',sans-serif;
+    line-height:56px
 }
 
 /*
@@ -134,7 +139,7 @@ html, body{
     text-align: left;
     width: 95%;
     padding: 10px;
-    margin: 0 auto;
+    margin: 25px auto 25px auto;
     font-size: 15px;
     border-style: solid;
 }
@@ -162,15 +167,7 @@ html, body{
 }
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-	.header-input{
-        width: 100%;
-    }
-
-    .header-submit{
-        width: auto;
-    }
-
+@media (min-width: 576px) {	
     .impressum {
         width: 75%;
         font-size: 20px;
@@ -184,13 +181,7 @@ html, body{
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {	
-    .header-input{
-        width: 100%;
-    }
 
-    .header-submit{
-        width: auto;
-    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
