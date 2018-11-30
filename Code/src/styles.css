@@ -1,6 +1,109 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+/
+/ All-Module Start
+/
+*/
+
+html, body{
+    min-height: 87vh;
+}
 
 /*
+/
+/ All-Module End
+/
+/----------------------------
+/
+/ Header-Module Start
+/
+*/
+
+.header{
+    width: 100%;
+    font-size: 20px;
+    background-color: #34383d;   
+    min-height: 6.5vh;
+}
+
+.header a{
+    color: rgb(189, 189, 189) !important;
+}
+
+.header-input{
+    width: 75%;
+    margin-right: 2%;
+}
+
+.header-submit{
+    width: 23%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.toolbar-ul{
+    margin-left: auto !important;
+}
+
+.toolbar-li{
+    margin: 0 15px 0 15px;
+}
+
+/*
+/
+/ Header-Module End
+/
+/----------------------------
+/
+/ Footer-Module Start
+/
+*/
+
+.footer {
+	background-color: rgb(39, 52, 58);
+    color: #c6c6c6 !important;	
+    min-height: 6.5vh;
+}
+
+/*
+/
+/ Footer-Module End
+/
+/----------------------------
+/
+/ Content-Module Start
+/
+*/
+
+.content{
+    width: 100%;    
+}
+
+.content-content{
+    width: 100%;
+    padding: 15px;
+}
+
+/*
+/
+/ Content-Module End
+/
+/----------------------------
+/
+/ Home-Module Start
+/
+*/
+
+.top-home-header{
+    width: 100%;
+    height: 93.5vh;
+    background-color: #34383d;
+}
+
+/*
+/
+/ Home-Module End
+/
+/----------------------------
 /
 / Login-Module Start
 /
@@ -23,21 +126,6 @@
 /
 /----------------------------
 /
-/ Footer-Module Start
-/
-*/
-
-.footer {
-	background-color: rgb(39, 52, 58);
-	color: #c6c6c6 !important;	
-}
-
-/*
-/
-/ Footer-Module End
-/
-/----------------------------
-/
 / Impressum-Module Start
 /
 */
@@ -54,49 +142,6 @@
 /*
 /
 / Impressum-Module End
-/
-/----------------------------
-/
-/ Header-Module Start
-/
-*/
-
-.header{
-    background-color: rgb(111, 137, 150);
-    width: 100%;
-    font-size: 20px;
-}
-
-.header-input{
-    width: 75%;
-    margin-right: 2%;
-}
-
-.header-submit{
-    width: 23%;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-/*
-/
-/ Header-Module End
-/
-/----------------------------
-/
-/ Content-Module Start
-/
-*/
-
-.content{
-    width: 100%;
-    padding: 15px;
-    background-color: rgb(215, 224, 233);
-}
-
-/*
-/
-/ Content-Module End
 /
 /----------------------------
 /
