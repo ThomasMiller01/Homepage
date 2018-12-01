@@ -7,6 +7,7 @@ import { ImpressumComponent } from '../Components/public/Content/Impressum/impre
 import { HomeComponent } from '../Components/public/Content/Home/home.component';
 import { ProjectsComponent } from '../Components/public/Content/Project/projects.component';
 import { AboutmeComponent } from '../Components/public/Content/AboutMe/aboutme.component';
+import { LoginComponent } from '../Components/public/login/login.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'public', pathMatch: 'full' },
@@ -19,6 +20,7 @@ export const routes: Routes = [
         { path: 'impressum', component: ImpressumComponent },
       ] 
     },
+    { path: 'login', component: LoginComponent },
     { path: 'private', component: privateMainComponent, canActivate: [AuthGuard], },	
 ];
 

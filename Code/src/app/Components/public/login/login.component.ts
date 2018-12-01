@@ -6,7 +6,6 @@ import { NgForm } from '@angular/forms';
 var apiPath = "apiPath";
 
 @Component({
-	selector: 'login',
 	templateUrl: './login.component.html'
 })
 export class LoginComponent {
