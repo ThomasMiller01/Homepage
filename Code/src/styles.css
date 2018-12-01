@@ -97,10 +97,28 @@ html, body{
 
 .profile_name_div h1{    
     color: #E2E07B;
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 300;
     font-family: 'Work Sans',sans-serif;
-    line-height: 56px;
+}
+
+.header-home-bottom{
+    font-size: 28px;
+    font-weight: 300;
+    color: white;
+    /* font-family: 'Inconsolata', monospace; */
+    font-family: 'Rajdhani', sans-serif;    
+}
+
+.for-animated-cursor{
+    padding-right: 4px;
+    border-right: 2px solid white;
+    animation: blink-caret 1s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white; }
 }
 
 /*
@@ -167,11 +185,41 @@ html, body{
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {	
+    /*
+    /
+    / Impressum-Module Start
+    /    
+    */
+
     .impressum {
         width: 75%;
         font-size: 20px;
     }
-}
+
+    /*
+    /
+    / Impressum-Module End
+    /    
+    /----------------------------
+    /
+    / Home-Module Start
+    /
+    */
+
+    .profile_name_div h1{    
+        font-size: 60px;
+    }
+
+    .header-home-bottom{
+        font-size: 32px;        
+    }
+
+    /*
+    /
+    / Home-Module End
+    /
+    */
+    }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
@@ -180,14 +228,44 @@ html, body{
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {	
+    /*
+    /
+    / Home-Module Start
+    /
+    */
+
     .top-home-header{
         background-size: 100%;  
     }
+
+    /*
+    /
+    / Home-Module Start
+    /
+    */
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-	
+    /*
+    /
+    / Home-Module Start
+    /
+    */
+
+    .profile_name_div h1{    
+        font-size: 70px;
+    }
+    
+    .header-home-bottom{
+        font-size: 36px;        
+    }
+
+    /*
+    /
+    / Home-Module End
+    /
+    */
 }
 
 @media (min-width: 1500px) {
@@ -196,5 +274,23 @@ html, body{
 
 /* Extra extra large devices (extra large desktops, 1800px and up) */
 @media (min-width: 1800px) {
-	
+	/*
+    /
+    / Home-Module Start
+    /
+    */
+
+    .profile_name_div h1{    
+        font-size: 80px;
+    }
+
+    .header-home-bottom{
+        font-size: 40px;        
+    }
+
+    /*
+    /
+    / Home-Module End
+    /
+    */
 }
