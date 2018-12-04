@@ -108,7 +108,8 @@ html, body{
 .top-home-header{
     width: 100%;
     height: 93.5vh;
-    background-image: url('https://storge.pic2.me/cm/5120x2880/320/55e318be25a80.jpg');
+    background-image: url('./img/test2.jpg');
+    background-color: black;
     background-repeat: no-repeat;      
 }
 
@@ -153,7 +154,19 @@ html, body{
 }
 
 .home-phase7{
-    background-color: red;
+    background-image: url('./img/projects/start-page/phase7.PNG');
+    background-repeat: no-repeat;
+    background-size: 640px;
+    background-color: rgb(90, 90, 121);
+    height: 350px; 
+}
+
+.home-phase7-container{
+    margin: 0;
+    padding: 0;
+    float: right;
+    width: calc(100% - 640px);
+    max-width: none;
 }
 
 .home-unity_room{
@@ -165,6 +178,10 @@ html, body{
 
 .home-interships{
     background-color: darkgoldenrod;
+}
+
+.home-website{
+    background-color: rgb(161, 161, 161);
 }
 
 /*
@@ -202,9 +219,16 @@ html, body{
     text-align: left;
     width: 95%;
     padding: 10px;
-    margin: 25px auto 25px auto;
+    margin: 0 auto 0 auto;
     font-size: 15px;
     border-style: solid;
+    background-color: rgb(211, 211, 211);
+}
+
+.impressum-container{
+    width: 100%;
+    background-color: rgb(44, 34, 34);
+    padding: 25px 0 25px 0;
 }
 
 /*
