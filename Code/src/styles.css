@@ -110,7 +110,7 @@ html, body{
     height: 93.5vh;
     background-image: url('./assets/images/home-top1.png');
     background-color: black;
-    background-repeat: no-repeat;      
+    background-repeat: no-repeat;
 }
 
 .profile_name_div-home{
@@ -150,7 +150,12 @@ html, body{
 
 /* Home-Product-Images */
 .home-zeusentertainment{
-    background-color: green;    
+    background-color: green;  
+    min-height: 350px;   
+}
+
+.home-zeusentertainment h1{
+    font-size: 39px;
 }
 
 .home-phase7{
@@ -158,22 +163,28 @@ html, body{
     background-repeat: no-repeat;
     background-size: 640px;
     background-color: rgb(90, 90, 121);
-    height: 350px; 
+    min-height: 350px; 
 }
 
 .home-phase7-container{
     margin: 0;
     padding: 0;
-    float: right;
-    width: calc(100% - 640px);
     max-width: none;
+    background-color: rgba(0, 0, 0, 0.493);
+    margin-top: 15px;
+    padding: 5px;
+    color: white;
+}
+
+.home-phase7 h1{
+    font-size: 39px;
 }
 
 .home-unity_room{
     background-image: url('./assets/images/projects/start-page/unity_room.png');
     background-repeat: no-repeat;
     background-color: rgb(170, 170, 170);
-    height: 350px;    
+    min-height: 350px;    
     color: white;
 }
 
@@ -182,12 +193,14 @@ html, body{
     background-color: rgba(0, 0, 0, 0.377);    
 }
 
-.home-interships{
-    background-color: darkgoldenrod;
+.home-unity_room h1{
+    font-size: 39px;
 }
 
-.home-website{
-    background-color: rgb(161, 161, 161);
+.seemore_btn-home{
+    color: white;
+    border-color: white;
+    margin: 15px;
 }
 
 /*
@@ -203,7 +216,7 @@ html, body{
 .all-projects{
     width: 100%;
     min-height: 87vh;
-    background-color: darkgrey;
+    background-color: rgb(99, 99, 99);
     padding: 15px 0 20px 0;
 }
 
@@ -219,6 +232,29 @@ html, body{
 
 .custom-projects-Card{
     min-width: 250px;
+}
+
+/* Unity-Project */
+
+.project-unity-container{
+    width: 100%;
+    min-height: 87vh;
+    background-color: gray;
+}
+
+.unity-project-header{
+    background-image: url('https://blackrockdigital.github.io/startbootstrap-clean-blog/img/post-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 60vh;
+    width: 100%;
+    text-align: center;   
+}
+
+.unity-project-header-top{
+    vertical-align: middle;    
+    color: white;
+    font-size: 60px;    
 }
 
 /*
@@ -294,6 +330,28 @@ html, body{
 @media (min-width: 576px) {	
     /*
     /
+    / Home-Module Start
+    /    
+    */
+
+    .home-zeusentertainment h1{
+        font-size: 45px;
+    }
+
+    .home-unity_room h1{
+        font-size: 45px;
+    }
+
+    .home-phase7 h1{
+        font-size: 45px;
+    }
+
+    /*
+    /
+    / Home-Module End
+    /    
+    /----------------------------
+    /
     / Impressum-Module Start
     /    
     */
@@ -353,9 +411,29 @@ html, body{
     /
     */
 
+    .home-zeusentertainment h1{
+        font-size: 50px;
+    }
+
+    .home-unity_room h1{
+        font-size: 50px;
+    }
+
+    .home-phase7 h1{
+        font-size: 50px;
+    }
+ 
     .top-home-header{
         background-size: 100%;  
     }    
+
+    .home-phase7-container{
+        float: right;
+        width: calc(100% - 640px);
+        background-color: unset;
+        color: black;
+        padding: 0;
+    }
 
     /*
     /
@@ -397,7 +475,7 @@ html, body{
     
     .header-home-bottom{
         font-size: 20px;        
-    }
+    }    
 
     /*
     /
@@ -456,6 +534,18 @@ html, body{
     
     .header-home-bottom{
         font-size: 22px;        
+    }
+    
+    .home-zeusentertainment h1{
+        font-size: 55px;
+    }
+
+    .home-unity_room h1{
+        font-size: 55px;
+    }
+
+    .home-phase7 h1{
+        font-size: 55px;
     }
 
     /*
