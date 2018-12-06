@@ -1,1 +1,556 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+/
+/ All-Module Start
+/
+*/
+
+html, body{
+    min-height: 87vh;
+    background-image: url('https://steamuserimages-a.akamaihd.net/ugc/538518505572662898/78B0558FDAB4E7AAEDD4A70BF802F8B3EF1CE7E7/');
+    background-repeat: no-repeat;
+}
+
+/* Bootstrap grid */
+.row{
+    margin: 0 !important;
+}
+
+/*
+/
+/ All-Module End
+/
+/----------------------------
+/
+/ Login-Module Start
+/
+*/
+
+.login-page{
+    display: inline-block;
+    width: 100%;
+    height: 80vh;    
+}
+
+.login-container{
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+/*
+/
+/ Login-Module End
+/
+/----------------------------
+/
+/ Header-Module Start
+/
+*/
+
+.header{
+    width: 100%;
+    font-size: 20px;
+    background-color: #010005;   
+    min-height: 6.5vh;
+}
+
+.header a{
+    color: rgb(189, 189, 189) !important;
+}
+
+.toolbar-ul{
+    margin-left: auto !important;
+}
+
+.toolbar-li{
+    margin: 0 15px 0 15px;
+}
+
+/*
+/
+/ Header-Module End
+/
+/----------------------------
+/
+/ Footer-Module Start
+/
+*/
+
+.footer {
+	background-color: rgb(39, 52, 58);
+    color: #c6c6c6 !important;	
+    min-height: 6.5vh;
+}
+
+/*
+/
+/ Footer-Module End
+/
+/----------------------------
+/
+/ Content-Module Start
+/
+*/
+
+.content{
+    width: 100%;    
+}
+
+/*
+/
+/ Content-Module End
+/
+/----------------------------
+/
+/ Home-Module Start
+/
+*/
+
+.top-home-header{
+    width: 100%;
+    height: 93.5vh;
+    background-image: url('./assets/images/home-top1.png');
+    background-color: black;
+    background-repeat: no-repeat;
+}
+
+.profile_name_div-home{
+    text-align: center;
+    width: 167px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.profile_name_div-home h1{    
+    color: #E2E07B;
+    font-size: 24px;
+    font-weight: 300;
+    font-family: 'Work Sans',sans-serif;
+    margin: 0;
+}
+
+.header-home-bottom{
+    font-size: 18px;
+    font-weight: 300;
+    color: white;
+    /* font-family: 'Inconsolata', monospace; */
+    font-family: 'Rajdhani', sans-serif;    
+}
+
+.for-animated-cursor{
+    padding-right: 4px;
+    border-right: 2px solid white;
+    animation: blink-caret 1s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white; }
+}
+
+/* Home-Product-Images */
+.home-zeusentertainment{
+    background-color: green;  
+    min-height: 350px;   
+}
+
+.home-zeusentertainment h1{
+    font-size: 39px;
+}
+
+.home-phase7{
+    background-image: url('./assets/images/projects/start-page/phase7.png');
+    background-repeat: no-repeat;
+    background-size: 640px;
+    background-color: rgb(90, 90, 121);
+    min-height: 350px; 
+}
+
+.home-phase7-container{
+    margin: 0;
+    padding: 0;
+    max-width: none;
+    background-color: rgba(0, 0, 0, 0.493);
+    margin-top: 15px;
+    padding: 5px;
+    color: white;
+}
+
+.home-phase7 h1{
+    font-size: 39px;
+}
+
+.home-unity_room{
+    background-image: url('./assets/images/projects/start-page/unity_room.png');
+    background-repeat: no-repeat;
+    background-color: rgb(170, 170, 170);
+    min-height: 350px;    
+    color: white;
+}
+
+.home-unity_room p{
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.377);    
+}
+
+.home-unity_room h1{
+    font-size: 39px;
+}
+
+.seemore_btn-home{
+    color: white;
+    border-color: white;
+    margin: 15px;
+}
+
+/*
+/
+/ Home-Module End
+/
+/----------------------------
+/
+/ Projects-Module Start
+/
+*/
+
+.all-projects{
+    width: 100%;
+    min-height: 87vh;
+    background-color: rgb(99, 99, 99);
+    padding: 15px 0 20px 0;
+}
+
+.h1-projects{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;    
+}
+
+.projects-container{
+    padding: 0 10px 0 10px;
+}
+
+.custom-projects-Card{
+    min-width: 250px;
+}
+
+/* Unity-Project */
+
+.project-unity-container{
+    width: 100%;
+    min-height: 87vh;
+    background-color: gray;
+}
+
+.unity-project-header{
+    background-image: url('https://blackrockdigital.github.io/startbootstrap-clean-blog/img/post-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 60vh;
+    width: 100%;
+    text-align: center;   
+}
+
+.unity-project-header-top{
+    vertical-align: middle;    
+    color: white;
+    font-size: 60px;    
+}
+
+/*
+/
+/ Projects-Module End
+/
+/----------------------------
+/
+/ Login-Module Start
+/
+*/
+
+.loginmodal-container {
+	padding: 30px;
+	max-width: 350px;
+	width: 100% !important;
+	background-color: #F7F7F7;
+	border-radius: 2px;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	font-family: roboto;
+}
+
+/*
+/
+/ Login-Module End
+/
+/----------------------------
+/
+/ Impressum-Module Start
+/
+*/
+
+.impressum {
+    text-align: left;
+    width: 95%;
+    padding: 10px;
+    margin: 0 auto 0 auto;
+    font-size: 15px;
+    border-style: solid;
+    background-color: rgb(211, 211, 211);
+}
+
+.impressum-container{
+    width: 100%;
+    background-color: rgb(44, 34, 34);
+    padding: 25px 0 25px 0;
+}
+
+/*
+/
+/ Impressum-Module End
+/
+/----------------------------
+/
+/ Media-Module Start
+/
+*/
+
+@media (max-width: 324px) {
+	
+}
+
+@media (max-width: 350px) and (min-width: 325px) {
+	
+}
+
+@media (max-width: 370px) and (min-width: 351px) {
+	
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {	
+    /*
+    /
+    / Home-Module Start
+    /    
+    */
+
+    .home-zeusentertainment h1{
+        font-size: 45px;
+    }
+
+    .home-unity_room h1{
+        font-size: 45px;
+    }
+
+    .home-phase7 h1{
+        font-size: 45px;
+    }
+
+    /*
+    /
+    / Home-Module End
+    /    
+    /----------------------------
+    /
+    / Impressum-Module Start
+    /    
+    */
+
+    .impressum {
+        width: 75%;
+        font-size: 20px;
+    }
+
+    /*
+    /
+    / Impressum-Module End
+    /    
+    /----------------------------
+    /
+    / Projects-Module End
+    /    
+    */
+
+    .projects-container{
+        padding: 0 50px 0 50px;
+    }
+
+    /*
+    /
+    / Projects-Module End
+    /    
+    */
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+	
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {	
+    /*
+    /
+    / Header-Module Start
+    /
+    */
+
+    .header{
+        font-size: 22px;
+        height: 6.5vh;
+        min-height: initial;
+    }
+
+    /*
+    /
+    / Header-Module Start
+    /
+    /----------------------------
+    /
+    / Home-Module Start
+    /
+    */
+
+    .home-zeusentertainment h1{
+        font-size: 50px;
+    }
+
+    .home-unity_room h1{
+        font-size: 50px;
+    }
+
+    .home-phase7 h1{
+        font-size: 50px;
+    }
+ 
+    .top-home-header{
+        background-size: 100%;  
+    }    
+
+    .home-phase7-container{
+        float: right;
+        width: calc(100% - 640px);
+        background-color: unset;
+        color: black;
+        padding: 0;
+    }
+
+    /*
+    /
+    / Home-Module Start
+    /
+    /----------------------------
+    /
+    / Footer-Module Start
+    /
+    */
+
+    .footer{
+        height: 6.5vh;
+        min-height: initial;
+    }
+
+    /*
+    /
+    / Footer-Module End
+    /
+    */
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    /*
+    /
+    / Home-Module Start
+    /
+    */
+
+    .profile_name_div-home{    
+        width: 180px;
+    }
+
+    .profile_name_div-home h1{    
+        font-size: 26px;
+    }
+    
+    .header-home-bottom{
+        font-size: 20px;        
+    }    
+
+    /*
+    /
+    / Home-Module End
+    /
+    */
+}
+
+@media (min-width: 1500px) {
+    /*
+    /
+    / Header-Module Start
+    /
+    */
+
+    .header{
+        font-size: 24px;
+    }
+
+    /*
+    /
+    / Header-Module Start
+    /
+    */
+}
+
+/* Extra extra large devices (extra large desktops, 1800px and up) */
+@media (min-width: 1800px) {
+    /*
+    /
+    / Header-Module Start
+    /
+    */
+
+    .header{
+        font-size: 26px;
+    }
+
+    /*
+    /
+    / Header-Module Start
+    /
+    /----------------------------
+    /
+    / Home-Module Start
+    /
+    */
+
+    .profile_name_div-home{    
+        width: 208px;
+    }
+
+    .profile_name_div-home h1{    
+        font-size: 30px;
+    }
+    
+    .header-home-bottom{
+        font-size: 22px;        
+    }
+    
+    .home-zeusentertainment h1{
+        font-size: 55px;
+    }
+
+    .home-unity_room h1{
+        font-size: 55px;
+    }
+
+    .home-phase7 h1{
+        font-size: 55px;
+    }
+
+    /*
+    /
+    / Home-Module End
+    /
+    */
+}
