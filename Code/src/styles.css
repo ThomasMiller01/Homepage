@@ -159,7 +159,7 @@ html, body{
 }
 
 .home-phase7{
-    background-image: url('./assets/images/projects/start-page/phase7.png');
+    background-image: url('./assets/images/projects/phase7/phase7.png');
     background-repeat: no-repeat;
     background-size: 640px;
     background-color: rgb(90, 90, 121);
@@ -181,7 +181,7 @@ html, body{
 }
 
 .home-unity_room{
-    background-image: url('./assets/images/projects/start-page/unity_room.png');
+    background-image: url('./assets/images/projects/unity/unity_room.png');
     background-repeat: no-repeat;
     background-color: rgb(170, 170, 170);
     min-height: 350px;    
@@ -232,6 +232,7 @@ html, body{
 
 .custom-projects-Card{
     min-width: 250px;
+    border: none;
 }
 
 /* Unity-Project */
@@ -239,22 +240,164 @@ html, body{
 .project-unity-container{
     width: 100%;
     min-height: 87vh;
-    background-color: gray;
+    background-color: white;
 }
 
 .unity-project-header{
-    background-image: url('https://blackrockdigital.github.io/startbootstrap-clean-blog/img/post-bg.jpg');
+    background-image: url('./assets/images/projects/unity/header_unity.png');
     background-repeat: no-repeat;
-    background-size: 100%;
-    height: 60vh;
+    background-size: 100%;    
     width: 100%;
     text-align: center;   
 }
 
 .unity-project-header-top{
     vertical-align: middle;    
-    color: white;
+    color: Black;
     font-size: 60px;    
+}
+
+.unity-project-content{
+    width: 100%;
+    min-height: 37vh;
+    padding-top: 20px;
+}
+
+.unity-project-content h1{
+    width: 100%;
+    text-align: center;
+}
+
+/* ZeusEntertainment-Project */
+
+.project-zeusentertainment-container{
+    width: 100%;
+    min-height: 87vh;
+    background-color: white;
+}
+
+.zeusentertainment-project-header{
+    background-image: url('./assets/images/projects/zeusentertainment/header_zeusentertainment.png');
+    background-repeat: no-repeat;
+    background-size: 100%;    
+    width: 100%;
+    text-align: center;   
+}
+
+.zeusentertainment-project-header-top{
+    vertical-align: middle;    
+    color: Black;
+    font-size: 60px;    
+}
+
+.zeusentertainment-project-content{
+    width: 100%;
+    min-height: 37vh;
+    padding-top: 20px;
+}
+
+.zeusentertainment-project-content h1{
+    width: 100%;
+    text-align: center;
+}
+
+/* Website-Project */
+
+.project-website-container{
+    width: 100%;
+    min-height: 87vh;
+    background-color: white;
+}
+
+.website-project-header{
+    background-image: url('https://via.placeholder.com/1440x400');
+    background-repeat: no-repeat;
+    background-size: 100%;    
+    width: 100%;
+    text-align: center;   
+}
+
+.website-project-header-top{
+    vertical-align: middle;    
+    color: Black;
+    font-size: 60px;    
+}
+
+.website-project-content{
+    width: 100%;
+    min-height: 37vh;
+    padding-top: 20px;
+}
+
+.website-project-content h1{
+    width: 100%;
+    text-align: center;
+}
+
+/* Phase7-Project */
+
+.project-phase7-container{
+    width: 100%;
+    min-height: 87vh;
+    background-color: white;
+}
+
+.phase7-project-header{
+    background-image: url('https://via.placeholder.com/1440x400');
+    background-repeat: no-repeat;
+    background-size: 100%;    
+    width: 100%;
+    text-align: center;   
+}
+
+.phase7-project-header-top{
+    vertical-align: middle;    
+    color: Black;
+    font-size: 60px;    
+}
+
+.phase7-project-content{
+    width: 100%;
+    min-height: 37vh;
+    padding-top: 20px;
+}
+
+.phase7-project-content h1{
+    width: 100%;
+    text-align: center;
+}
+
+/* Interships-Project */
+
+.project-interships-container{
+    width: 100%;
+    min-height: 87vh;
+    background-color: white;
+}
+
+.interships-project-header{
+    background-image: url('https://via.placeholder.com/1440x400');
+    background-repeat: no-repeat;
+    background-size: 100%;    
+    width: 100%;
+    text-align: center;   
+}
+
+.interships-project-header-top{
+    vertical-align: middle;    
+    color: Black;
+    font-size: 60px;    
+}
+
+.interships-project-content{
+    width: 100%;
+    min-height: 37vh;
+    padding-top: 20px;
+}
+
+.interships-project-content h1{
+    width: 100%;
+    text-align: center;
 }
 
 /*
