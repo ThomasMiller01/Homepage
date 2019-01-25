@@ -15,6 +15,28 @@ html, body{
     margin: 0 !important;
 }
 
+/* PhotoSwipe */
+.my-gallery {
+    width: 100%;
+    float: left;
+}
+
+.my-gallery img {
+    width: 100%;
+    height: auto;
+}
+
+.my-gallery figure {
+    display: block;
+    float: left;
+    margin: 0 5px 5px 0;
+    width: 150px;
+}
+
+.my-gallery figcaption {
+    display: none;
+}
+
 /*
 /
 / All-Module End
@@ -540,8 +562,8 @@ html, body{
 
     .header{
         font-size: 22px;
-        height: 6.5vh;
-        min-height: initial;
+        /* height: 6.5vh;
+        min-height: initial; */
     }
 
     /*
@@ -588,10 +610,11 @@ html, body{
     /
     */
 
-    .footer{
-        height: 6.5vh;
-        min-height: initial;
-    }
+    /* .footer{ */
+        /* height: 6.5vh;
+        min-height: initial; */
+        /* background-color: green !important; */
+    /* } */
 
     /*
     /
