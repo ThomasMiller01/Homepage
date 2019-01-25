@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 
-var apiPath = "apiPath";
+var apiPath = "{apiPath}";
 
 @Component({
 	templateUrl: './login.component.html'

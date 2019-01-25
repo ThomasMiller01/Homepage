@@ -16,24 +16,28 @@ html, body{
 }
 
 /* PhotoSwipe */
-.my-gallery {
-    width: 100%;
-    float: left;
+.gallery_website {
+    margin: 0 auto;
+    width: 90%;    
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+    align-items: stretch;     
 }
 
-.my-gallery img {
+.gallery_website img {
     width: 100%;
     height: auto;
 }
 
-.my-gallery figure {
+.gallery_website figure {
     display: block;
     float: left;
     margin: 0 5px 5px 0;
-    width: 150px;
+    max-width: 100%;
 }
 
-.my-gallery figcaption {
+.gallery_website figcaption {
     display: none;
 }
 
@@ -171,9 +175,17 @@ html, body{
 }
 
 /* Home-Product-Images */
-.home-zeusentertainment{
-    background-color: green;  
+.home-zeusentertainment{    
     min-height: 350px;   
+    background-image: url('./assets/images/projects/zeusentertainment/zeus0_code.png');
+    background-repeat: no-repeat;   
+    color: white;    
+}
+
+.home-zeusentertainment-container{
+    background-color: rgba(0, 0, 0, 0.527);  
+    padding: 5px;
+    margin-top: 15px;
 }
 
 .home-zeusentertainment h1{
@@ -273,6 +285,10 @@ html, body{
     text-align: center;   
 }
 
+.unity-project-header table{
+    height: 13vh;
+}
+
 .unity-project-header-top{
     vertical-align: middle;    
     color: Black;
@@ -306,6 +322,10 @@ html, body{
     text-align: center;   
 }
 
+.zeusentertainment-project-header table{
+    height: 13vh;
+}
+
 .zeusentertainment-project-header-top{
     vertical-align: middle;    
     color: Black;
@@ -332,11 +352,15 @@ html, body{
 }
 
 .website-project-header{
-    background-image: url('https://via.placeholder.com/1440x400');
+    background-image: url('./assets/images/projects/website/header_website.png');
     background-repeat: no-repeat;
     background-size: 100%;    
     width: 100%;
     text-align: center;   
+}
+
+.website-project-header table{
+    height: 13vh;
 }
 
 .website-project-header-top{
@@ -356,6 +380,11 @@ html, body{
     text-align: center;
 }
 
+.website-description{
+    width: 90%;
+    margin: 0 auto;
+}
+
 /* Phase7-Project */
 
 .project-phase7-container{
@@ -370,6 +399,10 @@ html, body{
     background-size: 100%;    
     width: 100%;
     text-align: center;   
+}
+
+.phase7-project-header table{
+    height: 13vh;
 }
 
 .phase7-project-header-top{
@@ -403,6 +436,10 @@ html, body{
     background-size: 100%;    
     width: 100%;
     text-align: center;   
+}
+
+.interships-project-header table{
+    height: 13vh;
 }
 
 .interships-project-header-top{
@@ -488,7 +525,94 @@ html, body{
 }
 
 @media (max-width: 370px) and (min-width: 351px) {
-	
+	.interships-project-header table{
+        height: 14vh;
+    }
+
+    .zeusentertainment-project-header table{
+        height: 14vh;
+    }
+
+    .phase7-project-header table{
+        height: 14vh;
+    }
+
+    .unity-project-header table{
+        height: 14vh;
+    }
+
+    .website-project-header table{
+        height: 14vh;
+    }   
+}
+
+/* Small devices (landscape phones, 370px and up) */
+@media (min-width: 370px) {	
+    .interships-project-header table{
+        height: 16vh;
+    }
+
+    .zeusentertainment-project-header table{
+        height: 16vh;
+    }
+
+    .phase7-project-header table{
+        height: 16vh;
+    }
+
+    .unity-project-header table{
+        height: 16vh;
+    }
+
+    .website-project-header table{
+        height: 16vh;
+    } 
+}
+
+/* Small devices (landscape phones, 450px and up) */
+@media (min-width: 450px) {	
+    .interships-project-header table{
+        height: 18vh;
+    }
+
+    .zeusentertainment-project-header table{
+        height: 18vh;
+    }
+
+    .phase7-project-header table{
+        height: 18vh;
+    }
+
+    .unity-project-header table{
+        height: 18vh;
+    }
+
+    .website-project-header table{
+        height: 18vh;
+    } 
+}
+
+/* Small devices (landscape phones, 500px and up) */
+@media (min-width: 500px) {	
+    .interships-project-header table{
+        height: 20vh;
+    }
+
+    .zeusentertainment-project-header table{
+        height: 20vh;
+    }
+
+    .phase7-project-header table{
+        height: 20vh;
+    }
+
+    .unity-project-header table{
+        height: 20vh;
+    }
+
+    .website-project-header table{
+        height: 20vh;
+    } 
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -540,16 +664,102 @@ html, body{
         padding: 0 50px 0 50px;
     }
 
+    .interships-project-header table{
+        height: 22vh;
+    }
+
+    .zeusentertainment-project-header table{
+        height: 22vh;
+    }
+
+    .phase7-project-header table{
+        height: 22vh;
+    }
+
+    .unity-project-header table{
+        height: 22vh;
+    }
+
+    .website-project-header table{
+        height: 22vh;
+    }    
+
     /*
     /
     / Projects-Module End
     /    
-    */
+    */    
+}
+
+@media (min-width: 600px){
+    .interships-project-header table{
+        height: 25vh;
+    }
+
+    .zeusentertainment-project-header table{
+        height: 25vh;
+    }
+
+    .phase7-project-header table{
+        height: 25vh;
+    }
+
+    .unity-project-header table{
+        height: 25vh;
+    }
+
+    .website-project-header table{
+        height: 25vh;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-	
+    .home-zeusentertainment{
+        text-align: right;   
+    }    
+
+    .interships-project-header table{
+        height: 30vh;
+    }
+
+    .zeusentertainment-project-header table{
+        height: 30vh;
+    }
+
+    .phase7-project-header table{
+        height: 30vh;
+    }
+
+    .unity-project-header table{
+        height: 30vh;
+    }
+
+    .website-project-header table{
+        height: 30vh;
+    }
+}
+
+@media (min-width: 900px){
+    .interships-project-header table{
+        height: 36vh;
+    }
+
+    .zeusentertainment-project-header table{
+        height: 36vh;
+    }
+
+    .phase7-project-header table{
+        height: 36vh;
+    }
+
+    .unity-project-header table{
+        height: 36vh;
+    }
+
+    .website-project-header table{
+        height: 36vh;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -621,6 +831,36 @@ html, body{
     / Footer-Module End
     /
     */
+
+    /* PhotoSwipe */
+    .gallery_website {
+        margin: 0 auto;
+        width: 90%;    
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        grid-gap: 20px;
+        align-items: stretch;     
+    }
+
+    .interships-project-header table{
+        height: 50vh;
+    }
+
+    .zeusentertainment-project-header table{
+        height: 50vh;
+    }
+
+    .phase7-project-header table{
+        height: 50vh;
+    }
+
+    .unity-project-header table{
+        height: 50vh;
+    }
+
+    .website-project-header table{
+        height: 50vh;
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -647,7 +887,7 @@ html, body{
     /
     / Home-Module End
     /
-    */
+    */    
 }
 
 @media (min-width: 1500px) {
@@ -665,7 +905,7 @@ html, body{
     /
     / Header-Module Start
     /
-    */
+    */    
 }
 
 /* Extra extra large devices (extra large desktops, 1800px and up) */
@@ -718,5 +958,5 @@ html, body{
     /
     / Home-Module End
     /
-    */
+    */    
 }

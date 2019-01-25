@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-declare var photoSwipeSetup: any;
+declare var galleryWebsiteSetup: any;
 
 @Component({
   templateUrl: './website.project.component.html'
@@ -8,7 +8,7 @@ declare var photoSwipeSetup: any;
 
 export class WebsiteProjectComponent { 
   ngOnInit() {    
-		var photoswipeSetupFunction = function () { photoSwipeSetup(); }
+		var photoswipeSetupFunction = function () { galleryWebsiteSetup(); }
     photoswipeSetupFunction();    
 	}
 }

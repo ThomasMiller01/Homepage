@@ -1,4 +1,4 @@
-function photoSwipeSetup(){
+function photoSwipeSetup(item_id){
     var initPhotoSwipeFromDOM = function(gallerySelector) {
 
         // parse slide data (url, title, size ...) from DOM elements 
@@ -203,5 +203,9 @@ function photoSwipeSetup(){
     };
     
     // execute above function
-    initPhotoSwipeFromDOM('.my-gallery');
+    initPhotoSwipeFromDOM('.' + item_id);
+}
+
+function galleryWebsiteSetup(){
+    photoSwipeSetup('gallery_website');
 }
