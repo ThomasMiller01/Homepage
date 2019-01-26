@@ -277,9 +277,11 @@ html, body{
     min-height: 87vh;
     background-color: #242424;
     background-image: url("./assets/images/all_projects_back1.png");
-    background-repeat: no-repeat;    
-    padding: 15px 0 20px 0;
-    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center;  
+    background-size: cover;  
+    padding: 15px 0 20px 0;    
 }
 
 .projects-container{
@@ -894,6 +896,10 @@ html, body{
 
     .website-project-header table{
         height: 50vh;
+    }
+
+    .all-projects{        
+        background-attachment: fixed;                     
     }
 }
 
