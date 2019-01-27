@@ -16,8 +16,8 @@ import { IntershipsProjectComponent } from '../Components/public/Content/Project
 import { UnityProjectComponent } from '../Components/public/Content/Project/projects/unity/unity.project.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'public', pathMatch: 'full' },
-    { path: 'public', component: mainComponent,
+    { path: '', redirectTo: 'main', pathMatch: 'full' },
+    { path: 'main', component: mainComponent,
       children: [
         { path: '', redirectTo: 'home', pathMatch: 'full' },
         { path: 'home', component: HomeComponent },
