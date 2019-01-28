@@ -39,7 +39,7 @@ namespace WebApi.Controllers
                     var tokeOptions = new JwtSecurityToken(
                         issuer: "https://localhost:41970",
                         audience: "https://localhost:41970",                        
-                        expires: DateTime.Now.AddMinutes(5),
+                        expires: DateTime.Now.AddMinutes(5000),
                         signingCredentials: signinCredentials
                     );
 
