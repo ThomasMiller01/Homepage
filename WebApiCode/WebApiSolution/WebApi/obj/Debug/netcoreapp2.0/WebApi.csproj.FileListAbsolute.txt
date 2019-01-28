@@ -9,3 +9,13 @@ E:\GitHub\Repositorys\Workspace\Website\WebApiCode\WebApiSolution\WebApi\bin\Deb
 E:\GitHub\Repositorys\Workspace\Website\WebApiCode\WebApiSolution\WebApi\obj\Debug\netcoreapp2.0\WebApi.dll
 E:\GitHub\Repositorys\Workspace\Website\WebApiCode\WebApiSolution\WebApi\obj\Debug\netcoreapp2.0\WebApi.pdb
 E:\GitHub\Repositorys\Workspace\Website\WebApiCode\WebApiSolution\WebApi\obj\Debug\netcoreapp2.0\WebApi.csprojAssemblyReference.cache
+D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\obj\Debug\netcoreapp2.0\WebApi.dll
+D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\obj\Debug\netcoreapp2.0\WebApi.pdb
+D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\bin\Debug\netcoreapp2.0\WebApi.deps.json
+D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\bin\Debug\netcoreapp2.0\WebApi.runtimeconfig.json
+D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\bin\Debug\netcoreapp2.0\WebApi.runtimeconfig.dev.json
+D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\bin\Debug\netcoreapp2.0\WebApi.dll
+D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\bin\Debug\netcoreapp2.0\WebApi.pdb
+D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\obj\Debug\netcoreapp2.0\WebApi.csproj.CoreCompileInputs.cache
+D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\obj\Debug\netcoreapp2.0\WebApi.AssemblyInfoInputs.cache
+D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\obj\Debug\netcoreapp2.0\WebApi.AssemblyInfo.cs

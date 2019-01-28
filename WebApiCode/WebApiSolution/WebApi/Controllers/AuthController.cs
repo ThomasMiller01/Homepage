@@ -30,23 +30,15 @@ namespace WebApi.Controllers
             try
             {
                 string[] data = mysqldatabase.readRowFromTableWhereString("user", "Name", user.UserName)[0];
-                string passhash = data[2];
-                string role = data[4];
+                string passhash = data[2];                
                 if (encoding.validatePass(user.Password, passhash))
                 {
                     var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@05258"));
-                    var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, user.UserName),
-                        new Claim(ClaimTypes.Role, role)
-                    };
+                    var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);                    
 
                     var tokeOptions = new JwtSecurityToken(
                         issuer: "https://localhost:41970",
-                        audience: "https://localhost:41970",
-                        claims: claims,
+                        audience: "https://localhost:41970",                        
                         expires: DateTime.Now.AddMinutes(5),
                         signingCredentials: signinCredentials
                     );

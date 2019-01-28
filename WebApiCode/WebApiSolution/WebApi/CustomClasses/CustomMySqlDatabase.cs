@@ -8,12 +8,17 @@ namespace WebApi.CustomClasses
 {
     public class CustomMySqlDatabase
     {
-        string myConnectionString = "SERVER=localhost;" +
+        /*string myConnectionString = "SERVER=localhost;" +
                             "DATABASE=phase7;" +
                             "UID=phase7;" +
                             "PASSWORD=-sEf.RQrGm.BoUjB51OM;" +
                             "PORT=3306;" +
-                            "SSL Mode=none;";
+                            "SSL Mode=none;";*/
+
+        string myConnectionString = "SERVER=localhost;" +
+                            "DATABASE=personalWebsite;" +
+                            "UID=root;" +
+                            "PASSWORD=;";
 
         public List<string[]> readRowFromTableWhereString(string table, string where, string mydata)
         {
