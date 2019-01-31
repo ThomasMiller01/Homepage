@@ -40,72 +40,85 @@ namespace WebApi.Controllers
             return projects;
         }
 
-        [HttpGet, Route("getbyid/{id}"), Authorize]
-        public ProjectModel getbyid(int id)
+        [HttpGet, Route("getby/{item}/{data}"), Authorize]
+        public ProjectModel[] getbyid(string _item, string _data)
         {
-            var data = mysqldatabase.readRowFromTableWhereString("projects", "ID", id.ToString());
-            ProjectModel project = new ProjectModel();
-            if (data.Count() == 0)
+            var data = mysqldatabase.readRowFromTableWhereString("projects", _item, _data);
+            ProjectModel[] projects = new ProjectModel[data.Count()];
+            for (int i = 0; i < data.Count(); i++)
             {
-                project = null;
+                ProjectModel project = new ProjectModel();
+                project._id = int.Parse(data[i][0]);
+                project._name = data[i][1];
+                project._githubRepo = data[i][2];
+                project._description = data[i][3];
+                project._thumbnail = data[i][4];
+                project._headerImg = data[i][5];
+                project._images = JsonConvert.DeserializeObject<Dictionary<string, string>>(data[i][6]);
+                project._pubDate = data[i][7];
+                project._favourite = bool.Parse(data[i][8]);
+                project._private = bool.Parse(data[i][9]);
+                projects[i] = project;
             }
-            else
-            {
-                project._id = int.Parse(data[0][0]);
-                project._name = data[0][1];
-                project._githubRepo = data[0][2];
-                project._description = data[0][3];
-                project._thumbnail = data[0][4];
-                project._headerImg = data[0][5];
-                project._images = JsonConvert.DeserializeObject<Dictionary<string, string>>(data[0][6]);
-                project._pubDate = data[0][7];
-                project._favourite = bool.Parse(data[0][8]);
-                project._private = bool.Parse(data[0][9]);
-            }
-            return project;
+            return projects;
         }
+       
 
-        [HttpGet, Route("getbyname/{name}"), Authorize]
-        public ProjectModel getbyname(string name)
+        [HttpGet, Route("getpublic")]
+        public ProjectModel[] getpublic()
         {
-            var data = mysqldatabase.readRowFromTableWhereString("projects", "name", name);
-            ProjectModel project = new ProjectModel();
-            if (data.Count() == 0)
+            var data = mysqldatabase.readRowFromTableWhereString("projects", "private", "false");            
+            ProjectModel[] projects = new ProjectModel[data.Count()];
+            for (int i = 0; i < data.Count(); i++)
             {
-                project = null;             
+                ProjectModel project = new ProjectModel();
+                project._id = int.Parse(data[i][0]);
+                project._name = data[i][1];
+                project._githubRepo = data[i][2];
+                project._description = data[i][3];
+                project._thumbnail = data[i][4];
+                project._headerImg = data[i][5];
+                project._images = JsonConvert.DeserializeObject<Dictionary<string, string>>(data[i][6]);
+                project._pubDate = data[i][7];
+                project._favourite = bool.Parse(data[i][8]);
+                project._private = bool.Parse(data[i][9]);
+                projects[i] = project;
             }
-            else
-            {                
-                project._id = int.Parse(data[0][0]);
-                project._name = data[0][1];
-                project._githubRepo = data[0][2];
-                project._description = data[0][3];
-                project._thumbnail = data[0][4];
-                project._headerImg = data[0][5];
-                project._images = JsonConvert.DeserializeObject<Dictionary<string, string>>(data[0][6]);
-                project._pubDate = data[0][7];
-                project._favourite = bool.Parse(data[0][8]);
-                project._private = bool.Parse(data[0][9]);
-            }            
-            return project;
+            return projects;
         }
 
         [HttpPost, Route("add"), Authorize]
         public string add([FromBody]ProjectModel project)
-        {
-            return "Project added: " + project;
+        {            
+            string insertRowString = "name, githubRepo, description, thumbnail, headerImg, images, pubDate, favourite, private";
+            string preparedImages = "{}";
+            string insertDataString = "'" + project._name + "', '" + project._githubRepo + "', '" + project._description + "', '" + project._thumbnail + "', '" + project._headerImg + "', '" + preparedImages + "', '" + project._pubDate + "', '" + project._favourite + "', '" + project._private + "'";
+            mysqldatabase.insertStringRow("Projects", insertRowString, insertDataString);
+            return "Project: " + project + "added";
         }
 
         [HttpDelete, Route("delete/{id}"), Authorize]
         public string delete(int id)
         {
-            return "Project deletet: " + id;
+            mysqldatabase.deleterowstring("Projects", "ID", id.ToString());
+            return "Project deletet with id: " + id;
         }
 
         [HttpPost, Route("change/{id}"), Authorize]
         public string change([FromBody]ProjectModel project, int id)
         {
-            return "Project changed: " + id + " " + project;
+            string preparedImages = "{}";
+            string columnData = "name='" + project._name + "', " + 
+                "githubRepo='" + project._githubRepo + "', " + 
+                "description='" + project._description + "', " + 
+                "thumbnail='" + project._thumbnail + "', " + 
+                "headerImg='" + project._headerImg + "', " + 
+                "images='" + preparedImages + "', " + 
+                "pubDate='" + project._pubDate + "', " +
+                "favourite='" + project._favourite.ToString() + "', " + 
+                "private='" + project._private.ToString() + "'";
+            mysqldatabase.updateValueToTableWhere("Projects", columnData, "ID", id.ToString());                      
+            return "Project with id: " + id + " updated with value: " + project;
         }
     }
 }

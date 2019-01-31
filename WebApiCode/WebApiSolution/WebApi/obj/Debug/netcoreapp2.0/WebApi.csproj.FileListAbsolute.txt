@@ -19,3 +19,4 @@ D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\bin\Debug\netcoreap
 D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\obj\Debug\netcoreapp2.0\WebApi.csproj.CoreCompileInputs.cache
 D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\obj\Debug\netcoreapp2.0\WebApi.AssemblyInfoInputs.cache
 D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\obj\Debug\netcoreapp2.0\WebApi.AssemblyInfo.cs
+D:\GitHub\Workspace\Website\WebApiCode\WebApiSolution\WebApi\obj\Debug\netcoreapp2.0\WebApi.csprojAssemblyReference.cache
