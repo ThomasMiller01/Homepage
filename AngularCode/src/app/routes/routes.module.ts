@@ -14,6 +14,7 @@ import { Phase7ProjectComponent } from '../Components/public/Content/Project/pro
 import { ZeusEntertainmentProjectComponent } from '../Components/public/Content/Project/projects/zeusentertainment/zeusentertainment.project.component';
 import { IntershipsProjectComponent } from '../Components/public/Content/Project/projects/interships/interships.project.component';
 import { UnityProjectComponent } from '../Components/public/Content/Project/projects/unity/unity.project.component';
+import { ProjectProjectComponent } from '../Components/public/Content/Project/projects/project.project.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -25,6 +26,7 @@ export const routes: Routes = [
           children: [
             { path: '', redirectTo: 'all', pathMatch: 'full' },
             { path: 'all', component: AllProjectsComponent },
+            { path: 'project', component: ProjectProjectComponent },
             { path: 'website', component: WebsiteProjectComponent },   
             { path: 'phase7', component: Phase7ProjectComponent },
             { path: 'zeusentertainment', component: ZeusEntertainmentProjectComponent },
