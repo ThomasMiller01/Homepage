@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TransfereService } from 'src/app/services/transferService.service';
+import { Router } from '@angular/router';
 
 declare var galleryWebsiteSetup: any;
 
@@ -9,7 +10,7 @@ declare var galleryWebsiteSetup: any;
 export class ProjectProjectComponent { 
   
 
-  constructor(private transfereService:TransfereService) {
+  constructor(private transfereService:TransfereService, private router:Router) {
   }
 
   project: any;
@@ -27,6 +28,9 @@ export class ProjectProjectComponent {
         i++;
       }
       console.log(this.images);
+    }
+    else{
+      this.router.navigate(['main/projects/all']);
     }
   }
 
