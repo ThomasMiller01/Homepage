@@ -199,60 +199,34 @@ html, body{
 }
 
 /* Home-Product-Images */
-.home-zeusentertainment{    
-    min-height: 350px;   
-    background-image: url('./assets/images/projects/zeusentertainment/zeus0_code.png');
+.home-favProjects{    
+    min-height: 350px;       
     background-repeat: no-repeat;   
-    background-size: 100% auto;
+    background-size: auto 100%;
     color: white;    
+    background-color: rgb(83, 83, 83);
+    display: inline-table;
 }
 
-.home-zeusentertainment-container{
+.home-favProjects-item1{        
+    width: 100%;
+}
+
+.home-favProjects-item2{        
+    width: 100%;
+}
+
+.home-favProjects-item3{        
+    width: 100%;
+}
+
+.home-favProjects-container{
     background-color: rgba(0, 0, 0, 0.527);  
     padding: 5px;
     margin-top: 15px;
 }
 
-.home-zeusentertainment h1{
-    font-size: 39px;
-}
-
-.home-phase7{
-    background-image: url('./assets/images/projects/phase7/phase7.png');
-    background-repeat: no-repeat;
-    background-size: 640px;
-    background-color: rgb(90, 90, 121);
-    min-height: 350px; 
-}
-
-.home-phase7-container{
-    margin: 0;
-    padding: 0;
-    max-width: none;
-    background-color: rgba(0, 0, 0, 0.493);
-    margin-top: 15px;
-    padding: 5px;
-    color: white;
-}
-
-.home-phase7 h1{
-    font-size: 39px;
-}
-
-.home-unity_room{
-    background-image: url('./assets/images/projects/unity/unity_room.png');
-    background-repeat: no-repeat;
-    background-color: rgb(170, 170, 170);
-    min-height: 350px;    
-    color: white;
-}
-
-.home-unity_room p{
-    padding: 5px;
-    background-color: rgba(0, 0, 0, 0.377);    
-}
-
-.home-unity_room h1{
+.home-favProjects h1{
     font-size: 39px;
 }
 
@@ -293,81 +267,7 @@ html, body{
     border: none;
 }
 
-/* Unity-Project */
-
-.project-unity-container{
-    width: 100%;
-    min-height: 87vh;
-    background-color: white;
-}
-
-.unity-project-header{
-    background-image: url('./assets/images/projects/unity/header_unity.png');
-    background-repeat: no-repeat;
-    background-size: 100%;    
-    width: 100%;
-    text-align: center;   
-}
-
-.unity-project-header table{
-    height: 13vh;
-}
-
-.unity-project-header-top{
-    vertical-align: middle;    
-    color: Black;
-    font-size: 60px;    
-}
-
-.unity-project-content{
-    width: 100%;
-    min-height: 37vh;
-    padding-top: 20px;
-}
-
-.unity-project-content h1{
-    width: 100%;
-    text-align: center;
-}
-
-/* ZeusEntertainment-Project */
-
-.project-zeusentertainment-container{
-    width: 100%;
-    min-height: 87vh;
-    background-color: white;
-}
-
-.zeusentertainment-project-header{
-    background-image: url('./assets/images/projects/zeusentertainment/header_zeusentertainment.png');
-    background-repeat: no-repeat;
-    background-size: 100%;    
-    width: 100%;
-    text-align: center;   
-}
-
-.zeusentertainment-project-header table{
-    height: 13vh;
-}
-
-.zeusentertainment-project-header-top{
-    vertical-align: middle;    
-    color: Black;
-    font-size: 60px;    
-}
-
-.zeusentertainment-project-content{
-    width: 100%;
-    min-height: 37vh;
-    padding-top: 20px;
-}
-
-.zeusentertainment-project-content h1{
-    width: 100%;
-    text-align: center;
-}
-
-/* Website-Project */
+/* Project-Project */
 
 .project-website-container{
     width: 100%;
@@ -375,16 +275,14 @@ html, body{
     background-color: white;
 }
 
-.website-project-header{
-    background-image: url('./assets/images/projects/website/header_website.png');
+.website-project-header{    
     background-repeat: no-repeat;
-    background-size: 100%;    
-    width: 100%;
+    background-size: auto 100%;        
     text-align: center;   
 }
 
 .website-project-header table{
-    height: 13vh;
+    height: 50vh;
 }
 
 .website-project-header-top{
@@ -407,80 +305,6 @@ html, body{
 .website-description{
     width: 80%;
     margin: 0 auto;
-}
-
-/* Phase7-Project */
-
-.project-phase7-container{
-    width: 100%;
-    min-height: 87vh;
-    background-color: white;
-}
-
-.phase7-project-header{
-    background-image: url('https://via.placeholder.com/1440x400');
-    background-repeat: no-repeat;
-    background-size: 100%;    
-    width: 100%;
-    text-align: center;   
-}
-
-.phase7-project-header table{
-    height: 13vh;
-}
-
-.phase7-project-header-top{
-    vertical-align: middle;    
-    color: Black;
-    font-size: 60px;    
-}
-
-.phase7-project-content{
-    width: 100%;
-    min-height: 37vh;
-    padding-top: 20px;
-}
-
-.phase7-project-content h1{
-    width: 100%;
-    text-align: center;
-}
-
-/* Interships-Project */
-
-.project-interships-container{
-    width: 100%;
-    min-height: 87vh;
-    background-color: white;
-}
-
-.interships-project-header{
-    background-image: url('https://via.placeholder.com/1440x400');
-    background-repeat: no-repeat;
-    background-size: 100%;    
-    width: 100%;
-    text-align: center;   
-}
-
-.interships-project-header table{
-    height: 13vh;
-}
-
-.interships-project-header-top{
-    vertical-align: middle;    
-    color: Black;
-    font-size: 60px;    
-}
-
-.interships-project-content{
-    width: 100%;
-    min-height: 37vh;
-    padding-top: 20px;
-}
-
-.interships-project-content h1{
-    width: 100%;
-    text-align: center;
 }
 
 /*
@@ -553,94 +377,24 @@ html, body{
 }
 
 @media (max-width: 370px) and (min-width: 351px) {
-	.interships-project-header table{
-        height: 14vh;
-    }
 
-    .zeusentertainment-project-header table{
-        height: 14vh;
-    }
-
-    .phase7-project-header table{
-        height: 14vh;
-    }
-
-    .unity-project-header table{
-        height: 14vh;
-    }
-
-    .website-project-header table{
-        height: 14vh;
-    }   
 }
 
 /* Small devices (landscape phones, 370px and up) */
 @media (min-width: 370px) {	
-    .interships-project-header table{
-        height: 16vh;
-    }
 
-    .zeusentertainment-project-header table{
-        height: 16vh;
-    }
-
-    .phase7-project-header table{
-        height: 16vh;
-    }
-
-    .unity-project-header table{
-        height: 16vh;
-    }
-
-    .website-project-header table{
-        height: 16vh;
-    } 
 }
 
 /* Small devices (landscape phones, 450px and up) */
 @media (min-width: 450px) {	
-    .interships-project-header table{
-        height: 18vh;
-    }
 
-    .zeusentertainment-project-header table{
-        height: 18vh;
-    }
-
-    .phase7-project-header table{
-        height: 18vh;
-    }
-
-    .unity-project-header table{
-        height: 18vh;
-    }
-
-    .website-project-header table{
-        height: 18vh;
-    } 
 }
 
 /* Small devices (landscape phones, 500px and up) */
 @media (min-width: 500px) {	
-    .interships-project-header table{
-        height: 20vh;
+    .home-favProjects{    
+        background-size: 100% auto;
     }
-
-    .zeusentertainment-project-header table{
-        height: 20vh;
-    }
-
-    .phase7-project-header table{
-        height: 20vh;
-    }
-
-    .unity-project-header table{
-        height: 20vh;
-    }
-
-    .website-project-header table{
-        height: 20vh;
-    } 
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -651,15 +405,7 @@ html, body{
     /    
     */
 
-    .home-zeusentertainment h1{
-        font-size: 45px;
-    }
-
-    .home-unity_room h1{
-        font-size: 45px;
-    }
-
-    .home-phase7 h1{
+    .home-favProjects h1{
         font-size: 45px;
     }
 
@@ -692,26 +438,6 @@ html, body{
         padding: 0 50px 0 50px;
     }
 
-    .interships-project-header table{
-        height: 22vh;
-    }
-
-    .zeusentertainment-project-header table{
-        height: 22vh;
-    }
-
-    .phase7-project-header table{
-        height: 22vh;
-    }
-
-    .unity-project-header table{
-        height: 22vh;
-    }
-
-    .website-project-header table{
-        height: 22vh;
-    }    
-
     /*
     /
     / Projects-Module End
@@ -720,53 +446,11 @@ html, body{
 }
 
 @media (min-width: 600px){
-    .interships-project-header table{
-        height: 25vh;
-    }
 
-    .zeusentertainment-project-header table{
-        height: 25vh;
-    }
-
-    .phase7-project-header table{
-        height: 25vh;
-    }
-
-    .unity-project-header table{
-        height: 25vh;
-    }
-
-    .website-project-header table{
-        height: 25vh;
-    }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-    .home-zeusentertainment{
-        text-align: right;   
-    }    
-
-    .interships-project-header table{
-        height: 30vh;
-    }
-
-    .zeusentertainment-project-header table{
-        height: 30vh;
-    }
-
-    .phase7-project-header table{
-        height: 30vh;
-    }
-
-    .unity-project-header table{
-        height: 30vh;
-    }
-
-    .website-project-header table{
-        height: 30vh;
-    }
-
     .top-home-header_middle_text h1 div{
         display: none;
     }
@@ -781,29 +465,24 @@ html, body{
 }
 
 @media (min-width: 900px){
-    .interships-project-header table{
-        height: 36vh;
-    }
 
-    .zeusentertainment-project-header table{
-        height: 36vh;
-    }
-
-    .phase7-project-header table{
-        height: 36vh;
-    }
-
-    .unity-project-header table{
-        height: 36vh;
-    }
-
-    .website-project-header table{
-        height: 36vh;
-    }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {	
+
+    .home-favProjects-item1{
+        width: 40%;
+    }
+
+    .home-favProjects-item2{
+        width: 60%;
+    }
+
+    .home-favProjects-item3{
+        width: 100%;
+    }
+
     /*
     /
     / Header-Module Start
@@ -826,29 +505,13 @@ html, body{
     /
     */
 
-    .home-zeusentertainment h1{
-        font-size: 50px;
-    }
-
-    .home-unity_room h1{
-        font-size: 50px;
-    }
-
-    .home-phase7 h1{
+    .home-favProjects h1{
         font-size: 50px;
     }
  
     .top-home-header{
         background-size: 100%;  
     }    
-
-    .home-phase7-container{
-        float: right;
-        width: calc(100% - 640px);
-        background-color: unset;
-        color: black;
-        padding: 0;
-    }
 
     /*
     /
@@ -859,12 +522,6 @@ html, body{
     / Footer-Module Start
     /
     */
-
-    /* .footer{ */
-        /* height: 6.5vh;
-        min-height: initial; */
-        /* background-color: green !important; */
-    /* } */
 
     /*
     /
@@ -882,26 +539,6 @@ html, body{
         align-items: stretch;     
     }
 
-    .interships-project-header table{
-        height: 50vh;
-    }
-
-    .zeusentertainment-project-header table{
-        height: 50vh;
-    }
-
-    .phase7-project-header table{
-        height: 50vh;
-    }
-
-    .unity-project-header table{
-        height: 50vh;
-    }
-
-    .website-project-header table{
-        height: 50vh;
-    }
-
     .all-projects{        
         background-attachment: fixed;                     
     }
@@ -914,6 +551,12 @@ html, body{
     / Home-Module Start
     /
     */
+
+    .website-project-header{    
+        background-repeat: no-repeat;
+        background-size: 100%;        
+        text-align: center;   
+    }
 
     .profile_name_div-home{    
         width: 180px;
@@ -986,15 +629,7 @@ html, body{
         font-size: 22px;        
     }
     
-    .home-zeusentertainment h1{
-        font-size: 55px;
-    }
-
-    .home-unity_room h1{
-        font-size: 55px;
-    }
-
-    .home-phase7 h1{
+    .home-favProjects h1{
         font-size: 55px;
     }
 

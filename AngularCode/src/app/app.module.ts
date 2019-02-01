@@ -60,7 +60,7 @@ import { TransfereService } from './services/transferService.service';
     HttpClientModule,
     HttpModule,
     CommonModule,
-    routing
+    routing    
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
