@@ -1,0 +1,15 @@
+
+<div class="all-projects">    
+    <div class="projects-container">
+        <div class="card-deck">     
+            <div class="card my-3 custom-projects-Card" *ngFor="let project of allProjects">
+                <img src="{{project._thumbnail}}" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title">{{project._name}}</h4>
+                    <p class="card-text">{{project._description}}</p>
+                    <button type="button" class="btn btn-outline-primary" (click)="navigateProject(project);">See more</button>
+                </div>
+            </div>          
+        </div>
+    </div>       
+</div>
