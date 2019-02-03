@@ -11,11 +11,11 @@
         <div class="website-project-content">
             <h1><a href="{{project._githubRepo}}" target="_blank">{{project._name}}</a></h1>
             <div class="website-description">
-                <p>{{project._description}}</p>
+                <p>{{project._description_big}}</p>
             </div>        
             <!-- Start PhotoSwipe -->
             <div class="gallery_website" itemscope itemtype="http://schema.org/ImageGallery">
-                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" *ngFor="let image of images">
+                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" *ngFor="let image of project._images;">
                     <a href="{{image[0]}}" itemprop="contentUrl" [attr.data-size]="image[2]">
                         <img src="{{image[0]}}" itemprop="thumbnail" alt="{{image[1]}}" />                        
                     </a>

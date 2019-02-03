@@ -14,20 +14,13 @@ export class ProjectProjectComponent {
   }
 
   project: any;
-  images = [];
 
   ngOnInit() {    
 		var photoswipeSetupFunction = function () { galleryWebsiteSetup(); }
     photoswipeSetupFunction();    
     var data = this.transfereService.getData();   
     if(data){
-      this.project = data;
-      var i=0; 
-      for(var key in this.project._images){
-        this.images[i] = [ key, this.project._images[key], '1920x1034']
-        i++;
-      }
-      console.log(this.images);
+      this.project = data;               
     }
     else{
       this.router.navigate(['main/projects/all']);
