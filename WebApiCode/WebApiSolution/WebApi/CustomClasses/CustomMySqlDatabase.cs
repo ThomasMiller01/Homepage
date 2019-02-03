@@ -7,14 +7,7 @@ using MySql.Data.MySqlClient;
 namespace WebApi.CustomClasses
 {
     public class CustomMySqlDatabase
-    {
-        /*string myConnectionString = "SERVER=localhost;" +
-                            "DATABASE=phase7_personalwebsite;" +
-                            "UID=phase7;" +
-                            "PASSWORD=-sEf.RQrGm.BoUjB51OM;" +
-                            "PORT=3306;" +
-                            "SSL Mode=none;";*/
-
+    {        
         string myConnectionString = "SERVER=localhost;" +
                             "DATABASE=personalwebsite;" +
                             "UID=root;" +
