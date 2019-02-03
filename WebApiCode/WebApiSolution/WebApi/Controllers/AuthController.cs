@@ -33,7 +33,7 @@ namespace WebApi.Controllers
                 string passhash = data[2];                
                 if (encoding.validatePass(user.Password, passhash))
                 {
-                    var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@05258"));
+                    var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKeyHerePls"));
                     var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);                    
 
                     var tokeOptions = new JwtSecurityToken(
