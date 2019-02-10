@@ -11,9 +11,8 @@ import { LoginComponent } from '../Components/public/login/login.component';
 import { AllProjectsComponent } from '../Components/public/Content/Project/all/allProjects.component';
 import { ProjectProjectComponent } from '../Components/public/Content/Project/projects/project.project.component';
 
-export const routes: Routes = [
-    { path: '', redirectTo: 'main', pathMatch: 'full' },
-    { path: 'main', component: mainComponent,
+export const routes: Routes = [    
+    { path: '', component: mainComponent,
       children: [
         { path: '', redirectTo: 'home', pathMatch: 'full' },
         { path: 'home', component: HomeComponent },

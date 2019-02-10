@@ -222,8 +222,9 @@ html, body{
 
 .home-favProjects-container{
     background-color: rgba(0, 0, 0, 0.527);  
-    padding: 5px;
-    margin-top: 15px;
+    padding: 5px;    
+    margin: 20px auto 0 auto;
+    width: 95%;
 }
 
 .home-favProjects h1{

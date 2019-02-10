@@ -24,7 +24,7 @@ export class AllProjectsComponent {
   
   navigateProject(project){
     this.transfereService.setData(project);
-    this.router.navigate(['main/projects/project']);
+    this.router.navigate(['/projects/project']);
   }
 
   getProjects(){
