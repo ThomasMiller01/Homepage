@@ -23,6 +23,10 @@ import { AppComponent } from './app.component';
       import { AllProjectsComponent } from './Components/public/Content/Project/all/allProjects.component';      
     import { AboutmeComponent } from './Components/public/Content/AboutMe/aboutme.component';
   import { privateMainComponent } from './Components/private/main/privateMainComponent';
+    import { privateHeaderComponent } from './Components/private/header/privateHeaderComponent';
+    import { privateHomeComponent } from './Components/private/content/home/privateHomeComponent';
+    import { privateAllProjectsComponent } from './Components/private/content/allProjects/privateAllProjectsComponent';
+    import { privateSettingsComponent } from './Components/private/content/settings/privateSettingsComponent';
 import { TransfereService } from './services/transferService.service';
 
 @NgModule({
@@ -40,7 +44,11 @@ import { TransfereService } from './services/transferService.service';
           ProjectProjectComponent,
           AllProjectsComponent,          
         AboutmeComponent,        
-      privateMainComponent
+      privateMainComponent,
+        privateHeaderComponent,
+        privateHomeComponent,
+        privateAllProjectsComponent,        
+        privateSettingsComponent
   ],
   imports: [
     BrowserModule,  
