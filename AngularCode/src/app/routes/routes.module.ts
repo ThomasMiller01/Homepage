@@ -13,6 +13,8 @@ import { ProjectProjectComponent } from '../Components/public/Content/Project/pr
 import { privateAllProjectsComponent } from '../Components/private/content/allProjects/privateAllProjectsComponent';
 import { privateSettingsComponent } from '../Components/private/content/settings/privateSettingsComponent';
 import { privateHomeComponent } from '../Components/private/content/home/privateHomeComponent';
+import { privateSettingsHomeComponent } from '../Components/private/content/settings/content/home/privateSettingsHomeComponent';
+import { privateSettingsProjectComponent } from '../Components/private/content/settings/content/changeProjectContent/privateSettingsChangeProjectContentComponent';
 
 export const routes: Routes = [    
     { path: '', component: mainComponent,
@@ -36,7 +38,12 @@ export const routes: Routes = [
         { path: '', redirectTo: 'home', pathMatch: 'full' },
         { path: 'home', component: privateHomeComponent },
         { path: 'allProjects', component: privateAllProjectsComponent },
-        { path: 'settings', component: privateSettingsComponent}
+        { path: 'settings', component: privateSettingsComponent, 
+          children: [
+            { path: '', component: privateSettingsHomeComponent },
+            { path: 'changeProject', component: privateSettingsProjectComponent }
+          ]
+        }
       ] 
     },	
 ];

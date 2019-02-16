@@ -153,6 +153,9 @@ namespace WebApi.Controllers
         [HttpPost, Route("change/{id}"), Authorize]
         public string change([FromBody]ProjectModel project, int id)
         {
+            Dictionary<bool, string> boolDict = new Dictionary<bool, string>();
+            boolDict.Add(true, "1");
+            boolDict.Add(false, "0");
             string preparedImages = "";
             for(int i = 0; i < project._images.Count(); i++)
             {
@@ -173,12 +176,12 @@ namespace WebApi.Controllers
             string columnData = "name='" + project._name + "', " + 
                 "githubRepo='" + project._githubRepo + "', " + 
                 "description='" + project._description + "', " + 
+                "description_big='" + project._description_big + "', " + 
                 "thumbnail='" + project._thumbnail + "', " + 
                 "headerImg='" + project._headerImg + "', " + 
-                "images='" + preparedImages + "', " + 
-                "pubDate='" + project._pubDate + "', " +
-                "favourite='" + project._favourite.ToString() + "', " + 
-                "private='" + project._private.ToString() + "'";
+                "images='" + preparedImages + "', " +                 
+                "favourite=" + boolDict[project._favourite] + ", " + 
+                "private=" + boolDict[project._private];
             mysqldatabase.updateValueToTableWhere("projects", columnData, "ID", id.ToString());                      
             return "Project with id: " + id + " updated";
         }

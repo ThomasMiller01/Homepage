@@ -27,6 +27,8 @@ import { AppComponent } from './app.component';
     import { privateHomeComponent } from './Components/private/content/home/privateHomeComponent';
     import { privateAllProjectsComponent } from './Components/private/content/allProjects/privateAllProjectsComponent';
     import { privateSettingsComponent } from './Components/private/content/settings/privateSettingsComponent';
+      import { privateSettingsHomeComponent } from './Components/private/content/settings/content/home/privateSettingsHomeComponent';
+      import { privateSettingsProjectComponent } from './Components/private/content/settings/content/changeProjectContent/privateSettingsChangeProjectContentComponent';
 import { TransfereService } from './services/transferService.service';
 
 @NgModule({
@@ -48,7 +50,9 @@ import { TransfereService } from './services/transferService.service';
         privateHeaderComponent,
         privateHomeComponent,
         privateAllProjectsComponent,        
-        privateSettingsComponent
+        privateSettingsComponent,
+          privateSettingsHomeComponent,
+          privateSettingsProjectComponent
   ],
   imports: [
     BrowserModule,  

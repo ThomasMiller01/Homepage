@@ -365,6 +365,111 @@ html, body{
 /
 /----------------------------
 /
+/ Private-Module Start
+/
+*/
+
+.privateSettings{
+    width: 100%;
+    min-height: 93.5vh;
+    background-color: white;
+}
+
+.privateSettings h1{
+    margin: 0;
+}
+
+.privateChangeProjectContent{
+    width: 90%;
+    padding: 15px;
+    margin: 20px auto 0 auto;
+    background-color: rgb(216, 216, 216);
+}
+
+.input_both{
+    width: 45%;        
+    display: inline-block;
+    vertical-align: top;
+}
+
+.visibility_hidden{
+    visibility: hidden;
+}
+
+.input_both textarea{    
+    width: 100% !important;
+}
+
+.rendered_textbox{
+    width: 100% !important;
+    background-color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.back_settings{
+    position: absolute;
+    margin: 10px;
+    top: 0;
+    right: 0;
+}
+
+.text_description {
+    min-height: 150px !important;
+}
+
+.text_description_big {
+    min-height: 350px !important;
+}
+
+.text_images{
+    min-height: 150px !important;
+}
+
+.input_both input{    
+    width: 100% !important;
+}
+
+.input_both h1{
+    width: 95%;
+    text-align: left;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.input_both h2{
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.input_code{
+    margin-right: 2.5%;
+}
+
+.input_render{
+    margin-left: 2.5%;
+}
+
+.checkbox{
+    width: 100%;
+}
+
+.border_bottom{
+    width: 95%;
+    margin: 5px auto 10px auto;
+    height: 2px;    
+    border-bottom: solid 2px rgb(161, 161, 161);
+}
+
+/*
+/
+/ Private-Module End
+/
+/----------------------------
+/
 / Media-Module Start
 /
 */
