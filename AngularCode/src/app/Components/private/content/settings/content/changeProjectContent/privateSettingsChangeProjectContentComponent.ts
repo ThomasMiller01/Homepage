@@ -79,6 +79,7 @@ export class privateSettingsProjectComponent {
         "Content-Type": "application/json"
       })
     }).subscribe(response => {		        												
+      this.getProjects();
       this.showUpdate = true;
 			setTimeout(() => 
 			{
