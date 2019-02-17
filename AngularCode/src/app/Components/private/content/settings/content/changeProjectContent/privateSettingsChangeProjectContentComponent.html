@@ -11,31 +11,31 @@
                 </div>
                 <div class="border_bottom"></div>
                 <div class="input-group input_code input_both">                          
-                        <h1>Code</h1>
-                        <h2>Name</h2>
-                        <input type="text" class="form-control" ngModel name="_name" placeholder="Name" id="code_name" value="{{currentProject._name}}" required>
-                        <h2>GitHub Repo</h2>
-                        <input type="text" class="form-control" ngModel name="_githubRepo" placeholder="GitHub Repo" id="code_githubrepo" value="{{currentProject._githubRepo}}" required>
-                        <h2>Description</h2>
-                        <textarea (keyup)="tbChanged($event.target)" [value]="currentProject._description" class="form-control text_description" ngModel name="_description" placeholder="Description" id="code_description" value="{{currentProject._description}}" required></textarea>
-                        <h2>Description Big</h2>
-                        <textarea (keyup)="tbChanged($event.target)" [value]="currentProject._description_big" class="form-control text_description_big" ngModel name="_description_big" placeholder="Description Big" id="code_description_big" value="{{currentProject._description_big}}" required></textarea>
-                        <h2>Thumbnail</h2>
-                        <input type="text" class="form-control" ngModel name="_thumbnail" placeholder="Thumbnail" id="code_thumbnail" value="{{currentProject._thumbnail}}" required>
-                        <h2>Header Img</h2>
-                        <input type="text" class="form-control" ngModel name="_headerImg" placeholder="Header Img" id="code_headerimg" value="{{currentProject._headerImg}}" required>
-                        <h2>Images</h2>
-                        <textarea class="form-control text_images" ngModel name="_images" placeholder="Images" id="code_images" value="{{currentProject._images}}" required></textarea> 
-                        <h2>Upload Image</h2>                               
-                        <input type="file" id="code_uploadimage">       
-                        <div class="checkbox">
-                            <input style="width: auto !important;" type="checkbox" name="_favourite" ngModel value="false" id="code_favourite" [checked]="currentProject._favourite" required>
-                            <label class="form-check-label" for="code_favourite">Favourite</label>         
-                        </div>                
-                        <div class="checkbox">
-                            <input style="width: auto !important;" type="checkbox" ngModel name="_private" id="checkbox_public" value="false" id="code_private" [checked]="currentProject._private" required>
-                            <label class="form-check-label" for="code_private">Private</label>         
-                        </div>                
+                    <h1>Code</h1>
+                    <h2>Name</h2>
+                    <input type="text" class="form-control" ngModel name="_name" placeholder="Name" id="code_name" value="{{currentProject._name}}" required>
+                    <h2>GitHub Repo</h2>
+                    <input type="text" class="form-control" ngModel name="_githubRepo" placeholder="GitHub Repo" id="code_githubrepo" value="{{currentProject._githubRepo}}" required>
+                    <h2>Description</h2>
+                    <textarea (keyup)="tbChanged($event.target)" [value]="currentProject._description" class="form-control text_description" ngModel name="_description" placeholder="Description" id="code_description" value="{{currentProject._description}}" required></textarea>
+                    <h2>Description Big</h2>
+                    <textarea (keyup)="tbChanged($event.target)" [value]="currentProject._description_big" class="form-control text_description_big" ngModel name="_description_big" placeholder="Description Big" id="code_description_big" value="{{currentProject._description_big}}" required></textarea>
+                    <h2>Thumbnail</h2>
+                    <input type="text" class="form-control" ngModel name="_thumbnail" placeholder="Thumbnail" id="code_thumbnail" value="{{currentProject._thumbnail}}" required>
+                    <h2>Header Img</h2>
+                    <input type="text" class="form-control" ngModel name="_headerImg" placeholder="Header Img" id="code_headerimg" value="{{currentProject._headerImg}}" required>
+                    <h2>Images</h2>
+                    <textarea class="form-control text_images" ngModel name="_images" placeholder="Images" id="code_images" value="{{currentProject._images}}" required></textarea> 
+                    <!-- <h2>Upload Image</h2>                               
+                    <input type="file" id="code_uploadimage">        -->
+                    <div class="checkbox custom-control custom-checkbox">
+                        <input class="custom-control-input custom_checkbox" type="checkbox" name="_favourite" ngModel value="false" id="code_favourite" [checked]="currentProject._favourite" required>
+                        <label class="custom-control-label custom_checkbox" for="code_favourite">Favourite</label>                                    
+                    </div>                
+                    <div class="checkbox custom-control custom-checkbox">
+                        <input class="custom-control-input custom_checkbox" type="checkbox" ngModel name="_private" id="checkbox_public" value="false" id="code_private" [checked]="currentProject._private" required>
+                        <label class="custom-control-label custom_checkbox" for="code_private">Private</label>                             
+                    </div>                                                  
                 </div>
                 <div class="input-group input_render input_both">           
                     <h1>Preview</h1>
@@ -51,6 +51,7 @@
                     <div class="rendered_textbox text_description_big" [innerHTML]="currentProject._description_big"></div>                                       
                 </div>            
             </center>        
+            <div class="border_bottom"></div>
             <div class="alert alert-danger" *ngIf="showError" role="alert">
                 Error while updating project!
             </div>

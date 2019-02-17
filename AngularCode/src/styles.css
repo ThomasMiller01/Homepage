@@ -372,7 +372,12 @@ html, body{
 .privateSettings{
     width: 100%;
     min-height: 93.5vh;
-    background-color: white;
+    background-color: rgb(230, 230, 230);
+    padding: 10px;
+}
+
+.btn-settings{
+    margin: 0 5px 0 5px;
 }
 
 .privateSettings h1{
@@ -455,14 +460,31 @@ html, body{
 
 .checkbox{
     width: 100%;
+    text-align: left;
+}
+
+.custom_checkbox{
+    cursor: pointer;
 }
 
 .border_bottom{
     width: 95%;
-    margin: 5px auto 10px auto;
+    margin: 10px auto 10px auto;
     height: 2px;    
     border-bottom: solid 2px rgb(161, 161, 161);
 }
+
+.privateHome{
+    width: 100%;
+    min-height: 93.5vh;
+    background-color: rgb(230, 230, 230);
+    padding: 10px;
+}
+
+.privateHome h1{
+    margin: 0;
+}
+
 
 /*
 /
