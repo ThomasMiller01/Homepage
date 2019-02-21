@@ -121,22 +121,29 @@ namespace WebApi.Controllers
         public string add([FromBody]ProjectModel project)
         {
             string preparedImages = "";
-            for (int i = 0; i < project._images.Count(); i++)
-            {
-                for (int j = 0; j < project._images[i].Count(); j++)
+            if (project._images != null)
+            {                
+                for (int i = 0; i < project._images.Count(); i++)
                 {
-                    preparedImages += project._images[i][j];
-                    if (j != project._images[i].Count() - 1)
+                    for (int j = 0; j < project._images[i].Count(); j++)
                     {
-                        preparedImages += ",";
+                        preparedImages += project._images[i][j];
+                        if (j != project._images[i].Count() - 1)
+                        {
+                            preparedImages += ",";
+                        }
+                    }
+                    if (i != project._images.Count() - 1)
+                    {
+                        preparedImages += ";";
                     }
                 }
-                if (i != project._images.Count() - 1)
-                {
-                    preparedImages += ";";
-                }
+                preparedImages = preparedImages.Replace("\r", "").Replace("\n", "");
             }
-            preparedImages = preparedImages.Replace("\r", "").Replace("\n", "");
+            else
+            {
+                preparedImages = "none";
+            }
             string insertRowString = "name, githubRepo, description, description_big, thumbnail, headerImg, images, favourite, private";            
             string insertDataString = "'" + project._name + "', '" + project._githubRepo + "', '" + project._description + "', '" + project._description_big + "', '" + project._thumbnail + "', '" + project._headerImg + "', '" + preparedImages + "', '" + project._favourite + "', '" + project._private + "'";
             mysqldatabase.insertStringRow("projects", insertRowString, insertDataString);

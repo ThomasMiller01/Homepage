@@ -24,7 +24,7 @@ export class privateSettingsProjectComponent {
   showError = false;  
 
   ngOnInit() { 
-    this.clearProject = {'_id': '0', '_name': '', '_githubRepo': '', '_description': '', '_description_big': '', '_thumbnail': '', '_headerImg': '', '_images': '', '_favourite': '', '_private': ''}        
+    this.clearProject = {'_id': '0', '_name': '', '_githubRepo': '', '_description': '', '_description_big': '', '_thumbnail': '', '_headerImg': '', '_images': '', '_favourite': false, '_private': false}        
     this.currentProject = {'_name': 'name'}   
 		this.getProjects();
   }  
@@ -33,10 +33,8 @@ export class privateSettingsProjectComponent {
     this.currentProject = cProject;    
   }
 
-  changeProject(form: NgForm){     
-    console.log(form);
-    var changer = "change";
-    if(form.value['select_project'] == undefined || (form.value['select_project']['_id'] == '0' && changer != 'add')){
+  changeProject(form: NgForm){             
+    if(form.value['select_project'] == undefined){
       this.showError = true;
 			setTimeout(() => 
 			{
@@ -74,12 +72,17 @@ export class privateSettingsProjectComponent {
         }
       }            
     }      
-    if(project_payload['_images'] == undefined){}    
-    let credentials = JSON.stringify(project_payload);
-    console.log(project_payload);
+    let credentials = JSON.stringify(project_payload);    
     var token = localStorage.getItem("jwt");  
     var id = project_payload['_id'];
-    this.http.post(apiPath + "Projects/" + changer + "/" + id, credentials, {
+    var _method = "";
+    if(id == "0"){
+      _method = "add"
+    }
+    else{
+      _method = "change/" + id
+    }
+    this.http.post(apiPath + "Projects/" + _method, credentials, {
       headers: new HttpHeaders({
         "Authorization": "Bearer " + token,
         "Content-Type": "application/json"
@@ -100,6 +103,41 @@ export class privateSettingsProjectComponent {
 			},
       3000);
     });
+  }
+
+  deleteProject(_id){     
+    if(_id != "0" && _id != undefined){
+      var token = localStorage.getItem("jwt");      
+      this.http.delete(apiPath + "Projects/delete/" + _id, {
+        headers: new HttpHeaders({
+          "Authorization": "Bearer " + token,
+          "Content-Type": "application/json"
+        })
+      }).subscribe(response => {		        												
+        this.getProjects();
+        this.showUpdate = true;
+        setTimeout(() => 
+        {
+          this.showUpdate = false;
+        },
+        3000);     
+      }, err => {
+        this.showError = true;
+        setTimeout(() => 
+        {
+          this.showError = false;
+        },
+        3000);
+      });
+    }
+    else{
+      this.showError = true;
+      setTimeout(() => 
+      {
+        this.showError = false;
+      },
+      3000);
+    }    
   }
 
   tbChanged(tb){        

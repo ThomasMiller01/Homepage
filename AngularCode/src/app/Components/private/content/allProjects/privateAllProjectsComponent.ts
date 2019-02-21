@@ -4,6 +4,7 @@ import { TransfereService } from 'src/app/services/transferService.service';
 import { Router } from '@angular/router';
 
 var apiPath = "https://thomasmiller.tk/dotnet/api/";
+// var apiPath = "http://localhost:41970/api/";
 
 @Component({
   templateUrl: './privateAllProjectsComponent.html',

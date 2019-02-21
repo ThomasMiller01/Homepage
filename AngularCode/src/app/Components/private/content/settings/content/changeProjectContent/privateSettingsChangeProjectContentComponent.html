@@ -60,9 +60,8 @@
             <div class="alert alert-success" *ngIf="showUpdate" role="alert">
                 Successfully updated project!
             </div>
-            <button type="submit" class="btn btn-outline-primary settings_changeProject">Update</button>
-            <button type="submit" class="btn btn-outline-primary settings_changeProject">Add</button>
-            <button type="button" class="btn btn-outline-primary settings_changeProject">Delete</button>
+            <button type="submit" class="btn btn-outline-primary settings_changeProject">Update</button>            
+            <button type="button" class="btn btn-outline-primary settings_changeProject" (click)="deleteProject(currentProject._id)">Delete</button>
             <button type="button" class="btn btn-outline-primary settings_changeProject" *ngIf="getMobile()" (click)="changePreviewState()">Preview</button>
         </form>
     </div>
