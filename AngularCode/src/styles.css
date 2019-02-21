@@ -391,10 +391,13 @@ html, body{
     background-color: rgb(216, 216, 216);
 }
 
-.input_both{
-    width: 45%;        
+.input_both{          
     display: inline-block;
     vertical-align: top;
+}
+
+.top_text{
+    font-size: 1.8em;
 }
 
 .visibility_hidden{
@@ -467,11 +470,19 @@ html, body{
     cursor: pointer;
 }
 
+.selectProject{
+    width: 90%;
+}
+
+.settings_changeProject{
+    margin: 5px;    
+}
+
 .border_bottom{
     width: 95%;
     margin: 10px auto 10px auto;
     height: 2px;    
-    border-bottom: solid 2px rgb(161, 161, 161);
+    border-bottom: solid 2px rgb(161, 161, 161);    
 }
 
 .privateHome{
@@ -609,6 +620,18 @@ html, body{
 
     .home-favProjects-item3{
         width: 100%;
+    }
+
+    .selectProject{
+        width: 30%;
+    }
+
+    .input_both{
+        width: 45%;
+    }
+
+    .top_text{
+        font-size: 2.5em;
     }
 
     /*

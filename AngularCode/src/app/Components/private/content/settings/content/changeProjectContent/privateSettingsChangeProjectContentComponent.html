@@ -1,16 +1,17 @@
 <div class="privateSettings">
-    <center><h1>Settings - Change Project</h1></center>    
+    <center><h1 class="top_text">Settings - Change Project</h1></center>    
     <button type="button" class="btn btn-outline-primary back_settings" [routerLink]="['/private/settings']">Back</button>    
     <div class="privateChangeProjectContent">        
-        <form #updateProjectForm="ngForm" (ngSubmit)="updateProject(updateProjectForm)">  
-            <center>                            
-                <div class="form-group" style="width: 30%; margin: 0 0 20px 2.5%; text-align: left;">                
+        <form #updateProjectForm="ngForm" (ngSubmit)="changeProject(updateProjectForm)">              
+            <center>                                            
+                <div class="form-group selectProject" style="margin: 0 0 20px 2.5%; text-align: left;">                
                     <select class="form-control" name="select_project" (ngModelChange)="selectorChanged($event)" [(ngModel)]="selectedObj">
+                        <option [ngValue]="clearProject">[Clear]</option>
                         <option *ngFor="let project of allProjects" [ngValue]="project">{{project._name}}</option>                    
                     </select>
                 </div>
                 <div class="border_bottom"></div>
-                <div class="input-group input_code input_both">                          
+                <div class="input-group input_code input_both">
                     <h1>Code</h1>
                     <h2>Name</h2>
                     <input type="text" class="form-control" ngModel name="_name" placeholder="Name" id="code_name" value="{{currentProject._name}}" required>
@@ -37,9 +38,10 @@
                         <label class="custom-control-label custom_checkbox" for="code_private">Private</label>                             
                     </div>                                                  
                 </div>
-                <div class="input-group input_render input_both">           
+                <div class="input-group input_render input_both" *ngIf="!getMobile() || isPreview">           
+                    <div class="border_bottom" *ngIf="isPreview"></div>
                     <h1>Preview</h1>
-                    <div class="visibility_hidden">
+                    <div class="visibility_hidden" *ngIf="!isPreview">
                         <h2>-</h2>
                         <input type="text" class="form-control">
                         <h2>-</h2>
@@ -58,7 +60,10 @@
             <div class="alert alert-success" *ngIf="showUpdate" role="alert">
                 Successfully updated project!
             </div>
-            <button type="submit" class="btn btn-outline-primary">Update</button>
+            <button type="submit" class="btn btn-outline-primary settings_changeProject">Update</button>
+            <button type="submit" class="btn btn-outline-primary settings_changeProject">Add</button>
+            <button type="button" class="btn btn-outline-primary settings_changeProject">Delete</button>
+            <button type="button" class="btn btn-outline-primary settings_changeProject" *ngIf="getMobile()" (click)="changePreviewState()">Preview</button>
         </form>
     </div>
 </div>

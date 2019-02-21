@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 var apiPath = "https://thomasmiller.tk/dotnet/api/";
+// var apiPath = "http://localhost:41970/api/";
 
 @Component({
   templateUrl: './privateSettingsChangeProjectContentComponent.html'
@@ -15,11 +16,15 @@ export class privateSettingsProjectComponent {
     
   allProjects: any;
   currentProject: any;
+  clearProject: any;
+
+  isPreview = false;
 
   showUpdate = false;
-  showError = false;
+  showError = false;  
 
-  ngOnInit() {     
+  ngOnInit() { 
+    this.clearProject = {'_id': '0', '_name': '', '_githubRepo': '', '_description': '', '_description_big': '', '_thumbnail': '', '_headerImg': '', '_images': '', '_favourite': '', '_private': ''}        
     this.currentProject = {'_name': 'name'}   
 		this.getProjects();
   }  
@@ -28,8 +33,10 @@ export class privateSettingsProjectComponent {
     this.currentProject = cProject;    
   }
 
-  updateProject(form: NgForm){        
-    if(form.value['select_project'] == undefined){
+  changeProject(form: NgForm){     
+    console.log(form);
+    var changer = "change";
+    if(form.value['select_project'] == undefined || (form.value['select_project']['_id'] == '0' && changer != 'add')){
       this.showError = true;
 			setTimeout(() => 
 			{
@@ -67,13 +74,12 @@ export class privateSettingsProjectComponent {
         }
       }            
     }      
-    if(project_payload['_images'] == undefined){}
-    console.log(project_payload['_images']);
+    if(project_payload['_images'] == undefined){}    
     let credentials = JSON.stringify(project_payload);
     console.log(project_payload);
     var token = localStorage.getItem("jwt");  
     var id = project_payload['_id'];
-    this.http.post(apiPath + "Projects/change/" + id, credentials, {
+    this.http.post(apiPath + "Projects/" + changer + "/" + id, credentials, {
       headers: new HttpHeaders({
         "Authorization": "Bearer " + token,
         "Content-Type": "application/json"
@@ -107,10 +113,29 @@ export class privateSettingsProjectComponent {
         "Authorization": "Bearer " + token,
         "Content-Type": "application/json"
       })
-    }).subscribe(response => {		        												
+    }).subscribe(response => {      
       this.allProjects = response;      
     }, err => {
       console.log(err);
     });
+  }
+
+  getMobile(){    
+    var width = window.outerWidth
+    if(width <= 992){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  changePreviewState(){    
+    if(this.isPreview){
+      this.isPreview = false;
+    }
+    else{
+      this.isPreview = true;
+    }
   }
 }
