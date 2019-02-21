@@ -38,7 +38,7 @@ namespace WebApi
 
                    ValidIssuer = "https://localhost:41970",
                    ValidAudience = "https://localhost:41970",
-                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@05258"))
+                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKeyHerePls"))
                };
            });
             services.AddCors(options =>
