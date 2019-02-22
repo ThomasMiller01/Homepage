@@ -4,8 +4,8 @@ import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 import { JwtHelper } from 'angular2-jwt';
 
-// var apiPath = "https://thomasmiller.tk/dotnet/api/";
-var apiPath = "http://localhost:41970/api/";
+var apiPath = "https://thomasmiller.tk/dotnet/api/";
+// var apiPath = "http://localhost:41970/api/";
 
 @Component({	
 	templateUrl: './login.component.html'
