@@ -145,7 +145,7 @@ namespace WebApi.Controllers
                 preparedImages = "none";
             }
             string insertRowString = "name, githubRepo, description, description_big, thumbnail, headerImg, images, favourite, private";            
-            string insertDataString = "'" + project._name + "', '" + project._githubRepo + "', '" + project._description + "', '" + project._description_big + "', '" + project._thumbnail + "', '" + project._headerImg + "', '" + preparedImages + "', '" + project._favourite + "', '" + project._private + "'";
+            string insertDataString = "'" + project._name + "', '" + project._githubRepo + "', '" + project._description + "', '" + project._description_big + "', '" + project._thumbnail + "', '" + project._headerImg + "', '" + preparedImages + "', '" + project._favourite.ToString().ToLower() + "', '" + project._private.ToString().ToLower() + "'";
             mysqldatabase.insertStringRow("projects", insertRowString, insertDataString);
             return "Project Name:" + project._name + " added";
         }
@@ -160,9 +160,6 @@ namespace WebApi.Controllers
         [HttpPost, Route("change/{id}"), Authorize]
         public string change([FromBody]ProjectModel project, int id)
         {
-            Dictionary<bool, string> boolDict = new Dictionary<bool, string>();
-            boolDict.Add(true, "1");
-            boolDict.Add(false, "0");
             string preparedImages = "";
             for(int i = 0; i < project._images.Count(); i++)
             {
@@ -187,8 +184,8 @@ namespace WebApi.Controllers
                 "thumbnail='" + project._thumbnail + "', " + 
                 "headerImg='" + project._headerImg + "', " + 
                 "images='" + preparedImages + "', " +                 
-                "favourite=" + boolDict[project._favourite] + ", " + 
-                "private=" + boolDict[project._private];
+                "favourite='" + project._favourite.ToString().ToLower() + "', " + 
+                "private='" + project._private.ToString().ToLower() + "'";
             mysqldatabase.updateValueToTableWhere("projects", columnData, "ID", id.ToString());                      
             return "Project with id: " + id + " updated";
         }
