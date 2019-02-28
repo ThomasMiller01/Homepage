@@ -10,10 +10,14 @@ import { AboutmeComponent } from '../Components/public/Content/AboutMe/aboutme.c
 import { LoginComponent } from '../Components/public/login/login.component';
 import { AllProjectsComponent } from '../Components/public/Content/Project/all/allProjects.component';
 import { ProjectProjectComponent } from '../Components/public/Content/Project/projects/project.project.component';
+import { privateAllProjectsComponent } from '../Components/private/content/allProjects/privateAllProjectsComponent';
+import { privateSettingsComponent } from '../Components/private/content/settings/privateSettingsComponent';
+import { privateHomeComponent } from '../Components/private/content/home/privateHomeComponent';
+import { privateSettingsHomeComponent } from '../Components/private/content/settings/content/home/privateSettingsHomeComponent';
+import { privateSettingsProjectComponent } from '../Components/private/content/settings/content/changeProjectContent/privateSettingsChangeProjectContentComponent';
 
-export const routes: Routes = [
-    { path: '', redirectTo: 'main', pathMatch: 'full' },
-    { path: 'main', component: mainComponent,
+export const routes: Routes = [    
+    { path: '', component: mainComponent,
       children: [
         { path: '', redirectTo: 'home', pathMatch: 'full' },
         { path: 'home', component: HomeComponent },
@@ -29,7 +33,19 @@ export const routes: Routes = [
       ] 
     },
     { path: 'login', component: LoginComponent },
-    { path: 'private', component: privateMainComponent, canActivate: [AuthGuard], },	
+    { path: 'private', component: privateMainComponent, canActivate: [AuthGuard],
+      children: [
+        { path: '', redirectTo: 'home', pathMatch: 'full' },
+        { path: 'home', component: privateHomeComponent },
+        { path: 'allProjects', component: privateAllProjectsComponent },
+        { path: 'settings', component: privateSettingsComponent, 
+          children: [
+            { path: '', component: privateSettingsHomeComponent },
+            { path: 'changeProject', component: privateSettingsProjectComponent }
+          ]
+        }
+      ] 
+    },	
 ];
 
 export const appRoutingProviders: any[] = [

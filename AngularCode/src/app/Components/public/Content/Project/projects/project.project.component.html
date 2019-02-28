@@ -9,9 +9,9 @@
             </table>        
         </div>
         <div class="website-project-content">
-            <h1><a href="{{project._githubRepo}}" target="_blank">{{project._name}}</a></h1>
+            <h1><a [attr.href]="project._githubRepo != '#' ? project._githubRepo : null" target="_blank">{{project._name}}</a></h1>
             <div class="website-description">
-                <p>{{project._description_big}}</p>
+                <p [innerHTML]="project._description_big"></p>
             </div>        
             <!-- Start PhotoSwipe -->
             <div class="gallery_website" itemscope itemtype="http://schema.org/ImageGallery">

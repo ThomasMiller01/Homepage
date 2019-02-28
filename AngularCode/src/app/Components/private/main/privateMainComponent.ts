@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
 @Component({
-	templateUrl: './privateMainComponent.html'
+	templateUrl: './privateMainComponent.html',
 })
 export class privateMainComponent { }

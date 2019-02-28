@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { JwtHelper } from 'angular2-jwt';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TransfereService } from 'src/app/services/transferService.service';
 import { Router } from '@angular/router';
 
 var apiPath = "https://thomasmiller.tk/dotnet/api/";
+// var apiPath = "http://localhost:41970/api/";
 
 @Component({
-  templateUrl: './allProjects.component.html',
-  styleUrls: ['../../../../../../assets/scss/style.scss']
+  templateUrl: './privateAllProjectsComponent.html',
+  styleUrls: ['../../../../../assets/scss/style.scss']
 })
 
-export class AllProjectsComponent { 
+export class privateAllProjectsComponent { 
 
   constructor(private http: HttpClient,private transfereService:TransfereService,private router:Router) {
   }
@@ -29,7 +29,7 @@ export class AllProjectsComponent {
 
   getProjects(){
     var token = localStorage.getItem("jwt");  
-    this.http.get(apiPath + "Projects/getpublic", {
+    this.http.get(apiPath + "Projects/getAll", {
       headers: new HttpHeaders({
         "Authorization": "Bearer " + token,
         "Content-Type": "application/json"

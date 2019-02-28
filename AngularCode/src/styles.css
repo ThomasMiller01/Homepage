@@ -222,8 +222,9 @@ html, body{
 
 .home-favProjects-container{
     background-color: rgba(0, 0, 0, 0.527);  
-    padding: 5px;
-    margin-top: 15px;
+    padding: 5px;    
+    margin: 20px auto 0 auto;
+    width: 95%;
 }
 
 .home-favProjects h1{
@@ -364,6 +365,144 @@ html, body{
 /
 /----------------------------
 /
+/ Private-Module Start
+/
+*/
+
+.privateSettings{
+    width: 100%;
+    min-height: 93.5vh;
+    background-color: rgb(230, 230, 230);
+    padding: 10px;
+}
+
+.btn-settings{
+    margin: 0 5px 0 5px;
+}
+
+.privateSettings h1{
+    margin: 0;
+}
+
+.privateChangeProjectContent{
+    width: 90%;
+    padding: 15px;
+    margin: 20px auto 0 auto;
+    background-color: rgb(216, 216, 216);
+}
+
+.input_both{          
+    display: inline-block;
+    vertical-align: top;
+}
+
+.top_text{
+    font-size: 1.8em;
+}
+
+.visibility_hidden{
+    visibility: hidden;
+}
+
+.input_both textarea{    
+    width: 100% !important;
+}
+
+.rendered_textbox{
+    width: 100% !important;
+    background-color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.back_settings{
+    position: absolute;
+    margin: 10px;
+    top: 0;
+    right: 0;
+}
+
+.text_description {
+    min-height: 150px !important;
+}
+
+.text_description_big {
+    min-height: 350px !important;
+}
+
+.text_images{
+    min-height: 150px !important;
+}
+
+.input_both input{    
+    width: 100% !important;
+}
+
+.input_both h1{
+    width: 95%;
+    text-align: left;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.input_both h2{
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.input_code{
+    margin-right: 2.5%;
+}
+
+.input_render{
+    margin-left: 2.5%;
+}
+
+.checkbox{
+    width: 100%;
+    text-align: left;
+}
+
+.custom_checkbox{
+    cursor: pointer;
+}
+
+.selectProject{
+    width: 90%;
+}
+
+.settings_changeProject{
+    margin: 5px;    
+}
+
+.border_bottom{
+    width: 95%;
+    margin: 10px auto 10px auto;
+    height: 2px;    
+    border-bottom: solid 2px rgb(161, 161, 161);    
+}
+
+.privateHome{
+    width: 100%;
+    min-height: 93.5vh;
+    background-color: rgb(230, 230, 230);
+    padding: 10px;
+}
+
+.privateHome h1{
+    margin: 0;
+}
+
+
+/*
+/
+/ Private-Module End
+/
+/----------------------------
+/
 / Media-Module Start
 /
 */
@@ -481,6 +620,18 @@ html, body{
 
     .home-favProjects-item3{
         width: 100%;
+    }
+
+    .selectProject{
+        width: 30%;
+    }
+
+    .input_both{
+        width: 45%;
+    }
+
+    .top_text{
+        font-size: 2.5em;
     }
 
     /*

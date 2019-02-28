@@ -23,7 +23,7 @@ export class ProjectProjectComponent {
       this.project = data;               
     }
     else{
-      this.router.navigate(['main/projects/all']);
+      this.router.navigate(['/projects/all']);
     }
   }
 
