@@ -3,4 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   templateUrl: './privateHomeComponent.html'
 })
-export class privateHomeComponent { }
+export class privateHomeComponent { 
+  logout(){
+    localStorage.removeItem("jwt");
+  }  
+}
