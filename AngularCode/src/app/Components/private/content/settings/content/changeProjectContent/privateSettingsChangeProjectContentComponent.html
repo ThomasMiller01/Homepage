@@ -40,13 +40,7 @@
                 </div>
                 <div class="input-group input_render input_both" *ngIf="!getMobile() || isPreview">           
                     <div class="border_bottom" *ngIf="isPreview"></div>
-                    <h1>Preview</h1>
-                    <div class="visibility_hidden" *ngIf="!isPreview">
-                        <h2>-</h2>
-                        <input type="text" class="form-control">
-                        <h2>-</h2>
-                        <input type="text" class="form-control">
-                    </div>                    
+                    <h1>Preview</h1>                   
                     <h2>Description</h2>
                     <div class="rendered_textbox text_description" [innerHTML]="currentProject._description" ></div>
                     <h2>Description Big</h2>
