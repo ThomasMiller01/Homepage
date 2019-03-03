@@ -404,6 +404,10 @@ html, body{
     visibility: hidden;
 }
 
+.overflow_scroll{
+    overflow: scroll;
+}
+
 .input_both textarea{    
     width: 100% !important;
 }
