@@ -30,11 +30,11 @@
                     <!-- <h2>Upload Image</h2>                               
                     <input type="file" id="code_uploadimage">        -->
                     <div class="checkbox custom-control custom-checkbox">
-                        <input class="custom-control-input custom_checkbox" type="checkbox" name="_favourite" ngModel value="false" id="code_favourite" [checked]="currentProject._favourite" required>
+                        <input class="custom-control-input custom_checkbox" type="checkbox" name="_favourite" ngModel value="{{currentProject._favourite}}" id="code_favourite" [checked]="currentProject._favourite" required>
                         <label class="custom-control-label custom_checkbox" for="code_favourite">Favourite</label>                                    
                     </div>                
                     <div class="checkbox custom-control custom-checkbox">
-                        <input class="custom-control-input custom_checkbox" type="checkbox" ngModel name="_private" id="checkbox_public" value="false" id="code_private" [checked]="currentProject._private" required>
+                        <input class="custom-control-input custom_checkbox" type="checkbox" ngModel name="_private" id="checkbox_public" value="{{currentProject._private}}" id="code_private" [checked]="currentProject._private" required>
                         <label class="custom-control-label custom_checkbox" for="code_private">Private</label>                             
                     </div>                                                  
                 </div>
