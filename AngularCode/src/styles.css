@@ -15,6 +15,13 @@ html, body{
     margin: 0 !important;
 }
 
+.aboutme{
+    width: 100%;
+    min-height: 93.5vh;
+    background-color: rgb(230, 230, 230);
+    padding: 10px;
+}
+
 /* PhotoSwipe */
 .gallery_website {
     margin: 0 auto;
@@ -402,6 +409,10 @@ html, body{
 
 .visibility_hidden{
     visibility: hidden;
+}
+
+.overflow_scroll{
+    overflow: scroll;
 }
 
 .input_both textarea{    

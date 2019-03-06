@@ -46,9 +46,9 @@ export class privateSettingsProjectComponent {
     var values = form.value;      
     var project_payload = {};
     project_payload["_id"] = values["select_project"]["_id"];
-    for (let key in values) {
-      let value = values[key];      
-      if(key != "select_project"){
+    for (let key in values) {      
+      var value = String(values[key]);        
+      if(key != "select_project"){        
         if(value != ""){
           if(key == "_images"){
             var images:string[][] = [];    
@@ -63,15 +63,15 @@ export class privateSettingsProjectComponent {
             }                        
             project_payload[key] = images
           }
-          else{
+          else{            
             project_payload[key] = value;
           }          
         }
-        else{
+        else{          
           project_payload[key] = values["select_project"][key];
         }
       }            
-    }      
+    }          
     let credentials = JSON.stringify(project_payload);    
     var token = localStorage.getItem("jwt");  
     var id = project_payload['_id'];
