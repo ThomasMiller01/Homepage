@@ -15,6 +15,11 @@ html, body{
     margin: 0 !important;
 }
 
+.container-dashboard{
+    width: 100%;
+    margin: 30px auto 0 auto;
+}
+
 .aboutme{
     width: 100%;
     min-height: 93.5vh;
@@ -704,6 +709,10 @@ html, body{
     .all-projects{        
         background-attachment: fixed;                     
     }
+
+    .container-dashboard{
+        width: 95%;     
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -737,6 +746,10 @@ html, body{
     / Home-Module End
     /
     */    
+
+    .container-dashboard{
+        width: 93%;        
+    }
 }
 
 @media (min-width: 1500px) {
