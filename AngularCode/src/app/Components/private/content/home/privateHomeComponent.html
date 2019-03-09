@@ -1,29 +1,61 @@
 <div class="privateHome">
     <center>
         <h1>Home</h1>
-        <button type="button" class="btn btn-outline-primary back_settings" (click)="logout()">Logout</button>            
-    </center>
-    <div class="container-dashboard">            
+        <button type="button" class="btn btn-outline-primary back_settings" (click)="logout()">Logout</button>           
+    </center>    
+    <div class="container-dashboard">   
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold">Supervisor Services</h6>
+                        <i (click)="getSupervisorStatus()" class="fas fa-sync-alt supervisor-icon"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-light">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>State</th>
+                                        <th>Description</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let service of supervisorStatus">
+                                        <td>{{service.name}}</td>
+                                        <td>{{service.statename}}</td>
+                                        <td>{{service.description}}</td>  
+                                        <td>
+                                            <i (click)="startSupervisorService(service.name)" class="fas fa-play supervisor-action-icon"></i>
+                                            <i (click)="stopSupervisorService(service.name)" class="fas fa-stop supervisor-action-icon"></i>
+                                            <i (click)="restartSupervisorService(service.name)" class="fas fa-redo supervisor-action-icon"></i>
+                                        </td>                                                                         
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>         
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
+                <div class="card shadow mb-4">                    
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Column Chart</h6>
-                    </div>
-                    <!-- Card Body -->
+                        <h6 class="m-0 font-weight-bold">Column Chart</h6>
+                    </div>                    
                     <div class="card-body">
                         <div id="ColumnChart" style="height: 370px; width: 100%;"></div>
                     </div>
                 </div>        
             </div>
             <div class="col-md-6 col-sm-12">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
+                <div class="card shadow mb-4">                    
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Pie Chart</h6>
-                    </div>
-                    <!-- Card Body -->
+                        <h6 class="m-0 font-weight-bold">Pie Chart</h6>
+                    </div>                    
                     <div class="card-body">
                         <div class="card-body">
                             <div id="PieChart" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>                            
@@ -34,17 +66,15 @@
         </div>    
         <div class="row">
             <div class="col-12">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
+                <div class="card shadow mb-4">                    
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">High Performance Chart</h6>
-                    </div>
-                    <!-- Card Body -->
+                        <h6 class="m-0 font-weight-bold">High Performance Chart</h6>
+                    </div>                    
                     <div class="card-body">
                         <div id="HighPerformanceChart" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>
                     </div>
                 </div>        
             </div>            
-        </div>  
-    </div>    
+        </div>
+    </div>
 </div>

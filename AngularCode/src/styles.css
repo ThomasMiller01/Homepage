@@ -20,6 +20,15 @@ html, body{
     margin: 30px auto 0 auto;
 }
 
+.supervisor-action-icon{
+    cursor: pointer;
+    margin: 0 7px 0 7px;
+}
+
+.supervisor-icon{
+    cursor: pointer;    
+}
+
 .aboutme{
     width: 100%;
     min-height: 93.5vh;
