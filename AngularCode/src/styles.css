@@ -15,6 +15,19 @@ html, body{
     margin: 0 !important;
 }
 
+.terminals{
+    width: 100%;
+    padding: 10px;
+}
+
+.terminals-h1{
+    padding-bottom: 15px;
+}
+
+.xterm-terminal{
+    width: 40%;
+}
+
 .container-dashboard{
     width: 100%;
     margin: 30px auto 0 auto;
