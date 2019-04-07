@@ -15,6 +15,38 @@ html, body{
     margin: 0 !important;
 }
 
+.terminals{
+    width: 100%;
+    padding: 10px;
+}
+
+.terminals-h1{
+    padding-bottom: 15px;
+}
+
+.xterm-terminal{
+    width: 40%;
+}
+
+.container-dashboard{
+    width: 100%;
+    margin: 30px auto 0 auto;
+}
+
+.supervisor-action-icon{
+    cursor: pointer;
+    margin: 0 7px 0 7px;    
+}
+
+.supervisor-icon{
+    cursor: pointer;    
+}
+
+.private-public-icon{
+    margin: 0 0 0 10px;
+    font-size: 18px;
+}
+
 .aboutme{
     width: 100%;
     min-height: 93.5vh;
@@ -704,6 +736,10 @@ html, body{
     .all-projects{        
         background-attachment: fixed;                     
     }
+
+    .container-dashboard{
+        width: 95%;     
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -737,6 +773,10 @@ html, body{
     / Home-Module End
     /
     */    
+
+    .container-dashboard{
+        width: 93%;        
+    }
 }
 
 @media (min-width: 1500px) {

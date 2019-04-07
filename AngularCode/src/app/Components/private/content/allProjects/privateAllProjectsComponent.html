@@ -4,7 +4,7 @@
             <div class="card my-3 custom-projects-Card" *ngFor="let project of allProjects">
                 <img src="{{project._thumbnail}}" class="card-img-top">
                 <div class="card-body">
-                    <h4 class="card-title">{{project._name}}</h4>
+                    <h4 class="card-title">{{project._name}}<i [ngClass]="{'fa-lock': project._private == true, 'fa-book': project._private == false}" class="fas private-public-icon"></i></h4>                                    
                     <p class="card-text" [innerHTML]="project._description"></p>
                     <button type="button" class="btn btn-outline-primary" (click)="navigateProject(project);">See more</button>
                 </div>
