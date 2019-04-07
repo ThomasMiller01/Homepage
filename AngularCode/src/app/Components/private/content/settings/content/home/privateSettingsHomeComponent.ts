@@ -1,8 +1,5 @@
 import { Component, ɵConsole } from '@angular/core';
 import * as Terminal from 'xterm/dist/xterm';
-import * as ssh2 from 'ssh2';
-
-
 
 @Component({
   templateUrl: './privateSettingsHomeComponent.html'  
@@ -11,8 +8,7 @@ export class privateSettingsHomeComponent {
 
   private term: any;
 
-  ngOnInit() {     
-    // this.connect_via_shh();
+  ngOnInit() {         
     this.term = new Terminal();
     this.term.open(document.getElementById('terminal'));
     this.term.prompt = () => {
@@ -39,31 +35,6 @@ export class privateSettingsHomeComponent {
         tmpData += key;            
         this.term.write(key);
       }
-    });
-  } 
-
-  connect_via_shh(){      
-    var Client = ssh2.Client;
- 
-    var conn = new Client();
-    conn.on('ready', function() {
-      console.log('Client :: ready');
-      conn.exec('uptime', function(err, stream) {
-        if (err) throw err;
-        stream.on('close', function(code, signal) {
-          console.log('Stream :: close :: code: ' + code + ', signal: ' + signal);
-          conn.end();
-        }).on('data', function(data) {
-          console.log('STDOUT: ' + data);
-        }).stderr.on('data', function(data) {
-          console.log('STDERR: ' + data);
-        });
-      });
-    }).connect({
-      host: 'chiron.uberspace.de',
-      port: 22,
-      username: 'phase7',
-      password: 'a5MVsu693'
     });
   }
 
