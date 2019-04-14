@@ -1,43 +1,37 @@
-import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch
-} from "react-router-dom";
-
-import Private from "./components/private/private";
-import Login from "./components/public/login";
-import Error from "./components/error";
+import React from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import Home from "./components/public/content/home/home";
 import Projects from "./components/public/content/projects/projects";
 import AboutMe from "./components/public/content/aboutme/aboutme";
 import Impressum from "./components/public/content/impressum/impressum";
+import Private from "./components/private/private";
+import Login from "./components/public/login";
+import Error from "./components/error";
 
-const Routes = () => {
+const Router = ({ history }) => {
   return (
-    <Router>
+    <BrowserRouter history={history}>
       <Switch>
-        <Route path="/" exact>
-          <Route path="/" component={Home} />
-          <Route path="/home" component={Home} />
-          <Route path="/projects" component={Projects} />
-          <Route path="/aboutme" component={AboutMe} />
-          <Route path="/impressum" component={Impressum} />
-        </Route>
+        <Redirect exact from="/" to="/home" />
+        <Route path="/home" component={Home} />
+        <Route path="/projects" component={Projects} />
+        <Route path="/about" component={AboutMe} />
+        <Route path="/impressum" component={Impressum} />
         <Route path="/login" component={Login} />
         <Route path="/private" component={Private} />
-        <Route component={Error} />
+        <Route render={() => <Error file="App.js" />} />
       </Switch>
-    </Router>
+    </BrowserRouter>
   );
 };
 
-class App extends Component {
-  render() {
-    return <Routes />;
-  }
-}
+const App = () => {
+  return (
+    <React.Fragment>
+      <Router />
+    </React.Fragment>
+  );
+};
 
 export default App;

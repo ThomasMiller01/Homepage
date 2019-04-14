@@ -1,5 +1,7 @@
 import React from "react";
 
+import HomeTop from "./home_top";
+import HomeContent from "./home_content";
 import Header from "../../header";
 import Footer from "../../footer";
 
@@ -7,7 +9,8 @@ const Home = () => {
   return (
     <React.Fragment>
       <Header />
-      <h1>Home</h1>
+      <HomeTop />
+      <HomeContent />
       <Footer />
     </React.Fragment>
   );

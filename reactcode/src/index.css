@@ -1,14 +1,184 @@
+html,
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  min-height: 87vh;
+  background-image: url("https://steamuserimages-a.akamaihd.net/ugc/538518505572662898/78B0558FDAB4E7AAEDD4A70BF802F8B3EF1CE7E7/");
+  background-repeat: no-repeat;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* Media Querys */
+
+@media (max-width: 324px) {
+}
+
+@media (max-width: 350px) and (min-width: 325px) {
+}
+
+@media (max-width: 370px) and (min-width: 351px) {
+}
+
+/* Small devices (landscape phones, 370px and up) */
+@media (min-width: 370px) {
+}
+
+/* Small devices (landscape phones, 450px and up) */
+@media (min-width: 450px) {
+}
+
+/* Small devices (landscape phones, 500px and up) */
+@media (min-width: 500px) {
+  .favProjects {
+    background-size: 100% auto !important;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .favProjects h1 {
+    font-size: 45px !important;
+  }
+
+  .impressum {
+    width: 75% !important;
+    font-size: 20px !important;
+  }
+
+  .projectsContainer {
+    padding: 0 50px 0 50px !important;
+  }
+}
+
+@media (min-width: 600px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .homeMiddleText h1 div {
+    display: none !important;
+  }
+
+  .homeMiddleText h1 {
+    font-size: 3rem !important;
+  }
+
+  .homeMiddleText h3 {
+    font-size: 1.75rem !important;
+  }
+}
+
+@media (min-width: 900px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .favProjects-item1 {
+    width: 40% !important;
+  }
+
+  .favProjects-item2 {
+    width: 60% !important;
+  }
+
+  .favProjects-item3 {
+    width: 100% !important;
+  }
+
+  /* .selectProject {
+    width: 30% !important;
+  } */
+
+  /* .input_both {
+    width: 45% !important;
+  } */
+
+  /* .top_text {
+    font-size: 2.5em !important;
+  } */
+
+  .header {
+    font-size: 22px !important;
+  }
+
+  .favProjects h1 {
+    font-size: 50px !important;
+  }
+
+  .homeHeader {
+    background-size: 100% !important;
+  }
+
+  .gallery {
+    margin: 0 auto !important;
+    width: 90% !important;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)) !important;
+    grid-gap: 20px !important;
+    align-items: stretch !important;
+  }
+
+  .all-projects {
+    background-attachment: fixed !important;
+  }
+
+  /* .container-dashboard {
+    width: 95% !important;
+  } */
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .projectHeader {
+    background-repeat: no-repeat !important;
+    background-size: 100% !important;
+    text-align: center !important;
+  }
+
+  .homeNameHeader {
+    width: 180px !important;
+  }
+
+  .homeNameHeader h1 {
+    font-size: 26px !important;
+  }
+
+  .homeBelowNames {
+    font-size: 20px !important;
+  }
+
+  /* .container-dashboard {
+    width: 93% !important;
+  } */
+}
+
+@media (min-width: 1500px) {
+  .header {
+    font-size: 24px !important;
+  }
+}
+
+/* Extra extra large devices (extra large desktops, 1800px and up) */
+@media (min-width: 1800px) {
+  .header {
+    font-size: 26px !important;
+  }
+
+  .homeNameHeader {
+    width: 208px !important;
+  }
+
+  .homeNameHeader h1 {
+    font-size: 30px !important;
+  }
+
+  .homeBelowNames {
+    font-size: 22px !important;
+  }
+
+  .favProjects h1 {
+    font-size: 55px !important;
+  }
 }
