@@ -124,9 +124,9 @@ code {
     background-attachment: fixed !important;
   }
 
-  /* .container-dashboard {
+  .containerDashboard {
     width: 95% !important;
-  } */
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -149,9 +149,9 @@ code {
     font-size: 20px !important;
   }
 
-  /* .container-dashboard {
+  .containerDashboard {
     width: 93% !important;
-  } */
+  }
 }
 
 @media (min-width: 1500px) {
