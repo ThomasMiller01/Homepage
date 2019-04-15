@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 
 import PrivateHome from "./private_home";
 import PrivateProjects from "./private_projects";
-import PrivateSettings from "./private_settings";
+import PrivateSettings from "./settings/private_settings";
 import Error from "../error";
 import Header from "../public/header";
 import PrivateHeader from "./private_header";

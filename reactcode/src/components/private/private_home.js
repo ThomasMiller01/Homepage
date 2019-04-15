@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import ColumnChart from "./charts/columnChart";
 import PieChart from "./charts/pieChart";
 import HighPerformanceChart from "./charts/highPerformanceChart";
-import LiveChart from "./charts/liveChart";
+import ColumnLineAreaChart from "./charts/columnLineAreaChart";
 
 class PrivateHome extends Component {
   state = {
@@ -200,10 +200,10 @@ class PrivateHome extends Component {
             <div className="col-md-6 col-sm-12">
               <div className="card shadow mb-4">
                 <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold">LiveChart</h6>
+                  <h6 className="m-0 font-weight-bold">ColumnLineAreaChart</h6>
                 </div>
                 <div className="card-body">
-                  <LiveChart style={liveChartStyle} />
+                  <ColumnLineAreaChart style={columnLineAreaChartStyle} />
                 </div>
               </div>
             </div>
@@ -256,7 +256,7 @@ const highPerformanceChartStyle = {
   margin: "0 auto"
 };
 
-const liveChartStyle = {
+const columnLineAreaChartStyle = {
   height: "370px",
   width: "100%",
   margin: "0 auto"
