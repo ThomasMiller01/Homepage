@@ -20,7 +20,16 @@ const Router = ({ history }) => {
         <Route path="/impressum" component={Impressum} />
         <Route path="/login" component={Login} />
         <Route path="/private" component={Private} />
-        <Route render={() => <Error file="App.js" />} />
+        <Route
+          render={() => (
+            <Error
+              file="App.js"
+              error_title="Bad Request"
+              error_number="404"
+              error_description="The server cannot process the request due to something that is perceived to be a client error."
+            />
+          )}
+        />
       </Switch>
     </BrowserRouter>
   );

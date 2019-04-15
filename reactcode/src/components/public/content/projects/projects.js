@@ -16,7 +16,16 @@ const Projects = () => {
         <Redirect exact from="/projects" to="/projects/all" />
         <Route path="/projects/all" component={AllProjects} />
         <Route path="/projects/project" component={Project} />
-        <Route render={() => <Error file="Projects.js" />} />
+        <Route
+          render={() => (
+            <Error
+              file="Projects.js"
+              error_title="Bad Request"
+              error_number="404"
+              error_description="The server cannot process the request due to something that is perceived to be a client error."
+            />
+          )}
+        />
       </Switch>
       <Footer />
     </React.Fragment>

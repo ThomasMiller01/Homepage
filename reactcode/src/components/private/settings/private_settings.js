@@ -13,7 +13,16 @@ const Router = ({ history }) => {
         path="/private/settings/changeProject"
         component={PrivateSettingsChangeProjectContent}
       />
-      <Route render={() => <Error file="PrivateSettings.js" />} />
+      <Route
+        render={() => (
+          <Error
+            file="PrivateSettings.js"
+            error_title="Bad Request"
+            error_number="404"
+            error_description="The server cannot process the request due to something that is perceived to be a client error."
+          />
+        )}
+      />
     </Switch>
   );
 };
