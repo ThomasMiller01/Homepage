@@ -5,100 +5,53 @@ import PieChart from "./charts/pieChart";
 import HighPerformanceChart from "./charts/highPerformanceChart";
 import ColumnLineAreaChart from "./charts/columnLineAreaChart";
 
+import AuthService from "../authService";
+
 class PrivateHome extends Component {
+  constructor() {
+    super();
+    this.Auth = new AuthService();
+  }
+
   state = {
-    services: [
-      {
-        now: 1555268944,
-        group: "PersonalWebsite",
-        description: "pid 29706, uptime 10 days, 6:39:47",
-        pid: 29706,
-        stderr_logfile: "/home/phase7/logs/personalWebsite-stderr.log",
-        stop: 0,
-        statename: "RUNNING",
-        start: 1554380957,
-        state: 20,
-        stdout_logfile: "/home/phase7/logs/personalWebsite-stdout.log",
-        logfile: "/home/phase7/logs/personalWebsite-stdout.log",
-        exitstatus: 0,
-        spawnerr: "",
-        name: "PersonalWebsite"
-      },
-      {
-        now: 1555268944,
-        group: "Phase7",
-        description: "pid 29874, uptime 10 days, 6:39:46",
-        pid: 29874,
-        stderr_logfile:
-          "/home/phase7/tmp/Phase7-stderr---supervisor_phase7-tqWUXd.log",
-        stop: 0,
-        statename: "RUNNING",
-        start: 1554380958,
-        state: 20,
-        stdout_logfile:
-          "/home/phase7/tmp/Phase7-stdout---supervisor_phase7-IfvbPO.log",
-        logfile:
-          "/home/phase7/tmp/Phase7-stdout---supervisor_phase7-IfvbPO.log",
-        exitstatus: 0,
-        spawnerr: "",
-        name: "Phase7"
-      },
-      {
-        now: 1555268944,
-        group: "SupervisorWebApi",
-        description: "pid 29794, uptime 10 days, 6:39:46",
-        pid: 29794,
-        stderr_logfile: "/home/phase7/logs/supervisorWebApi-stderr.log",
-        stop: 0,
-        statename: "RUNNING",
-        start: 1554380958,
-        state: 20,
-        stdout_logfile: "/home/phase7/logs/supervisorWebApi-stdout.log",
-        logfile: "/home/phase7/logs/supervisorWebApi-stdout.log",
-        exitstatus: 0,
-        spawnerr: "",
-        name: "SupervisorWebApi"
-      },
-      {
-        now: 1555268944,
-        group: "TimeLogger",
-        description: "pid 29737, uptime 10 days, 6:39:47",
-        pid: 29737,
-        stderr_logfile:
-          "/home/phase7/tmp/TimeLogger-stderr---supervisor_phase7-M3g01j.log",
-        stop: 0,
-        statename: "RUNNING",
-        start: 1554380957,
-        state: 20,
-        stdout_logfile:
-          "/home/phase7/tmp/TimeLogger-stdout---supervisor_phase7-l2JMUo.log",
-        logfile:
-          "/home/phase7/tmp/TimeLogger-stdout---supervisor_phase7-l2JMUo.log",
-        exitstatus: 0,
-        spawnerr: "",
-        name: "TimeLogger"
-      },
-      {
-        now: 1555268944,
-        group: "Weihnachtsgeschenk",
-        description: "pid 29747, uptime 10 days, 6:39:46",
-        pid: 29747,
-        stderr_logfile:
-          "/home/phase7/tmp/Weihnachtsgeschenk-stderr---supervisor_phase7-euuIyb.log",
-        stop: 0,
-        statename: "RUNNING",
-        start: 1554380958,
-        state: 20,
-        stdout_logfile:
-          "/home/phase7/tmp/Weihnachtsgeschenk-stdout---supervisor_phase7-ejST7a.log",
-        logfile:
-          "/home/phase7/tmp/Weihnachtsgeschenk-stdout---supervisor_phase7-ejST7a.log",
-        exitstatus: 0,
-        spawnerr: "",
-        name: "Weihnachtsgeschenk"
-      }
-    ]
+    services: []
   };
+
+  componentDidMount = () => {
+    this.getSupervisorData();
+  };
+
+  getSupervisorData = () => {
+    const headers = {
+      Authorization: "Bearer " + this.Auth.getToken(),
+      "Content-Type": "application/json"
+    };
+    fetch("https://thomasmiller.tk/dotnet/api/supervisor/status", {
+      headers
+    })
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        var replaced = data
+          .replace('"[{', "")
+          .replace('}]"', "")
+          .replace(new RegExp("'", "g"), '"');
+        var splited = replaced.split("}, {");
+        var jsonArray = [];
+        splited.forEach(element => {
+          var jsonParsed = JSON.parse("{" + element + "}");
+          jsonArray.push(jsonParsed);
+        });
+        this.setState({ services: jsonArray });
+      });
+  };
+
+  handleLogout = () => {
+    this.props.history.replace("/home");
+    this.Auth.logout();
+  };
+
   render() {
     return (
       <div style={privateHomeStyle}>
@@ -108,6 +61,7 @@ class PrivateHome extends Component {
             type="button"
             className="btn btn-outline-primary"
             style={logoutBtnStyle}
+            onClick={this.handleLogout}
           >
             Logout
           </button>
@@ -118,7 +72,11 @@ class PrivateHome extends Component {
               <div className="card shadow mb-4">
                 <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 className="m-0 font-weight-bold">Supervisor Services</h6>
-                  <i className="fas fa-sync-alt" style={supervisorIconStyle} />
+                  <i
+                    className="fas fa-sync-alt"
+                    style={supervisorIconStyle}
+                    onClick={this.getSupervisorData}
+                  />
                 </div>
                 <div className="card-body">
                   <div className="table-responsive">

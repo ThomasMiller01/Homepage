@@ -1,56 +1,98 @@
-import React from "react";
+import React, { Component } from "react";
+import AuthService from "../authService";
 
-const Login = () => {
-  return (
-    <div style={loginDivStyle}>
-      <table style={tableStyle}>
-        <tbody>
-          <tr>
-            <td>
-              <div style={loginContainerStyle}>
-                <h3>Login</h3>
-                <form>
-                  <span style={spanStyle}>
-                    <div className="form-group">
-                      <div className="alert alert-danger">
-                        Invalid username or password.
+class Login extends Component {
+  constructor() {
+    super();
+    this.Auth = new AuthService();
+  }
+
+  state = { message: "none" };
+
+  handleFormSubmit = e => {
+    e.preventDefault();
+    this.Auth.login(this.state.username, this.state.password)
+      .then(res => {
+        this.props.history.replace("/private/home");
+      })
+      .catch(err => {
+        alert(err);
+      });
+  };
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  componentWillMount() {
+    if (this.Auth.loggedIn()) this.props.history.replace("/private/home");
+  }
+
+  render() {
+    return (
+      <div style={loginDivStyle}>
+        <table style={tableStyle}>
+          <tbody>
+            <tr>
+              <td>
+                <div style={loginContainerStyle}>
+                  <h3>Login</h3>
+                  <form onSubmit={this.handleFormSubmit}>
+                    <span style={spanStyle}>
+                      <div className="form-group">
+                        <GetErrorMessage message={this.state.message} />
+                        <label htmlFor="username">Username</label>
+                        <input
+                          type="text"
+                          name="username"
+                          className="form-control"
+                          placeholder="Username"
+                          required
+                          autoFocus
+                          onChange={this.handleChange}
+                        />
                       </div>
-                      <label htmlFor="username">Username</label>
-                      <input
-                        type="text"
-                        name="username"
-                        className="form-control"
-                        placeholder="Username"
-                        required
-                        autoFocus
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="password">Password</label>
-                      <input
-                        type="password"
-                        name="password"
-                        className="form-control"
-                        placeholder="Password"
-                        required
-                      />
-                    </div>
-                  </span>
-                  <button
-                    type="submit"
-                    className="btn btn-primary"
-                    style={btnStyle}
-                  >
-                    Sign in
-                  </button>
-                </form>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
+                      <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                          type="password"
+                          name="password"
+                          className="form-control"
+                          placeholder="Password"
+                          required
+                          onChange={this.handleChange}
+                        />
+                      </div>
+                    </span>
+                    <button
+                      type="submit"
+                      className="btn btn-primary"
+                      style={btnStyle}
+                    >
+                      Sign in
+                    </button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+}
+
+const GetErrorMessage = props => {
+  var status = props.message;
+  if (status === "Error") {
+    return (
+      <div className="alert alert-danger">Invalid username or password.</div>
+    );
+  } else {
+    return <span />;
+  }
 };
 
 const tableStyle = { width: "100%", height: "100%" };

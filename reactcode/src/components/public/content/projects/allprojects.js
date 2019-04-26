@@ -43,7 +43,12 @@ class AllProjects extends Component {
                     }}
                   />
                   <NavLink
-                    to="/projects/project"
+                    to={{
+                      pathname: "/projects/project",
+                      query: {
+                        project: project
+                      }
+                    }}
                     className="btn btn-outline-primary"
                   >
                     See more
