@@ -1,18 +1,30 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import AuthService from "../../authService";
+import Other from "../../other";
 
 class PrivateSettingsChangeProjectContent extends Component {
   constructor() {
     super();
     this.Auth = new AuthService();
+    this.Other = new Other();
   }
 
   state = {
     allProjects: [],
     currentProject: {},
-    projectStatus: "None"
+    projectStatus: "None",
+    isMobile: false,
+    renderPreview: false
   };
+
+  componentWillMount() {
+    if (this.Other.isMobile) {
+      this.setState({ isMobile: true });
+    } else {
+      this.setState({ isMobile: false });
+    }
+  }
 
   componentDidMount = () => {
     const headers = {
@@ -39,6 +51,22 @@ class PrivateSettingsChangeProjectContent extends Component {
       }
     });
     this.setState({ currentProject });
+  };
+
+  handleUpdateEvent = () => {
+    alert("update event");
+  };
+
+  handleDeleteEvent = () => {
+    alert("delete event");
+  };
+
+  handlePreviewEvent = () => {
+    if (this.state.renderPreview) {
+      this.setState({ renderPreview: false });
+    } else {
+      this.setState({ renderPreview: true });
+    }
   };
 
   render() {
@@ -172,26 +200,12 @@ class PrivateSettingsChangeProjectContent extends Component {
                     </label>
                   </div>
                 </div>
-                <div
-                  className="input-group input_both"
-                  style={inputRenderStyle}
-                >
-                  <h1 style={inputGroupH1Style}>Preview</h1>
-                  <h2 style={inputGroupH2Style}>Description</h2>
-                  <div
-                    style={rendereTextboxStyle}
-                    dangerouslySetInnerHTML={{
-                      __html: this.state.currentProject._description
-                    }}
-                  />
-                  <h2 style={inputGroupH2Style}>Description Big</h2>
-                  <div
-                    style={rendereTextboxBigStyle}
-                    dangerouslySetInnerHTML={{
-                      __html: this.state.currentProject._description_big
-                    }}
-                  />
-                </div>
+                <Preview
+                  isMobile={this.state.isMobile}
+                  renderPreview={this.state.renderPreview}
+                  _description={this.state.currentProject._description}
+                  _description_big={this.state.currentProject._description_big}
+                />
               </center>
               <div style={borderBottomStyle} />
               <GetProjectStatusMessage message={this.state.projectStatus} />
@@ -199,6 +213,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                 type="submit"
                 className="btn btn-outline-primary"
                 style={changeProjectBtn}
+                onClick={this.handleUpdateEvent}
               >
                 Update
               </button>
@@ -215,6 +230,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                 type="button"
                 className="btn btn-outline-primary"
                 style={changeProjectBtn}
+                onClick={this.handlePreviewEvent}
               >
                 Preview
               </button>
@@ -254,6 +270,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                   type="button"
                   className="btn btn-primary"
                   data-dismiss="modal"
+                  onClick={this.handleDeleteEvent}
                 >
                   Delete
                 </button>
@@ -265,6 +282,32 @@ class PrivateSettingsChangeProjectContent extends Component {
     );
   }
 }
+
+const Preview = props => {
+  if (!props.isMobile || props.renderPreview) {
+    return (
+      <div className="input-group input_both" style={inputRenderStyle}>
+        <h1 style={inputGroupH1Style}>Preview</h1>
+        <h2 style={inputGroupH2Style}>Description</h2>
+        <div
+          style={rendereTextboxStyle}
+          dangerouslySetInnerHTML={{
+            __html: props._description
+          }}
+        />
+        <h2 style={inputGroupH2Style}>Description Big</h2>
+        <div
+          style={rendereTextboxBigStyle}
+          dangerouslySetInnerHTML={{
+            __html: props._description_big
+          }}
+        />
+      </div>
+    );
+  } else {
+    return <span />;
+  }
+};
 
 const GetProjectStatusMessage = props => {
   var status = props.message;

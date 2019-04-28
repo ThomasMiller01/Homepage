@@ -213,10 +213,3 @@ function photoSwipeSetup(item_id) {
   // execute above function
   initPhotoSwipeFromDOM("." + item_id);
 }
-
-function getYearForCopyright() {
-  console.log("function getyear called");
-  var span = document.getElementById("yearForCopyright");
-  var currentYear = new Date().getFullYear();
-  span.innerHTML = currentYear;
-}

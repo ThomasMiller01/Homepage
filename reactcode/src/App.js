@@ -8,6 +8,7 @@ import Impressum from "./components/public/content/impressum/impressum";
 import Private from "./components/private/private";
 import Login from "./components/public/login";
 import Error from "./components/error";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const Router = ({ history }) => {
   return (
@@ -19,7 +20,7 @@ const Router = ({ history }) => {
         <Route path="/about" component={AboutMe} />
         <Route path="/impressum" component={Impressum} />
         <Route path="/login" component={Login} />
-        <Route path="/private" component={Private} />
+        <ProtectedRoute path="/private" component={Private} />
         <Route
           render={() => (
             <Error

@@ -35,7 +35,15 @@ class HomeContent extends Component {
         {this.state.favProjects.map(project => (
           <div
             key={project._id}
-            style={favProjectsStyle}
+            style={{
+              backgroundImage: "url(" + project._thumbnail + ")",
+              minHeight: "350px",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "auto 100%",
+              color: "white",
+              backgroundColor: "rgb(83, 83, 83)",
+              display: "inline-table"
+            }}
             className={project._class}
           >
             <div className="container" style={favProjectsContainerStyle}>
@@ -79,15 +87,6 @@ const seemoreBtnStyle = {
   color: "white",
   borderColor: "white",
   margin: "15px"
-};
-
-const favProjectsStyle = {
-  minHeight: "350px",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "auto 100%",
-  color: "white",
-  backgroundColor: "rgb(83, 83, 83)",
-  display: "inline-table"
 };
 
 const favProjectsContainerStyle = {

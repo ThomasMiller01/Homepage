@@ -26,6 +26,12 @@ class Project extends Component {
   }
 
   render() {
+    const projectHeaderStyle = {
+      backgroundImage: "url(" + this.state.project._headerImg + ")",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "auto 100%",
+      textAlign: "center"
+    };
     return (
       <div style={projectContainerStyle}>
         <div style={projectHeaderStyle} className="projectHeader">
@@ -164,12 +170,6 @@ const projectContainerStyle = {
   width: "100%",
   minHeight: "87vh",
   backgroundColor: "white"
-};
-
-const projectHeaderStyle = {
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "auto 100%",
-  textAlign: "center"
 };
 
 const projectHeaderTopStyle = {

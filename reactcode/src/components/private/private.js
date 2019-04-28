@@ -8,14 +8,15 @@ import Error from "../error";
 import Header from "../public/header";
 import PrivateHeader from "./private_header";
 import Footer from "../public/footer";
+import ProtectedRoute from "../ProtectedRoute";
 
 const Router = ({ history }) => {
   return (
     <Switch>
       <Redirect exact from="/private" to="/private/home" />
-      <Route path="/private/home" component={PrivateHome} />
-      <Route path="/private/projects" component={PrivateProjects} />
-      <Route path="/private/settings" component={PrivateSettings} />
+      <ProtectedRoute path="/private/home" component={PrivateHome} />
+      <ProtectedRoute path="/private/projects" component={PrivateProjects} />
+      <ProtectedRoute path="/private/settings" component={PrivateSettings} />
       <Route
         render={() => (
           <Error
