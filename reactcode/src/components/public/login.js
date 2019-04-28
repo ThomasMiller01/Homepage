@@ -7,7 +7,7 @@ class Login extends Component {
     this.Auth = new AuthService();
   }
 
-  state = { message: "none" };
+  state = { message: "None" };
 
   handleFormSubmit = e => {
     e.preventDefault();
@@ -16,7 +16,10 @@ class Login extends Component {
         this.props.history.replace("/private/home");
       })
       .catch(err => {
-        alert(err);
+        this.setState({ message: "Error" });
+        setTimeout(() => {
+          this.setState({ message: "None" });
+        }, 3000);
       });
   };
 

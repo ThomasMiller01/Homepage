@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Terminal } from "xterm";
-import SSHClient from "react-native-ssh-sftp";
+// import SSHClient from "react-native-ssh-sftp";
 
 class PrivateSettingsHome extends Component {
   state = {
@@ -9,35 +9,36 @@ class PrivateSettingsHome extends Component {
     sshClient: null
   };
 
-  executeSSH2Command(command) {
-    this.state.execute(command, (error, output) => {
-      if (error) console.warn(error);
-      if (output) console.warn(output);
-    });
-  }
+  // executeSSH2Command(command) {
+  //   this.state.sshClient.execute(command, (error, output) => {
+  //     if (error) console.warn(error);
+  //     if (output) console.warn(output);
+  //   });
+  // }
 
   runCommand(cmd) {
-    this.executeSSH2Command(cmd);
+    // this.executeSSH2Command(cmd);
+    this.displayData(cmd);
   }
 
   displayData(data) {
     let term = this.state.terminal;
-    term.write("Echo: " + data);
+    term.write(data);
     term.prompt();
   }
 
-  setupSSH() {
-    let client = new SSHClient(
-      "v22018127533479955.megasrv.de",
-      22,
-      "root",
-      "raWaxH39mdVkCzW",
-      error => {
-        if (error) console.warn(error);
-      }
-    );
-    this.setState({ sshClient: client });
-  }
+  // setupSSH() {
+  //   let client = new SSHClient(
+  //     "v22018127533479955.megasrv.de",
+  //     22,
+  //     "root",
+  //     "raWaxH39mdVkCzW",
+  //     error => {
+  //       if (error) console.warn(error);
+  //     }
+  //   );
+  //   this.setState({ sshClient: client });
+  // }
 
   setupXTermTerminal() {
     let terminal = new Terminal();
@@ -71,7 +72,7 @@ class PrivateSettingsHome extends Component {
 
   componentDidMount() {
     this.setupXTermTerminal();
-    this.setupSSH();
+    // this.setupSSH();
   }
 
   render() {

@@ -11,8 +11,34 @@ class PrivateSettingsChangeProjectContent extends Component {
   }
 
   state = {
-    allProjects: [],
-    currentProject: {},
+    allProjects: [
+      {
+        _id: -1,
+        _name: "[Clear]",
+        _githubRepo: "",
+        _description: "",
+        _description_big: "",
+        _thumbnail: "",
+        _headerImg: "",
+        _images: [],
+        _pubDate: "",
+        _favourite: false,
+        _private: false
+      }
+    ],
+    currentProject: {
+      _id: -1,
+      _name: "",
+      _githubRepo: "",
+      _description: "",
+      _description_big: "",
+      _thumbnail: "",
+      _headerImg: "",
+      _images: [],
+      _pubDate: "",
+      _favourite: false,
+      _private: false
+    },
     projectStatus: "None",
     isMobile: false,
     renderPreview: false
@@ -24,9 +50,94 @@ class PrivateSettingsChangeProjectContent extends Component {
     } else {
       this.setState({ isMobile: false });
     }
+    this.relaodProjects();
   }
 
-  componentDidMount = () => {
+  projectChanged = event => {
+    var projectId = event.target.value;
+    var currentProject = {};
+    this.state.allProjects.forEach(project => {
+      if (projectId === project._id.toString()) {
+        currentProject = project;
+      }
+    });
+    this.setState({ currentProject: currentProject });
+  };
+
+  fetch(url, options) {
+    // performs api calls sending the required authentication headers
+    const headers = {
+      Authorization: "Bearer " + this.Auth.getToken(),
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    };
+
+    return fetch(url, {
+      headers,
+      ...options
+    })
+      .then(this._checkStatus)
+      .then(response => response.json());
+  }
+
+  handleContentChange = e => {
+    var currentProject = this.state.currentProject;
+    var name = e.target.name;
+    var value = e.target.value;
+    if (name === "_favourite" || name === "_private") {
+      currentProject[name] = e.target.checked;
+    } else {
+      currentProject[name] = value;
+    }
+    this.setState({
+      currentProject: currentProject
+    });
+  };
+
+  handleUpdateEvent = event => {
+    event.preventDefault();
+    var currentProject = this.state.currentProject;
+    var images = [[]];
+    var img_tmp = [];
+    if (typeof currentProject["_images"] === "string") {
+      var tmp = currentProject["_images"].split(",");
+      for (var i = 0; i < tmp.length / 3; i++) {
+        for (var j = 0; j < 3; j++) {
+          img_tmp[j] = tmp[i * 3 + j];
+        }
+        images[i] = img_tmp;
+        img_tmp = [];
+      }
+      currentProject["_images"] = images;
+    }
+    var method;
+    if (currentProject["_id"] === -1) {
+      method = "add";
+    } else {
+      method = "change/" + currentProject["_id"];
+    }
+    const headers = {
+      Authorization: "Bearer " + this.Auth.getToken(),
+      "Content-Type": "application/json"
+    };
+    const options = {
+      method: "POST",
+      body: JSON.stringify(currentProject)
+    };
+    fetch("https://thomasmiller.tk/dotnet/api/Projects/" + method, {
+      headers,
+      ...options
+    }).then(() => {
+      this.relaodProjects();
+      this.setState({ projectStatus: "Success" });
+      setTimeout(() => {
+        this.setState({ projectStatus: "None" });
+      }, 3000);
+    });
+  };
+
+  relaodProjects() {
+    const firstProject = this.state.allProjects[0];
     const headers = {
       Authorization: "Bearer " + this.Auth.getToken(),
       "Content-Type": "application/json"
@@ -38,27 +149,39 @@ class PrivateSettingsChangeProjectContent extends Component {
         return results.json();
       })
       .then(data => {
+        data.unshift(firstProject);
         this.setState({ allProjects: data });
       });
-  };
-
-  projectChanged = event => {
-    var projectId = event.target.value;
-    var currentProject = {};
-    this.state.allProjects.forEach(project => {
-      if (projectId === project._id.toString()) {
-        currentProject = project;
-      }
-    });
-    this.setState({ currentProject });
-  };
-
-  handleUpdateEvent = () => {
-    alert("update event");
-  };
+  }
 
   handleDeleteEvent = () => {
-    alert("delete event");
+    var currentProject = this.state.currentProject;
+    if (currentProject["_id"] !== -1) {
+      const headers = {
+        Authorization: "Bearer " + this.Auth.getToken(),
+        "Content-Type": "application/json"
+      };
+      const options = { method: "DELETE" };
+      fetch(
+        "https://thomasmiller.tk/dotnet/api/Projects/delete/" +
+          currentProject["_id"],
+        {
+          headers,
+          ...options
+        }
+      ).then(() => {
+        this.relaodProjects();
+        this.setState({ projectStatus: "Success" });
+        setTimeout(() => {
+          this.setState({ projectStatus: "None" });
+        }, 3000);
+      });
+    } else {
+      this.setState({ projectStatus: "Error" });
+      setTimeout(() => {
+        this.setState({ projectStatus: "None" });
+      }, 3000);
+    }
   };
 
   handlePreviewEvent = () => {
@@ -86,7 +209,7 @@ class PrivateSettingsChangeProjectContent extends Component {
             Back
           </NavLink>
           <div style={changeProjectContentStyle}>
-            <form>
+            <form onSubmit={this.handleUpdateEvent}>
               <center>
                 <div
                   className="form-group selectProject"
@@ -96,9 +219,6 @@ class PrivateSettingsChangeProjectContent extends Component {
                     className="form-control"
                     onChange={this.projectChanged}
                   >
-                    <option onChange={() => this.projectChanged({})}>
-                      [Clear]
-                    </option>
                     {this.state.allProjects.map(project => (
                       <option key={project._id} value={project._id}>
                         {project._name}
@@ -116,6 +236,8 @@ class PrivateSettingsChangeProjectContent extends Component {
                     placeholder="Name"
                     style={inputGroupInputStyle}
                     value={this.state.currentProject._name}
+                    name="_name"
+                    onChange={this.handleContentChange}
                   />
                   <h2 style={inputGroupH2Style}>GitHub Repo</h2>
                   <input
@@ -124,6 +246,8 @@ class PrivateSettingsChangeProjectContent extends Component {
                     placeholder="GitHub Repo"
                     style={inputGroupInputStyle}
                     value={this.state.currentProject._githubRepo}
+                    name="_githubRepo"
+                    onChange={this.handleContentChange}
                   />
                   <h2 style={inputGroupH2Style}>Description</h2>
                   <textarea
@@ -131,6 +255,8 @@ class PrivateSettingsChangeProjectContent extends Component {
                     placeholder="Description"
                     style={textDescriptionStyle}
                     value={this.state.currentProject._description}
+                    name="_description"
+                    onChange={this.handleContentChange}
                   />
                   <h2 style={inputGroupH2Style}>Description Big</h2>
                   <textarea
@@ -138,6 +264,8 @@ class PrivateSettingsChangeProjectContent extends Component {
                     placeholder="Description Big"
                     style={textDescriptionBigStyle}
                     value={this.state.currentProject._description_big}
+                    name="_description_big"
+                    onChange={this.handleContentChange}
                   />
                   <h2 style={inputGroupH2Style}>Thumbnail</h2>
                   <input
@@ -146,6 +274,8 @@ class PrivateSettingsChangeProjectContent extends Component {
                     placeholder="Thumbnail"
                     style={inputGroupInputStyle}
                     value={this.state.currentProject._thumbnail}
+                    name="_thumbnail"
+                    onChange={this.handleContentChange}
                   />
                   <h2 style={inputGroupH2Style}>Header Img</h2>
                   <input
@@ -154,6 +284,8 @@ class PrivateSettingsChangeProjectContent extends Component {
                     placeholder="Header Img"
                     style={inputGroupInputStyle}
                     value={this.state.currentProject._headerImg}
+                    name="_headerImg"
+                    onChange={this.handleContentChange}
                   />
                   <h2 style={inputGroupH2Style}>Images</h2>
                   <textarea
@@ -161,6 +293,8 @@ class PrivateSettingsChangeProjectContent extends Component {
                     placeholder="Images"
                     style={textImagesStyle}
                     value={this.state.currentProject._images}
+                    name="_images"
+                    onChange={this.handleContentChange}
                   />
                   <div
                     className="custom-control custom-checkbox"
@@ -172,6 +306,8 @@ class PrivateSettingsChangeProjectContent extends Component {
                       type="checkbox"
                       checked={this.state.currentProject._favourite}
                       id="favourite"
+                      name="_favourite"
+                      onChange={this.handleContentChange}
                     />
                     <label
                       className="custom-control-label custom_checkbox"
@@ -190,6 +326,9 @@ class PrivateSettingsChangeProjectContent extends Component {
                       type="checkbox"
                       checked={this.state.currentProject._private}
                       id="private"
+                      value={this.state.currentProject._private}
+                      name="_private"
+                      onChange={this.handleContentChange}
                     />
                     <label
                       className="custom-control-label"
@@ -213,7 +352,6 @@ class PrivateSettingsChangeProjectContent extends Component {
                 type="submit"
                 className="btn btn-outline-primary"
                 style={changeProjectBtn}
-                onClick={this.handleUpdateEvent}
               >
                 Update
               </button>
@@ -226,14 +364,10 @@ class PrivateSettingsChangeProjectContent extends Component {
               >
                 Delete
               </button>
-              <button
-                type="button"
-                className="btn btn-outline-primary"
-                style={changeProjectBtn}
-                onClick={this.handlePreviewEvent}
-              >
-                Preview
-              </button>
+              <PreviewButton
+                isMobile={this.state.isMobile}
+                handlePreviewEvent={this.handlePreviewEvent}
+              />
             </form>
           </div>
         </div>
@@ -282,6 +416,23 @@ class PrivateSettingsChangeProjectContent extends Component {
     );
   }
 }
+
+const PreviewButton = props => {
+  if (props.isMobile) {
+    return (
+      <button
+        type="button"
+        className="btn btn-outline-primary"
+        style={changeProjectBtn}
+        onClick={props.handlePreviewEvent}
+      >
+        Preview
+      </button>
+    );
+  } else {
+    return <span />;
+  }
+};
 
 const Preview = props => {
   if (!props.isMobile || props.renderPreview) {
