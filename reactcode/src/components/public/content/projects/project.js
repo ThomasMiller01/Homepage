@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { PhotoSwipeGallery } from "react-photoswipe";
+import { PhotoSwipe } from "react-photoswipe";
+import "react-photoswipe/lib/photoswipe.css";
 
 class Project extends Component {
   state = {
@@ -14,16 +17,50 @@ class Project extends Component {
       _pubDate: "",
       _favourite: false,
       _private: false
-    }
+    },
+    items: [],
+    options: {
+      //http://photoswipe.com/documentation/options.html
+    },
+    isOpen: false
   };
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.location.query) {
       this.setState({ project: this.props.location.query.project });
     } else {
       this.props.history.replace("/projects/all");
     }
   }
+
+  componentDidMount() {
+    var items = [];
+    this.state.project._images.forEach(image => {
+      var src = image[0];
+      var thumbnail = image[0];
+      var w = image[2].split("x")[0];
+      var h = image[2].split("x")[1];
+      var title = image[1];
+      items.push({ src: src, thumbnail: thumbnail, w: w, h: h, title: title });
+    });
+    this.setState({ items: items });
+  }
+
+  getThumbnailContent = item => {
+    return (
+      // eslint-disable-next-line jsx-a11y/img-redundant-alt
+      <img
+        src={item.thumbnail}
+        width={120}
+        height={90}
+        alt="Error while loading image ..."
+      />
+    );
+  };
+
+  handleClose = () => {
+    this.setState({ isOpen: false });
+  };
 
   render() {
     const projectHeaderStyle = {
@@ -66,85 +103,18 @@ class Project extends Component {
             className="gallery"
             itemScope
             itemType="http://schema.org/ImageGallery"
-          >
-            {this.state.project._images.map(image => (
-              <figure
-                key={image[0]}
-                style={galleryFigureStyle}
-                itemProp="associatedMedia"
-                itemScope
-                itemType="http://schema.org/ImageObject"
-              >
-                <a href={image[0]} itemProp="contentUrl" data-size={image[2]}>
-                  <img
-                    src={image[0]}
-                    style={galleryImgStyle}
-                    itemProp="thumbnail"
-                    alt={image[1]}
-                  />
-                </a>
-                <figcaption
-                  style={galleryFigcaptionStyle}
-                  itemProp="caption description"
-                >
-                  {image[1]}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-          <div className="pswp" tabIndex="-1" role="dialog" aria-hidden="true">
-            <div className="pswp__bg" />
-            <div className="pswp__scroll-wrap">
-              <div className="pswp__container">
-                <div className="pswp__item" />
-                <div className="pswp__item" />
-                <div className="pswp__item" />
-              </div>
-              <div className="pswp__ui pswp__ui--hidden">
-                <div className="pswp__top-bar">
-                  <div className="pswp__counter" />
-                  <button
-                    className="pswp__button pswp__button--close"
-                    title="Close (Esc)"
-                  />
-                  <button
-                    className="pswp__button pswp__button--share"
-                    title="Share"
-                  />
-                  <button
-                    className="pswp__button pswp__button--fs"
-                    title="Toggle fullscreen"
-                  />
-                  <button
-                    className="pswp__button pswp__button--zoom"
-                    title="Zoom in/out"
-                  />
-
-                  <div className="pswp__preloader">
-                    <div className="pswp__preloader__icn">
-                      <div className="pswp__preloader__cut">
-                        <div className="pswp__preloader__donut" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                  <div className="pswp__share-tooltip" />
-                </div>
-                <button
-                  className="pswp__button pswp__button--arrow--left"
-                  title="Previous (arrow left)"
-                />
-                <button
-                  className="pswp__button pswp__button--arrow--right"
-                  title="Next (arrow right)"
-                />
-                <div className="pswp__caption">
-                  <div className="pswp__caption__center" />
-                </div>
-              </div>
-            </div>
-          </div>
+          />
+          <PhotoSwipe
+            isOpen={this.state.isOpen}
+            items={this.state.items}
+            options={this.state.options}
+            onClose={this.handleClose}
+          />
+          <PhotoSwipeGallery
+            items={this.state.items}
+            options={this.state.options}
+            thumbnailContent={this.getThumbnailContent}
+          />
         </div>
       </div>
     );
@@ -194,16 +164,5 @@ const galleryDivStyle = {
   gridGap: "20px",
   alignItems: "stretch"
 };
-
-const galleryImgStyle = { width: "100%", height: "auto" };
-
-const galleryFigureStyle = {
-  display: "block",
-  float: "left",
-  margin: "0 5px 5px 0",
-  maxWidth: "100%"
-};
-
-const galleryFigcaptionStyle = { display: "none" };
 
 export default Project;
