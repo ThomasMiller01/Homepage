@@ -17,7 +17,7 @@ const AboutMe = () => {
       <div style={aboutmeDivStyle} className="aboutMeDivStyle">
         <div style={imageDivStyle} className="imageDivStyle">
           <img
-            src="http://pixelpraktikum.000webhostapp.com/img/profile/1/profile_pic.png"
+            src="/images/profile_pic.png"
             alt="Error while loading ..."
             style={imgStyle}
             className="imgStyle"
