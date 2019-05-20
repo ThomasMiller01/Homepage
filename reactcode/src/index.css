@@ -11,6 +11,23 @@ code {
     monospace;
 }
 
+.aboutMeDivStyle {
+  display: block;
+}
+
+.imageDivStyle {
+  width: 100%;
+}
+
+.descriptionDivStyle {
+  width: 100%;
+}
+
+.imgStyle {
+  width: 100%;
+  margin: 0;
+}
+
 .pswp-thumbnails {
   margin: 0 auto;
   width: 90%;
@@ -72,6 +89,22 @@ code {
 
   .projectsContainer {
     padding: 0 50px 0 50px !important;
+  }
+
+  .aboutMeDivStyle {
+    display: grid !important;
+  }
+
+  .imageDivStyle {
+    width: 100% !important;
+  }
+
+  .descriptionDivStyle {
+    width: 100% !important;
+  }
+
+  .imgStyle {
+    width: 100% !important;
   }
 }
 
@@ -175,11 +208,27 @@ code {
   .containerDashboard {
     width: 93% !important;
   }
+
+  .imgStyle {
+    width: 80% !important;
+  }
+
+  .descriptionDivStyle {
+    width: 90% !important;
+  }
 }
 
 @media (min-width: 1500px) {
   .header {
     font-size: 24px !important;
+  }
+
+  .imgStyle {
+    width: 70% !important;
+  }
+
+  .descriptionDivStyle {
+    width: 80% !important;
   }
 }
 
@@ -203,5 +252,9 @@ code {
 
   .favProjects h1 {
     font-size: 55px !important;
+  }
+
+  .imgStyle {
+    width: 60% !important;
   }
 }
