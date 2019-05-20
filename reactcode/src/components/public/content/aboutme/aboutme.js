@@ -8,11 +8,19 @@ const AboutMe = () => {
     <React.Fragment>
       <Header />
       <div style={topDivStyle}>
-        <div style={topTextDivStyle}>
-          <h1 style={topH1Style}>
-            <span style={topSpanStyle}>Thomas</span> Miller
-          </h1>
-        </div>
+        <table style={topTableStyle}>
+          <tbody>
+            <tr>
+              <td>
+                <div style={topTextDivStyle}>
+                  <h1 style={topH1Style}>
+                    <span style={topSpanStyle}>Thomas</span> Miller
+                  </h1>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div style={aboutmeDivStyle} className="aboutMeDivStyle">
         <div style={imageDivStyle} className="imageDivStyle">
@@ -54,6 +62,11 @@ const AboutMe = () => {
   );
 };
 
+const topTableStyle = {
+  width: "100%",
+  height: "30vh"
+};
+
 const topH1Style = {
   color: "#E2E07B",
   marginBottom: "0",
@@ -68,8 +81,6 @@ const topSpanStyle = {
 };
 
 const topTextDivStyle = {
-  position: "absolute",
-  top: "19%",
   width: "100%",
   textAlign: "center",
   fontFamily: "DejaVuSansMono"
