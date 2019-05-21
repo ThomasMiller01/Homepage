@@ -32,7 +32,6 @@ code {
   margin: 0 auto;
   width: 90%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   grid-gap: 20px;
   align-items: stretch;
 }
@@ -67,6 +66,9 @@ code {
 
 /* Small devices (landscape phones, 450px and up) */
 @media (min-width: 450px) {
+  .pswp-thumbnails {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  }
 }
 
 /* Small devices (landscape phones, 500px and up) */
