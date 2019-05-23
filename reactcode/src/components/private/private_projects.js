@@ -30,6 +30,14 @@ class PrivateProjects extends Component {
       });
   };
 
+  getPrivateIconIndicator = _private => {
+    if (_private) {
+      return <i class="fas fa-lock" />;
+    } else {
+      return <i class="fas fa-book" />;
+    }
+  };
+
   render() {
     return (
       <div style={allProjectsStyle} className="all-projects">
@@ -47,7 +55,11 @@ class PrivateProjects extends Component {
                   alt="Error loading ..."
                 />
                 <div className="card-body">
-                  <h4 className="card-title">{project._name}</h4>
+                  <h4 className="card-title">
+                    {project._name}{" "}
+                    {this.getPrivateIconIndicator(project._private)}
+                  </h4>
+
                   <p
                     className="card-text"
                     dangerouslySetInnerHTML={{
