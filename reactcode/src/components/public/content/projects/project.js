@@ -3,6 +3,8 @@ import { PhotoSwipeGallery } from "react-photoswipe";
 import { PhotoSwipe } from "react-photoswipe";
 import "react-photoswipe/lib/photoswipe.css";
 
+import { Commits, Statistics } from "../../../githubapi";
+
 class Project extends Component {
   state = {
     project: {
@@ -62,6 +64,38 @@ class Project extends Component {
     this.setState({ isOpen: false });
   };
 
+  getCommits = () => {
+    if (
+      this.state.project._githubRepo !== "#" &&
+      this.state.project._githubRepo !== ""
+    ) {
+      return (
+        <React.Fragment>
+          <Statistics
+            repo={this.state.project._githubRepo.replace(
+              "https://github.com/ThomasMiller01/",
+              ""
+            )}
+          />
+          <Commits
+            repo={this.state.project._githubRepo.replace(
+              "https://github.com/ThomasMiller01/",
+              ""
+            )}
+            style={githubStyle}
+          />
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          <h3>Statistics</h3>
+          <h3>Commit - History</h3>
+        </React.Fragment>
+      );
+    }
+  };
+
   render() {
     const projectHeaderStyle = {
       backgroundImage: "url(" + this.state.project._headerImg + ")",
@@ -91,12 +125,15 @@ class Project extends Component {
               link={this.state.project._githubRepo}
             />
           </h1>
-          <div style={projectDescription}>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: this.state.project._description_big
-              }}
-            />
+          <div style={descGitStyle} className="descGitStyle">
+            <div style={projectDescription}>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: this.state.project._description_big
+                }}
+              />
+            </div>
+            <div style={githubStyle}>{this.getCommits()}</div>
           </div>
           <div
             style={galleryDivStyle}
@@ -120,6 +157,19 @@ class Project extends Component {
     );
   }
 }
+
+const descGitStyle = {
+  width: "85%",
+  textAlign: "center",
+  display: "grid",
+  gridTemplateColumns: "80% 20%",
+  gridGap: "20px",
+  margin: "20px auto 20px auto"
+};
+
+const githubStyle = {
+  gridColumn: "2"
+};
 
 const GithubLink = props => {
   var name = props.name;
@@ -152,7 +202,10 @@ const projectContent = { width: "100%", minHeight: "37vh", paddingTop: "20px" };
 
 const tableStyle = { width: "100%", height: "50vh" };
 
-const projectDescription = { width: "80%", margin: "0 auto" };
+const projectDescription = {
+  gridColumn: "1",
+  textAlign: "left"
+};
 
 const projectContentH1Style = { width: "100%", textAlign: "center" };
 

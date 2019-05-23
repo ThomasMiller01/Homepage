@@ -11,6 +11,10 @@ code {
     monospace;
 }
 
+.descGitStyle {
+  display: block !important;
+}
+
 .aboutMeDivStyle {
   display: block;
 }
@@ -184,6 +188,10 @@ code {
 
   .containerDashboard {
     width: 95% !important;
+  }
+
+  .descGitStyle {
+    display: grid !important;
   }
 }
 
