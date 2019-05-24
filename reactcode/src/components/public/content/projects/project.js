@@ -89,8 +89,7 @@ class Project extends Component {
     } else {
       return (
         <React.Fragment>
-          <h3>Statistics</h3>
-          <h3>Commit - History</h3>
+          <h4>Commit - History</h4>
         </React.Fragment>
       );
     }
