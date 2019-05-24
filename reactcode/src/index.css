@@ -1,0 +1,270 @@
+html,
+body {
+  min-height: 100vh;
+  background-image: url("./images/background.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.descGitStyle {
+  display: block !important;
+}
+
+.aboutMeDivStyle {
+  display: block;
+}
+
+.imageDivStyle {
+  width: 100%;
+}
+
+.descriptionDivStyle {
+  width: 100%;
+}
+
+.imgStyle {
+  width: 100%;
+  margin: 0;
+}
+
+.pswp-thumbnails {
+  margin: 0 auto;
+  width: 90%;
+  display: grid;
+  grid-gap: 20px;
+  align-items: stretch;
+}
+
+.pswp-thumbnail {
+  cursor: pointer;
+  display: block;
+  float: left;
+  margin: 0 5px 5px 0;
+  max-width: 100%;
+}
+
+.pswp-thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+/* Media Querys */
+
+@media (max-width: 324px) {
+}
+
+@media (max-width: 350px) and (min-width: 325px) {
+}
+
+@media (max-width: 370px) and (min-width: 351px) {
+}
+
+/* Small devices (landscape phones, 370px and up) */
+@media (min-width: 370px) {
+}
+
+/* Small devices (landscape phones, 450px and up) */
+@media (min-width: 450px) {
+  .pswp-thumbnails {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  }
+}
+
+/* Small devices (landscape phones, 500px and up) */
+@media (min-width: 500px) {
+  .favProjects {
+    background-size: 100% auto !important;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .favProjects h1 {
+    font-size: 45px !important;
+  }
+
+  .impressum {
+    width: 75% !important;
+    font-size: 20px !important;
+  }
+
+  .projectsContainer {
+    padding: 0 50px 0 50px !important;
+  }
+
+  .aboutMeDivStyle {
+    display: grid !important;
+  }
+
+  .imageDivStyle {
+    width: 100% !important;
+  }
+
+  .descriptionDivStyle {
+    width: 100% !important;
+  }
+
+  .imgStyle {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 600px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .homeMiddleText h1 div {
+    display: none !important;
+  }
+
+  .homeMiddleText h1 {
+    font-size: 3rem !important;
+  }
+
+  .homeMiddleText h3 {
+    font-size: 1.75rem !important;
+  }
+}
+
+@media (min-width: 900px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .favProjects-item1 {
+    width: 40% !important;
+  }
+
+  .favProjects-item2 {
+    width: 60% !important;
+  }
+
+  .favProjects-item3 {
+    width: 100% !important;
+  }
+
+  .selectProject {
+    width: 30% !important;
+  }
+
+  .input_both {
+    width: 45% !important;
+  }
+
+  .top_text {
+    font-size: 2.5em !important;
+  }
+
+  .header {
+    font-size: 22px !important;
+  }
+
+  .favProjects h1 {
+    font-size: 50px !important;
+  }
+
+  .homeHeader {
+    background-size: 100% !important;
+  }
+
+  .gallery {
+    margin: 0 auto !important;
+    width: 90% !important;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)) !important;
+    grid-gap: 20px !important;
+    align-items: stretch !important;
+  }
+
+  .all-projects {
+    background-attachment: fixed !important;
+  }
+
+  .containerDashboard {
+    width: 95% !important;
+  }
+
+  .descGitStyle {
+    display: grid !important;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .projectHeader {
+    background-repeat: no-repeat !important;
+    background-size: 100% !important;
+    text-align: center !important;
+  }
+
+  .homeNameHeader {
+    width: 180px !important;
+  }
+
+  .homeNameHeader h1 {
+    font-size: 26px !important;
+  }
+
+  .homeBelowNames {
+    font-size: 20px !important;
+  }
+
+  .containerDashboard {
+    width: 93% !important;
+  }
+
+  .imgStyle {
+    width: 80% !important;
+  }
+
+  .descriptionDivStyle {
+    width: 90% !important;
+  }
+}
+
+@media (min-width: 1500px) {
+  .header {
+    font-size: 24px !important;
+  }
+
+  .imgStyle {
+    width: 70% !important;
+  }
+
+  .descriptionDivStyle {
+    width: 80% !important;
+  }
+}
+
+/* Extra extra large devices (extra large desktops, 1800px and up) */
+@media (min-width: 1800px) {
+  .header {
+    font-size: 26px !important;
+  }
+
+  .homeNameHeader {
+    width: 208px !important;
+  }
+
+  .homeNameHeader h1 {
+    font-size: 30px !important;
+  }
+
+  .homeBelowNames {
+    font-size: 22px !important;
+  }
+
+  .favProjects h1 {
+    font-size: 55px !important;
+  }
+
+  .imgStyle {
+    width: 60% !important;
+  }
+}
