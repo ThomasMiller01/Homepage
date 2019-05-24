@@ -1,7 +1,7 @@
 html,
 body {
   min-height: 100vh;
-  background-image: url("https://lh3.googleusercontent.com/KlIknj0Ebd1nS3NEmkNQRuEKaukSiYlJp8ip51RvVpIsEJG12uY-RpYHBFaVG0epeGebsA=s151");
+  background-image: url("./images/background.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
