@@ -51,17 +51,23 @@ class Project extends Component {
   getThumbnailContent = item => {
     return (
       // eslint-disable-next-line jsx-a11y/img-redundant-alt
-      <img
-        src={item.thumbnail}
-        width={120}
-        height={90}
-        alt="Error while loading image ..."
-      />
+      <img src={item.thumbnail} width={120} height={90} alt="Loading ..." />
     );
   };
 
   handleClose = () => {
     this.setState({ isOpen: false });
+  };
+
+  getStyle = () => {
+    if (
+      this.state.project._githubRepo !== "#" &&
+      this.state.project._githubRepo !== ""
+    ) {
+      return descGitStyle;
+    } else {
+      return descGitStyle2;
+    }
   };
 
   getCommits = () => {
@@ -87,11 +93,7 @@ class Project extends Component {
         </React.Fragment>
       );
     } else {
-      return (
-        <React.Fragment>
-          <h4>Commit - History</h4>
-        </React.Fragment>
-      );
+      return <span />;
     }
   };
 
@@ -124,7 +126,7 @@ class Project extends Component {
               link={this.state.project._githubRepo}
             />
           </h1>
-          <div style={descGitStyle} className="descGitStyle">
+          <div style={this.getStyle()} className="descGitStyle">
             <div style={projectDescription}>
               <p
                 dangerouslySetInnerHTML={{
@@ -163,6 +165,13 @@ const descGitStyle = {
   display: "grid",
   gridTemplateColumns: "80% 20%",
   gridGap: "20px",
+  margin: "20px auto 20px auto"
+};
+
+const descGitStyle2 = {
+  width: "85%",
+  textAlign: "center",
+  display: "block",
   margin: "20px auto 20px auto"
 };
 
