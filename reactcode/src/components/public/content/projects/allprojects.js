@@ -32,7 +32,7 @@ class AllProjects extends Component {
                 <img
                   src={project._thumbnail}
                   className="card-img-top"
-                  alt="Error loading ..."
+                  alt="Loading ..."
                 />
                 <div className="card-body">
                   <h4 className="card-title">{project._name}</h4>
