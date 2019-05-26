@@ -26,7 +26,7 @@ const AboutMe = () => {
         <div style={imageDivStyle} className="imageDivStyle">
           <img
             src="/images/profile_pic.png"
-            alt="Error while loading ..."
+            alt="Loading ..."
             style={imgStyle}
             className="imgStyle"
           />
