@@ -2,6 +2,15 @@ import React, { Component } from "react";
 
 class BlogPost extends Component {
   state = {};
+
+  renderTags = tags => {
+    var tagNames = [];
+    tags.forEach(tag => {
+      tagNames.push(tag.name);
+    });
+    return <p>{tagNames.join(", ")}</p>;
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -9,9 +18,9 @@ class BlogPost extends Component {
           <h3>{this.props.title}</h3>
           <div style={divider} />
           <p>{this.props.body}</p>
-          <h1>Tags: {this.props.tags}</h1>
-          <h1>Author: {this.props.author}</h1>
-          <h1>Date: {this.props.date}</h1>
+          {this.renderTags(this.props.tags)}
+          {this.props.author}
+          {this.props.date}
         </div>
       </React.Fragment>
     );
