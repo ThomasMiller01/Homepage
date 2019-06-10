@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Home from "./components/public/content/home/home";
 import Projects from "./components/public/content/projects/projects";
 import AboutMe from "./components/public/content/aboutme/aboutme";
+import Blog from "./components/public/content/blog/blog";
 import Impressum from "./components/public/content/impressum/impressum";
 import Private from "./components/private/private";
 import Login from "./components/public/login";
@@ -18,6 +19,7 @@ const Router = ({ history }) => {
         <Route path="/home" component={Home} />
         <Route path="/projects" component={Projects} />
         <Route path="/about" component={AboutMe} />
+        <Route path="/blog" component={Blog} />
         <Route path="/impressum" component={Impressum} />
         <Route path="/login" component={Login} />
         <ProtectedRoute path="/private" component={Private} />

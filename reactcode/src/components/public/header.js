@@ -41,6 +41,11 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li className="nav-item" style={liItemStyle}>
+            <NavLink to="/blog" className="nav-link">
+              Blog <span className="sr-only">(current)</span>
+            </NavLink>
+          </li>
+          <li className="nav-item" style={liItemStyle}>
             <a
               className="nav-link"
               href="https://github.com/ThomasMiller01"

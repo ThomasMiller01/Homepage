@@ -63,7 +63,7 @@ class PrivateSettingsHome extends Component {
   }
 
   componentDidMount() {
-    this.setupXTermTerminal();
+    // this.setupXTermTerminal();
   }
 
   render() {
