@@ -5,6 +5,9 @@ import Home from "./components/public/content/home/home";
 import Projects from "./components/public/content/projects/projects";
 import AboutMe from "./components/public/content/aboutme/aboutme";
 import Blog from "./components/public/content/blog/blog";
+import BlogPost from "./components/public/content/blog/blog_post";
+import Categories from "./components/public/content/blog/blog_categories";
+import Category from "./components/public/content/blog/blog_category";
 import Impressum from "./components/public/content/impressum/impressum";
 import Private from "./components/private/private";
 import Login from "./components/public/login";
@@ -19,7 +22,11 @@ const Router = ({ history }) => {
         <Route path="/home" component={Home} />
         <Route path="/projects" component={Projects} />
         <Route path="/about" component={AboutMe} />
-        <Route path="/blog" component={Blog} />
+        <Route path="/blog" exact component={Blog} />
+        <Route path="/blog/:page" exact component={Blog} />
+        <Route path="/blog/posts/:post" exact component={BlogPost} />
+        <Route path="/blog/categories" exact component={Categories} />
+        <Route path="/blog/category/:category" exact component={Category} />
         <Route path="/impressum" component={Impressum} />
         <Route path="/login" component={Login} />
         <ProtectedRoute path="/private" component={Private} />

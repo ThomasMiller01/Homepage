@@ -9,6 +9,7 @@
     "react": "^16.8.6",
     "react-art": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
     "react-native": "^0.59.8",
     "react-native-ssh": "^1.0.1",
     "react-native-ssh-sftp": "^1.0.3",
