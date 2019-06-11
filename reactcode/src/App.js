@@ -6,8 +6,7 @@ import Projects from "./components/public/content/projects/projects";
 import AboutMe from "./components/public/content/aboutme/aboutme";
 import Blog from "./components/public/content/blog/blog";
 import BlogPost from "./components/public/content/blog/blog_post";
-import Categories from "./components/public/content/blog/blog_categories";
-import Category from "./components/public/content/blog/blog_category";
+import blog_category from "./components/public/content/blog/blog_category";
 import Impressum from "./components/public/content/impressum/impressum";
 import Private from "./components/private/private";
 import Login from "./components/public/login";
@@ -25,8 +24,11 @@ const Router = ({ history }) => {
         <Route path="/blog" exact component={Blog} />
         <Route path="/blog/:page" exact component={Blog} />
         <Route path="/blog/posts/:post" exact component={BlogPost} />
-        <Route path="/blog/categories" exact component={Categories} />
-        <Route path="/blog/category/:category" exact component={Category} />
+        <Route
+          path="/blog/category/:category"
+          exact
+          component={blog_category}
+        />
         <Route path="/impressum" component={Impressum} />
         <Route path="/login" component={Login} />
         <ProtectedRoute path="/private" component={Private} />

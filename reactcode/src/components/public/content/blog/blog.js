@@ -25,7 +25,7 @@ class Blog extends Component {
     return (
       <React.Fragment>
         <Header />
-        <div>
+        <div style={blogStyle}>
           {this.state.data.map((post, key) => {
             return (
               <div key={key}>
@@ -55,5 +55,12 @@ class Blog extends Component {
     );
   }
 }
+
+const blogStyle = {
+  width: "100%",
+  minHeight: "87vh",
+  backgroundColor: "#E6E6E6",
+  padding: "20px"
+};
 
 export default Blog;

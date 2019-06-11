@@ -36,13 +36,13 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li className="nav-item" style={liItemStyle}>
-            <NavLink to="/about" className="nav-link">
-              About Me <span className="sr-only">(current)</span>
+            <NavLink to="/blog" className="nav-link">
+              Blog <span className="sr-only">(current)</span>
             </NavLink>
           </li>
           <li className="nav-item" style={liItemStyle}>
-            <NavLink to="/blog" className="nav-link">
-              Blog <span className="sr-only">(current)</span>
+            <NavLink to="/about" className="nav-link">
+              About Me <span className="sr-only">(current)</span>
             </NavLink>
           </li>
           <li className="nav-item" style={liItemStyle}>

@@ -25,7 +25,7 @@ export default class extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <div>
+        <div style={blogStyle}>
           <h1>{category.name}</h1>
           <div>
             {this.state.data.recent_posts.map((post, key) => {
@@ -42,3 +42,10 @@ export default class extends React.Component {
     );
   }
 }
+
+const blogStyle = {
+  width: "100%",
+  minHeight: "87vh",
+  backgroundColor: "#E6E6E6",
+  padding: "20px"
+};
