@@ -39,14 +39,14 @@ class Blog extends Component {
   getFirstBodyPartRendered = body => {
     return (
       <span
-        dangerouslySetInnerHTML={{ __html: body.substring(0, 300) + " ..." }}
+        dangerouslySetInnerHTML={{ __html: body.substring(0, 300) + "<br>..." }}
       />
     );
   };
 
   getDateRendered = date => {
     let _date = new Date(date);
-    let _formatDate = this.state.dateformat(_date, "yyyy-mm-dd hh:MM");
+    let _formatDate = this.state.dateformat(_date, "dd-mm-yyyy hh:MM");
     return <span>{_formatDate}</span>;
   };
 
@@ -56,9 +56,22 @@ class Blog extends Component {
     return (
       <React.Fragment>
         <Header />
+        <div style={topDivStyle}>
+          <table style={topTableStyle}>
+            <tbody>
+              <tr>
+                <td>
+                  <div style={topTextDivStyle}>
+                    <h1 style={topH1Style}>
+                      <span style={topSpanStyle}>Thomas</span> Blog
+                    </h1>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div style={blogStyle}>
-          <h1 style={{ textAlign: "center" }}>Thomas Blog</h1>
-          <div style={borderBottomStyle} />
           <div style={blogPostsStyle}>
             {this.state.data.map((post, key) => {
               return (
@@ -68,7 +81,10 @@ class Blog extends Component {
                       <h3 className="card-title" style={cardTitleStyle}>
                         {post.title}
                       </h3>
-                      <h6 className="card-subtitle mb-2 text-muted" style={cardMetaStyle}>
+                      <h6
+                        className="card-subtitle mb-2 text-muted"
+                        style={cardMetaStyle}
+                      >
                         {post.author.first_name} {post.author.last_name},{" "}
                         {this.getDateRendered(post.published)}
                       </h6>
@@ -92,7 +108,7 @@ class Blog extends Component {
             })}
           </div>
           <div style={rightCardStyle}>
-            <h1>RightCard</h1>
+            <h2>Recent Posts</h2>
             <p>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
@@ -130,11 +146,42 @@ class Blog extends Component {
   }
 }
 
+const topTableStyle = {
+  width: "100%",
+  height: "30vh"
+};
+
+const topH1Style = {
+  color: "#E2E07B",
+  marginBottom: "0",
+  fontFamily: "'Work Sans',sans-serif"
+};
+
+const topSpanStyle = {
+  color: "#76D5D1",
+  width: "0",
+  margin: "0",
+  height: "0"
+};
+
+const topTextDivStyle = {
+  width: "100%",
+  textAlign: "center",
+  fontFamily: "DejaVuSansMono"
+};
+
+const topDivStyle = {
+  width: "100%",
+  minHeight: "30vh",
+  backgroundColor: "#272822",
+  padding: "0"
+};
+
 const cardMetaStyle = {
   width: "30%",
   margin: "0",
   display: "inline-block"
-}
+};
 
 const cardTitleStyle = {
   width: "70%",
@@ -172,13 +219,6 @@ const blogStyle = {
   minHeight: "87vh",
   backgroundColor: "#E6E6E6",
   padding: "20px"
-};
-
-const borderBottomStyle = {
-  width: "95%",
-  margin: "10px auto 10px auto",
-  height: "2px",
-  borderBottom: "solid 2px rgb(161, 161, 161)"
 };
 
 const borderBottomStyle2 = {
