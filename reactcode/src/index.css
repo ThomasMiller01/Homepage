@@ -53,6 +53,10 @@ code {
   height: auto;
 }
 
+.post-social .button .text {
+  display: none;
+}
+
 /* Media Querys */
 
 @media (max-width: 324px) {
@@ -66,6 +70,9 @@ code {
 
 /* Small devices (landscape phones, 370px and up) */
 @media (min-width: 370px) {
+  .post-social .button .text {
+    display: block;
+  }
 }
 
 /* Small devices (landscape phones, 450px and up) */
