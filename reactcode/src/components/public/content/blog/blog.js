@@ -40,6 +40,7 @@ class Blog extends Component {
     return (
       <span
         dangerouslySetInnerHTML={{ __html: body.substring(0, 300) + "<br>..." }}
+        className="bodyRendered"
       />
     );
   };
@@ -48,6 +49,32 @@ class Blog extends Component {
     let _date = new Date(date);
     let _formatDate = this.state.dateformat(_date, "dd-mm-yyyy hh:MM");
     return <span>{_formatDate}</span>;
+  };
+
+  getRecentPostsRendered = () => {
+    let recentPosts = this.state.data.slice(0, 5);
+    return (
+      <React.Fragment>
+        <h2>Recent Posts</h2>
+        <span>
+          {recentPosts.map(post => {
+            return (
+              <Link
+                to={`/blog/posts/${post.slug}`}
+                key={post.slug}
+                style={RecentPostStyle}
+              >
+                <p style={{ margin: "20px 0" }}>
+                  <strong>{post.title}</strong>
+                  <br />
+                  {post.summary}
+                </p>
+              </Link>
+            );
+          })}
+        </span>
+      </React.Fragment>
+    );
   };
 
   render() {
@@ -63,7 +90,7 @@ class Blog extends Component {
                 <td>
                   <div style={topTextDivStyle}>
                     <h1 style={topH1Style}>
-                      <span style={topSpanStyle}>Thomas</span> Blog
+                      <span style={topSpanStyle}>Blog</span>
                     </h1>
                   </div>
                 </td>
@@ -107,16 +134,7 @@ class Blog extends Component {
               );
             })}
           </div>
-          <div style={rightCardStyle}>
-            <h2>Recent Posts</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos et accusam et justo duo
-              dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet.
-            </p>
-          </div>
+          <div style={rightCardStyle}>{this.getRecentPostsRendered()}</div>
 
           <br />
 
@@ -145,6 +163,10 @@ class Blog extends Component {
     );
   }
 }
+
+const RecentPostStyle = {
+  color: "black"
+};
 
 const topTableStyle = {
   width: "100%",
@@ -194,8 +216,8 @@ const rightCardStyle = {
   margin: "10px 5% 10px 5%",
   display: "inline-block",
   verticalAlign: "top",
-  minHeight: "60vh",
-  padding: "10px"
+  padding: "10px",
+  border: "solid 1px #323232"
 };
 
 const blogPostsStyle = {

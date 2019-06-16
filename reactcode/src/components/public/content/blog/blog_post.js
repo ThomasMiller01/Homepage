@@ -33,6 +33,23 @@ export default class extends React.Component {
     });
   }
 
+  CommentsRendere = () => {
+    (function() {
+      // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement("script");
+      s.src = "https://thomasmiller.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+    return (
+      <React.Fragment>
+        <script>console.log("test");</script>
+        <div id="disqus_thread" />
+      </React.Fragment>
+    );
+  };
+
   SocialMediaShareRendered = () => {
     var url = this.state.page["url"];
     var title = this.state.page["title"];
@@ -101,8 +118,7 @@ export default class extends React.Component {
             dangerouslySetInnerHTML={{ __html: post.body }}
             style={postBodyStyle}
           />
-          <div style={borderBottomStyle} />
-          <this.SocialMediaShareRendered />
+          <this.CommentsRendere />
         </div>
         <Footer />
       </React.Fragment>
