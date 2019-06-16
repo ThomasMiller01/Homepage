@@ -180,10 +180,11 @@ const topH1Style = {
 };
 
 const topSpanStyle = {
-  color: "#76D5D1",
+  color: "rgb(209, 209, 209)",
   width: "0",
   margin: "0",
-  height: "0"
+  height: "0",
+  fontSize: "1.5em"
 };
 
 const topTextDivStyle = {
@@ -196,6 +197,8 @@ const topDivStyle = {
   width: "100%",
   minHeight: "30vh",
   backgroundColor: "#272822",
+  backgroundImage: "url('./images/blog_header.png')",
+  backgroundSize: "100%",
   padding: "0"
 };
 
