@@ -1,9 +1,0 @@
-<div style="width: 100%;">
-    <div class="home-favProjects {{itemSizes[i]}}" [style.backgroundImage]="'url('+ project._thumbnail +')'" *ngFor="let project of favProjects; let i = index">            
-        <div class="container home-favProjects-container" >                
-            <h1 class="display-4">{{project._name}}</h1>
-            <p class="lead" [innerHTML]="project._description"></p>
-            <button style="background-color: rgba(0, 0, 0, 0.200);" type="button" class="btn btn-outline-primary seemore_btn-home" (click)="navigateProject(project);">See more</button>
-        </div>
-    </div>
-</div>
