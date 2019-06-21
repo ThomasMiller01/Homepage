@@ -3,6 +3,8 @@ import React from "react";
 import Header from "../../header";
 import Footer from "../../footer";
 
+import SocialMediaIcons from "../../socialMediaIcons";
+
 const AboutMe = () => {
   return (
     <React.Fragment>
@@ -55,6 +57,7 @@ const AboutMe = () => {
               erreichen.
             </span>
           </p>
+          <SocialMediaIcons />
         </div>
       </div>
       <Footer />

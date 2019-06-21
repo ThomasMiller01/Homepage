@@ -1,0 +1,53 @@
+/* Social Media Share Start */
+$brand-colors: (
+  stackoverflow: #f48024,
+  discord: #26262b,
+  thingiverse: #248bfb
+);
+
+.post-social {
+  width: 90%;
+  margin: 10px auto 10px auto;
+  .button {
+    cursor: pointer;
+    margin: 0.5rem 0.25rem;
+    background-color: transparent;
+    justify-content: center;
+    padding: calc(0.375em - 1px) 0.75em;
+    text-align: center;
+    white-space: nowrap;
+    align-items: center;
+    border: 1px solid transparent;
+    display: inline-flex;
+    font-size: 1em;
+    height: 2.25em;
+    line-height: 1.5;
+    vertical-align: top;
+    @each $class, $color in $brand-colors {
+      &.#{$class} {
+        color: $color;
+        border-color: $color;
+        &:hover {
+          background-color: $color;
+          border-color: $color;
+          color: #fff;
+        }
+      }
+    }
+
+    .icon {
+      height: 1.5em;
+      width: 1.5em;
+    }
+    .text {
+      margin-left: 6px;
+    }
+  }
+  .is-rounded {
+    border-radius: 100px;
+    padding-left: 1em;
+    padding: 1em;
+  }
+}
+
+/* Social Media Share End */
