@@ -5,6 +5,7 @@ import {
   faDiscord,
   faChrome
 } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 import "./socialMediaIcons.scss";
 
@@ -15,13 +16,13 @@ class SocialMediaIcons extends Component {
       <React.Fragment>
         <div className="post-social">
           <a
-            href="https://stackoverflow.com/users/11328656/thomas?tab=profile"
-            className="button is-outlined is-rounded stackoverflow"
+            href="mailto:info@thomasmiller.tk"
+            className="button is-outlined is-rounded email"
           >
             <span className="icon">
-              <FontAwesomeIcon icon={faStackOverflow} style={iconStyle} />
+              <FontAwesomeIcon icon={faEnvelope} style={iconStyle} />
             </span>
-            <span className="text">Stack Overflow</span>
+            <span className="text">info@thomasmiller.tk</span>
           </a>
           <a
             href="https://discord.gg/3DH6X25"
@@ -31,6 +32,15 @@ class SocialMediaIcons extends Component {
               <FontAwesomeIcon icon={faDiscord} style={iconStyle} />
             </span>
             <span className="text">Thomas#5888</span>
+          </a>
+          <a
+            href="https://stackoverflow.com/users/11328656/thomas?tab=profile"
+            className="button is-outlined is-rounded stackoverflow"
+          >
+            <span className="icon">
+              <FontAwesomeIcon icon={faStackOverflow} style={iconStyle} />
+            </span>
+            <span className="text">Stack Overflow</span>
           </a>
           <a
             href="https://www.thingiverse.com/Thomas_Miller/about"

@@ -1,14 +1,6 @@
 import React from "react";
 import butter from "./blog_buttercms";
 import { Helmet } from "react-helmet";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import {
-  TwitterShareButton,
-  EmailShareButton,
-  WhatsappShareButton
-} from "react-share";
 
 import Header from "../../header";
 import Footer from "../../footer";
@@ -46,56 +38,6 @@ export default class extends React.Component {
       <React.Fragment>
         <script>console.log("test");</script>
         <div id="disqus_thread" />
-      </React.Fragment>
-    );
-  };
-
-  SocialMediaShareRendered = () => {
-    var url = this.state.page["url"];
-    var title = this.state.page["title"];
-    return (
-      <React.Fragment>
-        <div className="post-social">
-          <WhatsappShareButton
-            url={url}
-            className="button is-outlined is-rounded whatsapp"
-            title={title}
-          >
-            <span className="icon">
-              <FontAwesomeIcon
-                icon={faWhatsapp}
-                style={{ width: "90%", height: "90%" }}
-              />
-            </span>
-            <span className="text">WhatsApp</span>
-          </WhatsappShareButton>
-          <TwitterShareButton
-            url={url}
-            className="button is-outlined is-rounded twitter"
-            title={title}
-          >
-            <span className="icon">
-              <FontAwesomeIcon
-                icon={faTwitter}
-                style={{ width: "90%", height: "90%" }}
-              />
-            </span>
-            <span className="text">Twitter</span>
-          </TwitterShareButton>
-          <EmailShareButton
-            url={url}
-            className="button is-outlined is-rounded email"
-            title={title}
-          >
-            <span className="icon">
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                style={{ width: "90%", height: "90%" }}
-              />
-            </span>
-            <span className="text">Email</span>
-          </EmailShareButton>
-        </div>
       </React.Fragment>
     );
   };
