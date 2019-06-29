@@ -83,7 +83,7 @@ class Blog extends Component {
     return (
       <React.Fragment>
         <Header />
-        <div style={topDivStyle}>
+        <div style={topDivStyle} className="blogTop">
           <table style={topTableStyle}>
             <tbody>
               <tr>
@@ -99,17 +99,20 @@ class Blog extends Component {
           </table>
         </div>
         <div style={blogStyle}>
-          <div style={blogPostsStyle}>
+          <div style={blogPostsStyle} className="blogPost">
             {this.state.data.map((post, key) => {
               return (
                 <React.Fragment key={key}>
                   <div className="card" style={cardStyle}>
                     <div className="card-body">
-                      <h3 className="card-title" style={cardTitleStyle}>
+                      <h3
+                        className="card-title cardTitle"
+                        style={cardTitleStyle}
+                      >
                         {post.title}
                       </h3>
                       <h6
-                        className="card-subtitle mb-2 text-muted"
+                        className="card-subtitle mb-2 text-muted metaData"
                         style={cardMetaStyle}
                       >
                         {post.author.first_name} {post.author.last_name},{" "}
@@ -134,7 +137,9 @@ class Blog extends Component {
               );
             })}
           </div>
-          <div style={rightCardStyle}>{this.getRecentPostsRendered()}</div>
+          <div style={rightCardStyle} className="rightCard">
+            {this.getRecentPostsRendered()}
+          </div>
 
           <br />
 
@@ -198,7 +203,7 @@ const topDivStyle = {
   minHeight: "30vh",
   backgroundColor: "#272822",
   backgroundImage: "url('./images/blog_header.png')",
-  backgroundSize: "100%",
+  backgroundSize: "auto 100%",
   padding: "0"
 };
 
