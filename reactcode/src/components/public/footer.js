@@ -20,7 +20,11 @@ class Footer extends Component {
             Impressum
           </NavLink>{" "}
           - <NavLink to="/login">Login</NavLink>
-          <a href="https://buttercms.com" target="_blank" style={buttercms_linkStyle}>
+          <a
+            href="https://buttercms.com"
+            target="_blank"
+            style={buttercms_linkStyle}
+          >
             <img
               src="https://cdn.buttercms.com/RyJ7UhcVTCRqrCFXwgCo"
               alt="loading ..."
@@ -36,7 +40,7 @@ class Footer extends Component {
 // Styles
 const buttercms_linkStyle = {
   float: "right"
-}
+};
 
 const buttercms_imgStyle = {
   width: "150px"

@@ -63,7 +63,7 @@ class PrivateSettingsHome extends Component {
   }
 
   componentDidMount() {
-    this.setupXTermTerminal();
+    // this.setupXTermTerminal();
   }
 
   render() {
@@ -99,8 +99,17 @@ class PrivateSettingsHome extends Component {
           >
             Bootstrap
           </a>
+          <a
+            className="btn btn-outline-primary"
+            style={settingsBtnStyle}
+            href="https://buttercms.com/blog_home/"
+            role="button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ButterCms
+          </a>
           <div style={terminalsStyle}>
-            <h1 style={terminalsH1Style}>Terminal</h1>
             <div style={xtermTerminalStyle}>
               <div id="terminal" />
             </div>
@@ -127,8 +136,6 @@ const xtermTerminalStyle = { width: "40%" };
 
 const terminalsStyle = { width: "100%", padding: "10px" };
 
-const terminalsH1Style = { paddingBottom: "15px" };
-
 const borderBottomStyle = {
   width: "95%",
   margin: "10px auto 10px auto",
@@ -136,6 +143,6 @@ const borderBottomStyle = {
   borderBottom: "solid 2px rgb(161, 161, 161)"
 };
 
-const settingsBtnStyle = { margin: "0 5px 0 5px" };
+const settingsBtnStyle = { margin: "5px" };
 
 export default PrivateSettingsHome;
