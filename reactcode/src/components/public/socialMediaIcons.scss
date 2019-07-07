@@ -3,12 +3,13 @@ $brand-colors: (
   email: rgb(77, 77, 77),
   stackoverflow: #f48024,
   discord: #26262b,
-  thingiverse: #248bfb
+  thingiverse: #248bfb,
+  twitter: #1da1f2
 );
 
 .post-social {
-  width: 90%;
-  margin: 10px auto 10px auto;
+  width: 100%;
+  margin: 0 auto;
   .button {
     cursor: pointer;
     margin: 0.5rem 0.25rem;

@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStackOverflow,
   faDiscord,
-  faChrome
+  faChrome,
+  faTwitter
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
@@ -41,6 +42,15 @@ class SocialMediaIcons extends Component {
               <FontAwesomeIcon icon={faStackOverflow} style={iconStyle} />
             </span>
             <span className="text">Stack Overflow</span>
+          </a>
+          <a
+            href="https://twitter.com/ThomasMiller_01"
+            className="button is-outlined is-rounded twitter"
+          >
+            <span className="icon">
+              <FontAwesomeIcon icon={faTwitter} style={iconStyle} />
+            </span>
+            <span className="text">Twitter</span>
           </a>
           <a
             href="https://www.thingiverse.com/Thomas_Miller/about"

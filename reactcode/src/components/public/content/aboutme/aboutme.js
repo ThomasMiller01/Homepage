@@ -36,19 +36,12 @@ const AboutMe = () => {
         <div style={descriptionDivStyle} className="descriptionDivStyle">
           <h1>Über mich</h1>
           <p style={pDescriptionStyle}>
-            Mein Name ist Thomas Miller und ich bin {alter()} Jahre alt. Zurzeit
-            gehe ich noch zur Schule und mache nächstes Jahr mein Abitur.
+            My name is Thomas Miller, I am {alter()} years old and currently a
+            student in germany. When I am not in school, I do all kind of
+            different projects, some of the best are featured on this website.
             <br />
             <br />
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-            no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            My main interests are: Python, C#, Java, TypeScript, JavaScript
           </p>
           <SocialMediaIcons />
         </div>
