@@ -10,72 +10,194 @@ const Impressum = () => {
       <div style={impressumContainerStyle}>
         <div style={impressumStyle} className="impressum">
           <h1>Impressum</h1>
-          <h3 style={impressumContainerH3Style}>
-            Angaben gem&auml;&szlig; &sect; 5 TMG
-          </h3>
-          <p>Thomas Miller</p>
-          <h3 style={impressumContainerH3Style}>Kontakt</h3>
-          <p>E-Mail: info@thomasmiller.tk</p>
-          <h3 style={impressumContainerH3Style}>Haftung f&uuml;r Inhalte</h3>
+          <p>Angaben gemäß § 5 TMG</p>
           <p>
-            Als Diensteanbieter sind wir gem&auml;&szlig; &sect; 7 Abs.1 TMG
-            f&uuml;r eigene Inhalte auf diesen Seiten nach den allgemeinen
-            Gesetzen verantwortlich. Nach &sect;&sect; 8 bis 10 TMG sind wir als
-            Diensteanbieter jedoch nicht verpflichtet, &uuml;bermittelte oder
-            gespeicherte fremde Informationen zu &uuml;berwachen oder nach
-            Umst&auml;nden zu forschen, die auf eine rechtswidrige
-            T&auml;tigkeit hinweisen.
+            Thomas Miller <br />
           </p>
           <p>
+            {" "}
+            <strong>Vertreten durch: </strong>
+            <br />
+            Thomas Miller
+            <br />
+          </p>
+          <p>
+            <strong>Kontakt:</strong> <br />
+            E-Mail:{" "}
+            <a href="mailto:info@thomasmiller.tk">info@thomasmiller.tk</a>
+            <br />
+          </p>
+          <p>
+            <strong>
+              Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:
+            </strong>
+            <br />
+            Thomas Miller <br />
+          </p>{" "}
+          <p>
+            <strong>Haftungsausschluss: </strong>
+            <br />
+            <br />
+            <strong>Haftung für Inhalte</strong>
+            <br />
+            Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für
+            die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können
+            wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir
+            gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
+            allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir
+            als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder
+            gespeicherte fremde Informationen zu überwachen oder nach Umständen
+            zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
             Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
             Informationen nach den allgemeinen Gesetzen bleiben hiervon
-            unber&uuml;hrt. Eine diesbez&uuml;gliche Haftung ist jedoch erst ab
-            dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung
-            m&ouml;glich. Bei Bekanntwerden von entsprechenden
-            Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
-          </p>
-          <h3 style={impressumContainerH3Style}>Haftung f&uuml;r Links</h3>
-          <p>
-            Unser Angebot enth&auml;lt Links zu externen Websites Dritter, auf
-            deren Inhalte wir keinen Einfluss haben. Deshalb k&ouml;nnen wir
-            f&uuml;r diese fremden Inhalte auch keine Gew&auml;hr
-            &uuml;bernehmen. F&uuml;r die Inhalte der verlinkten Seiten ist
-            stets der jeweilige Anbieter oder Betreiber der Seiten
-            verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der
-            Verlinkung auf m&ouml;gliche Rechtsverst&ouml;&szlig;e
-            &uuml;berpr&uuml;ft. Rechtswidrige Inhalte waren zum Zeitpunkt der
-            Verlinkung nicht erkennbar.
-          </p>
-          <p>
-            Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist
-            jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht
-            zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir
+            unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem
+            Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei
+            Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese
+            Inhalte umgehend entfernen.
+            <br />
+            <br />
+            <strong>Haftung für Links</strong>
+            <br />
+            Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren
+            Inhalte wir keinen Einfluss haben. Deshalb können wir für diese
+            fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der
+            verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber
+            der Seiten verantwortlich. Die verlinkten Seiten wurden zum
+            Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft.
+            Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht
+            erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten
+            Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung
+            nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir
             derartige Links umgehend entfernen.
-          </p>
-          <h3 style={impressumContainerH3Style}>Urheberrecht</h3>
-          <p>
+            <br />
+            <br />
+            <strong>Urheberrecht</strong>
+            <br />
             Die durch die Seitenbetreiber erstellten Inhalte und Werke auf
             diesen Seiten unterliegen dem deutschen Urheberrecht. Die
-            Vervielf&auml;ltigung, Bearbeitung, Verbreitung und jede Art der
-            Verwertung au&szlig;erhalb der Grenzen des Urheberrechtes
-            bed&uuml;rfen der schriftlichen Zustimmung des jeweiligen Autors
-            bzw. Erstellers. Downloads und Kopien dieser Seite sind nur f&uuml;r
-            den privaten, nicht kommerziellen Gebrauch gestattet.
+            Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
+            Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der
+            schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+            Downloads und Kopien dieser Seite sind nur für den privaten, nicht
+            kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser
+            Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte
+            Dritter beachtet. Insbesondere werden Inhalte Dritter als solche
+            gekennzeichnet. Sollten Sie trotzdem auf eine
+            Urheberrechtsverletzung aufmerksam werden, bitten wir um einen
+            entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen
+            werden wir derartige Inhalte umgehend entfernen.
+            <br />
+            <br />
+            <strong>Datenschutz</strong>
+            <br />
+            Die Nutzung unserer Webseite ist in der Regel ohne Angabe
+            personenbezogener Daten möglich. Soweit auf unseren Seiten
+            personenbezogene Daten (beispielsweise Name, Anschrift oder
+            eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets
+            auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche
+            Zustimmung nicht an Dritte weitergegeben. <br />
+            Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B.
+            bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann.
+            Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist
+            nicht möglich. <br />
+            Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten
+            Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich
+            angeforderter Werbung und Informationsmaterialien wird hiermit
+            ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich
+            ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung
+            von Werbeinformationen, etwa durch Spam-Mails, vor.
+            <br />
+            <br />
+            <br />
+            <strong>Google Analytics</strong>
+            <br />
+            Diese Website benutzt Google Analytics, einen Webanalysedienst der
+            Google Inc. (''Google''). Google Analytics verwendet sog.
+            ''Cookies'', Textdateien, die auf Ihrem Computer gespeichert werden
+            und die eine Analyse der Benutzung der Website durch Sie ermöglicht.
+            Die durch den Cookie erzeugten Informationen über Ihre Benutzung
+            dieser Website (einschließlich Ihrer IP-Adresse) wird an einen
+            Server von Google in den USA übertragen und dort gespeichert. Google
+            wird diese Informationen benutzen, um Ihre Nutzung der Website
+            auszuwerten, um Reports über die Websiteaktivitäten für die
+            Websitebetreiber zusammenzustellen und um weitere mit der
+            Websitenutzung und der Internetnutzung verbundene Dienstleistungen
+            zu erbringen. Auch wird Google diese Informationen gegebenenfalls an
+            Dritte übertragen, sofern dies gesetzlich vorgeschrieben oder soweit
+            Dritte diese Daten im Auftrag von Google verarbeiten. Google wird in
+            keinem Fall Ihre IP-Adresse mit anderen Daten der Google in
+            Verbindung bringen. Sie können die Installation der Cookies durch
+            eine entsprechende Einstellung Ihrer Browser Software verhindern;
+            wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall
+            gegebenenfalls nicht sämtliche Funktionen dieser Website voll
+            umfänglich nutzen können. Durch die Nutzung dieser Website erklären
+            Sie sich mit der Bearbeitung der über Sie erhobenen Daten durch
+            Google in der zuvor beschriebenen Art und Weise und zu dem zuvor
+            benannten Zweck einverstanden.
+            <br />
+            <br />
+            <br />
+            <strong>Blog Comment Policy</strong>
+            <br />
+            <ul>
+              <li>
+                {" "}
+                Use of any of the curse words and/or slurs we have on our
+                blacklist will automatically flag a comment so it won’t appear
+                on our site. Sometimes these words are used as part of a good
+                discussion, these comments will be approved by a moderator when
+                appropriate.
+              </li>
+              <li>
+                Using a Disqus account without a verified email address will
+                automatically flag a comment.
+              </li>
+              <li>
+                Fluctuations in the space time continuum. Sometimes things just
+                get auto-flagged and we don’t know why.
+              </li>
+              <li>
+                Comments can also be flagged for review by our readership
+                (please do not abuse this option for other users you simply
+                disagree with, it makes our moderation jobs a lot harder).
+              </li>
+            </ul>
+            <strong>
+              Here are some things which will get your comment deleted.
+            </strong>
+            <br />
+            <ul>
+              <li>
+                Personal attacks against another commenter or the writer of the
+                post/website. This can run from name calling to sentences which
+                include the words “people like you” or statements which begin “I
+                bet you” or “you must/probably” etc. This is regardless of what
+                “side” you’re on.
+              </li>
+              <li>
+                Jokes or aggressive negative comments on the aesthetic
+                appearance of a person (commenters, writers, and folks mentioned
+                in an article alike).
+              </li>
+              <li>
+                Hate speech or other clearly intentional jerk behavior. This
+                includes, but is not limited to: the use of the word feminazi or
+                a comments which denigrates women, feminism or feminists, the
+                LGBTQ community; broad imprecations or assumptions based on
+                race; and anything that amounts to “ugh the gays,” “ugh
+                liberals,” “ugh, fangirls,” etc.
+              </li>
+            </ul>
           </p>
-          <p>
-            Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt
-            wurden, werden die Urheberrechte Dritter beachtet. Insbesondere
-            werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie
-            trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten
-            wir um einen entsprechenden Hinweis. Bei Bekanntwerden von
-            Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
-          </p>
-          <p>
-            Quelle:{" "}
-            <a href="https://www.e-recht24.de/impressum-generator.html">
-              https://www.e-recht24.de/impressum-generator.html
-            </a>
-          </p>
+          <br />
+          Impressum vom{" "}
+          <a href="https://www.impressum-generator.de">
+            Impressum Generator
+          </a>{" "}
+          der{" "}
+          <a href="https://www.kanzlei-hasselbach.de/">
+            Kanzlei Hasselbach, Rechtsanwälte für Arbeitsrecht und Familienrecht
+          </a>
         </div>
       </div>
       <Footer />
@@ -98,7 +220,5 @@ const impressumContainerStyle = {
   backgroundColor: "rgb(44, 34, 34)",
   padding: "25px 0"
 };
-
-const impressumContainerH3Style = { width: "auto" };
 
 export default Impressum;

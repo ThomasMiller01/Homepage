@@ -3,6 +3,8 @@ import React from "react";
 import Header from "../../header";
 import Footer from "../../footer";
 
+import SocialMediaIcons from "../../socialMediaIcons";
+
 const AboutMe = () => {
   return (
     <React.Fragment>
@@ -47,14 +49,8 @@ const AboutMe = () => {
             et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
             accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
             no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            <br />
-            <br />
-            <span style={spanStyle}>
-              Mich kann man unter{" "}
-              <a href="mailto:info@thomasmiller.tk">info@thomasmiller.tk</a>{" "}
-              erreichen.
-            </span>
           </p>
+          <SocialMediaIcons />
         </div>
       </div>
       <Footer />
@@ -84,10 +80,6 @@ const topTextDivStyle = {
   width: "100%",
   textAlign: "center",
   fontFamily: "DejaVuSansMono"
-};
-
-const spanStyle = {
-  fontSize: "22px"
 };
 
 const alter = () => {
