@@ -4,7 +4,8 @@ import {
   faStackOverflow,
   faDiscord,
   faChrome,
-  faTwitter
+  faTwitter,
+  faDocker
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
@@ -42,6 +43,15 @@ class SocialMediaIcons extends Component {
               <FontAwesomeIcon icon={faStackOverflow} style={iconStyle} />
             </span>
             <span className="text">Stack Overflow</span>
+          </a>
+          <a
+            href="https://hub.docker.com/u/thomasmillerdocker"
+            className="button is-outlined is-rounded docker"
+          >
+            <span className="icon">
+              <FontAwesomeIcon icon={faDocker} style={iconStyle} />
+            </span>
+            <span className="text">Docker</span>
           </a>
           <a
             href="https://twitter.com/ThomasMiller_01"
