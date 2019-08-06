@@ -45,7 +45,7 @@ class SocialMediaIcons extends Component {
             <span className="text">Stack Overflow</span>
           </a>
           <a
-            href="https://hub.docker.com/u/thomasmillerdocker"
+            href="https://hub.docker.com/u/thomasmiller01"
             className="button is-outlined is-rounded docker"
           >
             <span className="icon">
