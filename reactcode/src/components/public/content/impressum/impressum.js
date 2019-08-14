@@ -180,12 +180,7 @@ const Impressum = () => {
                 in an article alike).
               </li>
               <li>
-                Hate speech or other clearly intentional jerk behavior. This
-                includes, but is not limited to: the use of the word feminazi or
-                a comments which denigrates women, feminism or feminists, the
-                LGBTQ community; broad imprecations or assumptions based on
-                race; and anything that amounts to “ugh the gays,” “ugh
-                liberals,” “ugh, fangirls,” etc.
+                Hate speech or other clearly intentional jerk behavior.
               </li>
             </ul>
           </p>

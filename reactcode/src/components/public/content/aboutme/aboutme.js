@@ -34,7 +34,7 @@ const AboutMe = () => {
           />
         </div>
         <div style={descriptionDivStyle} className="descriptionDivStyle">
-          <h1>Über mich</h1>
+          <h1>About me</h1>
           <p style={pDescriptionStyle}>
             My name is Thomas Miller, I am {alter()} years old and currently a
             student in germany. When I am not in school, I do all kind of
