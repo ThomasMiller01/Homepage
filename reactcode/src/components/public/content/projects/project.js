@@ -1,9 +1,12 @@
+/* eslint-disable react/jsx-no-target-blank */
 import React, { Component } from "react";
 import { PhotoSwipeGallery } from "react-photoswipe";
 import { PhotoSwipe } from "react-photoswipe";
 import "react-photoswipe/lib/photoswipe.css";
 
 import { Commits, Statistics } from "../../../githubapi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 class Project extends Component {
   state = {
@@ -73,7 +76,8 @@ class Project extends Component {
   getCommits = () => {
     if (
       this.state.project._githubRepo !== "#" &&
-      this.state.project._githubRepo !== ""
+      this.state.project._githubRepo !== "" &&
+      !this.state.project._private
     ) {
       return (
         <React.Fragment>
@@ -121,10 +125,8 @@ class Project extends Component {
         </div>
         <div style={projectContent}>
           <h1 style={projectContentH1Style}>
-            <GithubLink
-              name={this.state.project._name}
-              link={this.state.project._githubRepo}
-            />
+            <span className="testclass">{this.state.project._name}</span>
+            <GithubLink link={this.state.project._githubRepo} />
           </h1>
           <div style={this.getStyle()} className="descGitStyle">
             <div style={projectDescription}>
@@ -180,17 +182,19 @@ const githubStyle = {
 };
 
 const GithubLink = props => {
-  var name = props.name;
   var link = props.link;
   if (link !== "#") {
     return (
-      // eslint-disable-next-line react/jsx-no-target-blank
-      <a href={link} target="_blank">
-        {name}
+      <a
+        href={link}
+        target="_blank"
+        className="btn btn-outline-primary githubLinkBtn"
+      >
+        <FontAwesomeIcon icon={faGithub} /> View on GitHub
       </a>
     );
   } else {
-    return <span>{name}</span>;
+    return <span />;
   }
 };
 

@@ -54,3 +54,22 @@ $brand-colors: (
 }
 
 /* Social Media Share End */
+
+.githubLinkBtn {
+  margin: 20px;
+  color: rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  border-radius: 0.3em;
+  font-family: avenir, helvetica, arial, sans-serif;
+  letter-spacing: 0.05em;
+  padding: 5px 11px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-color: #fff;
+}
