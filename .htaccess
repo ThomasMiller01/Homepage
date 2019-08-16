@@ -1,0 +1,13 @@
+RewriteEngine On
+
+RewriteBase /
+
+RewriteRule ^dotnet/(.*) http://phase7.local.uberspace.de:41971/$1 [P]
+RewriteRule ^discordbot/(.*) http://phase7.local.uberspace.de:5000/$1 [P]
+	
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+
+RewriteRule ^(.*) ./index.html [NC,L]
