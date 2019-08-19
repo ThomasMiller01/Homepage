@@ -124,7 +124,7 @@ class PrivateSettingsChangeProjectContent extends Component {
       method: "POST",
       body: JSON.stringify(currentProject)
     };
-    fetch("https://thomasmiller.tk/dotnet/api/Projects/" + method, {
+    fetch("http://v220190810228695422.bestsrv.de/api/Projects/" + method, {
       headers,
       ...options
     }).then(() => {
@@ -142,7 +142,7 @@ class PrivateSettingsChangeProjectContent extends Component {
       Authorization: "Bearer " + this.Auth.getToken(),
       "Content-Type": "application/json"
     };
-    fetch("https://thomasmiller.tk/dotnet/api/Projects/getAll", {
+    fetch("http://v220190810228695422.bestsrv.de/api/Projects/getAll", {
       headers
     })
       .then(results => {
@@ -163,7 +163,7 @@ class PrivateSettingsChangeProjectContent extends Component {
       };
       const options = { method: "DELETE" };
       fetch(
-        "https://thomasmiller.tk/dotnet/api/Projects/delete/" +
+        "http://v220190810228695422.bestsrv.de/api/Projects/delete/" +
           currentProject["_id"],
         {
           headers,

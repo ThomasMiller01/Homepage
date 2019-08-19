@@ -26,7 +26,7 @@ class PrivateHome extends Component {
       Authorization: "Bearer " + this.Auth.getToken(),
       "Content-Type": "application/json"
     };
-    fetch("https://thomasmiller.tk/dotnet/api/supervisor/status", {
+    fetch("http://v220190810228695422.bestsrv.de/api/supervisor/status", {
       headers
     })
       .then(results => {

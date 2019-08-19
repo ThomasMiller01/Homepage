@@ -7,7 +7,7 @@ class HomeContent extends Component {
   };
 
   componentDidMount = () => {
-    fetch("https://thomasmiller.tk/dotnet/api/Projects/getpublic")
+    fetch("http://v220190810228695422.bestsrv.de/api/Projects/getpublic")
       .then(results => {
         return results.json();
       })
