@@ -1,13 +1,9 @@
 RewriteEngine On
 
+RewriteRule ^services/homepage/(.*) http://127.0.0.1:41970/$1 [P]
+
 RewriteBase /
-
-RewriteRule ^dotnet/(.*) http://phase7.local.uberspace.de:41971/$1 [P]
-RewriteRule ^discordbot/(.*) http://phase7.local.uberspace.de:5000/$1 [P]
-	
-RewriteCond %{REQUEST_FILENAME} -s [OR]
-RewriteCond %{REQUEST_FILENAME} -l [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^.*$ - [NC,L]
-
-RewriteRule ^(.*) ./index.html [NC,L]
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]

@@ -82,7 +82,7 @@ class PrivateSettingsHome extends Component {
           <a
             className="btn btn-outline-primary"
             style={settingsBtnStyle}
-            href="https://mysql.uberspace.de/phpmyadmin/"
+            href="https://thomasmiller.tk/phpmyadmin/"
             role="button"
             target="_blank"
             rel="noopener noreferrer"
