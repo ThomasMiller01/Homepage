@@ -9,7 +9,7 @@ class AllProjects extends Component {
   };
 
   componentDidMount = () => {
-    fetch("https://thomasmiller.tk/services/homepage/api/Projects/getpublic")
+    fetch("http://thomasmiller.tk:5006/api/Projects/getpublic")
       .then(results => {
         return results.json();
       })
