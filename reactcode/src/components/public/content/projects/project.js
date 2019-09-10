@@ -31,11 +31,16 @@ class Project extends Component {
   };
 
   componentWillMount() {
-    if (this.props.location.query) {
-      this.setState({ project: this.props.location.query.project });
+    if (this.props.location.state) {
+      let project = this.fetchProject(this.props.location.state.projectName);
+      this.setState({ project: project });
     } else {
       this.props.history.replace("/projects/all");
     }
+  }
+
+  fetchProjectByName(value) {
+    return null;
   }
 
   componentDidMount() {
