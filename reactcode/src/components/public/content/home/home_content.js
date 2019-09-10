@@ -58,10 +58,7 @@ class HomeContent extends Component {
               />
               <NavLink
                 to={{
-                  pathname: "/projects/project",
-                  query: {
-                    project: project
-                  }
+                  pathname: "/projects/" + project._name
                 }}
                 className="btn btn-outline-primary"
                 style={seemoreBtnStyle}
