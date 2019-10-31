@@ -52,7 +52,9 @@ class Project extends Component {
 
     let body = { _type: "name", _value: value };
     fetch(
-      "http://thomasmiller.tk:5006/api/Projects/get" + publicprivate + "By",
+      "https://thomasmiller.tk/services/homepage/api/Projects/get" +
+        publicprivate +
+        "By",
       { headers: headers, method: "POST", body: JSON.stringify(body) }
     )
       .then(results => {
