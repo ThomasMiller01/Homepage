@@ -26,15 +26,12 @@ class SocialMediaIcons extends Component {
             </span>
             <span className="text">info@thomasmiller.tk</span>
           </a>
-          <a
-            href="https://discord.gg/3DH6X25"
-            className="button is-outlined is-rounded discord"
-          >
+          <span className="button is-outlined is-rounded discord">
             <span className="icon">
               <FontAwesomeIcon icon={faDiscord} style={iconStyle} />
             </span>
             <span className="text">Thomas#5888</span>
-          </a>
+          </span>
           <a
             href="https://stackoverflow.com/users/11328656/thomas?tab=profile"
             className="button is-outlined is-rounded stackoverflow"
