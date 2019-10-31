@@ -30,30 +30,57 @@ class Project extends Component {
     isOpen: false
   };
 
-  componentWillMount() {
-    if (this.props.location.state) {
-      let project = this.fetchProject(this.props.location.state.projectName);
-      this.setState({ project: project });
-    } else {
-      this.props.history.replace("/projects/all");
-    }
+  componentDidMount() {
+    this.fetchProjectByName(this.props.match.params.projectName);
   }
 
   fetchProjectByName(value) {
-    return null;
-  }
+    let token = localStorage.getItem("id_token");
+    let publicprivate = "Public";
+    let headers;
+    if (token) {
+      publicprivate = "Private";
+      headers = {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json"
+      };
+    } else {
+      headers = {
+        "Content-Type": "application/json"
+      };
+    }
 
-  componentDidMount() {
-    var items = [];
-    this.state.project._images.forEach(image => {
-      var src = image[0];
-      var thumbnail = image[0];
-      var w = image[2].split("x")[0];
-      var h = image[2].split("x")[1];
-      var title = image[1];
-      items.push({ src: src, thumbnail: thumbnail, w: w, h: h, title: title });
-    });
-    this.setState({ items: items });
+    let body = { _type: "name", _value: value };
+    fetch(
+      "http://thomasmiller.tk:5006/api/Projects/get" + publicprivate + "By",
+      { headers: headers, method: "POST", body: JSON.stringify(body) }
+    )
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        console.log(data);
+        if (data[0] != null) {
+          var items = [];
+          data[0]._images.forEach(image => {
+            var src = image[0];
+            var thumbnail = image[0];
+            var w = image[2].split("x")[0];
+            var h = image[2].split("x")[1];
+            var title = image[1];
+            items.push({
+              src: src,
+              thumbnail: thumbnail,
+              w: w,
+              h: h,
+              title: title
+            });
+          });
+          this.setState({ project: data[0], items: items });
+        } else {
+          this.props.history.replace("/projects/all");
+        }
+      });
   }
 
   getThumbnailContent = item => {
