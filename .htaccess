@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteRule ^services/homepage/(.*) http://127.0.0.1:41970/$1 [P]
+RewriteRule ^services/homepage/(.*) http://127.0.0.1:5006/$1 [P]
 
 RewriteBase /
 RewriteRule ^index\.html$ - [L]
