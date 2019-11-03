@@ -13,7 +13,7 @@ import AuthService from "../../../authService";
 class Project extends Component {
   constructor() {
     super();
-    this.auth = AuthService();
+    this.auth = new AuthService();
   }
 
   state = {
