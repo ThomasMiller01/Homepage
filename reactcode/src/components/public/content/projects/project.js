@@ -8,7 +8,14 @@ import { Commits, Statistics } from "../../../githubapi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
+import AuthService from "../../../authService";
+
 class Project extends Component {
+  constructor() {
+    super();
+    this.auth = AuthService();
+  }
+
   state = {
     project: {
       _id: -1,
@@ -35,10 +42,10 @@ class Project extends Component {
   }
 
   fetchProjectByName(value) {
-    let token = localStorage.getItem("id_token");
     let publicprivate = "Public";
     let headers;
-    if (token) {
+    if (this.auth.loggedIn()) {
+      let token = localStorage.getItem("id_token");
       publicprivate = "Private";
       headers = {
         Authorization: "Bearer " + token,
