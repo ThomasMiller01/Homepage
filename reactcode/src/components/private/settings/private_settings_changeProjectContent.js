@@ -50,7 +50,7 @@ class PrivateSettingsChangeProjectContent extends Component {
     } else {
       this.setState({ isMobile: false });
     }
-    this.relaodProjects();
+    this.reloadProjects();
   }
 
   projectChanged = event => {
@@ -128,7 +128,7 @@ class PrivateSettingsChangeProjectContent extends Component {
       headers,
       ...options
     }).then(() => {
-      this.relaodProjects();
+      this.reloadProjects();
       this.setState({ projectStatus: "Success" });
       setTimeout(() => {
         this.setState({ projectStatus: "None" });
@@ -136,7 +136,7 @@ class PrivateSettingsChangeProjectContent extends Component {
     });
   };
 
-  relaodProjects() {
+  reloadProjects() {
     const firstProject = this.state.allProjects[0];
     const headers = {
       Authorization: "Bearer " + this.Auth.getToken(),
@@ -170,7 +170,7 @@ class PrivateSettingsChangeProjectContent extends Component {
           ...options
         }
       ).then(() => {
-        this.relaodProjects();
+        this.reloadProjects();
         this.setState({ projectStatus: "Success" });
         setTimeout(() => {
           this.setState({ projectStatus: "None" });
