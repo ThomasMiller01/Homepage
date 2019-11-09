@@ -8,7 +8,14 @@ import { Commits, Statistics } from "../../../githubapi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
+import AuthService from "../../../authService";
+
 class Project extends Component {
+  constructor() {
+    super();
+    this.auth = new AuthService();
+  }
+
   state = {
     project: {
       _id: -1,
@@ -35,10 +42,10 @@ class Project extends Component {
   }
 
   fetchProjectByName(value) {
-    let token = localStorage.getItem("id_token");
     let publicprivate = "Public";
     let headers;
-    if (token) {
+    if (this.auth.loggedIn()) {
+      let token = localStorage.getItem("id_token");
       publicprivate = "Private";
       headers = {
         Authorization: "Bearer " + token,
@@ -52,7 +59,9 @@ class Project extends Component {
 
     let body = { _type: "name", _value: value };
     fetch(
-      "http://thomasmiller.tk:5006/api/Projects/get" + publicprivate + "By",
+      "https://thomasmiller.tk/services/homepage/api/Projects/get" +
+        publicprivate +
+        "By",
       { headers: headers, method: "POST", body: JSON.stringify(body) }
     )
       .then(results => {

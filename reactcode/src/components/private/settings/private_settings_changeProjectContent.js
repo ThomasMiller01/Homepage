@@ -124,7 +124,7 @@ class PrivateSettingsChangeProjectContent extends Component {
       method: "POST",
       body: JSON.stringify(currentProject)
     };
-    fetch("http://thomasmiller.tk:5006/api/Projects/" + method, {
+    fetch("https://thomasmiller.tk/services/homepage/api/Projects/" + method, {
       headers,
       ...options
     }).then(() => {
@@ -142,7 +142,7 @@ class PrivateSettingsChangeProjectContent extends Component {
       Authorization: "Bearer " + this.Auth.getToken(),
       "Content-Type": "application/json"
     };
-    fetch("http://thomasmiller.tk:5006/api/Projects/getAll", {
+    fetch("https://thomasmiller.tk/services/homepage/api/Projects/getAll", {
       headers
     })
       .then(results => {
@@ -163,7 +163,7 @@ class PrivateSettingsChangeProjectContent extends Component {
       };
       const options = { method: "DELETE" };
       fetch(
-        "http://thomasmiller.tk:5006/api/Projects/delete/" +
+        "https://thomasmiller.tk/services/homepage/api/Projects/delete/" +
           currentProject["_id"],
         {
           headers,

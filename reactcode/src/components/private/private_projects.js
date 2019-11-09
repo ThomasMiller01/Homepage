@@ -19,7 +19,7 @@ class PrivateProjects extends Component {
       Authorization: "Bearer " + this.Auth.getToken(),
       "Content-Type": "application/json"
     };
-    fetch("http://thomasmiller.tk:5006/api/Projects/getAll", {
+    fetch("https://thomasmiller.tk/services/homepage/api/Projects/getAll", {
       headers
     })
       .then(results => {
