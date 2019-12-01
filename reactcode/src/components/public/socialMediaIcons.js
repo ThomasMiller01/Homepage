@@ -5,7 +5,8 @@ import {
   faDiscord,
   faChrome,
   faTwitter,
-  faDocker
+  faDocker,
+  faGithub
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
@@ -25,6 +26,15 @@ class SocialMediaIcons extends Component {
               <FontAwesomeIcon icon={faEnvelope} style={iconStyle} />
             </span>
             <span className="text">thomas@millerinfo.de</span>
+          </a>
+          <a
+            href="https://github.com/ThomasMiller01"
+            className="button is-outlined is-rounded github"
+          >
+            <span className="icon">
+              <FontAwesomeIcon icon={faGithub} style={iconStyle} />
+            </span>
+            <span className="text">GitHub</span>
           </a>
           <span className="button is-outlined is-rounded discord">
             <span className="icon">

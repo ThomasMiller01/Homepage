@@ -24,7 +24,7 @@ const Impressum = () => {
           <p>
             <strong>Kontakt:</strong> <br />
             E-Mail:{" "}
-            <a href="mailto:info@thomasmiller.tk">info@thomasmiller.tk</a>
+            <a href="mailto:thomas@millerinfo.de">thomas@millerinfo.de</a>
             <br />
           </p>
           <p>
@@ -179,9 +179,7 @@ const Impressum = () => {
                 appearance of a person (commenters, writers, and folks mentioned
                 in an article alike).
               </li>
-              <li>
-                Hate speech or other clearly intentional jerk behavior.
-              </li>
+              <li>Hate speech or other clearly intentional jerk behavior.</li>
             </ul>
           </p>
           <br />
