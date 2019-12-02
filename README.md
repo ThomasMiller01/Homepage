@@ -7,4 +7,4 @@ This is my personal website where I put all my projects on.
 - [ASP.NET Core](https://www.asp.net/core/overview/aspnet-vnext)
 
 ## Demo
-[ThomasMiller.tk](https://thomasmiller.tk)
+[millerinfo.de](https://millerinfo.de)
