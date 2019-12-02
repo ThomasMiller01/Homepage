@@ -17,22 +17,6 @@ steps:
 
 - script: |
     cd reactcode
-    npm install
+    yarn
     npm run build
   displayName: 'npm install and build'
-
-- task: SSH@0
-  inputs:
-    sshEndpoint: 'PersonalServer'
-    runOptions: 'commands'
-    commands: |
-      rm -r /var/www/millerinfo.de/
-      mkdir /var/www/millerinfo.de
-      cp -a /home/thomas/static_website_files/. /var/www/millerinfo.de/
-
-- task: CopyFilesOverSSH@0
-  inputs:
-    sshEndpoint: 'PersonalServer'
-    sourceFolder: 'reactcode/build/'
-    contents: '**'
-    targetFolder: '/var/www/millerinfo.de/'
