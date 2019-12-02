@@ -1,4 +1,5 @@
 # Website
+[![Build Status](https://dev.azure.com/thomasmiller01mail/Homepage/_apis/build/status/2?branchName=master)](https://dev.azure.com/thomasmiller01mail/Homepage/_build/latest?definitionId=2&branchName=master)
 
 This is my personal website where I put all my projects on.
 
