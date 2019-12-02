@@ -19,7 +19,7 @@ class PrivateProjects extends Component {
       Authorization: "Bearer " + this.Auth.getToken(),
       "Content-Type": "application/json"
     };
-    fetch("https://thomasmiller.tk/dotnet/api/Projects/getAll", {
+    fetch("https://millerinfo.de/services/homepage/api/Projects/getAll", {
       headers
     })
       .then(results => {
@@ -68,10 +68,7 @@ class PrivateProjects extends Component {
                   />
                   <NavLink
                     to={{
-                      pathname: "/projects/project",
-                      query: {
-                        project: project
-                      }
+                      pathname: "/projects/" + project._name
                     }}
                     className="btn btn-outline-primary"
                   >

@@ -80,6 +80,10 @@ code {
 
 /* Blog End */
 
+.divFooterStyle {
+  display: block !important;
+}
+
 /* Media Querys */
 
 @media (max-width: 324px) {
@@ -114,6 +118,10 @@ code {
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+  .divFooterStyle {
+    display: flex !important;
+  }
+
   .favProjects h1 {
     font-size: 45px !important;
   }
