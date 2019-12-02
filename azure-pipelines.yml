@@ -17,7 +17,7 @@ steps:
 
 - script: |
     cd reactcode
-    npm install
+    yarn
     npm run build
   displayName: 'npm install and build'
 
