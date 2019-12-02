@@ -26,7 +26,7 @@ steps:
     sshEndpoint: 'PersonalServer'
     runOptions: 'commands'
     commands: |
-      rm /var/www/millerinfo.de/.
+      rm /var/www/millerinfo.de/*
       cp -a /home/thomas/static_website_files/. /var/www/millerinfo.de/
 
 - task: CopyFilesOverSSH@0
