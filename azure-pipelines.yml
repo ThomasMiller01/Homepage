@@ -24,6 +24,6 @@ steps:
 - task: CopyFilesOverSSH@0
   inputs:
     sshEndpoint: 'PersonalServer'
-    sourceFolder: '/reactcode/build/'
+    sourceFolder: 'reactcode/build/'
     contents: '**'
     targetFolder: '/var/www/millerinfo.de/'
