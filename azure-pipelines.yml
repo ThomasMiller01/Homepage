@@ -1,4 +1,3 @@
-
 # Node.js with React
 # Build a Node.js project that uses React.
 # Add steps that analyze code, save build artifacts, deploy, and more:
@@ -21,3 +20,10 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+
+- task: CopyFilesOverSSH@0
+  inputs:
+    sshEndpoint: 'PersonalServer'
+    sourceFolder: '/reactcode/build/'
+    contents: '**'
+    targetFolder: '/var/www/millerinfo.de/'
