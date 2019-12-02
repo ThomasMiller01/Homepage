@@ -15,7 +15,7 @@ const Projects = () => {
       <Switch>
         <Redirect exact from="/projects" to="/projects/all" />
         <Route path="/projects/all" component={AllProjects} />
-        <Route path="/projects/project" component={Project} />
+        <Route path="/projects/:projectName" component={Project} />
         <Route
           render={() => (
             <Error

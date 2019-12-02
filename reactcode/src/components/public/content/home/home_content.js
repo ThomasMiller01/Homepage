@@ -7,7 +7,7 @@ class HomeContent extends Component {
   };
 
   componentDidMount = () => {
-    fetch("https://thomasmiller.tk/dotnet/api/Projects/getpublic")
+    fetch("https://millerinfo.de/services/homepage/api/Projects/getpublic")
       .then(results => {
         return results.json();
       })
@@ -58,10 +58,7 @@ class HomeContent extends Component {
               />
               <NavLink
                 to={{
-                  pathname: "/projects/project",
-                  query: {
-                    project: project
-                  }
+                  pathname: "/projects/" + project._name
                 }}
                 className="btn btn-outline-primary"
                 style={seemoreBtnStyle}

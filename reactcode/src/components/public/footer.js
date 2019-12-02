@@ -13,13 +13,18 @@ class Footer extends Component {
   render() {
     return (
       <footer style={footerStyle}>
-        <div className="text-center py-3">
-          Copyright &copy; <span id="yearForCopyright" />
-          {this.state.year}, Thomas Miller -{" "}
-          <NavLink to="/impressum" className="myimpressumlink">
-            Impressum
-          </NavLink>{" "}
-          - <NavLink to="/login">Login</NavLink>
+        <div
+          className="text-center py-3 divFooterStyle"
+          style={divFooterLeftSideStyle}
+        >
+          <div style={div1Style}>
+            Copyright &copy; <span id="yearForCopyright" />
+            {this.state.year}, Thomas Miller -{" "}
+            <NavLink to="/impressum" className="myimpressumlink">
+              Impressum
+            </NavLink>{" "}
+            - <NavLink to="/login">Login</NavLink>
+          </div>
           <a
             href="https://buttercms.com"
             target="_blank"
@@ -38,9 +43,16 @@ class Footer extends Component {
 }
 
 // Styles
-const buttercms_linkStyle = {
-  float: "right"
+const div1Style = {
+  margin: "0 auto"
 };
+
+const divFooterLeftSideStyle = {
+  display: "flex",
+  justifyContent: "space-between"
+};
+
+const buttercms_linkStyle = {};
 
 const buttercms_imgStyle = {
   width: "150px"

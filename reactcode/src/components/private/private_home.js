@@ -13,40 +13,6 @@ class PrivateHome extends Component {
     this.Auth = new AuthService();
   }
 
-  state = {
-    services: []
-  };
-
-  componentDidMount = () => {
-    this.getSupervisorData();
-  };
-
-  getSupervisorData = () => {
-    const headers = {
-      Authorization: "Bearer " + this.Auth.getToken(),
-      "Content-Type": "application/json"
-    };
-    fetch("https://thomasmiller.tk/dotnet/api/supervisor/status", {
-      headers
-    })
-      .then(results => {
-        return results.json();
-      })
-      .then(data => {
-        var replaced = data
-          .replace('"[{', "")
-          .replace('}]"', "")
-          .replace(new RegExp("'", "g"), '"');
-        var splited = replaced.split("}, {");
-        var jsonArray = [];
-        splited.forEach(element => {
-          var jsonParsed = JSON.parse("{" + element + "}");
-          jsonArray.push(jsonParsed);
-        });
-        this.setState({ services: jsonArray });
-      });
-  };
-
   handleLogout = () => {
     this.props.history.replace("/home");
     this.Auth.logout();
@@ -67,57 +33,6 @@ class PrivateHome extends Component {
           </button>
         </center>
         <div className="containerDashboard" style={containerDashboardStyle}>
-          <div className="row">
-            <div className="col-md-12 col-sm-12">
-              <div className="card shadow mb-4">
-                <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold">Supervisor Services</h6>
-                  <i
-                    className="fas fa-sync-alt"
-                    style={supervisorIconStyle}
-                    onClick={this.getSupervisorData}
-                  />
-                </div>
-                <div className="card-body">
-                  <div className="table-responsive">
-                    <table className="table table-light">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>State</th>
-                          <th>Description</th>
-                          <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {this.state.services.map(service => (
-                          <tr key={service.pid}>
-                            <td>{service.name}</td>
-                            <td>{service.statename}</td>
-                            <td>{service.description}</td>
-                            <td>
-                              <i
-                                className="fas fa-play"
-                                style={supervisorActionIconStyle}
-                              />
-                              <i
-                                className="fas fa-stop"
-                                style={supervisorActionIconStyle}
-                              />
-                              <i
-                                className="fas fa-redo"
-                                style={supervisorActionIconStyle}
-                              />
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="row">
             <div className="col-md-6 col-sm-12">
               <div className="card shadow mb-4">
@@ -173,10 +88,6 @@ class PrivateHome extends Component {
 }
 
 // Styles
-const supervisorActionIconStyle = { cursor: "pointer", margin: "0 7px 0 7px" };
-
-const supervisorIconStyle = { cursor: "pointer" };
-
 const containerDashboardStyle = { width: "100%", margin: "30px auto 0 auto" };
 
 const logoutBtnStyle = {

@@ -9985,16 +9985,6 @@ react-load-script@^0.0.6:
   resolved "https://registry.yarnpkg.com/react-load-script/-/react-load-script-0.0.6.tgz#db6851236aaa25bb622677a2eb51dad4f8d2c258"
   integrity sha512-aRGxDGP9VoLxcsaYvKWIW+LRrMOzz2eEcubTS4NvQPPugjk2VvMhow0wWTkSl7RxookomD1MwcP4l5UStg5ShQ==
 
-react-native-ssh-sftp@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-ssh-sftp/-/react-native-ssh-sftp-1.0.3.tgz#42c4a0e5c12d3c64cec605ded62dabd83253794d"
-  integrity sha1-QsSg5cEtPGTOxgXe1i2r2DJTeU0=
-
-react-native-ssh@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-ssh/-/react-native-ssh-1.0.1.tgz#31223ffb4a6847dd427d1813ae2836cb90c366f4"
-  integrity sha1-MSI/+0poR91CfRgTrig2y5DDZvQ=
-
 react-native-web@^0.11.2:
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.11.2.tgz#f3550589347be1f402f0641fefca687ca64a1750"
@@ -12571,11 +12561,6 @@ xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
   integrity sha1-pcbVMr5lbiPbgg77lDofBJmNY68=
-
-xterm@^3.12.2:
-  version "3.12.2"
-  resolved "https://registry.yarnpkg.com/xterm/-/xterm-3.12.2.tgz#ec8563857c7b098973bab4dbf537f1a7c6a790c8"
-  integrity sha512-FSXovDdsqIKqoayC6+zFzhaHi+A3NSceM5rgTW88DH7sS96HdwMToB2p1rW+FyNsSqfAgFwlXDRQk+fh/aHvPQ==
 
 y18n@^3.2.1:
   version "3.2.1"

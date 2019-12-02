@@ -1,11 +1,21 @@
+/* eslint-disable react/jsx-no-target-blank */
 import React, { Component } from "react";
 import { PhotoSwipeGallery } from "react-photoswipe";
 import { PhotoSwipe } from "react-photoswipe";
 import "react-photoswipe/lib/photoswipe.css";
 
 import { Commits, Statistics } from "../../../githubapi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
+import AuthService from "../../../authService";
 
 class Project extends Component {
+  constructor() {
+    super();
+    this.auth = new AuthService();
+  }
+
   state = {
     project: {
       _id: -1,
@@ -27,25 +37,59 @@ class Project extends Component {
     isOpen: false
   };
 
-  componentWillMount() {
-    if (this.props.location.query) {
-      this.setState({ project: this.props.location.query.project });
-    } else {
-      this.props.history.replace("/projects/all");
-    }
+  componentDidMount() {
+    this.fetchProjectByName(this.props.match.params.projectName);
   }
 
-  componentDidMount() {
-    var items = [];
-    this.state.project._images.forEach(image => {
-      var src = image[0];
-      var thumbnail = image[0];
-      var w = image[2].split("x")[0];
-      var h = image[2].split("x")[1];
-      var title = image[1];
-      items.push({ src: src, thumbnail: thumbnail, w: w, h: h, title: title });
-    });
-    this.setState({ items: items });
+  fetchProjectByName(value) {
+    let publicprivate = "Public";
+    let headers;
+    if (this.auth.loggedIn()) {
+      let token = localStorage.getItem("id_token");
+      publicprivate = "Private";
+      headers = {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json"
+      };
+    } else {
+      headers = {
+        "Content-Type": "application/json"
+      };
+    }
+
+    let body = { _type: "name", _value: value };
+    fetch(
+      "https://millerinfo.de/services/homepage/api/Projects/get" +
+        publicprivate +
+        "By",
+      { headers: headers, method: "POST", body: JSON.stringify(body) }
+    )
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        console.log(data);
+        if (data[0] != null) {
+          var items = [];
+          data[0]._images.forEach(image => {
+            var src = image[0];
+            var thumbnail = image[0];
+            var w = image[2].split("x")[0];
+            var h = image[2].split("x")[1];
+            var title = image[1];
+            items.push({
+              src: src,
+              thumbnail: thumbnail,
+              w: w,
+              h: h,
+              title: title
+            });
+          });
+          this.setState({ project: data[0], items: items });
+        } else {
+          this.props.history.replace("/projects/all");
+        }
+      });
   }
 
   getThumbnailContent = item => {
@@ -73,7 +117,8 @@ class Project extends Component {
   getCommits = () => {
     if (
       this.state.project._githubRepo !== "#" &&
-      this.state.project._githubRepo !== ""
+      this.state.project._githubRepo !== "" &&
+      !this.state.project._private
     ) {
       return (
         <React.Fragment>
@@ -121,10 +166,8 @@ class Project extends Component {
         </div>
         <div style={projectContent}>
           <h1 style={projectContentH1Style}>
-            <GithubLink
-              name={this.state.project._name}
-              link={this.state.project._githubRepo}
-            />
+            <span className="testclass">{this.state.project._name}</span>
+            <GithubLink link={this.state.project._githubRepo} />
           </h1>
           <div style={this.getStyle()} className="descGitStyle">
             <div style={projectDescription}>
@@ -180,17 +223,19 @@ const githubStyle = {
 };
 
 const GithubLink = props => {
-  var name = props.name;
   var link = props.link;
   if (link !== "#") {
     return (
-      // eslint-disable-next-line react/jsx-no-target-blank
-      <a href={link} target="_blank">
-        {name}
+      <a
+        href={link}
+        target="_blank"
+        className="btn btn-outline-primary githubLinkBtn"
+      >
+        <FontAwesomeIcon icon={faGithub} /> View on GitHub
       </a>
     );
   } else {
-    return <span>{name}</span>;
+    return <span />;
   }
 };
 

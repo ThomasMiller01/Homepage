@@ -1,71 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Terminal } from "xterm";
-import SSH from "react-native-ssh";
 
 class PrivateSettingsHome extends Component {
-  state = {
-    terminal: null,
-    config: {
-      user: "phase7",
-      host: "chiron.uberspace.de",
-      password: "a5MVsu693"
-    }
-  };
-
-  executeSSH2Command(command) {
-    console.log(command);
-    SSH.execute(this.state.config, command).then(
-      result => console.log(result),
-      error => console.log("Error:", error)
-    );
-  }
-
-  runCommand(cmd) {
-    this.executeSSH2Command(cmd);
-    this.displayData(cmd);
-  }
-
-  displayData(data) {
-    let term = this.state.terminal;
-    term.write(data);
-    term.prompt();
-  }
-
-  setupXTermTerminal() {
-    let terminal = new Terminal();
-    terminal.open(document.getElementById("terminal"));
-    terminal.prompt = () => {
-      terminal.write("\r\n$ ");
-    };
-    terminal.writeln("Welcome to xterm.js");
-    terminal.prompt();
-    var tmpData = "";
-    terminal.on("key", (key, ev) => {
-      const printable =
-        !ev.altKey && !ev.altGraphKey && !ev.ctrlKey && !ev.metaKey;
-
-      if (ev.keyCode === 13) {
-        terminal.prompt();
-        this.runCommand(tmpData);
-        tmpData = "";
-      } else if (ev.keyCode === 8) {
-        if (terminal._core.buffer.x > 2) {
-          tmpData = tmpData.slice(0, tmpData.length - 1);
-          terminal.write("\b \b");
-        }
-      } else if (printable) {
-        tmpData += key;
-        terminal.write(key);
-      }
-    });
-    this.setState({ terminal });
-  }
-
-  componentDidMount() {
-    // this.setupXTermTerminal();
-  }
-
   render() {
     return (
       <div style={settingsStyle}>
@@ -82,7 +18,7 @@ class PrivateSettingsHome extends Component {
           <a
             className="btn btn-outline-primary"
             style={settingsBtnStyle}
-            href="https://mysql.uberspace.de/phpmyadmin/"
+            href="https://millerinfo.de/phpmyadmin/"
             role="button"
             target="_blank"
             rel="noopener noreferrer"
@@ -109,11 +45,6 @@ class PrivateSettingsHome extends Component {
           >
             ButterCms
           </a>
-          <div style={terminalsStyle}>
-            <div style={xtermTerminalStyle}>
-              <div id="terminal" />
-            </div>
-          </div>
         </center>
       </div>
     );
@@ -131,10 +62,6 @@ const settingsStyle = {
   backgroundColor: "rgb(230, 230, 230)",
   padding: "10px"
 };
-
-const xtermTerminalStyle = { width: "40%" };
-
-const terminalsStyle = { width: "100%", padding: "10px" };
 
 const borderBottomStyle = {
   width: "95%",

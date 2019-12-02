@@ -50,7 +50,7 @@ class PrivateSettingsChangeProjectContent extends Component {
     } else {
       this.setState({ isMobile: false });
     }
-    this.relaodProjects();
+    this.reloadProjects();
   }
 
   projectChanged = event => {
@@ -124,11 +124,11 @@ class PrivateSettingsChangeProjectContent extends Component {
       method: "POST",
       body: JSON.stringify(currentProject)
     };
-    fetch("https://thomasmiller.tk/dotnet/api/Projects/" + method, {
+    fetch("https://millerinfo.de/services/homepage/api/Projects/" + method, {
       headers,
       ...options
     }).then(() => {
-      this.relaodProjects();
+      this.reloadProjects();
       this.setState({ projectStatus: "Success" });
       setTimeout(() => {
         this.setState({ projectStatus: "None" });
@@ -136,13 +136,13 @@ class PrivateSettingsChangeProjectContent extends Component {
     });
   };
 
-  relaodProjects() {
+  reloadProjects() {
     const firstProject = this.state.allProjects[0];
     const headers = {
       Authorization: "Bearer " + this.Auth.getToken(),
       "Content-Type": "application/json"
     };
-    fetch("https://thomasmiller.tk/dotnet/api/Projects/getAll", {
+    fetch("https://millerinfo.de/services/homepage/api/Projects/getAll", {
       headers
     })
       .then(results => {
@@ -163,14 +163,14 @@ class PrivateSettingsChangeProjectContent extends Component {
       };
       const options = { method: "DELETE" };
       fetch(
-        "https://thomasmiller.tk/dotnet/api/Projects/delete/" +
+        "https://millerinfo.de/services/homepage/api/Projects/delete/" +
           currentProject["_id"],
         {
           headers,
           ...options
         }
       ).then(() => {
-        this.relaodProjects();
+        this.reloadProjects();
         this.setState({ projectStatus: "Success" });
         setTimeout(() => {
           this.setState({ projectStatus: "None" });

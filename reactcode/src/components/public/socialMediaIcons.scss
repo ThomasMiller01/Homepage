@@ -3,12 +3,15 @@ $brand-colors: (
   email: rgb(77, 77, 77),
   stackoverflow: #f48024,
   discord: #26262b,
-  thingiverse: #248bfb
+  thingiverse: #248bfb,
+  twitter: #1da1f2,
+  docker: #0997e5,
+  github: #24292e
 );
 
 .post-social {
-  width: 90%;
-  margin: 10px auto 10px auto;
+  width: 100%;
+  margin: 0 auto;
   .button {
     cursor: pointer;
     margin: 0.5rem 0.25rem;
@@ -52,3 +55,22 @@ $brand-colors: (
 }
 
 /* Social Media Share End */
+
+.githubLinkBtn {
+  margin: 20px;
+  color: rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  border-radius: 0.3em;
+  font-family: avenir, helvetica, arial, sans-serif;
+  letter-spacing: 0.05em;
+  padding: 5px 11px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-color: #fff;
+}
