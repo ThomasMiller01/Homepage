@@ -1,5 +1,5 @@
 import Butter from "buttercms";
 
-const butter = Butter("808c03280b61815a5bc67f34cc25acc78645a68f");
+const butter = Butter("0386f3f1d5fd977e14eac2cc77d4f0fb5bc0095c");
 
 export default butter;
