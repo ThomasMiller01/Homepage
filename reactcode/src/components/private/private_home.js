@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
-import ColumnChart from "./charts/columnChart";
-import PieChart from "./charts/pieChart";
-import HighPerformanceChart from "./charts/highPerformanceChart";
-import ColumnLineAreaChart from "./charts/columnLineAreaChart";
+import DynamicLiveLineChart from "./charts/dynamicLiveLineChart";
 
 import AuthService from "../authService";
 
@@ -12,6 +9,65 @@ class PrivateHome extends Component {
     super();
     this.Auth = new AuthService();
   }
+
+  componentDidMount() {
+    this.getServices();
+  }
+
+  state = {
+    services: []
+  };
+
+  setService = service => {
+    let currentServices = this.state.services;
+    currentServices.push({
+      id: service.id,
+      name: service.name,
+      state: service.state,
+      chart: service.chart
+    });
+    this.setState({ services: currentServices });
+  };
+
+  getServices = () => {
+    let services = [
+      {
+        id: 0,
+        name: "TestService1",
+        state: "running"
+      },
+      {
+        id: 1,
+        name: "TestService2",
+        state: "offline"
+      },
+      {
+        id: 2,
+        name: "TestService3",
+        state: "running"
+      },
+      {
+        id: 3,
+        name: "TestService4",
+        state: "running"
+      }
+    ];
+
+    services.forEach(service => {
+      this.setService({
+        id: service.id,
+        name: service.name,
+        state: service.state,
+        chart: new DynamicLiveLineChart(service.name)
+      });
+      setInterval(this.updateServiceChart.bind(null, service.id, null), 1000);
+    });
+  };
+
+  updateServiceChart = (service_id, data) => {
+    data = Math.round(5 + Math.random() * (-5 - 5));
+    this.state.services[service_id].chart.updateChart(data);
+  };
 
   handleLogout = () => {
     this.props.history.replace("/home");
@@ -34,52 +90,21 @@ class PrivateHome extends Component {
         </center>
         <div className="containerDashboard" style={containerDashboardStyle}>
           <div className="row">
-            <div className="col-md-6 col-sm-12">
-              <div className="card shadow mb-4">
-                <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold">Column Chart</h6>
-                </div>
-                <div className="card-body">
-                  <ColumnChart style={columnChartStyle} />
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-sm-12">
-              <div className="card shadow mb-4">
-                <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold">Pie Chart</h6>
-                </div>
-                <div className="card-body">
+            {this.state.services.map(service => (
+              <div className="col-md-6 col-sm-12" key={service.id}>
+                <div className="card shadow mb-4">
+                  <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 className="m-0 font-weight-bold">{service.name}</h6>
+                  </div>
                   <div className="card-body">
-                    <PieChart style={pieChartStyle} />
+                    <h3>State: {service.state}</h3>
+                    <div style={dynamicLiveLineChartStyle}>
+                      {service.chart.render()}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6 col-sm-12">
-              <div className="card shadow mb-4">
-                <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold">
-                    High Performance Chart
-                  </h6>
-                </div>
-                <div className="card-body">
-                  <HighPerformanceChart style={highPerformanceChartStyle} />
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-sm-12">
-              <div className="card shadow mb-4">
-                <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold">ColumnLineAreaChart</h6>
-                </div>
-                <div className="card-body">
-                  <ColumnLineAreaChart style={columnLineAreaChartStyle} />
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -108,27 +133,9 @@ const privateHomeStyle = {
   padding: "10px"
 };
 
-const columnChartStyle = {
-  height: "370px",
+const dynamicLiveLineChartStyle = {
+  margin: "10px",
   width: "100%"
-};
-
-const pieChartStyle = {
-  height: "370px",
-  width: "100%",
-  margin: "0 auto"
-};
-
-const highPerformanceChartStyle = {
-  height: "370px",
-  width: "100%",
-  margin: "0 auto"
-};
-
-const columnLineAreaChartStyle = {
-  height: "370px",
-  width: "100%",
-  margin: "0 auto"
 };
 
 export default PrivateHome;
