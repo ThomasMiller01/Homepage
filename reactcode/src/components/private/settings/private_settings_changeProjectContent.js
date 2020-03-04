@@ -9,6 +9,8 @@ class PrivateSettingsChangeProjectContent extends Component {
     super();
     this.Auth = new AuthService();
     this.Other = new Other();
+
+    this.Editor = new Editor();
   }
 
   state = {
@@ -63,6 +65,8 @@ class PrivateSettingsChangeProjectContent extends Component {
       }
     });
     this.setState({ currentProject: currentProject });
+
+    this.Editor.updateContent(currentProject._description);
   };
 
   fetch(url, options) {
@@ -259,10 +263,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                     name="_description"
                     onChange={this.handleContentChange}
                   />
-                  <div>
-                    test draft editor<br></br>
-                    <Editor />
-                  </div>
+                  <div>{this.Editor.render()}</div>
                   <h2 style={inputGroupH2Style}>Description Big</h2>
                   <textarea
                     className="form-control"
