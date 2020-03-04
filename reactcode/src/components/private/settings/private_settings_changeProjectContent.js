@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import AuthService from "../../authService";
 import Other from "../../other";
+import Editor from "../../editor/editor";
 
 class PrivateSettingsChangeProjectContent extends Component {
   constructor() {
@@ -258,6 +259,10 @@ class PrivateSettingsChangeProjectContent extends Component {
                     name="_description"
                     onChange={this.handleContentChange}
                   />
+                  <div>
+                    test draft editor<br></br>
+                    <Editor />
+                  </div>
                   <h2 style={inputGroupH2Style}>Description Big</h2>
                   <textarea
                     className="form-control"
@@ -348,22 +353,7 @@ class PrivateSettingsChangeProjectContent extends Component {
               </center>
               <div style={borderBottomStyle} />
               <GetProjectStatusMessage message={this.state.projectStatus} />
-              <button
-                type="submit"
-                className="btn btn-outline-primary"
-                style={changeProjectBtn}
-              >
-                Update
-              </button>
-              <button
-                type="button"
-                className="btn btn-outline-primary"
-                style={changeProjectBtn}
-                data-toggle="modal"
-                data-target="#deleteyousure"
-              >
-                Delete
-              </button>
+              --- here buttons ---
               <PreviewButton
                 isMobile={this.state.isMobile}
                 handlePreviewEvent={this.handlePreviewEvent}
@@ -416,6 +406,24 @@ class PrivateSettingsChangeProjectContent extends Component {
     );
   }
 }
+
+// --- buttons here ---
+// <button
+//   type="submit"
+//   className="btn btn-outline-primary"
+//   style={changeProjectBtn}
+// >
+//   Update
+// </button>
+// <button
+//   type="button"
+//   className="btn btn-outline-primary"
+//   style={changeProjectBtn}
+//   data-toggle="modal"
+//   data-target="#deleteyousure"
+// >
+//   Delete
+// </button>
 
 const PreviewButton = props => {
   if (props.isMobile) {
