@@ -14,6 +14,8 @@ import ImageBlock from "./image/imageBlock";
 import LinkBlock from "./link/linkBlock";
 import LinkSource from "./link/linkSource";
 
+import "./editor.scss";
+
 import "draft-js/dist/Draft.css";
 import "draftail/dist/draftail.css";
 
@@ -21,6 +23,8 @@ class Editor extends Component {
   constructor(props) {
     super(props);
     this.props = props;
+
+    this.size = ["100%", "300px"] ? !this.props.size : this.props.size;
 
     this.convertToRaw = convertToRaw;
 
@@ -48,7 +52,7 @@ class Editor extends Component {
         return null;
       },
       htmlToBlock: nodeName => {
-        if (nodeName === "hr" || nodeName === "img") {
+        if (nodeName === "hr" || nodeName === "img" || nodeName === "a") {
           // "atomic" blocks is how Draft.js structures block-level entities.
           return "atomic";
         }
@@ -60,7 +64,7 @@ class Editor extends Component {
     this.exporterConfig = {
       blockToHTML: block => {
         if (block.type === BLOCK_TYPE.BLOCKQUOTE) {
-          return <blockquote />;
+          return <blockquote className="blockquote" />;
         }
 
         // Discard atomic blocks, as they get converted based on their entity.
@@ -101,7 +105,6 @@ class Editor extends Component {
   }
 
   onChange = editorState => {
-    console.log("onChange");
     this.getEditorOutput(convertToRaw(editorState.getCurrentContent()));
     this.editorState = editorState;
   };
@@ -133,7 +136,12 @@ class Editor extends Component {
           { type: BLOCK_TYPE.HEADER_ONE },
           { type: BLOCK_TYPE.HEADER_TWO },
           { type: BLOCK_TYPE.HEADER_THREE },
-          { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
+          {
+            type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
+            icon: [
+              "M160 736H32a32 32 0 0 0-32 32v128a32 32 0 0 0 32 32h128a32 32 0 0 0 32-32v-128a32 32 0 0 0-32-32zm0-640H32A32 32 0 0 0 0 128v128a32 32 0 0 0 32 32h128a32 32 0 0 0 32-32V128a32 32 0 0 0-32-32zm0 320H32a32 32 0 0 0-32 32v128a32 32 0 0 0 32 32h128a32 32 0 0 0 32-32v-128a32 32 0 0 0-32-32zm832 352H352a32 32 0 0 0-32 32v64a32 32 0 0 0 32 32h640a32 32 0 0 0 32-32v-64a32 32 0 0 0-32-32zm0-640H352a32 32 0 0 0-32 32v64a32 32 0 0 0 32 32h640a32 32 0 0 0 32-32V160a32 32 0 0 0-32-32zm0 320H352a32 32 0 0 0-32 32v64a32 32 0 0 0 32 32h640a32 32 0 0 0 32-32v-64a32 32 0 0 0-32-32z"
+            ]
+          },
           { type: BLOCK_TYPE.CODE },
           { type: BLOCK_TYPE.BLOCKQUOTE }
         ]}
