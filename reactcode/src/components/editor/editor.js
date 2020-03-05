@@ -22,6 +22,10 @@ class Editor extends Component {
     super(props);
     this.props = props;
 
+    this.convertToRaw = convertToRaw;
+
+    this.getEditorOutput = this.props.getEditorOutput;
+
     this.importerConfig = {
       htmlToEntity: (nodeName, node, createEntity) => {
         // a tags will become LINK entities, marked as mutable, with only the URL as data.
@@ -65,6 +69,10 @@ class Editor extends Component {
           };
         }
 
+        if (block.type === BLOCK_TYPE.CODE) {
+          return <code />;
+        }
+
         return null;
       },
 
@@ -93,9 +101,8 @@ class Editor extends Component {
   }
 
   onChange = editorState => {
-    this.setState({
-      editorState: editorState
-    });
+    this.getEditorOutput(editorState);
+    this.setState({ editorState });
   };
 
   state = {
@@ -107,72 +114,60 @@ class Editor extends Component {
   };
 
   toHTML = raw => {
-    let converted = raw
-      ? convertToHTML(this.exporterConfig)(convertFromRaw(raw))
-      : "";
-    console.log(converted);
-    return converted;
+    return raw ? convertToHTML(this.exporterConfig)(convertFromRaw(raw)) : "";
   };
 
   render() {
     return (
-      <React.Fragment>
-        <div>
-          <button onClick={() => this.fromHtml("test123")}>Convert</button>
-        </div>
-        <DraftailEditor
-          editorState={this.state.editorState}
-          onChange={this.onChange}
-          stripPastedStyles={false}
-          enableHorizontalRule={{
-            description: "Horizontal rule"
-          }}
-          enableLineBreak={{
-            description: "Soft line break"
-          }}
-          showUndoControl={{
-            description: "Undo last change"
-          }}
-          showRedoControl={{
-            description: "Redo last change"
-          }}
-          blockTypes={[
-            { type: BLOCK_TYPE.HEADER_ONE },
-            { type: BLOCK_TYPE.HEADER_TWO },
-            { type: BLOCK_TYPE.HEADER_THREE },
-            { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
-            { type: BLOCK_TYPE.CODE },
-            { type: BLOCK_TYPE.BLOCKQUOTE }
-          ]}
-          inlineStyles={[
-            { type: INLINE_STYLE.BOLD },
-            { type: INLINE_STYLE.ITALIC },
-            { type: INLINE_STYLE.UNDERLINE }
-          ]}
-          entityTypes={[
-            {
-              type: ENTITY_TYPE.LINK,
-              description: "Link",
-              source: LinkSource,
-              block: LinkBlock,
-              attributes: ["url"],
-              whitelist: {
-                href: "^(?![#/])"
-              }
-            },
-            {
-              type: ENTITY_TYPE.IMAGE,
-              description: "Image",
-              source: ImageSource,
-              block: ImageBlock,
-              attributes: ["src", "alt"],
-              whitelist: {
-                src: "^(?!(data:|file:))"
-              }
+      <DraftailEditor
+        editorState={this.state.editorState}
+        onChange={this.onChange}
+        stripPastedStyles={false}
+        enableHorizontalRule={{
+          description: "Horizontal rule"
+        }}
+        showUndoControl={{
+          description: "Undo last change"
+        }}
+        showRedoControl={{
+          description: "Redo last change"
+        }}
+        blockTypes={[
+          { type: BLOCK_TYPE.HEADER_ONE },
+          { type: BLOCK_TYPE.HEADER_TWO },
+          { type: BLOCK_TYPE.HEADER_THREE },
+          { type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
+          { type: BLOCK_TYPE.CODE },
+          { type: BLOCK_TYPE.BLOCKQUOTE }
+        ]}
+        inlineStyles={[
+          { type: INLINE_STYLE.BOLD },
+          { type: INLINE_STYLE.ITALIC },
+          { type: INLINE_STYLE.UNDERLINE }
+        ]}
+        entityTypes={[
+          {
+            type: ENTITY_TYPE.LINK,
+            description: "Link",
+            source: LinkSource,
+            block: LinkBlock,
+            attributes: ["url"],
+            whitelist: {
+              href: "^(?![#/])"
             }
-          ]}
-        />
-      </React.Fragment>
+          },
+          {
+            type: ENTITY_TYPE.IMAGE,
+            description: "Image",
+            source: ImageSource,
+            block: ImageBlock,
+            attributes: ["src", "alt"],
+            whitelist: {
+              src: "^(?!(data:|file:))"
+            }
+          }
+        ]}
+      />
     );
   }
 }

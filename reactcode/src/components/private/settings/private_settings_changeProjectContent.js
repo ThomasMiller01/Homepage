@@ -10,7 +10,7 @@ class PrivateSettingsChangeProjectContent extends Component {
     this.Auth = new AuthService();
     this.Other = new Other();
 
-    this.Editor = new Editor();
+    this.Editor = new Editor({ getEditorOutput: this.getEditorOutput });
   }
 
   state = {
@@ -45,6 +45,16 @@ class PrivateSettingsChangeProjectContent extends Component {
     projectStatus: "None",
     isMobile: false,
     renderPreview: false
+  };
+
+  getEditorOutput = editorState => {
+    let html_content = this.Editor.toHTML(
+      this.Editor.convertToRaw(editorState.getCurrentContent())
+    );
+
+    let currentProject = this.state.currentProject;
+    currentProject._description = html_content;
+    this.setState({ currentProject });
   };
 
   componentWillMount() {
@@ -255,15 +265,9 @@ class PrivateSettingsChangeProjectContent extends Component {
                     onChange={this.handleContentChange}
                   />
                   <h2 style={inputGroupH2Style}>Description</h2>
-                  <textarea
-                    className="form-control"
-                    placeholder="Description"
-                    style={textDescriptionStyle}
-                    value={this.state.currentProject._description}
-                    name="_description"
-                    onChange={this.handleContentChange}
-                  />
-                  <div>{this.Editor.render()}</div>
+                  <div name="_description" style={textDescriptionStyle}>
+                    {this.Editor.render()}
+                  </div>
                   <h2 style={inputGroupH2Style}>Description Big</h2>
                   <textarea
                     className="form-control"
@@ -521,7 +525,7 @@ const textImagesStyle = { minHeight: "150px", width: "100%" };
 
 const textDescriptionBigStyle = { minHeight: "350px", width: "100%" };
 
-const textDescriptionStyle = { minHeight: "150px", width: "100%" };
+const textDescriptionStyle = { minHeight: "200px", width: "100%" };
 
 const inputGroupH2Style = {
   width: "100%",
