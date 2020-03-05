@@ -5,14 +5,14 @@ class LinkSource extends Component {
   componentDidMount() {
     const { editorState, entityType, onComplete } = this.props;
 
-    const href = window.prompt("Link URL");
+    const url = window.prompt("Link URL");
 
-    if (href) {
+    if (url) {
       const content = editorState.getCurrentContent();
       const contentWithEntity = content.createEntity(
         entityType.type,
         "IMMUTABLE",
-        { href }
+        { url }
       );
       const entityKey = contentWithEntity.getLastCreatedEntityKey();
       const nextState = AtomicBlockUtils.insertAtomicBlock(

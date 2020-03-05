@@ -5,9 +5,9 @@ class LinkBlock extends Component {
   render() {
     const { blockProps } = this.props;
     const { entity } = blockProps;
-    const { href } = entity.getData();
+    const { url } = entity.getData();
 
-    return <a href={href}>{href}</a>;
+    return <a href={url}>{url}</a>;
   }
 }
 

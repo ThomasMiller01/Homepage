@@ -10,7 +10,12 @@ class PrivateSettingsChangeProjectContent extends Component {
     this.Auth = new AuthService();
     this.Other = new Other();
 
-    this.Editor = new Editor({ getEditorOutput: this.getEditorOutput });
+    this.EditorDescription = new Editor({
+      getEditorOutput: this.getEditorDescriptionOutput
+    });
+    this.EditorDescriptionBig = new Editor({
+      getEditorOutput: this.getEditorDescriptionBigOutput
+    });
   }
 
   state = {
@@ -47,13 +52,17 @@ class PrivateSettingsChangeProjectContent extends Component {
     renderPreview: false
   };
 
-  getEditorOutput = editorState => {
-    let html_content = this.Editor.toHTML(
-      this.Editor.convertToRaw(editorState.getCurrentContent())
-    );
-
+  getEditorDescriptionOutput = content => {
+    let html_content = this.EditorDescription.toHTML(content);
     let currentProject = this.state.currentProject;
     currentProject._description = html_content;
+    this.setState({ currentProject });
+  };
+
+  getEditorDescriptionBigOutput = content => {
+    let html_content = this.EditorDescriptionBig.toHTML(content);
+    let currentProject = this.state.currentProject;
+    currentProject._description_big = html_content;
     this.setState({ currentProject });
   };
 
@@ -76,7 +85,8 @@ class PrivateSettingsChangeProjectContent extends Component {
     });
     this.setState({ currentProject: currentProject });
 
-    this.Editor.updateContent(currentProject._description);
+    this.EditorDescription.updateContent(currentProject._description);
+    this.EditorDescriptionBig.updateContent(currentProject._description_big);
   };
 
   fetch(url, options) {
@@ -265,18 +275,13 @@ class PrivateSettingsChangeProjectContent extends Component {
                     onChange={this.handleContentChange}
                   />
                   <h2 style={inputGroupH2Style}>Description</h2>
-                  <div name="_description" style={textDescriptionStyle}>
-                    {this.Editor.render()}
+                  <div style={textDescriptionStyle}>
+                    {this.EditorDescription.render()}
                   </div>
                   <h2 style={inputGroupH2Style}>Description Big</h2>
-                  <textarea
-                    className="form-control"
-                    placeholder="Description Big"
-                    style={textDescriptionBigStyle}
-                    value={this.state.currentProject._description_big}
-                    name="_description_big"
-                    onChange={this.handleContentChange}
-                  />
+                  <div style={textDescriptionBigStyle}>
+                    {this.EditorDescriptionBig.render()}
+                  </div>
                   <h2 style={inputGroupH2Style}>Thumbnail</h2>
                   <input
                     type="text"
@@ -523,7 +528,7 @@ const checkboxStyle = { width: "100%", textAlign: "left" };
 
 const textImagesStyle = { minHeight: "150px", width: "100%" };
 
-const textDescriptionBigStyle = { minHeight: "350px", width: "100%" };
+const textDescriptionBigStyle = { minHeight: "400px", width: "100%" };
 
 const textDescriptionStyle = { minHeight: "200px", width: "100%" };
 
