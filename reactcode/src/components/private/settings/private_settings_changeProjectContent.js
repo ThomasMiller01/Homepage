@@ -90,7 +90,6 @@ class PrivateSettingsChangeProjectContent extends Component {
   };
 
   fetch(url, options) {
-    // performs api calls sending the required authentication headers
     const headers = {
       Authorization: "Bearer " + this.Auth.getToken(),
       Accept: "application/json",
@@ -363,7 +362,22 @@ class PrivateSettingsChangeProjectContent extends Component {
               </center>
               <div style={borderBottomStyle} />
               <GetProjectStatusMessage message={this.state.projectStatus} />
-              --- here buttons ---
+              <button
+                type="submit"
+                className="btn btn-outline-primary"
+                style={changeProjectBtn}
+              >
+                Update
+              </button>
+              <button
+                type="button"
+                className="btn btn-outline-primary"
+                style={changeProjectBtn}
+                data-toggle="modal"
+                data-target="#deleteyousure"
+              >
+                Delete
+              </button>
               <PreviewButton
                 isMobile={this.state.isMobile}
                 handlePreviewEvent={this.handlePreviewEvent}
@@ -417,24 +431,6 @@ class PrivateSettingsChangeProjectContent extends Component {
   }
 }
 
-// --- buttons here ---
-// <button
-//   type="submit"
-//   className="btn btn-outline-primary"
-//   style={changeProjectBtn}
-// >
-//   Update
-// </button>
-// <button
-//   type="button"
-//   className="btn btn-outline-primary"
-//   style={changeProjectBtn}
-//   data-toggle="modal"
-//   data-target="#deleteyousure"
-// >
-//   Delete
-// </button>
-
 const PreviewButton = props => {
   if (props.isMobile) {
     return (
@@ -457,6 +453,24 @@ const Preview = props => {
     return (
       <div className="input-group input_both" style={inputRenderStyle}>
         <h1 style={inputGroupH1Style}>Preview</h1>
+        <span style={{ visibility: "hidden" }}>
+          <h2 style={inputGroupH2Style}>Name</h2>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Name"
+            style={inputGroupInputStyle}
+            name="_name"
+          />
+          <h2 style={inputGroupH2Style}>GitHub Repo</h2>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="GitHub Repo"
+            style={inputGroupInputStyle}
+            name="_githubRepo"
+          />
+        </span>
         <h2 style={inputGroupH2Style}>Description</h2>
         <div
           style={rendereTextboxStyle}
@@ -505,7 +519,7 @@ const rendereTextboxBigStyle = {
   backgroundColor: "white",
   padding: "10px",
   textAlign: "left",
-  minHeight: "350px"
+  minHeight: "120px"
 };
 
 const rendereTextboxStyle = {
@@ -513,7 +527,7 @@ const rendereTextboxStyle = {
   backgroundColor: "white",
   padding: "10px",
   textAlign: "left",
-  minHeight: "150px"
+  minHeight: "120px"
 };
 
 const inputRenderStyle = {
@@ -528,9 +542,9 @@ const checkboxStyle = { width: "100%", textAlign: "left" };
 
 const textImagesStyle = { minHeight: "150px", width: "100%" };
 
-const textDescriptionBigStyle = { minHeight: "400px", width: "100%" };
+const textDescriptionBigStyle = { width: "100%" };
 
-const textDescriptionStyle = { minHeight: "200px", width: "100%" };
+const textDescriptionStyle = { width: "100%" };
 
 const inputGroupH2Style = {
   width: "100%",
