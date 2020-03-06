@@ -2,12 +2,20 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import AuthService from "../../authService";
 import Other from "../../other";
+import Editor from "../../editor/editor";
 
 class PrivateSettingsChangeProjectContent extends Component {
   constructor() {
     super();
     this.Auth = new AuthService();
     this.Other = new Other();
+
+    this.EditorDescription = new Editor({
+      getEditorOutput: this.getEditorDescriptionOutput
+    });
+    this.EditorDescriptionBig = new Editor({
+      getEditorOutput: this.getEditorDescriptionBigOutput
+    });
   }
 
   state = {
@@ -44,6 +52,20 @@ class PrivateSettingsChangeProjectContent extends Component {
     renderPreview: false
   };
 
+  getEditorDescriptionOutput = content => {
+    let html_content = this.EditorDescription.toHTML(content);
+    let currentProject = this.state.currentProject;
+    currentProject._description = html_content;
+    this.setState({ currentProject });
+  };
+
+  getEditorDescriptionBigOutput = content => {
+    let html_content = this.EditorDescriptionBig.toHTML(content);
+    let currentProject = this.state.currentProject;
+    currentProject._description_big = html_content;
+    this.setState({ currentProject });
+  };
+
   componentWillMount() {
     if (this.Other.isMobile) {
       this.setState({ isMobile: true });
@@ -62,10 +84,12 @@ class PrivateSettingsChangeProjectContent extends Component {
       }
     });
     this.setState({ currentProject: currentProject });
+
+    this.EditorDescription.updateContent(currentProject._description);
+    this.EditorDescriptionBig.updateContent(currentProject._description_big);
   };
 
   fetch(url, options) {
-    // performs api calls sending the required authentication headers
     const headers = {
       Authorization: "Bearer " + this.Auth.getToken(),
       Accept: "application/json",
@@ -250,23 +274,13 @@ class PrivateSettingsChangeProjectContent extends Component {
                     onChange={this.handleContentChange}
                   />
                   <h2 style={inputGroupH2Style}>Description</h2>
-                  <textarea
-                    className="form-control"
-                    placeholder="Description"
-                    style={textDescriptionStyle}
-                    value={this.state.currentProject._description}
-                    name="_description"
-                    onChange={this.handleContentChange}
-                  />
+                  <div style={textDescriptionStyle}>
+                    {this.EditorDescription.render()}
+                  </div>
                   <h2 style={inputGroupH2Style}>Description Big</h2>
-                  <textarea
-                    className="form-control"
-                    placeholder="Description Big"
-                    style={textDescriptionBigStyle}
-                    value={this.state.currentProject._description_big}
-                    name="_description_big"
-                    onChange={this.handleContentChange}
-                  />
+                  <div style={textDescriptionBigStyle}>
+                    {this.EditorDescriptionBig.render()}
+                  </div>
                   <h2 style={inputGroupH2Style}>Thumbnail</h2>
                   <input
                     type="text"
@@ -439,6 +453,24 @@ const Preview = props => {
     return (
       <div className="input-group input_both" style={inputRenderStyle}>
         <h1 style={inputGroupH1Style}>Preview</h1>
+        <span style={{ visibility: "hidden" }}>
+          <h2 style={inputGroupH2Style}>Name</h2>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Name"
+            style={inputGroupInputStyle}
+            name="_name"
+          />
+          <h2 style={inputGroupH2Style}>GitHub Repo</h2>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="GitHub Repo"
+            style={inputGroupInputStyle}
+            name="_githubRepo"
+          />
+        </span>
         <h2 style={inputGroupH2Style}>Description</h2>
         <div
           style={rendereTextboxStyle}
@@ -487,7 +519,7 @@ const rendereTextboxBigStyle = {
   backgroundColor: "white",
   padding: "10px",
   textAlign: "left",
-  minHeight: "350px"
+  minHeight: "120px"
 };
 
 const rendereTextboxStyle = {
@@ -495,7 +527,7 @@ const rendereTextboxStyle = {
   backgroundColor: "white",
   padding: "10px",
   textAlign: "left",
-  minHeight: "150px"
+  minHeight: "120px"
 };
 
 const inputRenderStyle = {
@@ -510,9 +542,9 @@ const checkboxStyle = { width: "100%", textAlign: "left" };
 
 const textImagesStyle = { minHeight: "150px", width: "100%" };
 
-const textDescriptionBigStyle = { minHeight: "350px", width: "100%" };
+const textDescriptionBigStyle = { width: "100%" };
 
-const textDescriptionStyle = { minHeight: "150px", width: "100%" };
+const textDescriptionStyle = { width: "100%" };
 
 const inputGroupH2Style = {
   width: "100%",
