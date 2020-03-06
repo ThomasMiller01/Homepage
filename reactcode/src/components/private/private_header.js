@@ -30,6 +30,11 @@ const NavBar = () => {
             Settings<span className="sr-only">(current)</span>
           </NavLink>
         </li>
+        <li className="nav-item" style={liStyle}>
+          <NavLink to="/private/timelogger" className="nav-link">
+            TimeLogger<span className="sr-only">(current)</span>
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
