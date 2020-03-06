@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import AuthService from "../../authService";
 import Other from "../../other";
-import Editor from "../../editor/editor";
+import MyEditor from "../../editor/editor";
 
 class PrivateSettingsChangeProjectContent extends Component {
   constructor() {
@@ -10,10 +10,10 @@ class PrivateSettingsChangeProjectContent extends Component {
     this.Auth = new AuthService();
     this.Other = new Other();
 
-    this.EditorDescription = new Editor({
+    this.EditorDescription = new MyEditor({
       getEditorOutput: this.getEditorDescriptionOutput
     });
-    this.EditorDescriptionBig = new Editor({
+    this.EditorDescriptionBig = new MyEditor({
       getEditorOutput: this.getEditorDescriptionBigOutput
     });
   }
