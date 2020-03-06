@@ -19,7 +19,7 @@ import "./editor.scss";
 import "draft-js/dist/Draft.css";
 import "draftail/dist/draftail.css";
 
-class Editor extends Component {
+class MyEditor extends Component {
   constructor(props) {
     super(props);
     this.props = props;
@@ -186,4 +186,4 @@ class Editor extends Component {
   }
 }
 
-export default Editor;
+export default MyEditor;
