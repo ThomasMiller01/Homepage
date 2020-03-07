@@ -123,19 +123,16 @@ class MyEditor extends Component {
         editorState={this.editorState}
         onChange={this.onChange}
         enableHorizontalRule={true}
-        enableLineBreak={false}
+        enableLineBreak={true}
         spellCheck={true}
-        stripPastedStyles={false}
-        showUndoControl={{
-          description: "Undo last change"
-        }}
-        showRedoControl={{
-          description: "Redo last change"
-        }}
+        stripPastedStyles={true}
+        showUndoControl={true}
+        showRedoControl={true}
+        maxListNesting={10}
         blockTypes={[
-          { type: BLOCK_TYPE.HEADER_ONE },
-          { type: BLOCK_TYPE.HEADER_TWO },
           { type: BLOCK_TYPE.HEADER_THREE },
+          { type: BLOCK_TYPE.HEADER_FOUR },
+          { type: BLOCK_TYPE.HEADER_FIVE },
           {
             type: BLOCK_TYPE.UNORDERED_LIST_ITEM,
             icon: [
