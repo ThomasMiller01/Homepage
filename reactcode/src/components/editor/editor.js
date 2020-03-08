@@ -9,10 +9,10 @@ import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import { convertFromHTML, convertToHTML } from "draft-convert";
 
 import ImageSource from "./image/imageSource";
-import ImageBlock from "./image/imageBlock";
+import Image from "./image/image";
 
-import LinkBlock from "./link/linkBlock";
 import LinkSource from "./link/linkSource";
+import Link from "./link/link";
 
 import "./editor.scss";
 
@@ -84,7 +84,11 @@ class MyEditor extends Component {
 
       entityToHTML: (entity, originalText) => {
         if (entity.type === ENTITY_TYPE.LINK) {
-          return <a href={entity.data.url}>{entity.data.url}</a>;
+          return (
+            <a href={entity.data.url}>
+              {entity.data.url.replace(/(^\w+:|^)\/\//, "").split("/")[0]}
+            </a>
+          );
         }
 
         if (entity.type === ENTITY_TYPE.IMAGE) {
@@ -156,7 +160,7 @@ class MyEditor extends Component {
               "M256 1012c-65.176 0-126.45-25.38-172.534-71.464-95.134-95.136-95.134-249.934 0-345.070l87.764-87.764c20.308-20.306 53.234-20.306 73.54 0 20.308 20.306 20.308 53.232 0 73.54l-87.764 87.764c-54.586 54.586-54.586 143.406 0 197.992 26.44 26.44 61.598 41.002 98.994 41.002s72.552-14.562 98.998-41.006l192-191.998c54.584-54.586 54.584-143.406 0-197.992-20.308-20.308-20.306-53.232 0-73.54 20.306-20.306 53.232-20.306 73.54 0.002 95.132 95.134 95.132 249.932 0.002 345.068l-192.002 192c-46.090 46.088-107.364 71.466-172.538 71.466z"
             ],
             source: LinkSource,
-            block: LinkBlock,
+            decorator: Link,
             attributes: ["url"],
             whitelist: {
               href: "^(?![#/])"
@@ -171,7 +175,7 @@ class MyEditor extends Component {
               "M896 832h-768v-128l224-384 256 320h64l224-192z"
             ],
             source: ImageSource,
-            block: ImageBlock,
+            decorator: Image,
             attributes: ["src", "alt"],
             whitelist: {
               src: "^(?!(data:|file:))"

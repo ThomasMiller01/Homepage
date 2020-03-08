@@ -18,7 +18,7 @@ class LinkSource extends Component {
       const nextState = AtomicBlockUtils.insertAtomicBlock(
         editorState,
         entityKey,
-        " "
+        "-"
       );
 
       onComplete(nextState);

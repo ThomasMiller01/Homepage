@@ -10,6 +10,7 @@ import Header from "../public/header";
 import PrivateHeader from "./private_header";
 import Footer from "../public/footer";
 import ProtectedRoute from "../ProtectedRoute";
+import PrivateEditorTest from "./private_editor_test";
 
 const Router = ({ history }) => {
   return (
@@ -18,6 +19,10 @@ const Router = ({ history }) => {
       <ProtectedRoute path="/private/home" component={PrivateHome} />
       <ProtectedRoute path="/private/projects" component={PrivateProjects} />
       <ProtectedRoute path="/private/settings" component={PrivateSettings} />
+      <ProtectedRoute
+        path="/private/editortest"
+        component={PrivateEditorTest}
+      />
       <ProtectedRoute
         path="/private/timelogger"
         component={PrivateTimeLogger}
