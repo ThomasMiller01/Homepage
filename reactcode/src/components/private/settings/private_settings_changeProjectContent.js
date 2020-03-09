@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import AuthService from "../../authService";
 import Other from "../../other";
-import MyEditor from "../../editor/editor";
+import TinyEditor from "../../editor/tiny_editor";
 
 class PrivateSettingsChangeProjectContent extends Component {
   constructor() {
@@ -10,11 +10,17 @@ class PrivateSettingsChangeProjectContent extends Component {
     this.Auth = new AuthService();
     this.Other = new Other();
 
-    this.EditorDescription = new MyEditor({
-      getEditorOutput: this.getEditorDescriptionOutput
+    // this.EditorDescription = new MyEditor({
+    //   getEditorOutput: this.getEditorDescriptionOutput
+    // });
+    // this.EditorDescriptionBig = new MyEditor({
+    //   getEditorOutput: this.getEditorDescriptionBigOutput
+    // });
+    this.EditorDescription = new TinyEditor({
+      handleContentChange: this.getEditorDescriptionOutput
     });
-    this.EditorDescriptionBig = new MyEditor({
-      getEditorOutput: this.getEditorDescriptionBigOutput
+    this.EditorDescriptionBig = new TinyEditor({
+      handleContentChange: this.getEditorDescriptionBigOutput
     });
   }
 
@@ -53,16 +59,14 @@ class PrivateSettingsChangeProjectContent extends Component {
   };
 
   getEditorDescriptionOutput = content => {
-    let html_content = this.EditorDescription.toHTML(content);
     let currentProject = this.state.currentProject;
-    currentProject._description = html_content;
+    currentProject._description = content;
     this.setState({ currentProject });
   };
 
   getEditorDescriptionBigOutput = content => {
-    let html_content = this.EditorDescriptionBig.toHTML(content);
     let currentProject = this.state.currentProject;
-    currentProject._description_big = html_content;
+    currentProject._description_big = content;
     this.setState({ currentProject });
   };
 
