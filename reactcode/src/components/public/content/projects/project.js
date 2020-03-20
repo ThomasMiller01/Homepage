@@ -146,9 +146,8 @@ class Project extends Component {
     const projectHeaderStyle = {
       backgroundImage: "url(" + this.state.project._headerImg + ")",
       backgroundRepeat: "no-repeat",
-      backgroundSize: "auto 100%",
-      textAlign: "center",
-      backgroundPosition: "center"
+      backgroundSize: "100% auto",
+      textAlign: "center"
     };
     return (
       <div style={projectContainerStyle}>
