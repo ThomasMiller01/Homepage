@@ -254,12 +254,6 @@ code {
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  .projectHeader {
-    background-repeat: no-repeat !important;
-    background-size: 100% !important;
-    text-align: center !important;
-  }
-
   .homeNameHeader {
     width: 180px !important;
   }

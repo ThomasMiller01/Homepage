@@ -16,7 +16,7 @@ class TinyEditor extends Component {
         "searchreplace table template visualblocks wordcount"
       ],
       toolbar:
-        "insertfile a11ycheck undo redo | bold italic | forecolor backcolor | codesample | alignleft aligncenter alignright alignjustify | bullist numlist | link image tinydrive"
+        "undo redo | bold italic | forecolor backcolor | codesample | alignleft aligncenter alignright alignjustify | bullist numlist | link image"
     };
 
     this.init = props.init ? props.init : init_default;

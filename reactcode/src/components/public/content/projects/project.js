@@ -147,11 +147,12 @@ class Project extends Component {
       backgroundImage: "url(" + this.state.project._headerImg + ")",
       backgroundRepeat: "no-repeat",
       backgroundSize: "auto 100%",
-      textAlign: "center"
+      textAlign: "center",
+      backgroundPosition: "center"
     };
     return (
       <div style={projectContainerStyle}>
-        <div style={projectHeaderStyle} className="projectHeader">
+        <div style={projectHeaderStyle}>
           <table style={tableStyle}>
             <tbody>
               <tr>
