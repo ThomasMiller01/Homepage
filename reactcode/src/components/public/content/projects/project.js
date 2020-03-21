@@ -68,7 +68,6 @@ class Project extends Component {
         return results.json();
       })
       .then(data => {
-        console.log(data);
         if (data[0] != null) {
           var items = [];
           data[0]._images.forEach(image => {
