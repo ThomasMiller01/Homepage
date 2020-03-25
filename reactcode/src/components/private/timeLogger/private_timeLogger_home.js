@@ -6,7 +6,7 @@ class PrivateTimeLoggerHome extends Component {
   };
 
   componentDidMount = () => {
-    fetch("https://millerinfo.de/services/timelogger/api/getData")
+    fetch("https://thomasmiller.info/services/timelogger/api/getData")
       .then(results => {
         return results.text();
       })

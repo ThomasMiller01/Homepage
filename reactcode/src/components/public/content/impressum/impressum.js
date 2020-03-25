@@ -24,7 +24,7 @@ const Impressum = () => {
           <p>
             <strong>Kontakt:</strong> <br />
             E-Mail:{" "}
-            <a href="mailto:thomas@millerinfo.de">thomas@millerinfo.de</a>
+            <a href="mailto:info@thomasmiller.info">info@thomasmiller.info</a>
             <br />
           </p>
           <p>

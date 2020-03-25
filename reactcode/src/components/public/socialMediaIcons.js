@@ -18,13 +18,13 @@ class SocialMediaIcons extends Component {
       <React.Fragment>
         <div className="post-social">
           <a
-            href="mailto:thomas@millerinfo.de"
+            href="mailto:info@thomasmiller.info"
             className="button is-outlined is-rounded email"
           >
             <span className="icon">
               <FontAwesomeIcon icon={faEnvelope} style={iconStyle} />
             </span>
-            <span className="text">thomas@millerinfo.de</span>
+            <span className="text">info@thomasmiller.info</span>
           </a>
           <a
             href="https://www.xing.com/profile/Thomas_Miller108"

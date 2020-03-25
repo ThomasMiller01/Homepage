@@ -143,10 +143,13 @@ class PrivateSettingsChangeProjectContent extends Component {
       method: "POST",
       body: JSON.stringify(currentProject)
     };
-    fetch("https://millerinfo.de/services/homepage/api/Projects/" + method, {
-      headers,
-      ...options
-    }).then(() => {
+    fetch(
+      "https://thomasmiller.info/services/homepage/api/Projects/" + method,
+      {
+        headers,
+        ...options
+      }
+    ).then(() => {
       this.reloadProjects();
       this.setState({ projectStatus: "Success" });
       setTimeout(() => {
@@ -161,7 +164,7 @@ class PrivateSettingsChangeProjectContent extends Component {
       Authorization: "Bearer " + this.Auth.getToken(),
       "Content-Type": "application/json"
     };
-    fetch("https://millerinfo.de/services/homepage/api/Projects/getAll", {
+    fetch("https://thomasmiller.info/services/homepage/api/Projects/getAll", {
       headers
     })
       .then(results => {
@@ -182,7 +185,7 @@ class PrivateSettingsChangeProjectContent extends Component {
       };
       const options = { method: "DELETE" };
       fetch(
-        "https://millerinfo.de/services/homepage/api/Projects/delete/" +
+        "https://thomasmiller.info/services/homepage/api/Projects/delete/" +
           currentProject["_id"],
         {
           headers,

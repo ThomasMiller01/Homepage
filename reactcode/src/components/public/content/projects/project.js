@@ -59,7 +59,7 @@ class Project extends Component {
 
     let body = { _type: "name", _value: value };
     fetch(
-      "https://millerinfo.de/services/homepage/api/Projects/get" +
+      "https://thomasmiller.info/services/homepage/api/Projects/get" +
         publicprivate +
         "By",
       { headers: headers, method: "POST", body: JSON.stringify(body) }
