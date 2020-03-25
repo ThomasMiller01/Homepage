@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 import AuthService from "../../authService";
 import Other from "../../other";
 import TinyEditor from "../../editor/tiny_editor";
+import Prism from "prismjs";
+
+import PrivateChangeProjectPreview from "./changeProject/preview";
 
 class PrivateSettingsChangeProjectContent extends Component {
   constructor() {
@@ -10,12 +13,6 @@ class PrivateSettingsChangeProjectContent extends Component {
     this.Auth = new AuthService();
     this.Other = new Other();
 
-    // this.EditorDescription = new MyEditor({
-    //   getEditorOutput: this.getEditorDescriptionOutput
-    // });
-    // this.EditorDescriptionBig = new MyEditor({
-    //   getEditorOutput: this.getEditorDescriptionBigOutput
-    // });
     this.EditorDescription = new TinyEditor({
       handleContentChange: this.getEditorDescriptionOutput
     });
@@ -24,25 +21,14 @@ class PrivateSettingsChangeProjectContent extends Component {
     });
   }
 
-  state = {
-    allProjects: [
-      {
-        _id: -1,
-        _name: "[Clear]",
-        _githubRepo: "",
-        _description: "",
-        _description_big: "",
-        _thumbnail: "",
-        _headerImg: "",
-        _images: [],
-        _pubDate: "",
-        _favourite: false,
-        _private: false
-      }
-    ],
-    currentProject: {
+  componentDidMount() {
+    Prism.highlightAll();
+  }
+
+  getProjectTemplate = name => {
+    return {
       _id: -1,
-      _name: "",
+      _name: name,
       _githubRepo: "",
       _description: "",
       _description_big: "",
@@ -52,7 +38,12 @@ class PrivateSettingsChangeProjectContent extends Component {
       _pubDate: "",
       _favourite: false,
       _private: false
-    },
+    };
+  };
+
+  state = {
+    allProjects: [this.getProjectTemplate("[Clear]")],
+    currentProject: this.getProjectTemplate(""),
     projectStatus: "None",
     isMobile: false,
     renderPreview: false
@@ -237,6 +228,11 @@ class PrivateSettingsChangeProjectContent extends Component {
             Back
           </NavLink>
           <div style={changeProjectContentStyle}>
+            <div>
+              <pre className="language-js">
+                <code className="language-js">console.log("test123");</code>
+              </pre>
+            </div>
             <form onSubmit={this.handleUpdateEvent}>
               <center>
                 <div
@@ -357,7 +353,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                     </label>
                   </div>
                 </div>
-                <Preview
+                <PrivateChangeProjectPreview
                   isMobile={this.state.isMobile}
                   renderPreview={this.state.renderPreview}
                   _description={this.state.currentProject._description}
@@ -452,50 +448,6 @@ const PreviewButton = props => {
   }
 };
 
-const Preview = props => {
-  if (!props.isMobile || props.renderPreview) {
-    return (
-      <div className="input-group input_both" style={inputRenderStyle}>
-        <h1 style={inputGroupH1Style}>Preview</h1>
-        <span style={{ visibility: "hidden" }}>
-          <h2 style={inputGroupH2Style}>Name</h2>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Name"
-            style={inputGroupInputStyle}
-            name="_name"
-          />
-          <h2 style={inputGroupH2Style}>GitHub Repo</h2>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="GitHub Repo"
-            style={inputGroupInputStyle}
-            name="_githubRepo"
-          />
-        </span>
-        <h2 style={inputGroupH2Style}>Description</h2>
-        <div
-          style={rendereTextboxStyle}
-          dangerouslySetInnerHTML={{
-            __html: props._description
-          }}
-        />
-        <h2 style={inputGroupH2Style}>Description Big</h2>
-        <div
-          style={rendereTextboxBigStyle}
-          dangerouslySetInnerHTML={{
-            __html: props._description_big
-          }}
-        />
-      </div>
-    );
-  } else {
-    return <span />;
-  }
-};
-
 const GetProjectStatusMessage = props => {
   var status = props.message;
   if (status === "Error") {
@@ -517,28 +469,6 @@ const GetProjectStatusMessage = props => {
 
 // Styles
 const changeProjectBtn = { margin: "5px" };
-
-const rendereTextboxBigStyle = {
-  width: "100%",
-  backgroundColor: "white",
-  padding: "10px",
-  textAlign: "left",
-  minHeight: "120px"
-};
-
-const rendereTextboxStyle = {
-  width: "100%",
-  backgroundColor: "white",
-  padding: "10px",
-  textAlign: "left",
-  minHeight: "120px"
-};
-
-const inputRenderStyle = {
-  marginLeft: "2.5%",
-  display: "inline-block",
-  verticalAlign: "top"
-};
 
 const checkboxInputStyle = { cursor: "pointer" };
 
