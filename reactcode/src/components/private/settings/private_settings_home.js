@@ -28,16 +28,6 @@ class PrivateSettingsHome extends Component {
           <a
             className="btn btn-outline-primary"
             style={settingsBtnStyle}
-            href="https://getbootstrap.com/docs/4.3/getting-started/introduction/"
-            role="button"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Bootstrap
-          </a>
-          <a
-            className="btn btn-outline-primary"
-            style={settingsBtnStyle}
             href="https://buttercms.com/blog_home/"
             role="button"
             target="_blank"

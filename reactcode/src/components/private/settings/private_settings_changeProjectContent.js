@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import AuthService from "../../authService";
 import Other from "../../other";
 import TinyEditor from "../../editor/tiny_editor";
-import Prism from "prismjs";
 
 import PrivateChangeProjectPreview from "./changeProject/preview";
 
@@ -19,10 +18,6 @@ class PrivateSettingsChangeProjectContent extends Component {
     this.EditorDescriptionBig = new TinyEditor({
       handleContentChange: this.getEditorDescriptionBigOutput
     });
-  }
-
-  componentDidMount() {
-    Prism.highlightAll();
   }
 
   getProjectTemplate = name => {
@@ -231,11 +226,6 @@ class PrivateSettingsChangeProjectContent extends Component {
             Back
           </NavLink>
           <div style={changeProjectContentStyle}>
-            <div>
-              <pre className="language-js">
-                <code className="language-js">console.log("test123");</code>
-              </pre>
-            </div>
             <form onSubmit={this.handleUpdateEvent}>
               <center>
                 <div
