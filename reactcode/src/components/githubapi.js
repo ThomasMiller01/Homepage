@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Commits extends Component {
   state = {
-    allCommits: []
+    allCommits: [],
   };
 
   componentDidMount = () => {
@@ -11,22 +11,22 @@ class Commits extends Component {
         this.props.repo +
         "/commits"
     )
-      .then(results => {
+      .then((results) => {
         return results.json();
       })
-      .then(body => {
+      .then((body) => {
         var allCommits = [];
-        body.forEach(commit => {
+        body.forEach((commit) => {
           allCommits.push({
             author: {
               name: commit.author.login,
               url: commit.author.html_url,
-              avatar_url: commit.author.avatar_url
+              avatar_url: commit.author.avatar_url,
             },
             sha: commit.sha,
             message: commit.commit.message,
             url: commit.html_url,
-            date: new Date(commit.commit.author.date).toUTCString()
+            date: new Date(commit.commit.author.date).toUTCString(),
           });
         });
         this.setState({ allCommits });
@@ -38,7 +38,7 @@ class Commits extends Component {
       <React.Fragment>
         <h4>Commit - History</h4>
         <div className="pre-scrollable">
-          {this.state.allCommits.map(commit => (
+          {this.state.allCommits.map((commit) => (
             <div className="card mb-3" key={commit.sha}>
               <div className="row no-gutters">
                 <div style={{ width: "100%" }}>
@@ -71,11 +71,11 @@ class Statistics extends Component {
       author: {
         name: "",
         url: "",
-        avatar_url: ""
+        avatar_url: "",
       },
       total: "",
-      weeks: []
-    }
+      weeks: [],
+    },
   };
 
   componentDidMount = () => {
@@ -84,18 +84,18 @@ class Statistics extends Component {
         this.props.repo +
         "/stats/contributors"
     )
-      .then(results => {
+      .then((results) => {
         return results.json();
       })
-      .then(body => {
+      .then((body) => {
         var statistics = {
           author: {
             name: body[0].author.login,
             url: body[0].author.html_url,
-            avatar_url: body[0].author.avatar_url
+            avatar_url: body[0].author.avatar_url,
           },
           total: body[0].total,
-          weeks: body[0].weeks
+          weeks: body[0].weeks,
         };
         this.setState({ statistics });
       });

@@ -1,20 +1,43 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { gql } from "apollo-boost";
 
 import "./allprojects.scss";
 
 class AllProjects extends Component {
+  constructor() {
+    super();
+    this.homepageApi = new ApolloClient({
+      cache: new InMemoryCache(),
+      link: new HttpLink({
+        uri: "https://api.thomasmiller.info/graphql",
+      }),
+    });
+  }
+
   state = {
-    projects: []
+    projects: [],
   };
 
   componentDidMount = () => {
-    fetch("https://thomasmiller.info/services/homepage/api/Projects/getpublic")
-      .then(results => {
-        return results.json();
+    this.homepageApi
+      .query({
+        query: gql`
+          query {
+            getPublicProjects {
+              id
+              name
+              description
+              images {
+                thumbnail
+              }
+            }
+          }
+        `,
       })
-      .then(data => {
-        this.setState({ projects: data });
+      .then((result) => {
+        this.setState({ projects: result.data.getPublicProjects });
       });
   };
 
@@ -23,28 +46,28 @@ class AllProjects extends Component {
       <div style={allProjectsStyle} className="all-projects">
         <div style={projectsContainerStyle} className="projectsContainer">
           <div className="card-deck">
-            {this.state.projects.map(project => (
+            {this.state.projects.map((project) => (
               <div
-                key={project._id}
+                key={project.id}
                 className="card my-3"
                 style={projectCardStyle}
               >
                 <img
-                  src={project._thumbnail}
+                  src={project.images.thumbnail}
                   className="card-img-top"
                   alt="Loading ..."
                 />
                 <div className="card-body">
-                  <h4 className="card-title">{project._name}</h4>
+                  <h4 className="card-title">{project.name}</h4>
                   <p
                     className="card-text"
                     dangerouslySetInnerHTML={{
-                      __html: project._description
+                      __html: project.description,
                     }}
                   />
                   <NavLink
                     to={{
-                      pathname: "/projects/" + project._name
+                      pathname: "/projects/" + project.name,
                     }}
                     className="btn btn-outline-primary"
                   >
@@ -69,7 +92,7 @@ const allProjectsStyle = {
   backgroundAttachment: "scroll",
   backgroundPosition: "center",
   backgroundSize: "cover",
-  padding: "15px 0 20px 0"
+  padding: "15px 0 20px 0",
 };
 
 const projectsContainerStyle = { padding: "0 10px 0 10px" };

@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { PhotoSwipeGallery } from "react-photoswipe";
 import { PhotoSwipe } from "react-photoswipe";
 import "react-photoswipe/lib/photoswipe.css";
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { gql } from "apollo-boost";
 
 import { Commits, Statistics } from "../../../githubapi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,27 +16,33 @@ class Project extends Component {
   constructor() {
     super();
     this.auth = new AuthService();
+    this.homepageApi = new ApolloClient({
+      cache: new InMemoryCache(),
+      link: new HttpLink({
+        uri: "https://api.thomasmiller.info/graphql",
+      }),
+    });
   }
 
   state = {
     project: {
-      _id: -1,
-      _name: "",
-      _githubRepo: "",
-      _description: "",
-      _description_big: "",
-      _thumbnail: "",
-      _headerImg: "",
-      _images: [],
-      _pubDate: "",
-      _favourite: false,
-      _private: false
+      id: -1,
+      name: "",
+      githubRepo: null,
+      description: "",
+      description_big: "",
+      thumbnail: "",
+      headerImg: "",
+      images: [],
+      pubDate: "",
+      favourite: false,
+      private: false,
     },
     items: [],
     options: {
       //http://photoswipe.com/documentation/options.html
     },
-    isOpen: false
+    isOpen: false,
   };
 
   componentDidMount() {
@@ -42,58 +50,63 @@ class Project extends Component {
   }
 
   fetchProjectByName(value) {
-    let publicprivate = "Public";
-    let headers;
-    if (this.auth.loggedIn()) {
-      let token = localStorage.getItem("id_token");
-      publicprivate = "Private";
-      headers = {
-        Authorization: "Bearer " + token,
-        "Content-Type": "application/json"
-      };
-    } else {
-      headers = {
-        "Content-Type": "application/json"
-      };
-    }
-
-    let body = { _type: "name", _value: value };
-    fetch(
-      "https://thomasmiller.info/services/homepage/api/Projects/get" +
-        publicprivate +
-        "By",
-      { headers: headers, method: "POST", body: JSON.stringify(body) }
-    )
-      .then(results => {
-        return results.json();
+    let token = "" ? !this.auth.loggedIn() : this.auth.getToken();
+    this.homepageApi
+      .query({
+        query: gql`
+          query($name: String!, $token: String!) {
+            getProjectByName(name: $name, token: $token) {
+              id
+              name
+              githubRepo {
+                name
+                url
+              }
+              description
+              description_big
+              images {
+                headerImg
+                thumbnail
+                images {
+                  name
+                  url
+                  size
+                }
+              }
+              favourite
+              _private
+              pubDate
+            }
+          }
+        `,
+        variables: {
+          name: value,
+          token: token,
+        },
       })
-      .then(data => {
-        if (data[0] != null) {
-          var items = [];
-          data[0]._images.forEach(image => {
-            var src = image[0];
-            var thumbnail = image[0];
-            var w = image[2].split("x")[0];
-            var h = image[2].split("x")[1];
-            var title = image[1];
+      .then((result) => {
+        let data = result.data.getProjectByName;
+        if (data != null) {
+          let items = [];
+          data.images.images.forEach((image) => {
+            let sizeSplit = image.size.split("x");
             items.push({
-              src: src,
-              thumbnail: thumbnail,
-              w: w,
-              h: h,
-              title: title
+              src: image.url,
+              thumbnail: image.url,
+              w: sizeSplit[0],
+              h: sizeSplit[1],
+              title: image.name,
             });
           });
-          this.setState({ project: data[0], items: items });
+          this.setState({ project: data, items: items });
         } else {
           this.props.history.replace("/projects/all");
         }
       });
   }
 
-  getThumbnailContent = item => {
+  getThumbnailContent = (item) => {
     return (
-      // eslint-disable-next-line jsx-a11y/img-redundant-alt
       <img src={item.thumbnail} width={120} height={90} alt="Loading ..." />
     );
   };
@@ -103,10 +116,7 @@ class Project extends Component {
   };
 
   getStyle = () => {
-    if (
-      this.state.project._githubRepo !== "#" &&
-      this.state.project._githubRepo !== ""
-    ) {
+    if (this.state.project.githubRepo !== null) {
       return descGitStyle;
     } else {
       return descGitStyle2;
@@ -114,24 +124,12 @@ class Project extends Component {
   };
 
   getCommits = () => {
-    if (
-      this.state.project._githubRepo !== "#" &&
-      this.state.project._githubRepo !== "" &&
-      !this.state.project._private
-    ) {
+    if (this.state.project.githubRepo !== null && !this.state.project.private) {
       return (
         <React.Fragment>
-          <Statistics
-            repo={this.state.project._githubRepo.replace(
-              "https://github.com/ThomasMiller01/",
-              ""
-            )}
-          />
+          <Statistics repo={this.state.project.githubRepo.name} />
           <Commits
-            repo={this.state.project._githubRepo.replace(
-              "https://github.com/ThomasMiller01/",
-              ""
-            )}
+            repo={this.state.project.githubRepo.name}
             style={githubStyle}
           />
         </React.Fragment>
@@ -143,10 +141,10 @@ class Project extends Component {
 
   render() {
     const projectHeaderStyle = {
-      backgroundImage: "url(" + this.state.project._headerImg + ")",
+      backgroundImage: "url(" + this.state.project.images.headerImg + ")",
       backgroundRepeat: "no-repeat",
       backgroundSize: "100% auto",
-      textAlign: "center"
+      textAlign: "center",
     };
     return (
       <div style={projectContainerStyle}>
@@ -165,14 +163,14 @@ class Project extends Component {
         </div>
         <div style={projectContent}>
           <h1 style={projectContentH1Style}>
-            <span className="testclass">{this.state.project._name}</span>
-            <GithubLink link={this.state.project._githubRepo} />
+            <span className="testclass">{this.state.project.name}</span>
+            <GithubLink link={this.state.project.githubRepo} />
           </h1>
           <div style={this.getStyle()} className="descGitStyle">
             <div style={projectDescription}>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: this.state.project._description_big
+                  __html: this.state.project.description_big,
                 }}
               />
             </div>
@@ -207,26 +205,26 @@ const descGitStyle = {
   display: "grid",
   gridTemplateColumns: "80% 20%",
   gridGap: "20px",
-  margin: "20px auto 20px auto"
+  margin: "20px auto 20px auto",
 };
 
 const descGitStyle2 = {
   width: "85%",
   textAlign: "center",
   display: "block",
-  margin: "20px auto 20px auto"
+  margin: "20px auto 20px auto",
 };
 
 const githubStyle = {
-  gridColumn: "2"
+  gridColumn: "2",
 };
 
-const GithubLink = props => {
-  var link = props.link;
-  if (link !== "#") {
+const GithubLink = (props) => {
+  let link = props.link;
+  if (link !== null) {
     return (
       <a
-        href={link}
+        href={link.url}
         target="_blank"
         className="btn btn-outline-primary githubLinkBtn"
       >
@@ -241,13 +239,13 @@ const GithubLink = props => {
 const projectContainerStyle = {
   width: "100%",
   minHeight: "87vh",
-  backgroundColor: "white"
+  backgroundColor: "white",
 };
 
 const projectHeaderTopStyle = {
   verticalAlign: "middle",
   color: "black",
-  fontSize: "60px"
+  fontSize: "60px",
 };
 
 const projectContent = { width: "100%", minHeight: "37vh", paddingTop: "20px" };
@@ -256,7 +254,7 @@ const tableStyle = { width: "100%", height: "50vh" };
 
 const projectDescription = {
   gridColumn: "1",
-  textAlign: "left"
+  textAlign: "left",
 };
 
 const projectContentH1Style = { width: "100%", textAlign: "center" };
@@ -267,7 +265,7 @@ const galleryDivStyle = {
   display: "grid",
   gridTemplateColumns: "repeat(auto-fill, minimax(300px, 1fr))",
   gridGap: "20px",
-  alignItems: "stretch"
+  alignItems: "stretch",
 };
 
 export default Project;
