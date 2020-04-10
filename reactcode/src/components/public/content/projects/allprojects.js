@@ -11,7 +11,7 @@ class AllProjects extends Component {
     this.homepageApi = new ApolloClient({
       cache: new InMemoryCache(),
       link: new HttpLink({
-        uri: "https://api.thomasmiller.info/graphql",
+        uri: "https://api.thomasmiller.info/homepage",
       }),
     });
   }

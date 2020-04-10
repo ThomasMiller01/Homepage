@@ -10,7 +10,7 @@ import "./blog.scss";
 export default class extends React.Component {
   state = {
     data: {},
-    page: { url: "", title: "" }
+    page: { url: "", title: "" },
   };
 
   componentWillMount() {}
@@ -21,12 +21,12 @@ export default class extends React.Component {
     var url = window.location.href;
     this.setState({
       data: resp.data.data,
-      page: { url: url, title: resp.data.data.title }
+      page: { url: url, title: resp.data.data.title },
     });
   }
 
   CommentsRendere = () => {
-    (function() {
+    (function () {
       // DON'T EDIT BELOW THIS LINE
       var d = document,
         s = d.createElement("script");
@@ -36,7 +36,6 @@ export default class extends React.Component {
     })();
     return (
       <React.Fragment>
-        <script>console.log("test");</script>
         <div id="disqus_thread" />
       </React.Fragment>
     );
@@ -70,25 +69,25 @@ export default class extends React.Component {
 
 const postBodyStyle = {
   width: "95%",
-  margin: "0 auto"
+  margin: "0 auto",
 };
 
 const postTitleStyle = {
   margin: "0 auto",
   width: "auto",
-  textAlign: "center"
+  textAlign: "center",
 };
 
 const blogStyle = {
   width: "100%",
   minHeight: "87vh",
   backgroundColor: "#E6E6E6",
-  padding: "20px"
+  padding: "20px",
 };
 
 const borderBottomStyle = {
   width: "95%",
   margin: "10px auto 10px auto",
   height: "2px",
-  borderBottom: "solid 2px rgb(161, 161, 161)"
+  borderBottom: "solid 2px rgb(161, 161, 161)",
 };

@@ -15,7 +15,6 @@ class ProtectedRoute extends Component {
       this.setState({ isAuth: true });
     } else {
       this.setState({ isAuth: false });
-      console.log("props", this.props);
       this.props.history.replace("/home");
     }
   }

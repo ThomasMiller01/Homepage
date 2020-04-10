@@ -10,7 +10,7 @@ class GetCategories extends Component {
   }
 
   state = {
-    data: []
+    data: [],
   };
 
   async componentDidMount() {
@@ -24,8 +24,6 @@ class GetCategories extends Component {
     if (count !== -1) {
       data = data.slice(0, count);
     }
-    console.log("data", data);
-    console.log("count", count);
 
     return (
       <div>
@@ -46,7 +44,7 @@ class GetCategories extends Component {
 }
 
 const CategoryNameStyle = {
-  color: "black"
+  color: "black",
 };
 
 export default GetCategories;

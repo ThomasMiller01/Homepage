@@ -2,35 +2,52 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import AuthService from "../authService";
 
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { gql } from "apollo-boost";
+
 import "./privateProjects.scss";
 
 class PrivateProjects extends Component {
   constructor() {
     super();
     this.Auth = new AuthService();
+    this.homepageApi = new ApolloClient({
+      cache: new InMemoryCache(),
+      link: new HttpLink({
+        uri: "https://api.thomasmiller.info/homepage",
+      }),
+    });
   }
 
   state = {
-    projects: []
+    projects: [],
   };
 
   componentDidMount = () => {
-    const headers = {
-      Authorization: "Bearer " + this.Auth.getToken(),
-      "Content-Type": "application/json"
-    };
-    fetch("https://thomasmiller.info/services/homepage/api/Projects/getAll", {
-      headers
-    })
-      .then(results => {
-        return results.json();
+    let token = this.Auth.getToken();
+    this.homepageApi
+      .query({
+        query: gql`
+          query($token: String!) {
+            getAllProjects(token: $token) {
+              id
+              name
+              description
+              images {
+                thumbnail
+              }
+              _private
+            }
+          }
+        `,
+        variables: { token },
       })
-      .then(data => {
-        this.setState({ projects: data });
+      .then((result) => {
+        this.setState({ projects: result.data.getAllProjects });
       });
   };
 
-  getPrivateIconIndicator = _private => {
+  getPrivateIconIndicator = (_private) => {
     if (_private) {
       return <i class="fas fa-lock" />;
     } else {
@@ -43,32 +60,32 @@ class PrivateProjects extends Component {
       <div style={allProjectsStyle} className="all-projects">
         <div style={projectsContainerStyle} className="projectsContainer">
           <div className="card-deck">
-            {this.state.projects.map(project => (
+            {this.state.projects.map((project) => (
               <div
-                key={project._id}
+                key={project.id}
                 className="card my-3"
                 style={projectCardStyle}
               >
                 <img
-                  src={project._thumbnail}
+                  src={project.images.thumbnail}
                   className="card-img-top"
                   alt="Loading ..."
                 />
                 <div className="card-body">
                   <h4 className="card-title">
-                    {project._name}{" "}
+                    {project.name}{" "}
                     {this.getPrivateIconIndicator(project._private)}
                   </h4>
 
                   <p
                     className="card-text"
                     dangerouslySetInnerHTML={{
-                      __html: project._description
+                      __html: project.description,
                     }}
                   />
                   <NavLink
                     to={{
-                      pathname: "/projects/" + project._name
+                      pathname: "/projects/" + project.name,
                     }}
                     className="btn btn-outline-primary"
                   >
@@ -93,7 +110,7 @@ const allProjectsStyle = {
   backgroundAttachment: "scroll",
   backgroundPosition: "center",
   backgroundSize: "cover",
-  padding: "15px 0 20px 0"
+  padding: "15px 0 20px 0",
 };
 
 const projectsContainerStyle = { padding: "0 10px 0 10px" };

@@ -1,22 +1,51 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { gql } from "apollo-boost";
+
 class HomeContent extends Component {
+  constructor() {
+    super();
+    this.homepageApi = new ApolloClient({
+      cache: new InMemoryCache(),
+      link: new HttpLink({
+        uri: "https://api.thomasmiller.info/homepage",
+      }),
+    });
+  }
+
   state = {
-    favProjects: []
+    favProjects: [],
   };
 
   componentDidMount = () => {
-    fetch("https://thomasmiller.info/services/homepage/api/Projects/getpublic")
-      .then(results => {
-        return results.json();
+    this.homepageApi
+      .query({
+        query: gql`
+          query {
+            getPublicProjects {
+              id
+              name
+              description
+              images {
+                thumbnail
+              }
+              favourite
+            }
+          }
+        `,
       })
-      .then(data => {
+      .then((result) => {
+        let data = result.data.getPublicProjects;
         var favProjects = [];
         var i = 1;
-        data.forEach(function(project) {
-          if (project._favourite) {
-            project["_class"] = "favProjects favProjects-item" + i.toString();
+        data.forEach(function (project) {
+          if (project.favourite) {
+            project = Object.assign(
+              { _class: "favProjects favProjects-item" + i.toString() },
+              project
+            );
             if (i === 3) {
               i = 0;
             } else {
@@ -32,33 +61,33 @@ class HomeContent extends Component {
   render() {
     return (
       <div style={contentDiv}>
-        {this.state.favProjects.map(project => (
+        {this.state.favProjects.map((project) => (
           <div
-            key={project._id}
+            key={project.id}
             style={{
-              backgroundImage: "url(" + project._thumbnail + ")",
+              backgroundImage: "url(" + project.images.thumbnail + ")",
               minHeight: "350px",
               backgroundRepeat: "no-repeat",
               backgroundSize: "auto 100%",
               color: "white",
               backgroundColor: "rgb(83, 83, 83)",
-              display: "inline-table"
+              display: "inline-table",
             }}
             className={project._class}
           >
             <div className="container" style={favProjectsContainerStyle}>
               <h1 className="display-4" style={favProjectsH1Style}>
-                {project._name}
+                {project.name}
               </h1>
               <p
                 className="lead"
                 dangerouslySetInnerHTML={{
-                  __html: project._description
+                  __html: project.description,
                 }}
               />
               <NavLink
                 to={{
-                  pathname: "/projects/" + project._name
+                  pathname: "/projects/" + project.name,
                 }}
                 className="btn btn-outline-primary"
                 style={seemoreBtnStyle}
@@ -76,25 +105,25 @@ class HomeContent extends Component {
 // Styles
 
 const contentDiv = {
-  width: "100%"
+  width: "100%",
 };
 
 const seemoreBtnStyle = {
   backgroundColor: "rgba(0, 0, 0, 0.200)",
   color: "white",
   borderColor: "white",
-  margin: "15px"
+  margin: "15px",
 };
 
 const favProjectsContainerStyle = {
   backgroundColor: "rgba(0, 0, 0, 0.527)",
   padding: "5px",
   margin: "20px auto 0 auto",
-  width: "95%"
+  width: "95%",
 };
 
 const favProjectsH1Style = {
-  fontSize: "39px"
+  fontSize: "39px",
 };
 
 export default HomeContent;

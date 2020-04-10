@@ -13,14 +13,14 @@ import "./blog.scss";
 export default class extends React.Component {
   state = {
     data: {
-      recent_posts: []
-    }
+      recent_posts: [],
+    },
   };
 
   async componentDidMount() {
     const { match } = this.props;
     const resp = await butter.category.retrieve(match.params.category, {
-      include: "recent_posts"
+      include: "recent_posts",
     });
     this.setState(resp.data);
   }
@@ -41,7 +41,6 @@ export default class extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     const category = this.state.data;
 
     return (
@@ -63,11 +62,11 @@ export default class extends React.Component {
 }
 
 const h1style = {
-  textAlign: "center"
+  textAlign: "center",
 };
 
 const RecentPostStyle = {
-  color: "black"
+  color: "black",
 };
 
 const rightCardStyle = {
@@ -76,7 +75,7 @@ const rightCardStyle = {
   display: "inline-block",
   verticalAlign: "top",
   padding: "10px",
-  border: "solid 1px #323232"
+  border: "solid 1px #323232",
 };
 
 const blogPostsStyle = {
@@ -84,12 +83,12 @@ const blogPostsStyle = {
   margin: "10px 0 10px 10%",
   display: "inline-block",
   padding: "10px",
-  textAlign: "left"
+  textAlign: "left",
 };
 
 const blogStyle = {
   width: "100%",
   minHeight: "87vh",
   backgroundColor: "#E6E6E6",
-  padding: "20px"
+  padding: "20px",
 };

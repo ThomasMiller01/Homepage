@@ -4,6 +4,9 @@ import AuthService from "../../authService";
 import Other from "../../other";
 import TinyEditor from "../../editor/tiny_editor";
 
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { gql } from "apollo-boost";
+
 import PrivateChangeProjectPreview from "./changeProject/preview";
 
 class PrivateSettingsChangeProjectContent extends Component {
@@ -13,26 +16,33 @@ class PrivateSettingsChangeProjectContent extends Component {
     this.Other = new Other();
 
     this.EditorDescription = new TinyEditor({
-      handleContentChange: this.getEditorDescriptionOutput
+      handleContentChange: this.getEditorDescriptionOutput,
     });
     this.EditorDescriptionBig = new TinyEditor({
-      handleContentChange: this.getEditorDescriptionBigOutput
+      handleContentChange: this.getEditorDescriptionBigOutput,
+    });
+
+    this.homepageApi = new ApolloClient({
+      cache: new InMemoryCache(),
+      link: new HttpLink({
+        uri: "https://api.thomasmiller.info/homepage",
+      }),
     });
   }
 
-  getProjectTemplate = name => {
+  getProjectTemplate = (name) => {
     return {
-      _id: -1,
-      _name: name,
-      _githubRepo: "",
-      _description: "",
-      _description_big: "",
-      _thumbnail: "",
-      _headerImg: "",
-      _images: [],
-      _pubDate: "",
-      _favourite: false,
-      _private: false
+      id: -1,
+      name: name,
+      githubRepo: { name: "", url: "" },
+      description: "",
+      description_big: "",
+      thumbnail: "",
+      headerImg: "",
+      images: { headerImg: "", thumbnail: "", images: [] },
+      pubDate: "",
+      favourite: false,
+      private: false,
     };
   };
 
@@ -41,18 +51,21 @@ class PrivateSettingsChangeProjectContent extends Component {
     currentProject: this.getProjectTemplate(""),
     projectStatus: "None",
     isMobile: false,
-    renderPreview: false
+    renderPreview: false,
   };
 
-  getEditorDescriptionOutput = content => {
+  getEditorDescriptionOutput = (content) => {
     let currentProject = this.state.currentProject;
-    currentProject._description = content;
+    currentProject = Object.assign({ description: content }, currentProject);
     this.setState({ currentProject });
   };
 
-  getEditorDescriptionBigOutput = content => {
+  getEditorDescriptionBigOutput = (content) => {
     let currentProject = this.state.currentProject;
-    currentProject._description_big = content;
+    currentProject = Object.assign(
+      { description_big: content },
+      currentProject
+    );
     this.setState({ currentProject });
   };
 
@@ -65,50 +78,76 @@ class PrivateSettingsChangeProjectContent extends Component {
     this.reloadProjects();
   }
 
-  projectChanged = event => {
+  projectChanged = (event) => {
     var projectId = event.target.value;
     var currentProject = {};
-    this.state.allProjects.forEach(project => {
-      if (projectId === project._id.toString()) {
+    this.state.allProjects.forEach((project) => {
+      if (projectId === project.id.toString()) {
         currentProject = project;
       }
     });
     this.setState({ currentProject: currentProject });
 
-    this.EditorDescription.updateContent(currentProject._description);
-    this.EditorDescriptionBig.updateContent(currentProject._description_big);
+    this.EditorDescription.updateContent(currentProject.description);
+    this.EditorDescriptionBig.updateContent(currentProject.description_big);
   };
 
-  fetch(url, options) {
-    const headers = {
-      Authorization: "Bearer " + this.Auth.getToken(),
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    };
-
-    return fetch(url, {
-      headers,
-      ...options
-    })
-      .then(this._checkStatus)
-      .then(response => response.json());
+  reloadProjects() {
+    const firstProject = this.state.allProjects[0];
+    let token = this.Auth.getToken();
+    this.homepageApi
+      .query({
+        query: gql`
+          query($token: String!) {
+            getAllProjects(token: $token) {
+              id
+              name
+              githubRepo {
+                name
+                url
+              }
+              description
+              description_big
+              images {
+                headerImg
+                thumbnail
+                images {
+                  name
+                  url
+                  size
+                }
+              }
+              favourite
+              _private
+              pubDate
+            }
+          }
+        `,
+        variables: { token },
+      })
+      .then((result) => {
+        let data = Object.assign([], result.data.getAllProjects);
+        console.log(data);
+        data.unshift(firstProject);
+        this.setState({ allProjects: data });
+      });
   }
 
-  handleContentChange = e => {
+  handleContentChange = (e) => {
     var currentProject = this.state.currentProject;
     var name = e.target.name;
     var value = e.target.value;
-    if (name === "_favourite" || name === "_private") {
+    if (name === "favourite" || name === "_private") {
       currentProject[name] = e.target.checked;
     } else {
       currentProject[name] = value;
     }
     this.setState({
-      currentProject: currentProject
+      currentProject: currentProject,
     });
   };
 
-  handleUpdateEvent = event => {
+  handleUpdateEvent = (event) => {
     event.preventDefault();
     var currentProject = this.state.currentProject;
     var images = [[]];
@@ -132,17 +171,17 @@ class PrivateSettingsChangeProjectContent extends Component {
     }
     const headers = {
       Authorization: "Bearer " + this.Auth.getToken(),
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     };
     const options = {
       method: "POST",
-      body: JSON.stringify(currentProject)
+      body: JSON.stringify(currentProject),
     };
     fetch(
       "https://thomasmiller.info/services/homepage/api/Projects/" + method,
       {
         headers,
-        ...options
+        ...options,
       }
     ).then(() => {
       this.reloadProjects();
@@ -153,30 +192,12 @@ class PrivateSettingsChangeProjectContent extends Component {
     });
   };
 
-  reloadProjects() {
-    const firstProject = this.state.allProjects[0];
-    const headers = {
-      Authorization: "Bearer " + this.Auth.getToken(),
-      "Content-Type": "application/json"
-    };
-    fetch("https://thomasmiller.info/services/homepage/api/Projects/getAll", {
-      headers
-    })
-      .then(results => {
-        return results.json();
-      })
-      .then(data => {
-        data.unshift(firstProject);
-        this.setState({ allProjects: data });
-      });
-  }
-
   handleDeleteEvent = () => {
     var currentProject = this.state.currentProject;
     if (currentProject["_id"] !== -1) {
       const headers = {
         Authorization: "Bearer " + this.Auth.getToken(),
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       };
       const options = { method: "DELETE" };
       fetch(
@@ -184,7 +205,7 @@ class PrivateSettingsChangeProjectContent extends Component {
           currentProject["_id"],
         {
           headers,
-          ...options
+          ...options,
         }
       ).then(() => {
         this.reloadProjects();
@@ -236,9 +257,9 @@ class PrivateSettingsChangeProjectContent extends Component {
                     className="form-control"
                     onChange={this.projectChanged}
                   >
-                    {this.state.allProjects.map(project => (
-                      <option key={project._id} value={project._id}>
-                        {project._name}
+                    {this.state.allProjects.map((project) => (
+                      <option key={project.id} value={project.id}>
+                        {project.name}
                       </option>
                     ))}
                   </select>
@@ -252,7 +273,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                     className="form-control"
                     placeholder="Name"
                     style={inputGroupInputStyle}
-                    value={this.state.currentProject._name}
+                    value={this.state.currentProject.name}
                     name="_name"
                     onChange={this.handleContentChange}
                   />
@@ -262,7 +283,11 @@ class PrivateSettingsChangeProjectContent extends Component {
                     className="form-control"
                     placeholder="GitHub Repo"
                     style={inputGroupInputStyle}
-                    value={this.state.currentProject._githubRepo}
+                    value={
+                      this.state.currentProject.githubRepo
+                        ? this.state.currentProject.githubRepo.url
+                        : ""
+                    }
                     name="_githubRepo"
                     onChange={this.handleContentChange}
                   />
@@ -280,7 +305,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                     className="form-control"
                     placeholder="Thumbnail"
                     style={inputGroupInputStyle}
-                    value={this.state.currentProject._thumbnail}
+                    value={this.state.currentProject.images.thumbnail}
                     name="_thumbnail"
                     onChange={this.handleContentChange}
                   />
@@ -290,7 +315,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                     className="form-control"
                     placeholder="Header Img"
                     style={inputGroupInputStyle}
-                    value={this.state.currentProject._headerImg}
+                    value={this.state.currentProject.images.headerImg}
                     name="_headerImg"
                     onChange={this.handleContentChange}
                   />
@@ -299,7 +324,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                     className="form-control"
                     placeholder="Images"
                     style={textImagesStyle}
-                    value={this.state.currentProject._images}
+                    value={this.state.currentProject.images.images.toString()}
                     name="_images"
                     onChange={this.handleContentChange}
                   />
@@ -311,14 +336,16 @@ class PrivateSettingsChangeProjectContent extends Component {
                       className="custom-control-input"
                       style={checkboxInputStyle}
                       type="checkbox"
-                      checked={this.state.currentProject._favourite}
+                      checked={this.state.currentProject.favourite}
                       id="favourite"
-                      name="_favourite"
+                      name="favourite"
                       onChange={this.handleContentChange}
+                      value={this.state.currentProject.favourite}
                     />
                     <label
                       className="custom-control-label custom_checkbox"
                       htmlFor="favourite"
+                      style={checkboxInputStyle}
                     >
                       Favourite
                     </label>
@@ -326,21 +353,22 @@ class PrivateSettingsChangeProjectContent extends Component {
                   <div
                     className="custom-control custom-checkbox"
                     style={checkboxStyle}
+                    htmlFor="favourite"
                   >
                     <input
                       className="custom-control-input"
                       style={checkboxInputStyle}
                       type="checkbox"
                       checked={this.state.currentProject._private}
-                      id="private"
+                      id="_private"
                       value={this.state.currentProject._private}
                       name="_private"
                       onChange={this.handleContentChange}
                     />
                     <label
-                      className="custom-control-label"
+                      className="custom-control-label custom_checkbox"
                       style={checkboxInputStyle}
-                      htmlFor="private"
+                      htmlFor="_private"
                     >
                       Private
                     </label>
@@ -349,8 +377,8 @@ class PrivateSettingsChangeProjectContent extends Component {
                 <PrivateChangeProjectPreview
                   isMobile={this.state.isMobile}
                   renderPreview={this.state.renderPreview}
-                  _description={this.state.currentProject._description}
-                  _description_big={this.state.currentProject._description_big}
+                  _description={this.state.currentProject.description}
+                  _description_big={this.state.currentProject.description_big}
                 />
               </center>
               <div style={borderBottomStyle} />
@@ -424,7 +452,7 @@ class PrivateSettingsChangeProjectContent extends Component {
   }
 }
 
-const PreviewButton = props => {
+const PreviewButton = (props) => {
   if (props.isMobile) {
     return (
       <button
@@ -441,7 +469,7 @@ const PreviewButton = props => {
   }
 };
 
-const GetProjectStatusMessage = props => {
+const GetProjectStatusMessage = (props) => {
   var status = props.message;
   if (status === "Error") {
     return (
@@ -478,14 +506,14 @@ const inputGroupH2Style = {
   textAlign: "left",
   fontSize: "20px",
   marginBottom: "5px",
-  marginTop: "5px"
+  marginTop: "5px",
 };
 
 const inputGroupH1Style = {
   width: "95%",
   textAlign: "left",
   fontSize: "30px",
-  marginBottom: "10px"
+  marginBottom: "10px",
 };
 
 const inputGroupInputStyle = { width: "100%" };
@@ -493,21 +521,21 @@ const inputGroupInputStyle = { width: "100%" };
 const inputGroupStyle = {
   marginRight: "2.5%",
   display: "inline-block",
-  verticalAlign: "top"
+  verticalAlign: "top",
 };
 
 const borderBottomStyle = {
   width: "95%",
   margin: "10px auto 10px auto",
   height: "2px",
-  borderBottom: "solid 2px rgb(161, 161, 161)"
+  borderBottom: "solid 2px rgb(161, 161, 161)",
 };
 
 const changeProjectContentStyle = {
   width: "90%",
   padding: "15px",
   margin: "20px auto 0 auto",
-  backgroundColor: "rgb(216, 216, 216)"
+  backgroundColor: "rgb(216, 216, 216)",
 };
 
 const settingsBackStyle = {
@@ -516,7 +544,7 @@ const settingsBackStyle = {
   top: "0",
   right: "0",
   color: "#007bff",
-  backgroundColor: "transparent"
+  backgroundColor: "transparent",
 };
 
 const privateSettingsH1Style = { margin: "0" };
@@ -525,13 +553,13 @@ const privateSettingsStyle = {
   width: "100%",
   minHeight: "93.5vh",
   backgroundColor: "rgb(230, 230, 230)",
-  padding: "10px"
+  padding: "10px",
 };
 
 const FormGroupStyle = {
   margin: "0 0 20px 2.5%",
   textAlign: "left",
-  width: "90%"
+  width: "90%",
 };
 
 export default PrivateSettingsChangeProjectContent;

@@ -19,7 +19,7 @@ class Project extends Component {
     this.homepageApi = new ApolloClient({
       cache: new InMemoryCache(),
       link: new HttpLink({
-        uri: "https://api.thomasmiller.info/graphql",
+        uri: "https://api.thomasmiller.info/homepage",
       }),
     });
   }
@@ -50,7 +50,7 @@ class Project extends Component {
   }
 
   fetchProjectByName(value) {
-    let token = "" ? !this.auth.loggedIn() : this.auth.getToken();
+    let token = !this.auth.loggedIn() ? "" : this.auth.getToken();
     this.homepageApi
       .query({
         query: gql`
@@ -124,7 +124,10 @@ class Project extends Component {
   };
 
   getCommits = () => {
-    if (this.state.project.githubRepo !== null && !this.state.project.private) {
+    if (
+      this.state.project.githubRepo !== null &&
+      !this.state.project._private
+    ) {
       return (
         <React.Fragment>
           <Statistics repo={this.state.project.githubRepo.name} />
