@@ -9,23 +9,25 @@ class Login extends Component {
 
   state = { message: "None" };
 
-  handleFormSubmit = e => {
+  handleFormSubmit = (e) => {
     e.preventDefault();
-    this.Auth.login(this.state.username, this.state.password)
-      .then(res => {
+    this.Auth.login(this.state.username, this.state.password).then((result) => {
+      let token = result.data.login.token;
+      if (token !== "") {
+        this.Auth.setToken(token);
         this.props.history.replace("/private/home");
-      })
-      .catch(err => {
+      } else {
         this.setState({ message: "Error" });
         setTimeout(() => {
           this.setState({ message: "None" });
         }, 3000);
-      });
+      }
+    });
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -87,7 +89,7 @@ class Login extends Component {
   }
 }
 
-const GetErrorMessage = props => {
+const GetErrorMessage = (props) => {
   var status = props.message;
   if (status === "Error") {
     return (
@@ -103,7 +105,7 @@ const tableStyle = { width: "100%", height: "100%" };
 const loginDivStyle = {
   display: "inline-block",
   width: "100%",
-  height: "80vh"
+  height: "80vh",
 };
 
 const loginContainerStyle = {
@@ -116,7 +118,7 @@ const loginContainerStyle = {
   overflow: "hidden",
   fontFamily: "roboto",
   margin: "0 auto",
-  verticalAlign: "middle"
+  verticalAlign: "middle",
 };
 
 const spanStyle = { textAlign: "left" };
