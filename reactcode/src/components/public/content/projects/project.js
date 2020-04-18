@@ -31,9 +31,11 @@ class Project extends Component {
       githubRepo: null,
       description: "",
       description_big: "",
-      thumbnail: "",
-      headerImg: "",
-      images: [],
+      images: {
+        thumbnail: { url: "" },
+        headerImg: { url: "" },
+        images: [],
+      },
       pubDate: "",
       favourite: false,
       private: false,
@@ -65,8 +67,12 @@ class Project extends Component {
               description
               description_big
               images {
-                headerImg
-                thumbnail
+                headerImg {
+                  url
+                }
+                thumbnail {
+                  url
+                }
                 images {
                   name
                   url
@@ -144,7 +150,7 @@ class Project extends Component {
 
   render() {
     const projectHeaderStyle = {
-      backgroundImage: "url(" + this.state.project.images.headerImg + ")",
+      backgroundImage: "url(" + this.state.project.images.headerImg.url + ")",
       backgroundRepeat: "no-repeat",
       backgroundSize: "100% auto",
       textAlign: "center",

@@ -34,7 +34,9 @@ class PrivateProjects extends Component {
               name
               description
               images {
-                thumbnail
+                thumbnail {
+                  url
+                }
               }
               _private
             }
@@ -67,7 +69,7 @@ class PrivateProjects extends Component {
                 style={projectCardStyle}
               >
                 <img
-                  src={project.images.thumbnail}
+                  src={project.images.thumbnail.url}
                   className="card-img-top"
                   alt="Loading ..."
                 />

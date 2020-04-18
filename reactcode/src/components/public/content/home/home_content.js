@@ -29,7 +29,9 @@ class HomeContent extends Component {
               name
               description
               images {
-                thumbnail
+                thumbnail {
+                  url
+                }
               }
               favourite
             }
@@ -65,7 +67,7 @@ class HomeContent extends Component {
           <div
             key={project.id}
             style={{
-              backgroundImage: "url(" + project.images.thumbnail + ")",
+              backgroundImage: "url(" + project.images.thumbnail.url + ")",
               minHeight: "350px",
               backgroundRepeat: "no-repeat",
               backgroundSize: "auto 100%",

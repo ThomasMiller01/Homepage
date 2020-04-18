@@ -4,8 +4,11 @@ import AuthService from "../../authService";
 import Other from "../../other";
 import TinyEditor from "../../editor/tiny_editor";
 
-import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { createUploadLink } from "apollo-upload-client";
 import { gql } from "apollo-boost";
+
+import Image from "./changeProject/image";
 
 import PrivateChangeProjectPreview from "./changeProject/preview";
 
@@ -24,10 +27,13 @@ class PrivateSettingsChangeProjectContent extends Component {
 
     this.homepageApi = new ApolloClient({
       cache: new InMemoryCache(),
-      link: new HttpLink({
+      link: new createUploadLink({
         uri: "https://api.thomasmiller.info/homepage",
       }),
     });
+
+    this.thumbnailImageRef = React.createRef();
+    this.headerImageRef = React.createRef();
   }
 
   getProjectTemplate = (name) => {
@@ -37,12 +43,25 @@ class PrivateSettingsChangeProjectContent extends Component {
       githubRepo: { name: "", url: "" },
       description: "",
       description_big: "",
-      thumbnail: "",
-      headerImg: "",
-      images: { headerImg: "", thumbnail: "", images: [] },
+
+      images: {
+        thumbnail: {
+          name: "None",
+          url:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png",
+          size: "979x979",
+        },
+        headerImg: {
+          name: "None",
+          url:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png",
+          size: "979x979",
+        },
+        images: [],
+      },
       pubDate: "",
       favourite: false,
-      private: false,
+      _private: false,
     };
   };
 
@@ -90,6 +109,16 @@ class PrivateSettingsChangeProjectContent extends Component {
 
     this.EditorDescription.updateContent(currentProject.description);
     this.EditorDescriptionBig.updateContent(currentProject.description_big);
+
+    this.thumbnailImageRef.current.setState({
+      src: currentProject.images.thumbnail.url,
+      alt: currentProject.images.thumbnail.name,
+    });
+    this.headerImageRef.current.setState({
+      src: currentProject.images.headerImg.url,
+      alt: currentProject.images.headerImg.name,
+      dimensions: { x: -1, y: -1 },
+    });
   };
 
   reloadProjects() {
@@ -109,8 +138,16 @@ class PrivateSettingsChangeProjectContent extends Component {
               description
               description_big
               images {
-                headerImg
-                thumbnail
+                headerImg {
+                  name
+                  url
+                  size
+                }
+                thumbnail {
+                  name
+                  url
+                  size
+                }
                 images {
                   name
                   url
@@ -126,10 +163,9 @@ class PrivateSettingsChangeProjectContent extends Component {
         variables: { token },
       })
       .then((result) => {
-        let data = Object.assign([], result.data.getAllProjects);
-        console.log(data);
-        data.unshift(firstProject);
-        this.setState({ allProjects: data });
+        let parsed = JSON.parse(JSON.stringify(result.data.getAllProjects));
+        parsed.unshift(firstProject);
+        this.setState({ allProjects: parsed });
       });
   }
 
@@ -150,75 +186,36 @@ class PrivateSettingsChangeProjectContent extends Component {
   handleUpdateEvent = (event) => {
     event.preventDefault();
     var currentProject = this.state.currentProject;
-    var images = [[]];
-    var img_tmp = [];
-    if (typeof currentProject["_images"] === "string") {
-      var tmp = currentProject["_images"].split(",");
-      for (var i = 0; i < tmp.length / 3; i++) {
-        for (var j = 0; j < 3; j++) {
-          img_tmp[j] = tmp[i * 3 + j];
-        }
-        images[i] = img_tmp;
-        img_tmp = [];
-      }
-      currentProject["_images"] = images;
-    }
-    var method;
-    if (currentProject["_id"] === -1) {
-      method = "add";
+    if (currentProject.id === -1) {
+      // add project
     } else {
-      method = "change/" + currentProject["_id"];
+      // change project
     }
-    const headers = {
-      Authorization: "Bearer " + this.Auth.getToken(),
-      "Content-Type": "application/json",
-    };
-    const options = {
-      method: "POST",
-      body: JSON.stringify(currentProject),
-    };
-    fetch(
-      "https://thomasmiller.info/services/homepage/api/Projects/" + method,
-      {
-        headers,
-        ...options,
-      }
-    ).then(() => {
-      this.reloadProjects();
-      this.setState({ projectStatus: "Success" });
-      setTimeout(() => {
-        this.setState({ projectStatus: "None" });
-      }, 3000);
-    });
+
+    // this.reloadProjects();
+    //
+    // this.setState({ projectStatus: "Success" });
+    // setTimeout(() => {
+    //   this.setState({ projectStatus: "None" });
+    // }, 3000);
   };
 
   handleDeleteEvent = () => {
     var currentProject = this.state.currentProject;
-    if (currentProject["_id"] !== -1) {
-      const headers = {
-        Authorization: "Bearer " + this.Auth.getToken(),
-        "Content-Type": "application/json",
-      };
-      const options = { method: "DELETE" };
-      fetch(
-        "https://thomasmiller.info/services/homepage/api/Projects/delete/" +
-          currentProject["_id"],
-        {
-          headers,
-          ...options,
-        }
-      ).then(() => {
-        this.reloadProjects();
-        this.setState({ projectStatus: "Success" });
-        setTimeout(() => {
-          this.setState({ projectStatus: "None" });
-        }, 3000);
-      });
-    } else {
-      this.setState({ projectStatus: "Error" });
-      setTimeout(() => {
-        this.setState({ projectStatus: "None" });
-      }, 3000);
+    if (currentProject.id !== -1) {
+      // delete project
+      //
+      // this.reloadProjects();
+      //
+      // this.setState({ projectStatus: "Success" });
+      // setTimeout(() => {
+      //   this.setState({ projectStatus: "None" });
+      // }, 3000);
+      //
+      // this.setState({ projectStatus: "Error" });
+      // setTimeout(() => {
+      //   this.setState({ projectStatus: "None" });
+      // }, 3000);
     }
   };
 
@@ -228,6 +225,96 @@ class PrivateSettingsChangeProjectContent extends Component {
     } else {
       this.setState({ renderPreview: true });
     }
+  };
+
+  handleImageDelete = (index) => {
+    let currentProject = this.state.currentProject;
+    currentProject.images.images.splice(index, 1);
+    this.setState({ currentProject });
+  };
+
+  handleThumbnailDelete = () => {
+    let currentProject = this.state.currentProject;
+    currentProject.images.thumbnail = {
+      name: "None",
+      url:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png",
+      size: "979x979",
+    };
+    this.setState({ currentProject });
+  };
+
+  handleHeaderImgDelete = () => {
+    let currentProject = this.state.currentProject;
+    currentProject.images.headerImg = {
+      name: "None",
+      url:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png",
+      size: "979x979",
+    };
+    this.setState({ currentProject });
+  };
+
+  onChangeThumbnailImage = (imageUrl) => {
+    let currentProject = this.state.currentProject;
+    currentProject.images.thumbnail.url = imageUrl;
+    this.setState({ currentProject });
+  };
+
+  onChangeHeaderImgImage = (imageUrl) => {
+    let currentProject = this.state.currentProject;
+    currentProject.images.headerImg.url = imageUrl;
+    this.setState({ currentProject });
+  };
+
+  onChangeImage = (imageUrl, imageName, index) => {
+    let currentProject = this.state.currentProject;
+    currentProject.images.images[index].url = imageUrl;
+    currentProject.images.images[index].name = imageName;
+    this.setState({ currentProject });
+  };
+
+  fileToBase64 = (filename, filepath) => {
+    return new Promise((resolve) => {
+      var file = new File([filename], filepath);
+      var reader = new FileReader();
+      // Read file content on file loaded event
+      reader.onload = function (event) {
+        resolve(event.target.result);
+      };
+
+      // Convert data to base64
+      reader.readAsDataURL(file);
+    });
+  };
+
+  uploadImage = () => {
+    // upload image
+    // this.fileToBase64(imageFile).then((result) => {
+    //   let token = this.Auth.getToken();
+    //   this.homepageApi
+    //     .mutate({
+    //       mutation: gql`
+    //         mutation($imageFile: UploadImageType!, $token: String!) {
+    //           uploadImageFile(imageFile: $imageFile, token: $token)
+    //         }
+    //       `,
+    //       variables: {
+    //         imageFile: {
+    //           imageType: "THUMBNAIL",
+    //           projectName: "homepage",
+    //           file: {
+    //             name: imageFile.name,
+    //             base64string: result,
+    //           },
+    //         },
+    //         token,
+    //       },
+    //     })
+    //     .then((result) => {
+    //       console.log(result);
+    //     });
+    // });
   };
 
   render() {
@@ -300,34 +387,37 @@ class PrivateSettingsChangeProjectContent extends Component {
                     {this.EditorDescriptionBig.render()}
                   </div>
                   <h2 style={inputGroupH2Style}>Thumbnail</h2>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Thumbnail"
-                    style={inputGroupInputStyle}
-                    value={this.state.currentProject.images.thumbnail}
-                    name="_thumbnail"
-                    onChange={this.handleContentChange}
-                  />
+                  <Image
+                    src={this.state.currentProject.images.thumbnail.url}
+                    alt={this.state.currentProject.images.thumbnail.name}
+                    size={this.state.currentProject.images.thumbnail.size}
+                    onChange={this.onChangeThumbnailImage}
+                    onDelete={this.handleThumbnailDelete}
+                    ref={this.thumbnailImageRef}
+                  ></Image>
                   <h2 style={inputGroupH2Style}>Header Img</h2>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Header Img"
-                    style={inputGroupInputStyle}
-                    value={this.state.currentProject.images.headerImg}
-                    name="_headerImg"
-                    onChange={this.handleContentChange}
-                  />
+                  <Image
+                    src={this.state.currentProject.images.headerImg.url}
+                    alt={this.state.currentProject.images.headerImg.name}
+                    size={this.state.currentProject.images.headerImg.size}
+                    onChange={this.onChangeHeaderImgImage}
+                    onDelete={this.handleHeaderImgDelete}
+                    ref={this.headerImageRef}
+                  ></Image>
                   <h2 style={inputGroupH2Style}>Images</h2>
-                  <textarea
-                    className="form-control"
-                    placeholder="Images"
-                    style={textImagesStyle}
-                    value={this.state.currentProject.images.images.toString()}
-                    name="_images"
-                    onChange={this.handleContentChange}
-                  />
+                  {this.state.currentProject.images.images.map((image) => (
+                    <Image
+                      key={image.url}
+                      src={image.url}
+                      alt={image.name}
+                      size={image.size}
+                      index={this.state.currentProject.images.images.indexOf(
+                        image
+                      )}
+                      onChange={this.onChangeImage}
+                      onDelete={this.handleImageDelete}
+                    ></Image>
+                  ))}
                   <div
                     className="custom-control custom-checkbox"
                     style={checkboxStyle}
@@ -494,8 +584,6 @@ const changeProjectBtn = { margin: "5px" };
 const checkboxInputStyle = { cursor: "pointer" };
 
 const checkboxStyle = { width: "100%", textAlign: "left" };
-
-const textImagesStyle = { minHeight: "150px", width: "100%" };
 
 const textDescriptionBigStyle = { width: "100%" };
 

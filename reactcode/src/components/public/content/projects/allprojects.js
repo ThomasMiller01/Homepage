@@ -30,7 +30,9 @@ class AllProjects extends Component {
               name
               description
               images {
-                thumbnail
+                thumbnail {
+                  url
+                }
               }
             }
           }
@@ -53,7 +55,7 @@ class AllProjects extends Component {
                 style={projectCardStyle}
               >
                 <img
-                  src={project.images.thumbnail}
+                  src={project.images.thumbnail.url}
                   className="card-img-top"
                   alt="Loading ..."
                 />

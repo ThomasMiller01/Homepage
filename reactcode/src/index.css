@@ -84,6 +84,14 @@ code {
   display: block !important;
 }
 
+.fileUploadIcon {
+  color: grey;
+}
+
+.fileUploadIcon:hover {
+  color: #404040;
+}
+
 /* Media Querys */
 
 @media (max-width: 324px) {

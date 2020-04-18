@@ -43,21 +43,21 @@ class PrivateSettingsHome extends Component {
 
 // Styles
 const settingsH1Style = {
-  margin: "0"
+  margin: "0",
 };
 
 const settingsStyle = {
   width: "100%",
   minHeight: "93.5vh",
   backgroundColor: "rgb(230, 230, 230)",
-  padding: "10px"
+  padding: "10px",
 };
 
 const borderBottomStyle = {
   width: "95%",
   margin: "10px auto 10px auto",
   height: "2px",
-  borderBottom: "solid 2px rgb(161, 161, 161)"
+  borderBottom: "solid 2px rgb(161, 161, 161)",
 };
 
 const settingsBtnStyle = { margin: "5px" };
