@@ -113,6 +113,7 @@ class PrivateSettingsChangeProjectContent extends Component {
     this.thumbnailImageRef.current.setState({
       src: currentProject.images.thumbnail.url,
       alt: currentProject.images.thumbnail.name,
+      dimensions: { x: -1, y: -1 },
     });
     this.headerImageRef.current.setState({
       src: currentProject.images.headerImg.url,
@@ -165,6 +166,11 @@ class PrivateSettingsChangeProjectContent extends Component {
       .then((result) => {
         let parsed = JSON.parse(JSON.stringify(result.data.getAllProjects));
         parsed.unshift(firstProject);
+        parsed.forEach((project) => {
+          for (let i = 0; i < project.images.images.length; i++) {
+            project.images.images[i].id = i;
+          }
+        });
         this.setState({ allProjects: parsed });
       });
   }
@@ -227,8 +233,13 @@ class PrivateSettingsChangeProjectContent extends Component {
     }
   };
 
-  handleImageDelete = (index) => {
+  handleImageDelete = (id) => {
     let currentProject = this.state.currentProject;
+    let index = currentProject.images.images.findIndex(
+      (item) => item.id === id
+    );
+    console.log("id", id);
+    console.log("index", index);
     currentProject.images.images.splice(index, 1);
     this.setState({ currentProject });
   };
@@ -267,8 +278,11 @@ class PrivateSettingsChangeProjectContent extends Component {
     this.setState({ currentProject });
   };
 
-  onChangeImage = (imageUrl, imageName, index) => {
+  onChangeImage = (imageUrl, imageName, id) => {
     let currentProject = this.state.currentProject;
+    let index = currentProject.images.images.findIndex(
+      (item) => item.id === id
+    );
     currentProject.images.images[index].url = imageUrl;
     currentProject.images.images[index].name = imageName;
     this.setState({ currentProject });
@@ -405,15 +419,14 @@ class PrivateSettingsChangeProjectContent extends Component {
                     ref={this.headerImageRef}
                   ></Image>
                   <h2 style={inputGroupH2Style}>Images</h2>
+
                   {this.state.currentProject.images.images.map((image) => (
                     <Image
                       key={image.url}
                       src={image.url}
                       alt={image.name}
                       size={image.size}
-                      index={this.state.currentProject.images.images.indexOf(
-                        image
-                      )}
+                      id={image.id}
                       onChange={this.onChangeImage}
                       onDelete={this.handleImageDelete}
                     ></Image>

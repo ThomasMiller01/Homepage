@@ -5,14 +5,14 @@ class Image extends Component {
     super();
 
     if (props) {
-      let isNotSpecialImage = "index" in props ? true : false;
-      let index = null;
+      let isNotSpecialImage = "id" in props ? true : false;
+      let id = null;
       if (isNotSpecialImage) {
-        index = props.index;
+        id = props.id;
       }
 
       let dimensions = { x: -1, y: -1 };
-      let unique = "unique#" + index + Math.random();
+      let unique = "unique#" + id + Math.random();
 
       this.state = {
         src: props.src,
@@ -21,8 +21,7 @@ class Image extends Component {
         unique,
         onChange: props.onChange,
         onDelete: props.onDelete,
-        isNotSpecialImage: { value: isNotSpecialImage, index },
-        index,
+        isNotSpecialImage: { value: isNotSpecialImage, id },
       };
     }
 
@@ -37,7 +36,7 @@ class Image extends Component {
     unique: "",
     onChange: null,
     onDelete: null,
-    isNotSpecialImage: { value: false, index: null },
+    isNotSpecialImage: { value: false, id: null },
   };
 
   onImageChange = (e) => {
@@ -45,8 +44,8 @@ class Image extends Component {
     e.target.value = null;
     let imageUrl = URL.createObjectURL(file);
     if (this.state.isNotSpecialImage.value) {
-      let index = this.state.isNotSpecialImage.index;
-      this.state.onChange(imageUrl, file.name, index);
+      let id = this.state.isNotSpecialImage.id;
+      this.state.onChange(imageUrl, file.name, id);
     } else {
       this.state.onChange(imageUrl);
     }
@@ -59,8 +58,8 @@ class Image extends Component {
 
   onImageDelete = (e) => {
     if (this.state.isNotSpecialImage.value) {
-      let index = this.state.isNotSpecialImage.index;
-      this.state.onDelete(index);
+      let id = this.state.isNotSpecialImage.id;
+      this.state.onDelete(id);
     } else {
       this.state.onDelete();
     }
@@ -74,6 +73,7 @@ class Image extends Component {
   };
 
   imageLoaded = () => {
+    console.log("image loaded");
     this.setState({
       dimensions: {
         x: this.imageRef.current.width,
