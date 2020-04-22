@@ -45,9 +45,9 @@ class Image extends Component {
     let imageUrl = URL.createObjectURL(file);
     if (this.state.isNotSpecialImage.value) {
       let id = this.state.isNotSpecialImage.id;
-      this.state.onChange(imageUrl, file.name, id);
+      this.state.onChange(file.name, imageUrl, "-1x-1", id);
     } else {
-      this.state.onChange(imageUrl);
+      this.state.onChange(file.name, imageUrl, "-1x-1");
     }
     this.setState({
       src: imageUrl,
@@ -73,13 +73,27 @@ class Image extends Component {
   };
 
   imageLoaded = () => {
-    console.log("image loaded");
     this.setState({
       dimensions: {
         x: this.imageRef.current.width,
         y: this.imageRef.current.height,
       },
     });
+    if (this.state.isNotSpecialImage.value) {
+      let id = this.state.isNotSpecialImage.id;
+      this.state.onChange(
+        this.state.alt,
+        this.state.src,
+        this.imageRef.current.width + "x" + this.imageRef.current.height,
+        id
+      );
+    } else {
+      this.state.onChange(
+        this.state.alt,
+        this.state.src,
+        this.imageRef.current.width + "x" + this.imageRef.current.height
+      );
+    }
   };
 
   getMappedDimensions = () => {

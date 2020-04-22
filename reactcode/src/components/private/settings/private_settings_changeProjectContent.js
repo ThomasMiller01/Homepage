@@ -43,7 +43,6 @@ class PrivateSettingsChangeProjectContent extends Component {
       githubRepo: { name: "", url: "" },
       description: "",
       description_big: "",
-
       images: {
         thumbnail: {
           name: "None",
@@ -75,16 +74,13 @@ class PrivateSettingsChangeProjectContent extends Component {
 
   getEditorDescriptionOutput = (content) => {
     let currentProject = this.state.currentProject;
-    currentProject = Object.assign({ description: content }, currentProject);
+    currentProject.description = content;
     this.setState({ currentProject });
   };
 
   getEditorDescriptionBigOutput = (content) => {
     let currentProject = this.state.currentProject;
-    currentProject = Object.assign(
-      { description_big: content },
-      currentProject
-    );
+    currentProject.description_big = content;
     this.setState({ currentProject });
   };
 
@@ -189,21 +185,156 @@ class PrivateSettingsChangeProjectContent extends Component {
     });
   };
 
-  handleUpdateEvent = (event) => {
-    event.preventDefault();
+  handleGithubRepoChange = (e) => {
     var currentProject = this.state.currentProject;
-    if (currentProject.id === -1) {
-      // add project
+    var value = e.target.value;
+    currentProject.githubRepo = {
+      url: value,
+    };
+    this.setState({
+      currentProject: currentProject,
+    });
+  };
+
+  async getInputProject(project) {
+    // get thumbnail obj
+    let thumbnailFile;
+    if (project.images.thumbnail.url.includes("http")) {
+      thumbnailFile = await fetch(project.images.thumbnail.url)
+        .then((res) => {
+          return res.blob();
+        })
+        .then((blob) => {
+          const file = new File([blob], project.images.thumbnail.name, {
+            type: "image/png",
+          });
+          return file;
+        });
     } else {
-      // change project
+      thumbnailFile = await this.dataURLtoBlob(project.images.thumbnail.url);
+    }
+    let thumbnailFileBase64 = await this.fileToBase64(thumbnailFile);
+
+    let thumbnail = {
+      name: project.images.thumbnail.name,
+      file: {
+        name: thumbnailFile.name,
+        base64string: thumbnailFileBase64,
+      },
+      size: project.images.thumbnail.size,
+    };
+
+    let headerImgFile;
+    if (project.images.headerImg.url.includes("http")) {
+      headerImgFile = await fetch(project.images.headerImg.url)
+        .then((res) => res.blob())
+        .then((blob) => {
+          const file = new File([blob], project.images.headerImg.name, {
+            type: "image/png",
+          });
+          return file;
+        });
+    } else {
+      headerImgFile = await this.dataURLtoBlob(project.images.headerImg.url);
     }
 
-    // this.reloadProjects();
-    //
-    // this.setState({ projectStatus: "Success" });
-    // setTimeout(() => {
-    //   this.setState({ projectStatus: "None" });
-    // }, 3000);
+    let headerImgFileBase64 = await this.fileToBase64(headerImgFile);
+    let headerImg = {
+      name: project.images.headerImg.name,
+      file: {
+        name: headerImgFile.name,
+        base64string: headerImgFileBase64,
+      },
+      size: project.images.headerImg.size,
+    };
+
+    let images = [];
+    for (let i = 0; i < project.images.images.length; i++) {
+      let imageFile;
+      let image = project.images.images[i];
+      if (image.url.includes("http")) {
+        imageFile = await fetch(image.url)
+          .then((res) => res.blob())
+          .then((blob) => {
+            const file = new File([blob], image.name, {
+              type: "image/png",
+            });
+            return file;
+          });
+      } else {
+        imageFile = await this.dataURLtoBlob(image.url);
+      }
+      let imageFileBase64 = await this.fileToBase64(imageFile);
+      images.push({
+        name: image.name,
+        file: {
+          name: imageFile.name,
+          base64string: imageFileBase64,
+        },
+        size: image.size,
+      });
+    }
+
+    return {
+      name: project.name,
+      githubRepo: project.githubRepo.url,
+      description: project.description,
+      description_big: project.description_big,
+      images: {
+        thumbnail,
+        headerImg,
+        images,
+      },
+      favourite: project.favourite,
+      _private: project._private,
+    };
+  }
+
+  handleUpdateEvent = (event) => {
+    event.preventDefault();
+
+    var currentProject = this.state.currentProject;
+
+    this.getInputProject(currentProject).then((project) => {
+      // check if add or update project
+      let mutation;
+      let variables;
+      let token = this.Auth.getToken();
+      if (currentProject.id === -1) {
+        mutation = gql`
+          mutation($project: ProjectInputType!, $token: String!) {
+            addProject(project: $project, token: $token) {
+              value
+            }
+          }
+        `;
+        variables = {
+          project,
+          token,
+        };
+      } else {
+        return;
+        // change project
+      }
+      this.homepageApi
+        .mutate({
+          mutation,
+          variables,
+        })
+        .then((result) => {
+          this.reloadProjects();
+          this.setState({ projectStatus: "Success" });
+          setTimeout(() => {
+            this.setState({ projectStatus: "None" });
+          }, 3000);
+        })
+        .catch((error) => {
+          this.setState({ projectStatus: "Error" });
+          setTimeout(() => {
+            this.setState({ projectStatus: "None" });
+          }, 3000);
+        });
+    });
   };
 
   handleDeleteEvent = () => {
@@ -238,8 +369,6 @@ class PrivateSettingsChangeProjectContent extends Component {
     let index = currentProject.images.images.findIndex(
       (item) => item.id === id
     );
-    console.log("id", id);
-    console.log("index", index);
     currentProject.images.images.splice(index, 1);
     this.setState({ currentProject });
   };
@@ -266,25 +395,30 @@ class PrivateSettingsChangeProjectContent extends Component {
     this.setState({ currentProject });
   };
 
-  onChangeThumbnailImage = (imageUrl) => {
+  onChangeThumbnailImage = (imageName, imageUrl, imageSize) => {
     let currentProject = this.state.currentProject;
+    currentProject.images.thumbnail.name = imageName;
     currentProject.images.thumbnail.url = imageUrl;
+    currentProject.images.thumbnail.size = imageSize;
     this.setState({ currentProject });
   };
 
-  onChangeHeaderImgImage = (imageUrl) => {
+  onChangeHeaderImgImage = (imageName, imageUrl, imageSize) => {
     let currentProject = this.state.currentProject;
+    currentProject.images.headerImg.name = imageName;
     currentProject.images.headerImg.url = imageUrl;
+    currentProject.images.headerImg.size = imageSize;
     this.setState({ currentProject });
   };
 
-  onChangeImage = (imageUrl, imageName, id) => {
+  onChangeImage = (imageName, imageUrl, imageSize, id) => {
     let currentProject = this.state.currentProject;
     let index = currentProject.images.images.findIndex(
       (item) => item.id === id
     );
-    currentProject.images.images[index].url = imageUrl;
     currentProject.images.images[index].name = imageName;
+    currentProject.images.images[index].url = imageUrl;
+    currentProject.images.images[index].size = imageSize;
     this.setState({ currentProject });
   };
 
@@ -292,43 +426,35 @@ class PrivateSettingsChangeProjectContent extends Component {
     return new Promise((resolve) => {
       var file = new File([filename], filepath);
       var reader = new FileReader();
-      // Read file content on file loaded event
       reader.onload = function (event) {
         resolve(event.target.result);
       };
-
-      // Convert data to base64
       reader.readAsDataURL(file);
     });
   };
 
-  uploadImage = () => {
-    // upload image
-    // this.fileToBase64(imageFile).then((result) => {
-    //   let token = this.Auth.getToken();
-    //   this.homepageApi
-    //     .mutate({
-    //       mutation: gql`
-    //         mutation($imageFile: UploadImageType!, $token: String!) {
-    //           uploadImageFile(imageFile: $imageFile, token: $token)
-    //         }
-    //       `,
-    //       variables: {
-    //         imageFile: {
-    //           imageType: "THUMBNAIL",
-    //           projectName: "homepage",
-    //           file: {
-    //             name: imageFile.name,
-    //             base64string: result,
-    //           },
-    //         },
-    //         token,
-    //       },
-    //     })
-    //     .then((result) => {
-    //       console.log(result);
-    //     });
-    // });
+  dataURLtoBlob = (dataurl) => {
+    var arr = dataurl.split(","),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], { type: mime });
+  };
+
+  addImage = () => {
+    let currentProject = this.state.currentProject;
+    currentProject.images.images.push({
+      name: "None",
+      url:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png",
+      size: "979x979",
+      id: currentProject.images.images.length,
+    });
+    this.setState(currentProject);
   };
 
   render() {
@@ -375,7 +501,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                     placeholder="Name"
                     style={inputGroupInputStyle}
                     value={this.state.currentProject.name}
-                    name="_name"
+                    name="name"
                     onChange={this.handleContentChange}
                   />
                   <h2 style={inputGroupH2Style}>GitHub Repo</h2>
@@ -389,8 +515,8 @@ class PrivateSettingsChangeProjectContent extends Component {
                         ? this.state.currentProject.githubRepo.url
                         : ""
                     }
-                    name="_githubRepo"
-                    onChange={this.handleContentChange}
+                    name="githubRepo"
+                    onChange={this.handleGithubRepoChange}
                   />
                   <h2 style={inputGroupH2Style}>Description</h2>
                   <div style={textDescriptionStyle}>
@@ -419,10 +545,14 @@ class PrivateSettingsChangeProjectContent extends Component {
                     ref={this.headerImageRef}
                   ></Image>
                   <h2 style={inputGroupH2Style}>Images</h2>
-
+                  <button type="button" onClick={this.addImage}>
+                    Add Image
+                  </button>
                   {this.state.currentProject.images.images.map((image) => (
                     <Image
-                      key={image.url}
+                      key={this.state.currentProject.images.images.indexOf(
+                        image
+                      )}
                       src={image.url}
                       alt={image.name}
                       size={image.size}

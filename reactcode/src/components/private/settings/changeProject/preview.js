@@ -1,6 +1,6 @@
 import React from "react";
 
-const PrivateChangeProjectPreview = props => {
+const PrivateChangeProjectPreview = (props) => {
   if (!props.isMobile || props.renderPreview) {
     return (
       <div className="input-group input_both" style={inputRenderStyle}>
@@ -27,14 +27,14 @@ const PrivateChangeProjectPreview = props => {
         <div
           style={rendereTextboxStyle}
           dangerouslySetInnerHTML={{
-            __html: props._description
+            __html: props._description,
           }}
         />
         <h2 style={inputGroupH2Style}>Description Big</h2>
         <div
           style={rendereTextboxStyle}
           dangerouslySetInnerHTML={{
-            __html: props._description_big
+            __html: props._description_big,
           }}
         />
       </div>
@@ -51,14 +51,14 @@ const inputGroupH2Style = {
   textAlign: "left",
   fontSize: "20px",
   marginBottom: "5px",
-  marginTop: "5px"
+  marginTop: "5px",
 };
 
 const inputGroupH1Style = {
   width: "95%",
   textAlign: "left",
   fontSize: "30px",
-  marginBottom: "10px"
+  marginBottom: "10px",
 };
 
 const rendereTextboxStyle = {
@@ -67,13 +67,13 @@ const rendereTextboxStyle = {
   padding: "10px",
   marginTop: "75px",
   textAlign: "left",
-  minHeight: "325px"
+  minHeight: "325px",
 };
 
 const inputRenderStyle = {
   marginLeft: "2.5%",
   display: "inline-block",
-  verticalAlign: "top"
+  verticalAlign: "top",
 };
 
 export default PrivateChangeProjectPreview;
