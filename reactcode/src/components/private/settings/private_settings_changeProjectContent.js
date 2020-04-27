@@ -285,8 +285,8 @@ class PrivateSettingsChangeProjectContent extends Component {
         headerImg,
         images,
       },
-      favourite: project.favourite,
-      _private: project._private,
+      favourite: project.favourite.toString(),
+      _private: project._private.toString(),
     };
   }
 
@@ -313,8 +313,8 @@ class PrivateSettingsChangeProjectContent extends Component {
           token,
         };
       } else {
-        return;
         // change project
+        return;
       }
       this.homepageApi
         .mutate({

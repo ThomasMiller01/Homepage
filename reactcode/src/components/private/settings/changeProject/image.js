@@ -58,6 +58,7 @@ class Image extends Component {
 
   onImageDelete = (e) => {
     if (this.state.isNotSpecialImage.value) {
+      this.setState({ isNotSpecialImage: { value: "delete" } });
       let id = this.state.isNotSpecialImage.id;
       this.state.onDelete(id);
     } else {
@@ -73,26 +74,28 @@ class Image extends Component {
   };
 
   imageLoaded = () => {
-    this.setState({
-      dimensions: {
-        x: this.imageRef.current.width,
-        y: this.imageRef.current.height,
-      },
-    });
-    if (this.state.isNotSpecialImage.value) {
-      let id = this.state.isNotSpecialImage.id;
-      this.state.onChange(
-        this.state.alt,
-        this.state.src,
-        this.imageRef.current.width + "x" + this.imageRef.current.height,
-        id
-      );
-    } else {
-      this.state.onChange(
-        this.state.alt,
-        this.state.src,
-        this.imageRef.current.width + "x" + this.imageRef.current.height
-      );
+    if (this.state.isNotSpecialImage.value !== "delete") {
+      this.setState({
+        dimensions: {
+          x: this.imageRef.current.width,
+          y: this.imageRef.current.height,
+        },
+      });
+      if (this.state.isNotSpecialImage.value) {
+        let id = this.state.isNotSpecialImage.id;
+        this.state.onChange(
+          this.state.alt,
+          this.state.src,
+          this.imageRef.current.width + "x" + this.imageRef.current.height,
+          id
+        );
+      } else {
+        this.state.onChange(
+          this.state.alt,
+          this.state.src,
+          this.imageRef.current.width + "x" + this.imageRef.current.height
+        );
+      }
     }
   };
 
@@ -131,7 +134,7 @@ class Image extends Component {
             ref={this.imageRef}
           />
           <div className="media-body" style={mediaBodyStyle}>
-            {this.state.alt}
+            {this.state.alt} [{this.state.isNotSpecialImage.id}]
             <button
               type="button"
               className="close"
