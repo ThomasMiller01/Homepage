@@ -134,7 +134,7 @@ class Image extends Component {
             ref={this.imageRef}
           />
           <div className="media-body" style={mediaBodyStyle}>
-            {this.state.alt} [{this.state.isNotSpecialImage.id}]
+            {this.state.alt}
             <button
               type="button"
               className="close"

@@ -252,6 +252,7 @@ class PrivateSettingsChangeProjectContent extends Component {
     for (let i = 0; i < project.images.images.length; i++) {
       let imageFile;
       let image = project.images.images[i];
+      console.log("url", image.url);
       if (image.url.includes("http")) {
         imageFile = await fetch(image.url)
           .then((res) => res.blob())
@@ -313,6 +314,7 @@ class PrivateSettingsChangeProjectContent extends Component {
           token,
         };
       } else {
+        console.log("changeProject: ", project);
         // change project
         return;
       }
