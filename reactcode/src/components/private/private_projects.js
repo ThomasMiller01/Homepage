@@ -51,9 +51,9 @@ class PrivateProjects extends Component {
 
   getPrivateIconIndicator = (_private) => {
     if (_private) {
-      return <i class="fas fa-lock" />;
+      return <i className="fas fa-lock" />;
     } else {
-      return <i class="fas fa-book" />;
+      return <i className="fas fa-book" />;
     }
   };
 

@@ -36,22 +36,22 @@ class PrivateSettingsChangeProjectContent extends Component {
     this.headerImageRef = React.createRef();
   }
 
-  getProjectTemplate = (name) => {
+  getProjectTemplate = () => {
     return {
       id: -1,
-      name: name,
+      name: "",
       githubRepo: { name: "", url: "" },
       description: "",
       description_big: "",
       images: {
         thumbnail: {
-          name: "None",
+          name: "none.png",
           url:
             "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png",
           size: "979x979",
         },
         headerImg: {
-          name: "None",
+          name: "none.png",
           url:
             "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png",
           size: "979x979",
@@ -65,8 +65,8 @@ class PrivateSettingsChangeProjectContent extends Component {
   };
 
   state = {
-    allProjects: [this.getProjectTemplate("[Clear]")],
-    currentProject: this.getProjectTemplate(""),
+    allProjects: [this.getProjectTemplate()],
+    currentProject: this.getProjectTemplate(),
     projectStatus: "None",
     isMobile: false,
     renderPreview: false,
@@ -90,7 +90,7 @@ class PrivateSettingsChangeProjectContent extends Component {
     } else {
       this.setState({ isMobile: false });
     }
-    this.reloadProjects();
+    this.reloadProjects(-1);
   }
 
   projectChanged = (event) => {
@@ -118,7 +118,7 @@ class PrivateSettingsChangeProjectContent extends Component {
     });
   };
 
-  reloadProjects() {
+  reloadProjects(id) {
     const firstProject = this.state.allProjects[0];
     let token = this.Auth.getToken();
     this.homepageApi
@@ -167,7 +167,15 @@ class PrivateSettingsChangeProjectContent extends Component {
             project.images.images[i].id = i;
           }
         });
+        if (id === -1) {
+          this.setState({ currentProject: this.getProjectTemplate("") });
+        } else {
+          this.setState({
+            currentProjec: parsed.find((project) => project.id === id),
+          });
+        }
         this.setState({ allProjects: parsed });
+        this.projectChanged({ target: { value: id.toString() } });
       });
   }
 
@@ -197,7 +205,6 @@ class PrivateSettingsChangeProjectContent extends Component {
   };
 
   async getInputProject(project) {
-    // get thumbnail obj
     let thumbnailFile;
     if (project.images.thumbnail.url.includes("http")) {
       thumbnailFile = await fetch(project.images.thumbnail.url)
@@ -252,7 +259,6 @@ class PrivateSettingsChangeProjectContent extends Component {
     for (let i = 0; i < project.images.images.length; i++) {
       let imageFile;
       let image = project.images.images[i];
-      console.log("url", image.url);
       if (image.url.includes("http")) {
         imageFile = await fetch(image.url)
           .then((res) => res.blob())
@@ -276,9 +282,11 @@ class PrivateSettingsChangeProjectContent extends Component {
       });
     }
 
+    let githubRepo = project.githubRepo == null ? "#" : project.githubRepo.url;
+
     return {
       name: project.name,
-      githubRepo: project.githubRepo.url,
+      githubRepo: githubRepo,
       description: project.description,
       description_big: project.description_big,
       images: {
@@ -314,9 +322,18 @@ class PrivateSettingsChangeProjectContent extends Component {
           token,
         };
       } else {
-        console.log("changeProject: ", project);
-        // change project
-        return;
+        mutation = gql`
+          mutation($id: String!, $project: ProjectInputType!, $token: String!) {
+            updateProject(id: $id, project: $project, token: $token) {
+              value
+            }
+          }
+        `;
+        variables = {
+          project,
+          id: currentProject.id,
+          token,
+        };
       }
       this.homepageApi
         .mutate({
@@ -324,7 +341,12 @@ class PrivateSettingsChangeProjectContent extends Component {
           variables,
         })
         .then((result) => {
-          this.reloadProjects();
+          console.log(result.data);
+          setTimeout(() => {
+            this.homepageApi.cache.reset();
+            this.reloadProjects(parseInt(result.data.addProject.value));
+          }, 5000);
+
           this.setState({ projectStatus: "Success" });
           setTimeout(() => {
             this.setState({ projectStatus: "None" });
@@ -342,19 +364,36 @@ class PrivateSettingsChangeProjectContent extends Component {
   handleDeleteEvent = () => {
     var currentProject = this.state.currentProject;
     if (currentProject.id !== -1) {
-      // delete project
-      //
-      // this.reloadProjects();
-      //
-      // this.setState({ projectStatus: "Success" });
-      // setTimeout(() => {
-      //   this.setState({ projectStatus: "None" });
-      // }, 3000);
-      //
-      // this.setState({ projectStatus: "Error" });
-      // setTimeout(() => {
-      //   this.setState({ projectStatus: "None" });
-      // }, 3000);
+      let token = this.Auth.getToken();
+      this.homepageApi
+        .mutate({
+          mutation: gql`
+            mutation($id: String!, $token: String!) {
+              deleteProject(id: $id, token: $token) {
+                value
+              }
+            }
+          `,
+          variables: {
+            id: currentProject.id,
+            token,
+          },
+        })
+        .then((result) => {
+          console.log(result.data);
+          this.reloadProjects(-1);
+
+          this.setState({ projectStatus: "Success" });
+          setTimeout(() => {
+            this.setState({ projectStatus: "None" });
+          }, 3000);
+        })
+        .catch((error) => {
+          this.setState({ projectStatus: "Error" });
+          setTimeout(() => {
+            this.setState({ projectStatus: "None" });
+          }, 3000);
+        });
     }
   };
 
@@ -450,7 +489,7 @@ class PrivateSettingsChangeProjectContent extends Component {
   addImage = () => {
     let currentProject = this.state.currentProject;
     currentProject.images.images.push({
-      name: "None",
+      name: "none.png",
       url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png",
       size: "979x979",
@@ -485,10 +524,11 @@ class PrivateSettingsChangeProjectContent extends Component {
                   <select
                     className="form-control"
                     onChange={this.projectChanged}
+                    value={this.state.currentProject.id}
                   >
                     {this.state.allProjects.map((project) => (
                       <option key={project.id} value={project.id}>
-                        {project.name}
+                        {project.id === -1 ? "[Clear]" : project.name}
                       </option>
                     ))}
                   </select>
