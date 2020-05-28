@@ -341,7 +341,6 @@ class PrivateSettingsChangeProjectContent extends Component {
           variables,
         })
         .then((result) => {
-          console.log(result.data);
           setTimeout(() => {
             this.homepageApi.cache.reset();
             this.reloadProjects(parseInt(result.data.addProject.value));
@@ -380,7 +379,6 @@ class PrivateSettingsChangeProjectContent extends Component {
           },
         })
         .then((result) => {
-          console.log(result.data);
           this.reloadProjects(-1);
 
           this.setState({ projectStatus: "Success" });
