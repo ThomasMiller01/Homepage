@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
-import { gql } from "apollo-boost";
 
 import AuthService from "../../authService";
 
@@ -9,6 +8,7 @@ import PrivateServiceStats from "./stats/private_service_stats";
 import PrivateServiceLogs from "./private_service_logs";
 import PrivateServicePorts from "./private_service_ports";
 
+import { getAllServiceHealth, getServiceHealth } from "./serviceDataQuery";
 import exampleService from "./exampleServices";
 
 class PrivateStatistics extends Component {
@@ -24,88 +24,24 @@ class PrivateStatistics extends Component {
     });
   }
 
-  state = {
-    services: [],
-  };
-
-  componentDidMount() {
-    this.getServices();
-  }
-
   // state = {
-  //   services: exampleService(),
+  //   services: [],
   // };
 
+  // componentDidMount() {
+  //   this.getServices();
+  // }
+
+  state = {
+    services: exampleService(),
+  };
+
   getServices = () => {
+    this.healthcheckApi.cache.reset();
     let token = this.Auth.getToken();
     this.healthcheckApi
       .query({
-        query: gql`
-          query($token: String) {
-            getAllServiceHealth(token: $token) {
-              service {
-                id
-                name
-                command
-                image
-                ports {
-                  ip
-                  privatePort
-                  publicPort
-                  type
-                }
-                created
-              }
-              state
-              status
-              stats {
-                read
-                cpu {
-                  onlineCpus
-                  totalUsage
-                  systemCpuUsage
-                  perCpuUsage
-                }
-                memory {
-                  usage
-                  maxUsage
-                  limit
-                }
-                io {
-                  read_major
-                  read_minor
-                  read_value
-                  write_major
-                  write_minor
-                  write_value
-                }
-                network {
-                  rx_bytes
-                  rx_packets
-                  rx_errors
-                  rx_dropped
-                  tx_bytes
-                  tx_packets
-                  tx_errors
-                  tx_dropped
-                }
-              }
-              logs {
-                lines {
-                  type
-                  content
-                }
-              }
-              datetime
-              error {
-                code
-                type
-                message
-                time
-              }
-            }
-          }
-        `,
+        query: getAllServiceHealth,
         variables: { token },
       })
       .then((result) => {
@@ -117,75 +53,11 @@ class PrivateStatistics extends Component {
   };
 
   getService = (service_id) => {
+    this.healthcheckApi.cache.reset();
     let token = this.Auth.getToken();
     this.healthcheckApi
       .query({
-        query: gql`
-          query($token: String, $containerid: String) {
-            getServiceHealth(token: $token, containerid: $containerid) {
-              service {
-                id
-                name
-                command
-                image
-                ports {
-                  ip
-                  privatePort
-                  publicPort
-                  type
-                }
-                created
-              }
-              state
-              status
-              stats {
-                read
-                cpu {
-                  onlineCpus
-                  totalUsage
-                  systemCpuUsage
-                  perCpuUsage
-                }
-                memory {
-                  usage
-                  maxUsage
-                  limit
-                }
-                io {
-                  read_major
-                  read_minor
-                  read_value
-                  write_major
-                  write_minor
-                  write_value
-                }
-                network {
-                  rx_bytes
-                  rx_packets
-                  rx_errors
-                  rx_dropped
-                  tx_bytes
-                  tx_packets
-                  tx_errors
-                  tx_dropped
-                }
-              }
-              logs {
-                lines {
-                  type
-                  content
-                }
-              }
-              datetime
-              error {
-                code
-                type
-                message
-                time
-              }
-            }
-          }
-        `,
+        query: getServiceHealth,
         variables: { token, containerid: service_id },
       })
       .then((result) => {
@@ -212,43 +84,100 @@ class PrivateStatistics extends Component {
       .replace(",", "");
   };
 
+  renderServices = () => {
+    if (this.state.services.length === 0) {
+      return (
+        <div style={{ margin: "0 auto" }}>
+          <div className="spinner-border" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
+      );
+    } else {
+      return this.state.services.map((service) => (
+        <div className="col-md-3 col-sm-12" key={service.service.id}>
+          <div className="card shadow mb-4">
+            <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h4 className="m-0 font-weight-bold">
+                {service.service.name} <small>{service.service.image}</small>
+              </h4>
+              <i
+                className="fas fa-sync-alt"
+                style={refreshIconStyle}
+                onClick={() => this.getService(service.service.id)}
+              />
+            </div>
+            <div className="card-body">
+              <h5>
+                State: {service.state} <small>{service.status}</small>
+              </h5>
+              <a
+                className="btn btn-primary"
+                data-toggle="collapse"
+                href={"#collapseInfo" + service.service.id}
+                role="button"
+                style={buttonStyle}
+              >
+                Info
+              </a>
+              <a
+                className="btn btn-primary"
+                data-toggle="collapse"
+                href={"#collapseStats" + service.service.id}
+                role="button"
+                style={buttonStyle}
+              >
+                Stats
+              </a>
+              <a
+                className="btn btn-primary"
+                data-toggle="collapse"
+                href={"#collapseLogs" + service.service.id}
+                role="button"
+                style={buttonStyle}
+              >
+                Logs
+              </a>
+              <div
+                className="collapse"
+                id={"collapseInfo" + service.service.id}
+              >
+                <div className="card card-body">
+                  <h5>Created: {this.renderDate(service.service.created)}</h5>
+                  <h5>Command: "{service.service.command}"</h5>
+                  <PrivateServicePorts service={service} />
+                  <h5>Error: {service.error}</h5>
+                </div>
+              </div>
+              <div
+                className="collapse"
+                id={"collapseStats" + service.service.id}
+              >
+                <PrivateServiceStats service={service} />
+              </div>
+              <div
+                className="collapse"
+                id={"collapseLogs" + service.service.id}
+              >
+                <PrivateServiceLogs service={service} />
+              </div>
+              <p className="card-text">
+                <small className="text-muted">
+                  Last updated: {this.renderDate(service.datetime)}
+                </small>
+              </p>
+            </div>
+          </div>
+        </div>
+      ));
+    }
+  };
+
   render() {
     return (
       <div className="containerDashboard" style={containerDashboardStyle}>
-        <div className="row">
-          {this.state.services.map((service) => (
-            <div className="col-md-3 col-sm-12" key={service.service.id}>
-              <div className="card shadow mb-4">
-                <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h4 className="m-0 font-weight-bold">
-                    {service.service.name}{" "}
-                    <small>{service.service.image}</small>
-                  </h4>
-                  <i
-                    className="fas fa-sync-alt"
-                    style={refreshIconStyle}
-                    onClick={() => this.getService(service.service.id)}
-                  />
-                </div>
-                <div className="card-body">
-                  <h5>
-                    State: {service.state} <small>{service.status}</small>
-                  </h5>
-                  <h5>Created: {this.renderDate(service.service.created)}</h5>
-                  <h5>Command: "{service.service.command}"</h5>
-                  <h5>Error: {service.error}</h5>
-                  <PrivateServicePorts service={service} />
-                  <PrivateServiceStats service={service} />
-                  <PrivateServiceLogs service={service} />
-                  <p className="card-text">
-                    <small className="text-muted">
-                      Last updated: {this.renderDate(service.datetime)}
-                    </small>
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="row" style={rowStyle}>
+          {this.renderServices()}
         </div>
       </div>
     );
@@ -256,6 +185,14 @@ class PrivateStatistics extends Component {
 }
 
 // Styles
+const rowStyle = {
+  margin: "0",
+};
+
+const buttonStyle = {
+  margin: "0 5px",
+};
+
 const containerDashboardStyle = { width: "100%", margin: "30px auto 0 auto" };
 
 const refreshIconStyle = {

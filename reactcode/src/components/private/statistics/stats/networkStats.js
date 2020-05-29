@@ -25,6 +25,7 @@ const getNetworkOptions = (service) => {
 
   let options = {
     height: 150,
+    width: 150,
     animationEnabled: true,
     title: {
       text: "Network",

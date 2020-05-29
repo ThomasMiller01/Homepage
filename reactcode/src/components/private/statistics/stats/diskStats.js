@@ -18,6 +18,7 @@ const getDiskOptions = (service) => {
 
   let options = {
     height: 150,
+    width: 150,
     theme: "light1",
     backgroundColor: "",
     animationEnabled: true,

@@ -39,6 +39,7 @@ const getCpuOptions = (service) => {
 
   const options = {
     height: 150,
+    width: 150,
     animationEnabled: true,
     theme: "light1",
     backgroundColor: "",
