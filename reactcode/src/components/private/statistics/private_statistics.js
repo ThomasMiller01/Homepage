@@ -54,6 +54,7 @@ class PrivateStatistics extends Component {
                   publicPort
                   type
                 }
+                created
               }
               state
               status
@@ -95,7 +96,7 @@ class PrivateStatistics extends Component {
                   content
                 }
               }
-              created
+              datetime
               error {
                 code
                 type
