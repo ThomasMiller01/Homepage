@@ -24,17 +24,17 @@ class PrivateStatistics extends Component {
     });
   }
 
-  state = {
-    services: [],
-  };
-
-  componentDidMount() {
-    this.getServices();
-  }
-
   // state = {
-  //   services: exampleService(),
+  //   services: [],
   // };
+
+  // componentDidMount() {
+  //   this.getServices();
+  // }
+
+  state = {
+    services: exampleService(),
+  };
 
   getServices = () => {
     let token = this.Auth.getToken();
@@ -133,6 +133,7 @@ class PrivateStatistics extends Component {
                   publicPort
                   type
                 }
+                created
               }
               state
               status
@@ -174,7 +175,7 @@ class PrivateStatistics extends Component {
                   content
                 }
               }
-              created
+              datetime
               error {
                 code
                 type
@@ -232,17 +233,15 @@ class PrivateStatistics extends Component {
                   <h5>
                     State: {service.state} <small>{service.status}</small>
                   </h5>
-                  <div style={{ display: "none" }}>
-                    <h5>Command: "{service.service.command}"</h5>
-                    <h5>Error: {service.error}</h5>
-                  </div>
+                  <h5>Created: {this.renderDate(service.service.created)}</h5>
+                  <h5>Command: "{service.service.command}"</h5>
+                  <h5>Error: {service.error}</h5>
                   <PrivateServicePorts service={service} />
-                  <div style={{ display: "none" }}></div>
                   <PrivateServiceStats service={service} />
                   <PrivateServiceLogs service={service} />
                   <p className="card-text">
                     <small className="text-muted">
-                      Created: {this.renderDate(service.created)}
+                      Last updated: {this.renderDate(service.datetime)}
                     </small>
                   </p>
                 </div>

@@ -31,7 +31,7 @@ const getDiskOptions = (service) => {
     axisY2: {
       gridThickness: 0,
     },
-    dataPointWidth: 35,
+    dataPointWidth: 20,
     data: [
       {
         type: "rangeColumn",
@@ -55,7 +55,7 @@ const getDiskOptions = (service) => {
       },
       {
         type: "scatter",
-        markerSize: 15,
+        markerSize: 10,
         toolTipContent: "{y} kB",
         color: "#00C2BF",
         axisYIndex: 1,

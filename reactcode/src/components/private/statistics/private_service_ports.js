@@ -4,6 +4,7 @@ const PrivateServicePorts = (props) => {
   let service = props.service;
   return (
     <div style={logsDiv}>
+      <h5>Ports:</h5>
       <div className="table-responsive">
         <table className="table">
           <thead>

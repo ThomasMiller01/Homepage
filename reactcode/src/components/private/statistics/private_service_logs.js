@@ -42,9 +42,9 @@ const stderr = {
 };
 
 const lineStyle = {
-  lineHeight: "1vw",
+  lineHeight: "18px",
   color: "#9CC4E2",
-  margin: "0.3vw 15px",
+  margin: "5px 15px",
 };
 
 export default PrivateServiceLogs;

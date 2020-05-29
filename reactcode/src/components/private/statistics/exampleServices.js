@@ -2,7 +2,7 @@ const exampleServices = (num) => {
   let services = [
     {
       service: {
-        id: "f61f8c4a71e032139bcc272eafd5342d15196ff7bdec3b1120a9b2eb16985c77",
+        id: "a677c7c7479278ad2e006d38134be3eaa62a19bd6f7ffc521b63bcddf75d695f",
         name: "/healthcheck",
         command: "dotnet HealthCheck.dll",
         image: "healthcheck",
@@ -14,37 +14,38 @@ const exampleServices = (num) => {
             type: "tcp",
           },
         ],
+        created: "2020-05-29T12:37:54+00:00",
       },
       state: "RUNNING",
-      status: "Up 23 hours",
+      status: "Up 40 seconds",
       stats: {
-        read: "2020-05-28T17:06:26.4690635+00:00",
+        read: "2020-05-29T12:38:36.1364484+00:00",
         cpu: {
           onlineCpus: 2,
-          totalUsage: 133489785772,
-          systemCpuUsage: 5063210110000000,
-          perCpuUsage: [66958613626, 66531172146],
+          totalUsage: 4507513030,
+          systemCpuUsage: 5200656090000000,
+          perCpuUsage: [3457727674, 1049785356],
         },
         memory: {
-          usage: 123719680,
-          maxUsage: 123990016,
+          usage: 48259072,
+          maxUsage: 51355648,
           limit: 4136427520,
         },
         io: {
           read_major: 8,
           read_minor: 0,
-          read_value: 24317952,
+          read_value: 376832,
           write_major: 8,
           write_minor: 0,
           write_value: 0,
         },
         network: {
-          rx_bytes: 544322,
-          rx_packets: 4834,
+          rx_bytes: 14679,
+          rx_packets: 51,
           rx_errors: 0,
           rx_dropped: 0,
-          tx_bytes: 3598883,
-          tx_packets: 6208,
+          tx_bytes: 82470,
+          tx_packets: 46,
           tx_errors: 0,
           tx_dropped: 0,
         },
@@ -69,12 +70,12 @@ const exampleServices = (num) => {
           },
         ],
       },
-      created: "2020-05-27T18:24:22+00:00",
+      datetime: "2020-05-29T12:38:36.1698823+00:00",
       error: null,
     },
     {
       service: {
-        id: "141792c9e7a08363dd15d9bb74c299ca8d9a98f11e5640b1357fc6ba426e4166",
+        id: "a9abd6622f92ed0d90ba1f9a4e4a892ef33437e68c8ce74015edd3a71300d68d",
         name: "/homepage",
         command: "dotnet Homepage.dll",
         image: "homepage",
@@ -86,37 +87,38 @@ const exampleServices = (num) => {
             type: "tcp",
           },
         ],
+        created: "2020-05-28T18:49:26+00:00",
       },
       state: "RUNNING",
-      status: "Up 25 hours",
+      status: "Up 18 hours",
       stats: {
-        read: "2020-05-28T17:06:27.4970286+00:00",
+        read: "2020-05-29T12:38:37.1599046+00:00",
         cpu: {
           onlineCpus: 2,
-          totalUsage: 137668227377,
-          systemCpuUsage: 5063212140000000,
-          perCpuUsage: [68351818685, 69316408692],
+          totalUsage: 102500430218,
+          systemCpuUsage: 5200658080000000,
+          perCpuUsage: [51755274718, 50745155500],
         },
         memory: {
-          usage: 98361344,
-          maxUsage: 98664448,
+          usage: 99041280,
+          maxUsage: 99303424,
           limit: 4136427520,
         },
         io: {
           read_major: 8,
           read_minor: 0,
-          read_value: 2682880,
+          read_value: 7340032,
           write_major: 8,
           write_minor: 0,
           write_value: 0,
         },
         network: {
-          rx_bytes: 1397051,
-          rx_packets: 4726,
+          rx_bytes: 675188,
+          rx_packets: 3323,
           rx_errors: 0,
           rx_dropped: 0,
-          tx_bytes: 647659,
-          tx_packets: 6106,
+          tx_bytes: 387997,
+          tx_packets: 4326,
           tx_errors: 0,
           tx_dropped: 0,
         },
@@ -141,12 +143,12 @@ const exampleServices = (num) => {
           },
         ],
       },
-      created: "2020-05-27T16:32:00+00:00",
+      datetime: "2020-05-29T12:38:37.1649936+00:00",
       error: null,
     },
     {
       service: {
-        id: "9dc667d0eed98962a420af4a378175e780e75dfc03feac2c1713b88eb7f3a5fd",
+        id: "af8f5082d052b8ca04465ce6b4112ba1710707c4caf2290fb88afb60c73048a3",
         name: "/authorization",
         command: "dotnet Authorization.dll",
         image: "authorization",
@@ -158,37 +160,38 @@ const exampleServices = (num) => {
             type: "tcp",
           },
         ],
+        created: "2020-05-28T18:49:23+00:00",
       },
       state: "RUNNING",
-      status: "Up 25 hours",
+      status: "Up 18 hours",
       stats: {
-        read: "2020-05-28T17:06:28.5205625+00:00",
+        read: "2020-05-29T12:38:38.1821936+00:00",
         cpu: {
           onlineCpus: 2,
-          totalUsage: 141662443067,
-          systemCpuUsage: 5063214180000000,
-          perCpuUsage: [70198761281, 71463681786],
+          totalUsage: 97642267501,
+          systemCpuUsage: 5200660110000000,
+          perCpuUsage: [47770114120, 49872153381],
         },
         memory: {
-          usage: 92602368,
-          maxUsage: 92893184,
+          usage: 96350208,
+          maxUsage: 96579584,
           limit: 4136427520,
         },
         io: {
           read_major: 8,
           read_minor: 0,
-          read_value: 10739712,
+          read_value: 7909376,
           write_major: 8,
           write_minor: 0,
           write_value: 0,
         },
         network: {
-          rx_bytes: 528221,
-          rx_packets: 4898,
+          rx_bytes: 336121,
+          rx_packets: 3325,
           rx_errors: 0,
           rx_dropped: 0,
-          tx_bytes: 665677,
-          tx_packets: 6250,
+          tx_bytes: 364622,
+          tx_packets: 4313,
           tx_errors: 0,
           tx_dropped: 0,
         },
@@ -213,12 +216,12 @@ const exampleServices = (num) => {
           },
         ],
       },
-      created: "2020-05-27T16:31:57+00:00",
+      datetime: "2020-05-29T12:38:38.1863013+00:00",
       error: null,
     },
     {
       service: {
-        id: "9560e190d0646ed6566ec65da86323cae4dbc3a03c7fcd075745c6c736b25a15",
+        id: "cf782b4a112c296a7c49c3611591e73a0b5e5e3696112056fa58360bbc7a1556",
         name: "/database",
         command: "dotnet Database.dll",
         image: "database",
@@ -230,37 +233,38 @@ const exampleServices = (num) => {
             type: "tcp",
           },
         ],
+        created: "2020-05-28T18:49:21+00:00",
       },
       state: "RUNNING",
-      status: "Up 25 hours",
+      status: "Up 18 hours",
       stats: {
-        read: "2020-05-28T17:06:29.5422671+00:00",
+        read: "2020-05-29T12:38:39.2051042+00:00",
         cpu: {
           onlineCpus: 2,
-          totalUsage: 133686451313,
-          systemCpuUsage: 5063216220000000,
-          perCpuUsage: [66862957174, 66823494139],
+          totalUsage: 97782444076,
+          systemCpuUsage: 5200662090000000,
+          perCpuUsage: [49367243520, 48415200556],
         },
         memory: {
-          usage: 94076928,
-          maxUsage: 94547968,
+          usage: 128987136,
+          maxUsage: 131526656,
           limit: 4136427520,
         },
         io: {
           read_major: 8,
           read_minor: 0,
-          read_value: 14458880,
+          read_value: 57036800,
           write_major: 8,
           write_minor: 0,
           write_value: 0,
         },
         network: {
-          rx_bytes: 1508189,
-          rx_packets: 5203,
+          rx_bytes: 718298,
+          rx_packets: 3492,
           rx_errors: 0,
           rx_dropped: 0,
-          tx_bytes: 2555719,
-          tx_packets: 6649,
+          tx_bytes: 1095698,
+          tx_packets: 4520,
           tx_errors: 0,
           tx_dropped: 0,
         },
@@ -285,7 +289,7 @@ const exampleServices = (num) => {
           },
         ],
       },
-      created: "2020-05-27T16:31:55+00:00",
+      datetime: "2020-05-29T12:38:39.2103324+00:00",
       error: null,
     },
     {
@@ -308,37 +312,38 @@ const exampleServices = (num) => {
             type: "tcp",
           },
         ],
+        created: "2020-05-27T16:24:46+00:00",
       },
       state: "RUNNING",
-      status: "Up 25 hours",
+      status: "Up 44 hours",
       stats: {
-        read: "2020-05-28T17:06:30.5653337+00:00",
+        read: "2020-05-29T12:38:40.234273+00:00",
         cpu: {
           onlineCpus: 2,
-          totalUsage: 304374209278,
-          systemCpuUsage: 5063218220000000,
-          perCpuUsage: [153955531397, 150418677881],
+          totalUsage: 537544987556,
+          systemCpuUsage: 5200664140000000,
+          perCpuUsage: [268954182238, 268590805318],
         },
         memory: {
-          usage: 247812096,
-          maxUsage: 249454592,
+          usage: 269848576,
+          maxUsage: 280870912,
           limit: 4136427520,
         },
         io: {
           read_major: 8,
           read_minor: 0,
-          read_value: 38748160,
+          read_value: 41730048,
           write_major: 8,
           write_minor: 0,
-          write_value: 5132288,
+          write_value: 7700480,
         },
         network: {
-          rx_bytes: 6207953,
-          rx_packets: 25305,
+          rx_bytes: 10038832,
+          rx_packets: 44065,
           rx_errors: 0,
           rx_dropped: 0,
-          tx_bytes: 2866751,
-          tx_packets: 19397,
+          tx_bytes: 4292801,
+          tx_packets: 33594,
           tx_errors: 0,
           tx_dropped: 0,
         },
@@ -4909,9 +4914,3552 @@ const exampleServices = (num) => {
             type: "STDERR",
             content: "[17:05:12 INF] Metrics sampled",
           },
+          {
+            type: "STDERR",
+            content: "[17:10:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[17:15:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[17:15:10 INF] Retention processing and compaction took 1.2574 ms; allocating 599998.7426 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[17:15:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[17:15:10 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[17:15:10 INF] Indexing took 16 ms; total iteration time was 18.2396 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[17:15:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[17:20:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[17:25:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[17:25:10 INF] Retention processing and compaction took 1.0061 ms; allocating 599998.9939 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[17:25:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[17:25:10 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[17:25:10 INF] Indexing took 16 ms; total iteration time was 17.0587 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[17:25:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[17:30:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[17:35:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[17:35:10 INF] Retention processing and compaction took 1.7126000000000001 ms; allocating 599998.2874 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[17:35:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[17:35:10 INF] Wrote 0 index sets in 27 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[17:35:10 INF] Indexing took 27 ms; total iteration time was 29.116200000000003 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[17:35:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[17:40:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[17:45:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[17:45:10 INF] Retention processing and compaction took 1.504 ms; allocating 599998.496 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[17:45:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[17:45:10 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[17:45:10 INF] Indexing took 16 ms; total iteration time was 17.736800000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[17:45:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[17:50:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[17:55:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[17:55:10 INF] Retention processing and compaction took 2.1100000000000003 ms; allocating 599997.89 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[17:55:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[17:55:10 INF] Wrote 0 index sets in 19 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[17:55:10 INF] Indexing took 20 ms; total iteration time was 22.1953 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[17:55:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[18:00:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[18:05:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:05:10 INF] Retention processing and compaction took 1.8167 ms; allocating 599998.1833 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[18:05:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[18:05:10 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:05:10 INF] Indexing took 16 ms; total iteration time was 18.3524 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[18:05:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[18:10:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[18:15:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:15:10 INF] Retention processing and compaction took 1.2619 ms; allocating 599998.73810000008 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[18:15:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[18:15:10 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:15:10 INF] Indexing took 18 ms; total iteration time was 19.7252 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[18:15:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[18:20:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[18:25:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:25:10 INF] Retention processing and compaction took 1.3239 ms; allocating 599998.6761 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[18:25:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[18:25:10 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:25:10 INF] Indexing took 16 ms; total iteration time was 17.8139 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[18:25:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[18:30:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[18:35:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:35:10 INF] Retention processing and compaction took 2.2561 ms; allocating 599997.7439 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[18:35:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[18:35:10 INF] Wrote 0 index sets in 24 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:35:10 INF] Indexing took 25 ms; total iteration time was 27.4263 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[18:35:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[18:40:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[18:45:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:45:10 INF] Retention processing and compaction took 2.0223 ms; allocating 599997.9777 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[18:45:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[18:45:10 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:45:10 INF] Indexing took 16 ms; total iteration time was 18.2831 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[18:45:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:49:41 INF] 1 more generation 2 garbage collection(s) occurred",
+          },
+          {
+            type: "STDERR",
+            content: "[18:50:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:50:41 INF] 1 more generation 2 garbage collection(s) occurred",
+          },
+          {
+            type: "STDERR",
+            content: "[18:55:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:55:10 INF] Retention processing and compaction took 0.8858 ms; allocating 599999.11420000007 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[18:55:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[18:55:10 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[18:55:10 INF] Indexing took 16 ms; total iteration time was 17.6533 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[18:55:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[19:00:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[19:05:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[19:05:10 INF] Retention processing and compaction took 1.3065 ms; allocating 599998.6935 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[19:05:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[19:05:10 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[19:05:10 INF] Indexing took 19 ms; total iteration time was 20.4888 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[19:05:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[19:10:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[19:15:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[19:15:10 INF] Retention processing and compaction took 1.0142 ms; allocating 599998.9858 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[19:15:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[19:15:10 INF] Wrote 0 index sets in 13 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[19:15:10 INF] Indexing took 13 ms; total iteration time was 14.6607 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[19:15:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[19:20:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[19:25:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[19:25:10 INF] Retention processing and compaction took 1.6253 ms; allocating 599998.3747 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[19:25:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[19:25:10 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[19:25:10 INF] Indexing took 15 ms; total iteration time was 17.047700000000003 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[19:25:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[19:30:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[19:35:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[19:35:10 INF] Retention processing and compaction took 1.2 ms; allocating 599998.8 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[19:35:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[19:35:10 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[19:35:10 INF] Indexing took 35 ms; total iteration time was 37.078700000000005 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[19:35:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[19:40:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[19:45:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[19:45:10 INF] Retention processing and compaction took 0.9463 ms; allocating 599999.0537 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[19:45:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[19:45:10 INF] Wrote 0 index sets in 28 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[19:45:10 INF] Indexing took 28 ms; total iteration time was 29.3044 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[19:45:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[19:50:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[19:55:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[19:55:10 INF] Retention processing and compaction took 1.1083 ms; allocating 599998.8917 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[19:55:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[19:55:10 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[19:55:10 INF] Indexing took 18 ms; total iteration time was 19.7421 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[19:55:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[20:00:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[20:05:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[20:05:10 INF] Retention processing and compaction took 1.868 ms; allocating 599998.132 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[20:05:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[20:05:10 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[20:05:10 INF] Indexing took 17 ms; total iteration time was 19.7603 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[20:05:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[20:10:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[20:15:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[20:15:10 INF] Retention processing and compaction took 1.7582 ms; allocating 599998.24180000008 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[20:15:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[20:15:10 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[20:15:10 INF] Indexing took 18 ms; total iteration time was 19.8444 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[20:15:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[20:20:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[20:25:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[20:25:10 INF] Retention processing and compaction took 1.6037000000000001 ms; allocating 599998.3963 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[20:25:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[20:25:10 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[20:25:10 INF] Indexing took 17 ms; total iteration time was 18.6387 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[20:25:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[20:30:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[20:35:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[20:35:10 INF] Retention processing and compaction took 1.7331 ms; allocating 599998.2669 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[20:35:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[20:35:10 INF] Wrote 0 index sets in 28 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[20:35:10 INF] Indexing took 28 ms; total iteration time was 30.311500000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[20:35:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[20:40:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[20:45:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[20:45:10 INF] Retention processing and compaction took 2.2243 ms; allocating 599997.7757 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[20:45:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[20:45:10 INF] Wrote 0 index sets in 19 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[20:45:10 INF] Indexing took 19 ms; total iteration time was 22.0833 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[20:45:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[20:50:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[20:55:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[20:55:10 INF] Retention processing and compaction took 1.4756 ms; allocating 599998.5244 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[20:55:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[20:55:10 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[20:55:10 INF] Indexing took 18 ms; total iteration time was 20.1938 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[20:55:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[21:00:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[21:05:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[21:05:10 INF] Retention processing and compaction took 2.0336000000000003 ms; allocating 599997.9664 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[21:05:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[21:05:10 INF] Wrote 0 index sets in 31 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[21:05:10 INF] Indexing took 32 ms; total iteration time was 34.2096 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[21:05:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[21:10:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[21:15:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[21:15:10 INF] Retention processing and compaction took 1.5995000000000001 ms; allocating 599998.4005 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[21:15:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[21:15:10 INF] Wrote 0 index sets in 26 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[21:15:10 INF] Indexing took 26 ms; total iteration time was 28.285800000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[21:15:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[21:20:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[21:25:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[21:25:10 INF] Retention processing and compaction took 1.6529 ms; allocating 599998.3471 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[21:25:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[21:25:10 INF] Wrote 0 index sets in 24 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[21:25:10 INF] Indexing took 24 ms; total iteration time was 26.4573 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[21:25:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[21:30:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[21:35:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              '[21:35:10 INF] Attempting to compact extents prior to "2020-05-20T00:00:00.0000000Z"',
+          },
+          {
+            type: "STDERR",
+            content:
+              "[21:35:10 INF] Compaction complete, 0 extents required compaction",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[21:35:10 INF] Retention processing and compaction took 25.3888 ms; allocating 599974.6112 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[21:35:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[21:35:10 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[21:35:10 INF] Indexing took 18 ms; total iteration time was 44.0822 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[21:35:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[21:40:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[21:45:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[21:45:10 INF] Retention processing and compaction took 1.7635 ms; allocating 599998.2365 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[21:45:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[21:45:10 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[21:45:10 INF] Indexing took 16 ms; total iteration time was 18.134 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[21:45:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[21:50:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[21:55:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[21:55:10 INF] Retention processing and compaction took 1.227 ms; allocating 599998.773 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[21:55:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[21:55:10 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[21:55:10 INF] Indexing took 15 ms; total iteration time was 16.8387 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[21:55:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[22:00:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[22:05:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[22:05:10 INF] Retention processing and compaction took 1.9135000000000002 ms; allocating 599998.0865 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[22:05:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[22:05:10 INF] Wrote 0 index sets in 19 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[22:05:10 INF] Indexing took 33 ms; total iteration time was 35.458 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[22:05:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[22:10:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[22:15:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[22:15:10 INF] Retention processing and compaction took 1.7931000000000001 ms; allocating 599998.2069 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[22:15:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[22:15:10 INF] Wrote 0 index sets in 31 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[22:15:10 INF] Indexing took 31 ms; total iteration time was 33.351600000000005 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[22:15:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[22:20:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[22:25:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[22:25:10 INF] Retention processing and compaction took 1.0916000000000001 ms; allocating 599998.90840000007 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[22:25:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[22:25:10 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[22:25:10 INF] Indexing took 16 ms; total iteration time was 17.7179 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[22:25:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[22:30:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[22:35:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[22:35:10 INF] Retention processing and compaction took 1.2832000000000001 ms; allocating 599998.7168 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[22:35:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[22:35:10 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[22:35:10 INF] Indexing took 16 ms; total iteration time was 17.5335 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[22:35:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[22:40:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[22:45:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[22:45:10 INF] Retention processing and compaction took 1.1707 ms; allocating 599998.8293 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[22:45:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[22:45:10 INF] Wrote 0 index sets in 24 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[22:45:10 INF] Indexing took 24 ms; total iteration time was 26.1533 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[22:45:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[22:50:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[22:55:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[22:55:10 INF] Retention processing and compaction took 1.0395 ms; allocating 599998.9605 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[22:55:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[22:55:10 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[22:55:10 INF] Indexing took 17 ms; total iteration time was 18.4648 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[22:55:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[23:00:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[23:05:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[23:05:10 INF] Retention processing and compaction took 1.2253 ms; allocating 599998.77470000007 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[23:05:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[23:05:10 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[23:05:10 INF] Indexing took 15 ms; total iteration time was 17.2021 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[23:05:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[23:10:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[23:15:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[23:15:10 INF] Retention processing and compaction took 1.2037 ms; allocating 599998.7963 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[23:15:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[23:15:10 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[23:15:10 INF] Indexing took 17 ms; total iteration time was 18.8243 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[23:15:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[23:20:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[23:25:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[23:25:10 INF] Retention processing and compaction took 1.0263 ms; allocating 599998.9737 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[23:25:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[23:25:10 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[23:25:10 INF] Indexing took 17 ms; total iteration time was 18.5779 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[23:25:12 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[23:30:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[23:35:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[23:35:10 INF] Retention processing and compaction took 1.3237 ms; allocating 599998.6763 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[23:35:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[23:35:10 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[23:35:10 INF] Indexing took 15 ms; total iteration time was 16.653100000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[23:35:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[23:40:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[23:45:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[23:45:10 INF] Retention processing and compaction took 1.0691000000000002 ms; allocating 599998.9309 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[23:45:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[23:45:10 INF] Wrote 0 index sets in 14 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[23:45:10 INF] Indexing took 14 ms; total iteration time was 15.7935 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[23:45:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[23:50:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[23:55:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[23:55:10 INF] Retention processing and compaction took 1.0387 ms; allocating 599998.96130000008 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[23:55:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[23:55:10 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[23:55:10 INF] Indexing took 16 ms; total iteration time was 17.988 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[23:55:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[00:00:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[00:05:10 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[00:05:10 INF] Retention processing and compaction took 1.0629 ms; allocating 599998.9371 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[00:05:10 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[00:05:10 INF] Wrote 0 index sets in 31 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[00:05:10 INF] Indexing took 31 ms; total iteration time was 33.0407 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[00:05:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[00:10:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[00:15:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[00:15:11 INF] Retention processing and compaction took 0.92480000000000007 ms; allocating 599999.07520000008 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[00:15:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[00:15:11 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[00:15:11 INF] Indexing took 15 ms; total iteration time was 16.2549 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[00:15:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[00:20:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[00:25:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[00:25:11 INF] Retention processing and compaction took 1.8802 ms; allocating 599998.1198 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[00:25:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[00:25:11 INF] Wrote 0 index sets in 20 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[00:25:11 INF] Indexing took 21 ms; total iteration time was 22.9337 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[00:25:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[00:30:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[00:35:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[00:35:11 INF] Retention processing and compaction took 1.0139 ms; allocating 599998.9861 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[00:35:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[00:35:11 INF] Wrote 0 index sets in 14 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[00:35:11 INF] Indexing took 14 ms; total iteration time was 15.5496 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[00:35:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[00:40:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[00:45:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[00:45:11 INF] Retention processing and compaction took 1.1592 ms; allocating 599998.8408 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[00:45:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[00:45:11 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[00:45:11 INF] Indexing took 18 ms; total iteration time was 19.419900000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[00:45:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[00:50:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[00:55:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[00:55:11 INF] Retention processing and compaction took 0.9986 ms; allocating 599999.00140000007 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[00:55:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[00:55:11 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[00:55:11 INF] Indexing took 17 ms; total iteration time was 18.5437 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[00:55:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[01:00:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[01:05:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[01:05:11 INF] Retention processing and compaction took 0.935 ms; allocating 599999.06500000006 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[01:05:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[01:05:11 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[01:05:11 INF] Indexing took 24 ms; total iteration time was 25.3059 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[01:05:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[01:10:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[01:15:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[01:15:11 INF] Retention processing and compaction took 1.0705 ms; allocating 599998.92950000009 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[01:15:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[01:15:11 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[01:15:11 INF] Indexing took 18 ms; total iteration time was 19.3992 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[01:15:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[01:20:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[01:25:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[01:25:11 INF] Retention processing and compaction took 1.3819000000000001 ms; allocating 599998.61810000008 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[01:25:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[01:25:11 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[01:25:11 INF] Indexing took 17 ms; total iteration time was 18.8128 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[01:25:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[01:30:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[01:35:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[01:35:11 INF] Retention processing and compaction took 2.8543000000000003 ms; allocating 599997.1457 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[01:35:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[01:35:11 INF] Wrote 0 index sets in 26 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[01:35:11 INF] Indexing took 26 ms; total iteration time was 29.6737 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[01:35:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[01:40:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[01:45:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[01:45:11 INF] Retention processing and compaction took 1.7009 ms; allocating 599998.29910000006 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[01:45:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[01:45:11 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[01:45:11 INF] Indexing took 15 ms; total iteration time was 17.6431 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[01:45:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[01:50:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[01:55:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[01:55:11 INF] Retention processing and compaction took 1.536 ms; allocating 599998.464 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[01:55:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[01:55:11 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[01:55:11 INF] Indexing took 17 ms; total iteration time was 19.0487 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[01:55:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[02:00:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[02:05:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[02:05:11 INF] Retention processing and compaction took 2.2840000000000003 ms; allocating 599997.716 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[02:05:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[02:05:11 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[02:05:11 INF] Indexing took 24 ms; total iteration time was 26.4127 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[02:05:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[02:10:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[02:15:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[02:15:11 INF] Retention processing and compaction took 1.3919000000000001 ms; allocating 599998.60810000007 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[02:15:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[02:15:11 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[02:15:11 INF] Indexing took 18 ms; total iteration time was 19.9282 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[02:15:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[02:20:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[02:25:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[02:25:11 INF] Retention processing and compaction took 1.4320000000000002 ms; allocating 599998.56800000009 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[02:25:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[02:25:11 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[02:25:11 INF] Indexing took 18 ms; total iteration time was 19.7666 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[02:25:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[02:30:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[02:35:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[02:35:11 INF] Retention processing and compaction took 1.344 ms; allocating 599998.65600000008 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[02:35:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[02:35:11 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[02:35:11 INF] Indexing took 16 ms; total iteration time was 18.073 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[02:35:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[02:40:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[02:45:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[02:45:11 INF] Retention processing and compaction took 2.1343 ms; allocating 599997.86570000008 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[02:45:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[02:45:11 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[02:45:11 INF] Indexing took 18 ms; total iteration time was 20.564400000000003 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[02:45:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[02:50:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[02:55:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[02:55:11 INF] Retention processing and compaction took 2.1548000000000003 ms; allocating 599997.8452 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[02:55:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[02:55:11 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[02:55:11 INF] Indexing took 18 ms; total iteration time was 20.8123 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[02:55:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[03:00:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content:
+              '[03:00:16 INF] Backing up to "/data/Backups/seq_20200529.seqbac"',
+          },
+          {
+            type: "STDERR",
+            content: "[03:00:16 INF] Backup complete; 19 documents exported",
+          },
+          {
+            type: "STDERR",
+            content: "[03:05:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[03:05:11 INF] Retention processing and compaction took 1.5321 ms; allocating 599998.4679 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[03:05:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[03:05:11 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[03:05:11 INF] Indexing took 16 ms; total iteration time was 18.292 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[03:05:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[03:05:16 INF] The backup for this date already exists",
+          },
+          {
+            type: "STDERR",
+            content: "[03:10:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[03:15:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[03:15:11 INF] Retention processing and compaction took 2.1763 ms; allocating 599997.82370000007 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[03:15:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[03:15:11 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[03:15:11 INF] Indexing took 16 ms; total iteration time was 19.1064 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[03:15:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[03:20:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[03:25:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[03:25:11 INF] Retention processing and compaction took 1.2349 ms; allocating 599998.76510000008 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[03:25:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[03:25:11 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[03:25:11 INF] Indexing took 15 ms; total iteration time was 16.7026 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[03:25:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[03:30:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[03:35:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[03:35:11 INF] Retention processing and compaction took 1.7948000000000002 ms; allocating 599998.20520000008 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[03:35:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[03:35:11 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[03:35:11 INF] Indexing took 16 ms; total iteration time was 18.130300000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[03:35:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[03:40:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[03:45:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[03:45:11 INF] Retention processing and compaction took 2.2453000000000003 ms; allocating 599997.7547 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[03:45:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[03:45:11 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[03:45:11 INF] Indexing took 15 ms; total iteration time was 18.2221 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[03:45:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[03:50:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[03:55:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[03:55:11 INF] Retention processing and compaction took 1.3061 ms; allocating 599998.69390000007 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[03:55:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[03:55:11 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[03:55:11 INF] Indexing took 16 ms; total iteration time was 18.1398 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[03:55:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[04:00:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[04:05:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[04:05:11 INF] Retention processing and compaction took 2.6372 ms; allocating 599997.3628 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[04:05:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[04:05:11 INF] Wrote 0 index sets in 19 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[04:05:11 INF] Indexing took 19 ms; total iteration time was 22.0628 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[04:05:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[04:10:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[04:15:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[04:15:11 INF] Retention processing and compaction took 1.6104 ms; allocating 599998.3896 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[04:15:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[04:15:11 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[04:15:11 INF] Indexing took 18 ms; total iteration time was 19.8791 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[04:15:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[04:20:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[04:25:11 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[04:25:11 INF] Retention processing and compaction took 11.2798 ms; allocating 599988.7202 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[04:25:11 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[04:25:11 INF] Wrote 0 index sets in 102 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[04:25:11 INF] Indexing took 102 ms; total iteration time was 113.89880000000001 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[04:25:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[04:30:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[04:35:12 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[04:35:12 INF] Retention processing and compaction took 1.6444 ms; allocating 599998.3556 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[04:35:12 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[04:35:12 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[04:35:12 INF] Indexing took 18 ms; total iteration time was 20.424300000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[04:35:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[04:40:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[04:45:12 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[04:45:12 INF] Retention processing and compaction took 1.6401000000000001 ms; allocating 599998.3599 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[04:45:12 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[04:45:12 INF] Wrote 0 index sets in 20 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[04:45:12 INF] Indexing took 26 ms; total iteration time was 28.4768 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[04:45:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[04:50:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[04:55:12 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[04:55:12 INF] Retention processing and compaction took 1.0462 ms; allocating 599998.9538 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[04:55:12 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[04:55:12 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[04:55:12 INF] Indexing took 16 ms; total iteration time was 17.5639 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[04:55:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[05:00:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[05:05:12 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[05:05:12 INF] Retention processing and compaction took 2.0527 ms; allocating 599997.9473 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[05:05:12 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[05:05:12 INF] Wrote 0 index sets in 20 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[05:05:12 INF] Indexing took 20 ms; total iteration time was 22.611900000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[05:05:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[05:10:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[05:15:12 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[05:15:12 INF] Retention processing and compaction took 1.6078000000000001 ms; allocating 599998.3922 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[05:15:12 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[05:15:12 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[05:15:12 INF] Indexing took 17 ms; total iteration time was 18.881 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[05:15:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[05:20:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[05:25:12 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[05:25:12 INF] Retention processing and compaction took 1.4475 ms; allocating 599998.5525 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[05:25:12 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[05:25:12 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[05:25:12 INF] Indexing took 18 ms; total iteration time was 19.5805 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[05:25:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[05:30:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[05:35:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[05:35:13 INF] Retention processing and compaction took 1.3900000000000001 ms; allocating 599998.61 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[05:35:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[05:35:13 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[05:35:13 INF] Indexing took 17 ms; total iteration time was 19.1509 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[05:35:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[05:40:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[05:45:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[05:45:13 INF] Retention processing and compaction took 1.2983 ms; allocating 599998.7017 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[05:45:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[05:45:13 INF] Wrote 0 index sets in 19 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[05:45:13 INF] Indexing took 19 ms; total iteration time was 20.5345 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[05:45:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[05:50:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[05:55:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[05:55:13 INF] Retention processing and compaction took 1.6597000000000002 ms; allocating 599998.3403 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[05:55:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[05:55:13 INF] Wrote 0 index sets in 26 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[05:55:13 INF] Indexing took 26 ms; total iteration time was 28.3928 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[05:55:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[06:00:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[06:05:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[06:05:13 INF] Retention processing and compaction took 1.7165000000000001 ms; allocating 599998.2835 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[06:05:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[06:05:13 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[06:05:13 INF] Indexing took 16 ms; total iteration time was 18.5669 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[06:05:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[06:10:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[06:15:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[06:15:13 INF] Retention processing and compaction took 1.1203 ms; allocating 599998.8797 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[06:15:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[06:15:13 INF] Wrote 0 index sets in 14 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[06:15:13 INF] Indexing took 14 ms; total iteration time was 15.995500000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[06:15:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[06:20:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[06:25:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[06:25:13 INF] Retention processing and compaction took 1.3497000000000001 ms; allocating 599998.6503 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[06:25:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[06:25:13 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[06:25:13 INF] Indexing took 17 ms; total iteration time was 18.5883 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[06:25:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[06:30:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[06:35:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[06:35:13 INF] Retention processing and compaction took 1.4964000000000002 ms; allocating 599998.5036 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[06:35:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[06:35:13 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[06:35:13 INF] Indexing took 16 ms; total iteration time was 18.4637 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[06:35:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[06:40:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[06:45:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[06:45:13 INF] Retention processing and compaction took 1.06 ms; allocating 599998.94000000006 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[06:45:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[06:45:13 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[06:45:13 INF] Indexing took 15 ms; total iteration time was 16.8044 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[06:45:13 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[06:50:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[06:55:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[06:55:13 INF] Retention processing and compaction took 1.6607 ms; allocating 599998.3393 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[06:55:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[06:55:13 INF] Wrote 0 index sets in 27 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[06:55:13 INF] Indexing took 27 ms; total iteration time was 29.3 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[06:55:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[07:00:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[07:05:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[07:05:13 INF] Retention processing and compaction took 1.2895 ms; allocating 599998.7105 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[07:05:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[07:05:13 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[07:05:13 INF] Indexing took 16 ms; total iteration time was 17.7815 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[07:05:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[07:10:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[07:15:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[07:15:13 INF] Retention processing and compaction took 1.7302000000000002 ms; allocating 599998.2698 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[07:15:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[07:15:13 INF] Wrote 0 index sets in 40 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[07:15:13 INF] Indexing took 41 ms; total iteration time was 43.0092 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[07:15:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[07:20:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[07:25:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[07:25:13 INF] Retention processing and compaction took 1.1764000000000001 ms; allocating 599998.8236 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[07:25:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[07:25:13 INF] Wrote 0 index sets in 20 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[07:25:13 INF] Indexing took 20 ms; total iteration time was 22.064500000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[07:25:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[07:30:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[07:35:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[07:35:13 INF] Retention processing and compaction took 1.3237 ms; allocating 599998.6763 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[07:35:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[07:35:13 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[07:35:13 INF] Indexing took 18 ms; total iteration time was 19.4653 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[07:35:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[07:40:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[07:45:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[07:45:13 INF] Retention processing and compaction took 1.5084 ms; allocating 599998.49160000007 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[07:45:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[07:45:13 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[07:45:13 INF] Indexing took 16 ms; total iteration time was 18.212300000000003 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[07:45:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[07:50:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[07:55:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[07:55:13 INF] Retention processing and compaction took 1.6388 ms; allocating 599998.3612 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[07:55:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[07:55:13 INF] Wrote 0 index sets in 19 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[07:55:13 INF] Indexing took 19 ms; total iteration time was 21.6 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[07:55:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[08:00:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[08:05:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[08:05:13 INF] Retention processing and compaction took 1.4275 ms; allocating 599998.5725 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[08:05:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[08:05:13 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[08:05:13 INF] Indexing took 18 ms; total iteration time was 19.92 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[08:05:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[08:10:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[08:15:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[08:15:13 INF] Retention processing and compaction took 2.6278 ms; allocating 599997.3722 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[08:15:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[08:15:13 INF] Wrote 0 index sets in 19 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[08:15:13 INF] Indexing took 20 ms; total iteration time was 22.7922 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[08:15:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[08:20:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[08:25:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[08:25:13 INF] Retention processing and compaction took 1.7595 ms; allocating 599998.24050000007 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[08:25:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[08:25:13 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[08:25:13 INF] Indexing took 19 ms; total iteration time was 20.8737 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[08:25:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[08:30:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[08:35:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[08:35:13 INF] Retention processing and compaction took 1.2085000000000001 ms; allocating 599998.7915 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[08:35:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[08:35:13 INF] Wrote 0 index sets in 14 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[08:35:13 INF] Indexing took 15 ms; total iteration time was 16.3991 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[08:35:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[08:40:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[08:45:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[08:45:13 INF] Retention processing and compaction took 2.4453 ms; allocating 599997.5547 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[08:45:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[08:45:13 INF] Wrote 0 index sets in 39 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[08:45:13 INF] Indexing took 39 ms; total iteration time was 41.864200000000004 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[08:45:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[08:50:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[08:55:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[08:55:13 INF] Retention processing and compaction took 1.1314 ms; allocating 599998.8686 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[08:55:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[08:55:13 INF] Wrote 0 index sets in 23 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[08:55:13 INF] Indexing took 23 ms; total iteration time was 25.114800000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[08:55:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[09:00:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[09:05:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[09:05:13 INF] Retention processing and compaction took 1.5725 ms; allocating 599998.4275 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[09:05:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[09:05:13 INF] Wrote 0 index sets in 19 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[09:05:13 INF] Indexing took 19 ms; total iteration time was 20.834500000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[09:05:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[09:10:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[09:15:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[09:15:13 INF] Retention processing and compaction took 1.7748000000000002 ms; allocating 599998.2252 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[09:15:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[09:15:13 INF] Wrote 0 index sets in 19 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[09:15:13 INF] Indexing took 20 ms; total iteration time was 21.8943 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[09:15:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[09:20:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[09:25:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[09:25:13 INF] Retention processing and compaction took 1.3281 ms; allocating 599998.67190000007 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[09:25:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[09:25:13 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[09:25:13 INF] Indexing took 17 ms; total iteration time was 19.0699 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[09:25:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[09:30:14 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[09:35:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[09:35:13 INF] Retention processing and compaction took 1.2712 ms; allocating 599998.7288 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[09:35:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[09:35:13 INF] Wrote 0 index sets in 19 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[09:35:13 INF] Indexing took 19 ms; total iteration time was 20.7303 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[09:35:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[09:40:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[09:45:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[09:45:13 INF] Retention processing and compaction took 1.2384000000000002 ms; allocating 599998.76160000009 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[09:45:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[09:45:13 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[09:45:13 INF] Indexing took 17 ms; total iteration time was 18.4531 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[09:45:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[09:50:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[09:55:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[09:55:13 INF] Retention processing and compaction took 1.4709 ms; allocating 599998.5291 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[09:55:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[09:55:13 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[09:55:13 INF] Indexing took 17 ms; total iteration time was 19.102 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[09:55:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[10:00:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[10:05:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[10:05:13 INF] Retention processing and compaction took 1.4865000000000002 ms; allocating 599998.5135 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[10:05:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[10:05:13 INF] Wrote 0 index sets in 25 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[10:05:13 INF] Indexing took 26 ms; total iteration time was 27.5701 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[10:05:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[10:10:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[10:15:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[10:15:13 INF] Retention processing and compaction took 1.3061 ms; allocating 599998.69390000007 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[10:15:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[10:15:13 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[10:15:13 INF] Indexing took 17 ms; total iteration time was 19.189500000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[10:15:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[10:20:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[10:25:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[10:25:13 INF] Retention processing and compaction took 1.4317 ms; allocating 599998.5683 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[10:25:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[10:25:13 INF] Wrote 0 index sets in 23 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[10:25:13 INF] Indexing took 36 ms; total iteration time was 37.9971 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[10:25:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[10:30:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[10:35:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[10:35:13 INF] Retention processing and compaction took 1.2858 ms; allocating 599998.7142 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[10:35:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[10:35:13 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[10:35:13 INF] Indexing took 17 ms; total iteration time was 18.9376 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[10:35:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[10:40:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[10:45:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[10:45:13 INF] Retention processing and compaction took 1.3224 ms; allocating 599998.6776 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[10:45:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[10:45:13 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[10:45:13 INF] Indexing took 18 ms; total iteration time was 20.3143 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[10:45:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[10:50:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[10:55:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[10:55:13 INF] Retention processing and compaction took 1.4779 ms; allocating 599998.52210000006 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[10:55:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[10:55:13 INF] Wrote 0 index sets in 25 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[10:55:13 INF] Indexing took 25 ms; total iteration time was 26.7483 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[10:55:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[11:00:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[11:05:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[11:05:13 INF] Retention processing and compaction took 1.2762 ms; allocating 599998.7238 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[11:05:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[11:05:13 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[11:05:13 INF] Indexing took 17 ms; total iteration time was 18.410800000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[11:05:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[11:10:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[11:15:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[11:15:13 INF] Retention processing and compaction took 1.2892000000000001 ms; allocating 599998.7108 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[11:15:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[11:15:13 INF] Wrote 0 index sets in 21 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[11:15:13 INF] Indexing took 21 ms; total iteration time was 22.7662 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[11:15:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[11:20:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[11:25:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[11:25:13 INF] Retention processing and compaction took 0.90470000000000006 ms; allocating 599999.0953 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[11:25:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[11:25:13 INF] Wrote 0 index sets in 19 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[11:25:13 INF] Indexing took 19 ms; total iteration time was 20.506 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[11:25:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[11:30:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[11:35:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[11:35:13 INF] Retention processing and compaction took 1.0029000000000001 ms; allocating 599998.9971 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[11:35:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[11:35:13 INF] Wrote 0 index sets in 17 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[11:35:13 INF] Indexing took 18 ms; total iteration time was 19.1344 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[11:35:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[11:40:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[11:45:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[11:45:13 INF] Retention processing and compaction took 0.80570000000000008 ms; allocating 599999.1943 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[11:45:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[11:45:13 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[11:45:13 INF] Indexing took 15 ms; total iteration time was 16.371100000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[11:45:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[11:50:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[11:55:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[11:55:13 INF] Retention processing and compaction took 1.2389000000000001 ms; allocating 599998.7611 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[11:55:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[11:55:13 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[11:55:13 INF] Indexing took 16 ms; total iteration time was 17.8327 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[11:55:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[12:00:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[12:05:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[12:05:13 INF] Retention processing and compaction took 0.9647 ms; allocating 599999.0353 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[12:05:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[12:05:13 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[12:05:13 INF] Indexing took 18 ms; total iteration time was 19.663800000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[12:05:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[12:10:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[12:15:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[12:15:13 INF] Retention processing and compaction took 1.098 ms; allocating 599998.902 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[12:15:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[12:15:13 INF] Wrote 0 index sets in 18 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[12:15:13 INF] Indexing took 18 ms; total iteration time was 19.412200000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[12:15:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[12:20:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[12:25:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[12:25:13 INF] Retention processing and compaction took 1.0543 ms; allocating 599998.9457 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[12:25:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[12:25:13 INF] Wrote 0 index sets in 16 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[12:25:13 INF] Indexing took 17 ms; total iteration time was 18.201900000000002 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[12:25:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[12:30:15 INF] Metrics sampled",
+          },
+          {
+            type: "STDERR",
+            content: "[12:35:13 INF] Applying 0 retention policies",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[12:35:13 INF] Retention processing and compaction took 1.0086 ms; allocating 599998.9914 ms for indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[12:35:13 INF] Beginning indexing",
+          },
+          {
+            type: "STDERR",
+            content: "[12:35:13 INF] Wrote 0 index sets in 15 ms",
+          },
+          {
+            type: "STDERR",
+            content:
+              "[12:35:13 INF] Indexing took 16 ms; total iteration time was 17.0475 ms",
+          },
+          {
+            type: "STDERR",
+            content: "[12:35:15 INF] Metrics sampled",
+          },
         ],
       },
-      created: "2020-05-27T16:24:46+00:00",
+      datetime: "2020-05-29T12:38:41.2240696+00:00",
       error: null,
     },
     {
@@ -4928,37 +8476,38 @@ const exampleServices = (num) => {
             type: "tcp",
           },
         ],
+        created: "2020-05-27T16:24:45+00:00",
       },
       state: "RUNNING",
-      status: "Up 25 hours",
+      status: "Up 44 hours",
       stats: {
-        read: "2020-05-28T17:06:31.5938502+00:00",
+        read: "2020-05-29T12:38:41.2568581+00:00",
         cpu: {
           onlineCpus: 2,
-          totalUsage: 7965928241,
-          systemCpuUsage: 5063220230000000,
-          perCpuUsage: [4498456496, 3467471745],
+          totalUsage: 12460162710,
+          systemCpuUsage: 5200666160000000,
+          perCpuUsage: [6653687939, 5806474771],
         },
         memory: {
-          usage: 48177152,
+          usage: 37343232,
           maxUsage: 97460224,
           limit: 4136427520,
         },
         io: {
           read_major: 8,
           read_minor: 0,
-          read_value: 35024896,
+          read_value: 35028992,
           write_major: 8,
           write_minor: 0,
           write_value: 12288,
         },
         network: {
-          rx_bytes: 9127,
-          rx_packets: 123,
+          rx_bytes: 12677,
+          rx_packets: 185,
           rx_errors: 0,
           rx_dropped: 0,
-          tx_bytes: 52890,
-          tx_packets: 60,
+          tx_bytes: 72826,
+          tx_packets: 125,
           tx_errors: 0,
           tx_dropped: 0,
         },
@@ -5024,9 +8573,19 @@ const exampleServices = (num) => {
             content:
               '198.108.66.203 - - [28/May/2020:10:51:14 +0000] "GET / HTTP/1.1" 200 4983 "-" "Mozilla/5.0 zgrab/0.x"',
           },
+          {
+            type: "STDOUT",
+            content:
+              '196.52.43.115 - - [28/May/2020:20:18:29 +0000] "GET / HTTP/1.0" 200 15962 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3602.2 Safari/537.36"',
+          },
+          {
+            type: "STDOUT",
+            content:
+              '167.86.112.157 - - [29/May/2020:07:28:56 +0000] "GET /w00tw00t.at.ISC.SANS.DFind:) HTTP/1.1" 400 0 "-" "-"',
+          },
         ],
       },
-      created: "2020-05-27T16:24:45+00:00",
+      datetime: "2020-05-29T12:38:41.2612732+00:00",
       error: null,
     },
     {
@@ -5038,48 +8597,49 @@ const exampleServices = (num) => {
         ports: [
           {
             ip: "",
-            privatePort: 3306,
+            privatePort: 33060,
             publicPort: 0,
             type: "tcp",
           },
           {
             ip: "",
-            privatePort: 33060,
+            privatePort: 3306,
             publicPort: 0,
             type: "tcp",
           },
         ],
+        created: "2020-05-27T16:24:43+00:00",
       },
       state: "RUNNING",
-      status: "Up 25 hours",
+      status: "Up 44 hours",
       stats: {
-        read: "2020-05-28T17:06:32.6279778+00:00",
+        read: "2020-05-29T12:38:42.2769996+00:00",
         cpu: {
           onlineCpus: 2,
-          totalUsage: 110657700555,
-          systemCpuUsage: 5063222270000000,
-          perCpuUsage: [54194435791, 56463264764],
+          totalUsage: 193837196064,
+          systemCpuUsage: 5200668170000000,
+          perCpuUsage: [96073693407, 97763502657],
         },
         memory: {
-          usage: 213192704,
+          usage: 207265792,
           maxUsage: 248827904,
           limit: 4136427520,
         },
         io: {
           read_major: 8,
           read_minor: 0,
-          read_value: 38064128,
+          read_value: 39419904,
           write_major: 8,
           write_minor: 0,
-          write_value: 30756864,
+          write_value: 30875648,
         },
         network: {
-          rx_bytes: 75191,
-          rx_packets: 555,
+          rx_bytes: 128921,
+          rx_packets: 927,
           rx_errors: 0,
           rx_dropped: 0,
-          tx_bytes: 1015566,
-          tx_packets: 424,
+          tx_bytes: 1871297,
+          tx_packets: 733,
           tx_errors: 0,
           tx_dropped: 0,
         },
@@ -5260,9 +8820,19 @@ const exampleServices = (num) => {
             content:
               "2020-05-27T16:28:41.501596Z 2 [Note] Got packets out of order",
           },
+          {
+            type: "STDERR",
+            content:
+              "2020-05-28T18:49:20.675210Z 26 [Note] Aborted connection 26 to db: 'homepage' user: 'root' host: '172.20.0.5' (Got an error reading communication packets)",
+          },
+          {
+            type: "STDERR",
+            content:
+              "2020-05-28T18:49:20.675975Z 24 [Note] Aborted connection 24 to db: 'homepage' user: 'root' host: '172.20.0.5' (Got an error reading communication packets)",
+          },
         ],
       },
-      created: "2020-05-27T16:24:43+00:00",
+      datetime: "2020-05-29T12:38:42.2825333+00:00",
       error: null,
     },
   ];

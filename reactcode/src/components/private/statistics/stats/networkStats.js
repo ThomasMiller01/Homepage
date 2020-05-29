@@ -36,6 +36,7 @@ const getNetworkOptions = (service) => {
       horizontalAlign: "right",
       reversed: true,
       fontSize: 10,
+      show: false,
     },
     toolTip: {
       shared: true,
@@ -53,7 +54,8 @@ const getNetworkOptions = (service) => {
       {
         type: "column",
         name: "Data",
-        showInLegend: true,
+        // showInLegend: true,
+        showInLegend: false,
         color: "#1560A5",
         indexLabel: "{y} kB",
         axisYIndex: 0,
@@ -79,7 +81,8 @@ const getNetworkOptions = (service) => {
       {
         type: "stackedColumn",
         name: "Packets",
-        showInLegend: true,
+        // showInLegend: true,
+        showInLegend: false,
         color: "#C33C54",
         indexLabel: "{y}",
         axisYIndex: 1,
@@ -106,7 +109,8 @@ const getNetworkOptions = (service) => {
       {
         type: "stackedColumn",
         name: "Errors",
-        showInLegend: true,
+        // showInLegend: true,
+        showInLegend: false,
         color: "#00C2BF",
         indexLabel: "{y}",
         axisYIndex: 1,
@@ -133,7 +137,8 @@ const getNetworkOptions = (service) => {
       {
         type: "stackedColumn",
         name: "Dropped",
-        showInLegend: true,
+        // showInLegend: true,
+        showInLegend: false,
         color: "#8CDEDC",
         indexLabel: "{y}",
         axisYIndex: 1,
