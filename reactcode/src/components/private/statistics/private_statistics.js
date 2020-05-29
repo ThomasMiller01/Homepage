@@ -24,17 +24,17 @@ class PrivateStatistics extends Component {
     });
   }
 
-  // state = {
-  //   services: [],
-  // };
-
-  // componentDidMount() {
-  //   this.getServices();
-  // }
-
   state = {
-    services: exampleService(),
+    services: [],
   };
+
+  componentDidMount() {
+    this.getServices();
+  }
+
+  // state = {
+  //   services: exampleService(),
+  // };
 
   getServices = () => {
     this.healthcheckApi.cache.reset();
