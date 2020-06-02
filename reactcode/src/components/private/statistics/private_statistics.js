@@ -28,6 +28,7 @@ class PrivateStatistics extends Component {
       RESTARTING: "146, 191, 150, 0.8",
       RUNNING: "86, 155, 54, 1",
       PAUSED: "252, 122, 30, 1",
+      REMOVING: "230, 96, 67, 1",
       EXITED: "216, 12, 8, 0.8",
       DEAD: "30, 33, 43, 0.7",
     };
