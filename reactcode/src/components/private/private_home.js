@@ -19,7 +19,6 @@ class PrivateHome extends Component {
     return (
       <div style={privateHomeStyle}>
         <center>
-          <h1 style={privateHomeH1Style}>Home</h1>
           <button
             type="button"
             className="btn btn-outline-primary"
@@ -42,10 +41,6 @@ const logoutBtnStyle = {
   margin: "10px",
   top: "0",
   right: "0",
-};
-
-const privateHomeH1Style = {
-  margin: "0",
 };
 
 const privateHomeStyle = {

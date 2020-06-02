@@ -7,27 +7,32 @@ import NetworkStats from "./networkStats";
 
 const PrivateServiceStats = (props) => {
   let service = props.service;
-  return (
-    <div style={statsDiv}>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 col-sm-12">
-            <CpuStats service={service} />
+
+  if (service.stats !== null) {
+    return (
+      <div style={statsDiv}>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 col-sm-12">
+              <CpuStats service={service} />
+            </div>
+            <div className="col-md-6 col-sm-12">
+              <MemoryStats service={service} />
+            </div>
+            <div className="col-md-6 col-sm-12">
+              <DiskStats service={service} />
+            </div>
+            <div className="col-md-6 col-sm-12">
+              <NetworkStats service={service} />
+            </div>
           </div>
-          <div className="col-md-6 col-sm-12">
-            <MemoryStats service={service} />
-          </div>
-          <div className="col-md-6 col-sm-12">
-            <DiskStats service={service} />
-          </div>
-          <div className="col-md-6 col-sm-12">
-            <NetworkStats service={service} />
-          </div>
+          <small>{renderDate(service.stats.read)}</small>
         </div>
-        <small>{renderDate(service.stats.read)}</small>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <span>No stats</span>;
+  }
 };
 
 const renderDate = (date) => {
