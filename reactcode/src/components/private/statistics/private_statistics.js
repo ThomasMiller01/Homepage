@@ -90,10 +90,8 @@ class PrivateStatistics extends Component {
   };
 
   deleteService = (service_id) => {
-    console.log("deleteService id: ", service_id);
     let services = this.state.services;
     let index = services.findIndex((item) => item.service.id === service_id);
-    console.log("deleteService index: ", index);
     services.splice(index, 1);
     this.setState({ services });
   };
