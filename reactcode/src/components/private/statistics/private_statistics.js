@@ -7,6 +7,7 @@ import AuthService from "../../authService";
 import PrivateServiceStats from "./stats/private_service_stats";
 import PrivateServiceLogs from "./private_service_logs";
 import PrivateServicePorts from "./private_service_ports";
+import PrivateServiceControls from "./private_service_controls";
 
 import { getAllServiceHealth, getServiceHealth } from "./serviceDataQuery";
 import exampleService from "./exampleServices";
@@ -36,6 +37,7 @@ class PrivateStatistics extends Component {
 
   state = {
     services: [],
+    fetched: false,
   };
 
   componentDidMount() {
@@ -59,24 +61,39 @@ class PrivateStatistics extends Component {
           JSON.stringify(result.data.getAllServiceHealth)
         );
         this.setState({ services });
+        this.setState({ fetched: true });
       });
   };
 
   getService = (service_id) => {
+    this.getServiceData(service_id).then((result) => {
+      let service = result;
+      let services = this.state.services;
+      let index = services.findIndex((x) => x.service.id === service_id);
+      services[index] = service;
+      this.setState({ services });
+    });
+  };
+
+  getServiceData = (service_id) => {
     this.healthcheckApi.cache.reset();
     let token = this.Auth.getToken();
-    this.healthcheckApi
+    return this.healthcheckApi
       .query({
         query: getServiceHealth,
         variables: { token, containerid: service_id },
       })
       .then((result) => {
-        let service = JSON.parse(JSON.stringify(result.data.getServiceHealth));
-        let services = this.state.services;
-        let index = services.findIndex((x) => x.service.id === service_id);
-        services[index] = service;
-        this.setState({ services });
+        return JSON.parse(JSON.stringify(result.data.getServiceHealth));
       });
+  };
+
+  deleteService = (service_id) => {
+    console.log("deleteService id: ", service_id);
+    let services = this.state.services;
+    let index = services.findIndex((item) => item.service.id === service_id);
+    services.splice(index);
+    this.setState({ services });
   };
 
   renderDate = (date) => {
@@ -173,7 +190,7 @@ class PrivateStatistics extends Component {
   };
 
   renderServices = () => {
-    if (this.state.services.length === 0) {
+    if (!this.state.fetched) {
       return (
         <div style={loadingStyle}>
           <h5>
@@ -181,6 +198,14 @@ class PrivateStatistics extends Component {
             <div className="spinner-grow" style={loadingIconStyle}>
               <span className="sr-only">Loading...</span>
             </div>
+          </h5>
+        </div>
+      );
+    } else if (this.state.services.length === 0) {
+      return (
+        <div style={loadingStyle}>
+          <h5>
+            <i>No services online</i>
           </h5>
         </div>
       );
@@ -208,6 +233,12 @@ class PrivateStatistics extends Component {
                   {this.renderServiceMenu(service)}
                 </h5>
                 {this.renderServiceExtraInformation(service)}
+                <PrivateServiceControls
+                  service={service}
+                  reloadService={this.getService}
+                  deleteService={this.deleteService}
+                  getServiceData={this.getServiceData}
+                />
                 <p className="card-text" style={lastUpdatedStyle}>
                   <small>
                     Last updated: {this.renderDate(service.datetime)}
