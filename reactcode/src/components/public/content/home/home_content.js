@@ -4,13 +4,15 @@ import { NavLink } from "react-router-dom";
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { gql } from "apollo-boost";
 
+import { homepage_url } from "../../../api_urls";
+
 class HomeContent extends Component {
   constructor() {
     super();
     this.homepageApi = new ApolloClient({
       cache: new InMemoryCache(),
       link: new HttpLink({
-        uri: "https://api.thomasmiller.info/homepage",
+        uri: homepage_url,
       }),
     });
   }

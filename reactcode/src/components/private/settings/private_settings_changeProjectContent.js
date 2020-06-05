@@ -12,6 +12,8 @@ import Image from "./changeProject/image";
 
 import PrivateChangeProjectPreview from "./changeProject/preview";
 
+import { homepage_url } from "../../api_urls";
+
 class PrivateSettingsChangeProjectContent extends Component {
   constructor() {
     super();
@@ -28,7 +30,7 @@ class PrivateSettingsChangeProjectContent extends Component {
     this.homepageApi = new ApolloClient({
       cache: new InMemoryCache(),
       link: new createUploadLink({
-        uri: "https://api.thomasmiller.info/homepage",
+        uri: homepage_url,
       }),
     });
 

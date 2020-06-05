@@ -5,6 +5,8 @@ import AuthService from "../authService";
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { gql } from "apollo-boost";
 
+import { homepage_url } from "../api_urls";
+
 import "./privateProjects.scss";
 
 class PrivateProjects extends Component {
@@ -14,7 +16,7 @@ class PrivateProjects extends Component {
     this.homepageApi = new ApolloClient({
       cache: new InMemoryCache(),
       link: new HttpLink({
-        uri: "https://api.thomasmiller.info/homepage",
+        uri: homepage_url,
       }),
     });
   }

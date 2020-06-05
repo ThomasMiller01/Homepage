@@ -12,6 +12,8 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 import AuthService from "../../../authService";
 
+import { homepage_url } from "../../../api_urls";
+
 class Project extends Component {
   constructor() {
     super();
@@ -19,7 +21,7 @@ class Project extends Component {
     this.homepageApi = new ApolloClient({
       cache: new InMemoryCache(),
       link: new HttpLink({
-        uri: "https://api.thomasmiller.info/homepage",
+        uri: homepage_url,
       }),
     });
   }

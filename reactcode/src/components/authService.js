@@ -3,13 +3,15 @@ import decode from "jwt-decode";
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { gql } from "apollo-boost";
 
+import { auth_url } from "./api_urls";
+
 export default class AuthService {
   // Initializing important variables
   constructor() {
     this.authApi = new ApolloClient({
       cache: new InMemoryCache(),
       link: new HttpLink({
-        uri: "https://api.thomasmiller.info/auth",
+        uri: auth_url,
       }),
     });
     this.login = this.login.bind(this);

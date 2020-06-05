@@ -10,6 +10,9 @@ import PrivateServicePorts from "./private_service_ports";
 import PrivateServiceControls from "./private_service_controls";
 
 import { getAllServiceHealth, getServiceHealth } from "./serviceDataQuery";
+
+import { healthcheck_url } from "../../api_urls";
+
 import exampleService from "./exampleServices";
 
 class PrivateStatistics extends Component {
@@ -20,7 +23,7 @@ class PrivateStatistics extends Component {
     this.healthcheckApi = new ApolloClient({
       cache: new InMemoryCache(),
       link: new createUploadLink({
-        uri: "https://api.thomasmiller.info/healthcheck",
+        uri: healthcheck_url,
       }),
     });
 
@@ -61,15 +64,25 @@ class PrivateStatistics extends Component {
         let services = JSON.parse(
           JSON.stringify(result.data.getAllServiceHealth)
         );
+        for (let i = 0; i < services.length; i++) {
+          let service = services[i];
+          service["loading"] = false;
+          services[i] = service;
+        }
         this.setState({ services });
         this.setState({ fetched: true });
       });
   };
 
   getService = (service_id) => {
+    let services = this.state.services;
+    let index = services.findIndex((item) => item.service.id === service_id);
+    services[index].loading = true;
+    this.setState({ services });
     this.getServiceData(service_id).then((result) => {
       let service = result;
       let services = this.state.services;
+      services["loading"] = false;
       let index = services.findIndex((x) => x.service.id === service_id);
       services[index] = service;
       this.setState({ services });
@@ -189,6 +202,74 @@ class PrivateStatistics extends Component {
     );
   };
 
+  renderService = (service) => {
+    return (
+      <React.Fragment>
+        <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h4 className="m-0 font-weight-bold">{service.service.name}</h4>
+          <i
+            className="fas fa-sync-alt"
+            style={refreshIconStyle}
+            onClick={() => this.getService(service.service.id)}
+          />
+        </div>
+        <div className="card-body">
+          <div className="accordion" id={"accordion" + service.service.id}>
+            <h5>
+              {service.state} <small>{service.status}</small>
+              {this.renderServiceMenu(service)}
+            </h5>
+            {this.renderServiceExtraInformation(service)}
+            <PrivateServiceControls
+              service={service}
+              reloadService={this.getService}
+              deleteService={this.deleteService}
+              getServiceData={this.getServiceData}
+            />
+            <p className="card-text" style={lastUpdatedStyle}>
+              <small>Last updated: {this.renderDate(service.datetime)}</small>
+            </p>
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  };
+
+  renderServiceLoading = (service) => {
+    if (service.loading) {
+      return (
+        <React.Fragment>
+          <div
+            className="card shadow mb-4"
+            style={{
+              background: "rgb(" + this.stateColorCodes[service.state] + ")",
+            }}
+          >
+            <div style={loadingFieldStyle}>
+              <div style={loadingSpinnerDivStyle}>
+                <div className="spinner-border">
+                  <span className="sr-only">Loading...</span>
+                </div>
+              </div>
+            </div>
+            {this.renderService(service)}
+          </div>
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <div
+          className="card shadow mb-4"
+          style={{
+            background: "rgb(" + this.stateColorCodes[service.state] + ")",
+          }}
+        >
+          {this.renderService(service)}
+        </div>
+      );
+    }
+  };
+
   renderServices = () => {
     if (!this.state.fetched) {
       return (
@@ -212,41 +293,7 @@ class PrivateStatistics extends Component {
     } else {
       return this.state.services.map((service) => (
         <div className="col-md-3 col-sm-12" key={service.service.id}>
-          <div
-            className="card shadow mb-4"
-            style={{
-              background: "rgb(" + this.stateColorCodes[service.state] + ")",
-            }}
-          >
-            <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-              <h4 className="m-0 font-weight-bold">{service.service.name}</h4>
-              <i
-                className="fas fa-sync-alt"
-                style={refreshIconStyle}
-                onClick={() => this.getService(service.service.id)}
-              />
-            </div>
-            <div className="card-body">
-              <div className="accordion" id={"accordion" + service.service.id}>
-                <h5>
-                  {service.state} <small>{service.status}</small>
-                  {this.renderServiceMenu(service)}
-                </h5>
-                {this.renderServiceExtraInformation(service)}
-                <PrivateServiceControls
-                  service={service}
-                  reloadService={this.getService}
-                  deleteService={this.deleteService}
-                  getServiceData={this.getServiceData}
-                />
-                <p className="card-text" style={lastUpdatedStyle}>
-                  <small>
-                    Last updated: {this.renderDate(service.datetime)}
-                  </small>
-                </p>
-              </div>
-            </div>
-          </div>
+          {this.renderServiceLoading(service)}
         </div>
       ));
     }
@@ -264,6 +311,22 @@ class PrivateStatistics extends Component {
 }
 
 // Styles
+const loadingSpinnerDivStyle = {
+  height: "100%",
+  width: "100%",
+  padding: "20%",
+};
+
+const loadingFieldStyle = {
+  background: "grey",
+  zIndex: "2",
+  width: "100%",
+  height: "100%",
+  position: "absolute",
+  opacity: "0.6",
+  textAlign: "center",
+};
+
 const lastUpdatedStyle = {
   color: "black",
 };

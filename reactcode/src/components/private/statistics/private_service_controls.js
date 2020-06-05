@@ -4,6 +4,8 @@ import { createUploadLink } from "apollo-upload-client";
 
 import AuthService from "../../authService";
 
+import { healthcheck_url } from "../../api_urls";
+
 import {
   startContainer,
   restartContainer,
@@ -22,7 +24,7 @@ class PrivateServiceControls extends Component {
     this.healthcheckApi = new ApolloClient({
       cache: new InMemoryCache(),
       link: new createUploadLink({
-        uri: "https://api.thomasmiller.info/healthcheck",
+        uri: healthcheck_url,
       }),
     });
   }
@@ -104,7 +106,7 @@ class PrivateServiceControls extends Component {
 // Styles
 const controlsDivStyle = {};
 
-const iconStyle = { margin: "10px", cursor: "pointer" };
+const iconStyle = { margin: "10px", cursor: "pointer", zIndex: "2" };
 
 const iconDisabledStyle = {
   margin: "10px",
