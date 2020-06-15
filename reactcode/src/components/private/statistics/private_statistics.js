@@ -8,9 +8,9 @@ import PrivateServiceStats from "./stats/private_service_stats";
 import PrivateServiceLogs from "./private_service_logs";
 import PrivateServicePorts from "./private_service_ports";
 import PrivateServiceControls from "./private_service_controls";
+import ToastsComponent from "./toasts/toastsComponent";
 
 import { getAllServiceHealth, getServiceHealth } from "./serviceDataQuery";
-
 import { healthcheck_url } from "../../api_urls";
 
 import exampleService from "./exampleServices";
@@ -36,6 +36,8 @@ class PrivateStatistics extends Component {
       EXITED: "216, 12, 8, 0.8",
       DEAD: "30, 33, 43, 0.7",
     };
+
+    this.toastRef = new React.createRef();
   }
 
   state = {
@@ -75,10 +77,6 @@ class PrivateStatistics extends Component {
   };
 
   getService = (service_id) => {
-    let services = this.state.services;
-    let index = services.findIndex((item) => item.service.id === service_id);
-    services[index].loading = true;
-    this.setState({ services });
     this.getServiceData(service_id).then((result) => {
       let service = result;
       let services = this.state.services;
@@ -100,6 +98,13 @@ class PrivateStatistics extends Component {
       .then((result) => {
         return JSON.parse(JSON.stringify(result.data.getServiceHealth));
       });
+  };
+
+  setServiceLoading = (service_id, state) => {
+    let services = this.state.services;
+    let index = services.findIndex((item) => item.service.id === service_id);
+    services[index].loading = state;
+    this.setState({ services });
   };
 
   deleteService = (service_id) => {
@@ -225,6 +230,8 @@ class PrivateStatistics extends Component {
               reloadService={this.getService}
               deleteService={this.deleteService}
               getServiceData={this.getServiceData}
+              setServiceLoading={this.setServiceLoading}
+              toastRef={this.toastRef}
             />
             <p className="card-text" style={lastUpdatedStyle}>
               <small>Last updated: {this.renderDate(service.datetime)}</small>
@@ -305,6 +312,7 @@ class PrivateStatistics extends Component {
         <div className="row" style={rowStyle}>
           {this.renderServices()}
         </div>
+        <ToastsComponent ref={this.toastRef} />
       </div>
     );
   }
