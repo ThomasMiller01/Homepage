@@ -5,7 +5,8 @@ import {
   faDiscord,
   faChrome,
   faGithub,
-  faXing
+  faXing,
+  faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
@@ -60,6 +61,15 @@ class SocialMediaIcons extends Component {
             <span className="text">Stack Overflow</span>
           </a>
           <a
+            href="https://www.linkedin.com/in/thomas-miller-2a13991b1/"
+            className="button is-outlined is-rounded linkedin"
+          >
+            <span className="icon">
+              <FontAwesomeIcon icon={faLinkedin} style={iconStyle} />
+            </span>
+            <span className="text">LinkedIn</span>
+          </a>
+          <a
             href="https://www.thingiverse.com/Thomas_Miller/about"
             className="button is-outlined is-rounded thingiverse"
           >
@@ -76,7 +86,7 @@ class SocialMediaIcons extends Component {
 
 const iconStyle = {
   width: "90%",
-  height: "90%"
+  height: "90%",
 };
 
 export default SocialMediaIcons;
