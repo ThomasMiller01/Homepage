@@ -21,6 +21,7 @@ code {
 
 .imageDivStyle {
   width: 100%;
+  text-align: center !important;
 }
 
 .descriptionDivStyle {
@@ -28,7 +29,8 @@ code {
 }
 
 .imgStyle {
-  width: 100%;
+  width: 270px;
+  height: 270px;
   margin: 0;
 }
 
@@ -115,6 +117,11 @@ code {
   .pswp-thumbnails {
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   }
+
+  .imgStyle {
+    width: 300px !important;
+    height: 300px !important;
+  }
 }
 
 /* Small devices (landscape phones, 500px and up) */
@@ -149,6 +156,7 @@ code {
 
   .imageDivStyle {
     width: 100% !important;
+    text-align: right !important;
   }
 
   .descriptionDivStyle {
@@ -156,7 +164,8 @@ code {
   }
 
   .imgStyle {
-    width: 100% !important;
+    width: 200px !important;
+    height: 200px !important;
   }
 }
 
@@ -176,9 +185,18 @@ code {
   .homeMiddleText h3 {
     font-size: 1.75rem !important;
   }
+
+  .imgStyle {
+    width: 250px !important;
+    height: 250px !important;
+  }
 }
 
 @media (min-width: 900px) {
+  .imgStyle {
+    width: 300px !important;
+    height: 300px !important;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -279,7 +297,8 @@ code {
   }
 
   .imgStyle {
-    width: 80% !important;
+    width: 350px !important;
+    height: 350px !important;
   }
 
   .descriptionDivStyle {
@@ -293,7 +312,8 @@ code {
   }
 
   .imgStyle {
-    width: 70% !important;
+    width: 400px !important;
+    height: 400px !important;
   }
 
   .descriptionDivStyle {
@@ -321,9 +341,5 @@ code {
 
   .favProjects h1 {
     font-size: 55px !important;
-  }
-
-  .imgStyle {
-    width: 60% !important;
   }
 }

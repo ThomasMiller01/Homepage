@@ -53,26 +53,26 @@ const AboutMe = () => {
 
 const topTableStyle = {
   width: "100%",
-  height: "30vh"
+  height: "30vh",
 };
 
 const topH1Style = {
   color: "#E2E07B",
   marginBottom: "0",
-  fontFamily: "'Work Sans',sans-serif"
+  fontFamily: "'Work Sans',sans-serif",
 };
 
 const topSpanStyle = {
   color: "#76D5D1",
   width: "0",
   margin: "0",
-  height: "0"
+  height: "0",
 };
 
 const topTextDivStyle = {
   width: "100%",
   textAlign: "center",
-  fontFamily: "DejaVuSansMono"
+  fontFamily: "DejaVuSansMono",
 };
 
 const alter = () => {
@@ -82,32 +82,33 @@ const alter = () => {
 
 const pDescriptionStyle = {
   fontSize: "24px",
-  lineHeight: "30px"
+  lineHeight: "30px",
 };
 
 const imgStyle = {
   borderStyle: "solid",
-  borderRadius: "100%"
+  borderRadius: "100%",
+  objectFit: "cover",
+  objectPosition: "0 20%",
 };
 
 const descriptionDivStyle = {
   gridColumn: "2",
   height: "100%",
-  padding: "20px"
+  padding: "20px",
 };
 
 const imageDivStyle = {
   gridColumn: "1",
   margin: "0",
-  textAlign: "right",
-  padding: "20px"
+  padding: "20px",
 };
 
 const topDivStyle = {
   width: "100%",
   minHeight: "30vh",
   backgroundColor: "#272822",
-  padding: "0"
+  padding: "0",
 };
 
 const aboutmeDivStyle = {
@@ -115,7 +116,7 @@ const aboutmeDivStyle = {
   minHeight: "63.5vh",
   backgroundColor: "rgb(230, 230, 230)",
   padding: "25px",
-  gridTemplateColumns: "40% 60%"
+  gridTemplateColumns: "40% 60%",
 };
 
 export default AboutMe;
