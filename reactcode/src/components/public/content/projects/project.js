@@ -160,7 +160,7 @@ class Project extends Component {
     return (
       <div style={projectContainerStyle}>
         <div style={projectHeaderStyle}>
-          <table style={tableStyle}>
+          <table className="projectTable">
             <tbody>
               <tr>
                 <td>
@@ -260,8 +260,6 @@ const projectHeaderTopStyle = {
 };
 
 const projectContent = { width: "100%", minHeight: "37vh", paddingTop: "20px" };
-
-const tableStyle = { width: "100%", height: "50vh" };
 
 const projectDescription = {
   gridColumn: "1",
