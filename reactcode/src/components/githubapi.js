@@ -88,16 +88,21 @@ class Statistics extends Component {
         return results.json();
       })
       .then((body) => {
-        var statistics = {
-          author: {
-            name: body[0].author.login,
-            url: body[0].author.html_url,
-            avatar_url: body[0].author.avatar_url,
-          },
-          total: body[0].total,
-          weeks: body[0].weeks,
-        };
-        this.setState({ statistics });
+        if (body !== undefined) {
+          let data = body.find(
+            (item) => item.author.login === "ThomasMiller01"
+          );
+          var statistics = {
+            author: {
+              name: data.author.login,
+              url: data.author.html_url,
+              avatar_url: data.author.avatar_url,
+            },
+            total: data.total,
+            weeks: data.weeks,
+          };
+          this.setState({ statistics });
+        }
       });
   };
 
