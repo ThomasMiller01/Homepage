@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStackOverflow,
   faDiscord,
-  faChrome,
   faGithub,
   faXing,
   faLinkedin,
@@ -68,15 +67,6 @@ class SocialMediaIcons extends Component {
               <FontAwesomeIcon icon={faLinkedin} style={iconStyle} />
             </span>
             <span className="text">LinkedIn</span>
-          </a>
-          <a
-            href="https://www.thingiverse.com/Thomas_Miller/about"
-            className="button is-outlined is-rounded thingiverse"
-          >
-            <span className="icon">
-              <FontAwesomeIcon icon={faChrome} style={iconStyle} />
-            </span>
-            <span className="text">Thingiverse</span>
           </a>
         </div>
       </React.Fragment>
