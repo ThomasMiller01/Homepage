@@ -307,58 +307,76 @@ class PrivateSettingsChangeProjectContent extends Component {
     var currentProject = this.state.currentProject;
 
     this.getInputProject(currentProject).then((project) => {
-      // check if add or update project
-      let mutation;
-      let variables;
-      let token = this.Auth.getToken();
-      if (currentProject.id === -1) {
-        mutation = gql`
-          mutation($project: ProjectInputType!, $token: String!) {
-            addProject(project: $project, token: $token) {
-              value
+      if (project.name !== "") {
+        // check if add or update project
+        let mutation;
+        let variables;
+        let token = this.Auth.getToken();
+        if (currentProject.id === -1) {
+          mutation = gql`
+            mutation($project: ProjectInputType!, $token: String!) {
+              addProject(project: $project, token: $token) {
+                value
+              }
             }
-          }
-        `;
-        variables = {
-          project,
-          token,
-        };
-      } else {
-        mutation = gql`
-          mutation($id: String!, $project: ProjectInputType!, $token: String!) {
-            updateProject(id: $id, project: $project, token: $token) {
-              value
+          `;
+          variables = {
+            project,
+            token,
+          };
+        } else {
+          mutation = gql`
+            mutation(
+              $id: String!
+              $project: ProjectInputType!
+              $token: String!
+            ) {
+              updateProject(id: $id, project: $project, token: $token) {
+                value
+              }
             }
-          }
-        `;
-        variables = {
-          project,
-          id: currentProject.id,
-          token,
-        };
-      }
-      this.homepageApi
-        .mutate({
-          mutation,
-          variables,
-        })
-        .then((result) => {
-          setTimeout(() => {
-            this.homepageApi.cache.reset();
-            this.reloadProjects(parseInt(result.data.addProject.value));
-          }, 5000);
+          `;
+          variables = {
+            project,
+            id: currentProject.id,
+            token,
+          };
+        }
+        this.homepageApi
+          .mutate({
+            mutation,
+            variables,
+          })
+          .then((result) => {
+            if (isNaN(result)) {
+              this.setState({ projectStatus: "Error" });
+              setTimeout(() => {
+                this.setState({ projectStatus: "None" });
+              }, 3000);
+            } else {
+              setTimeout(() => {
+                this.homepageApi.cache.reset();
+                this.reloadProjects(parseInt(result.data.addProject.value));
+              }, 5000);
 
-          this.setState({ projectStatus: "Success" });
-          setTimeout(() => {
-            this.setState({ projectStatus: "None" });
-          }, 3000);
-        })
-        .catch((error) => {
-          this.setState({ projectStatus: "Error" });
-          setTimeout(() => {
-            this.setState({ projectStatus: "None" });
-          }, 3000);
-        });
+              this.setState({ projectStatus: "Success" });
+              setTimeout(() => {
+                this.setState({ projectStatus: "None" });
+              }, 3000);
+            }
+          })
+          .catch((error) => {
+            this.setState({ projectStatus: "Error" });
+            setTimeout(() => {
+              this.setState({ projectStatus: "None" });
+            }, 3000);
+          });
+      } else {
+        this.setState({ projectStatus: "Error" });
+        setTimeout(() => {
+          this.setState({ projectStatus: "None" });
+        }, 3000);
+      }
     });
   };
 
@@ -587,9 +605,16 @@ class PrivateSettingsChangeProjectContent extends Component {
                     ref={this.headerImageRef}
                   ></Image>
                   <h2 style={inputGroupH2Style}>Images</h2>
-                  <button type="button" onClick={this.addImage}>
-                    Add Image
-                  </button>
+                  <div style={addImageButtonDivStyle}>
+                    <button
+                      type="button"
+                      className="btn"
+                      style={addButtonStyle}
+                      onClick={this.addImage}
+                    >
+                      <i class="fas fa-plus"></i> <b>Image</b>
+                    </button>
+                  </div>
                   {this.state.currentProject.images.images.map((image) => (
                     <Image
                       key={this.state.currentProject.images.images.indexOf(
@@ -764,6 +789,17 @@ const GetProjectStatusMessage = (props) => {
 };
 
 // Styles
+const addImageButtonDivStyle = {
+  widht: "100%",
+  textAlign: "left",
+  margin: "15px 0",
+};
+
+const addButtonStyle = {
+  border: "solid",
+  padding: "2px 7px",
+};
+
 const changeProjectBtn = { margin: "5px" };
 
 const checkboxInputStyle = { cursor: "pointer" };
