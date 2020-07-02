@@ -18,7 +18,7 @@ class PrivateSettingsHome extends Component {
           <a
             className="btn btn-outline-primary"
             style={settingsBtnStyle}
-            href="https://thomasmiller.info/phpmyadmin/"
+            href="https://api.thomasmiller.info/phpmyadmin/"
             role="button"
             target="_blank"
             rel="noopener noreferrer"
