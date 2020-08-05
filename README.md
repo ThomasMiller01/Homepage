@@ -8,4 +8,4 @@ This is my personal website where I put all my projects on.
 - [ASP.NET Core](https://www.asp.net/core/overview/aspnet-vnext)
 
 ## Demo
-[millerinfo.de](https://millerinfo.de)
+[thomasmiller.info](https://thomasmiller.info)
