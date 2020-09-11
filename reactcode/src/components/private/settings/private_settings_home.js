@@ -5,6 +5,7 @@ class PrivateSettingsHome extends Component {
   render() {
     return (
       <div style={settingsStyle}>
+        <title>Private Settings Home</title>
         <center>
           <h1 style={settingsH1Style}>Settings - Home</h1>
           <div style={borderBottomStyle} />

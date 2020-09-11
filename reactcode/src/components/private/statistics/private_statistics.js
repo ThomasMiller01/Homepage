@@ -132,6 +132,7 @@ class PrivateStatistics extends Component {
   renderServiceExtraInformation = (service) => {
     return (
       <React.Fragment>
+        <title>Private Statistics</title>
         <div
           className="collapse"
           id={"collapseInfo" + service.service.id}

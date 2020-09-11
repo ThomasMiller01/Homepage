@@ -48,6 +48,7 @@ class AllProjects extends Component {
   render() {
     return (
       <div style={allProjectsStyle} className="all-projects">
+        <title>Projects</title>
         <div style={projectsContainerStyle} className="projectsContainer">
           <div className="card-deck">
             {this.state.projects.map((project) => (

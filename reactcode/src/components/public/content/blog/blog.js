@@ -28,6 +28,7 @@ class Blog extends Component {
     let recentPosts = this.state.data.slice(0, 5);
     return (
       <React.Fragment>
+        <title>Blog</title>
         <h2>Recent Posts</h2>
         <span>
           {recentPosts.map(post => {

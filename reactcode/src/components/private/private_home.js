@@ -18,6 +18,7 @@ class PrivateHome extends Component {
   render() {
     return (
       <div style={privateHomeStyle}>
+        <title>Private Home</title>
         <center>
           <button
             type="button"

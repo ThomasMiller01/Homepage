@@ -45,6 +45,7 @@ export default class extends React.Component {
 
     return (
       <React.Fragment>
+      <title>Blog - Categories</title>
         <Header />
         <div style={blogStyle}>
           <h1 style={h1style}>Category: {category.name}</h1>

@@ -519,6 +519,7 @@ class PrivateSettingsChangeProjectContent extends Component {
   render() {
     return (
       <React.Fragment>
+        <title>Private Settings ChangeProject</title>
         <div style={privateSettingsStyle}>
           <center>
             <h1 className="top_text" style={privateSettingsH1Style}>

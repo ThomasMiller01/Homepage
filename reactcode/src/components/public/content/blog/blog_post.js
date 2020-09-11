@@ -47,12 +47,10 @@ export default class extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <div style={blogStyle} className="post-container">
-          <Helmet>
-            <title>{post.seo_title}</title>
-            <meta name="description" content={post.meta_description} />
-            <meta name="og:image" content={post.featured_image} />
-          </Helmet>
+        <div style={blogStyle} className="post-container">          
+          <title>{post.seo_title}</title>
+          <meta name="description" content={post.meta_description} />
+          <meta name="og:image" content={post.featured_image} />          
           <h1 style={postTitleStyle}>{post.title}</h1>
           <div style={borderBottomStyle} />
           <div

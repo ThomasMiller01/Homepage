@@ -8,6 +8,7 @@ import SocialMediaIcons from "../../socialMediaIcons";
 const AboutMe = () => {
   return (
     <React.Fragment>
+      <title>About Me</title>
       <Header />
       <div style={topDivStyle}>
         <table style={topTableStyle}>

@@ -8,6 +8,7 @@ import Footer from "../../footer";
 const Home = () => {
   return (
     <React.Fragment>
+      <title>Home</title>
       <Header />
       <HomeTop />
       <HomeContent />

@@ -159,6 +159,7 @@ class Project extends Component {
     };
     return (
       <div style={projectContainerStyle}>
+        <title>{this.state.project.name}</title>
         <div style={projectHeaderStyle}>
           <table className="projectTable">
             <tbody>

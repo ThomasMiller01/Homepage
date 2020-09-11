@@ -6,6 +6,7 @@ import Footer from "../../footer";
 const Impressum = () => {
   return (
     <React.Fragment>
+      <title>Impressum</title>
       <Header />
       <div style={impressumContainerStyle}>
         <div style={impressumStyle} className="impressum">

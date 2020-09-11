@@ -38,6 +38,7 @@ class Login extends Component {
   render() {
     return (
       <div style={loginDivStyle}>
+        <title>Login</title>
         <table style={tableStyle}>
           <tbody>
             <tr>
