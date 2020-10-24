@@ -1,6 +1,5 @@
 import React from "react";
 import butter from "./blog_buttercms";
-import { Helmet } from "react-helmet";
 
 import Header from "../../header";
 import Footer from "../../footer";
@@ -47,10 +46,10 @@ export default class extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <div style={blogStyle} className="post-container">          
+        <div style={blogStyle} className="post-container">
           <title>{post.seo_title}</title>
           <meta name="description" content={post.meta_description} />
-          <meta name="og:image" content={post.featured_image} />          
+          <meta name="og:image" content={post.featured_image} />
           <h1 style={postTitleStyle}>{post.title}</h1>
           <div style={borderBottomStyle} />
           <div

@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 
 import PrivateHome from "./private_home";
 import PrivateProjects from "./private_projects";
+import PrivateEvents from "./events/private_events";
 import PrivateSettings from "./settings/private_settings";
 import Error from "../error";
 import Header from "../public/header";
@@ -16,6 +17,7 @@ const Router = ({ history }) => {
       <Redirect exact from="/private" to="/private/home" />
       <ProtectedRoute path="/private/home" component={PrivateHome} />
       <ProtectedRoute path="/private/projects" component={PrivateProjects} />
+      <ProtectedRoute path="/private/events" component={PrivateEvents} />
       <ProtectedRoute path="/private/settings" component={PrivateSettings} />
       <Route
         render={() => (

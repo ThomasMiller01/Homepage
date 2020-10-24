@@ -26,6 +26,11 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li className="nav-item" style={liStyle}>
+          <NavLink to="/private/events" className="nav-link">
+            Events<span className="sr-only">(current)</span>
+          </NavLink>
+        </li>
+        <li className="nav-item" style={liStyle}>
           <NavLink to="/private/settings" className="nav-link">
             Settings<span className="sr-only">(current)</span>
           </NavLink>
@@ -40,22 +45,22 @@ const headerStyle = {
   width: "100%",
   fontSize: "20px",
   backgroundColor: "#242424",
-  minHeight: "6.5vh"
+  minHeight: "6.5vh",
 };
 
 const navStyle = {
   backgroundColor: "#242424",
-  minHeight: "6.5vh"
+  minHeight: "6.5vh",
 };
 
 const ulStyle = {
   display: "block",
-  marginLeft: "auto"
+  marginLeft: "auto",
 };
 
 const liStyle = {
   display: "inline-block",
-  margin: "0 15px 0 15px"
+  margin: "0 15px 0 15px",
 };
 
 export default Header;
