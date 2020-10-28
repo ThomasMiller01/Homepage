@@ -42,6 +42,13 @@ class DrawControls extends Component {
     this.setNewIntervallTypeFunction(intervall_type);
   };
 
+  onChangeStart = (event) => {
+    let value = event.target.value.toString().replace("T", " ");
+    let time = this.state.time;
+    time.start = new Date(value);
+    this.setState({ time });
+  };
+
   updateLegend = (legend) => {
     this.setState({ legend });
   };
@@ -59,8 +66,18 @@ class DrawControls extends Component {
       <div style={controlsBox}>
         <div style={controlsStyle}>
           <div style={controlsTimeStyle}>
-            <b>start:</b> {this.formatDate(this.state.time.start)}, <b>end:</b>{" "}
-            {this.formatDate(this.state.time.end)}
+            <b>start:</b>{" "}
+            <input
+              type="datetime-local"
+              value={this.formatDate(this.state.time.start)}
+              onChange={this.onChangeStart}
+            />
+            , <b>end:</b>{" "}
+            <input
+              type="datetime-local"
+              value={this.formatDate(this.state.time.end)}
+              onChange={this.onChangeStart}
+            />
           </div>
           <div style={controlsTimeIntervallStyle}>
             <div className="row">
@@ -110,15 +127,13 @@ class DrawControls extends Component {
   }
 
   formatDate = (date) => {
-    return (
-      date.getDate() +
-      "-" +
-      date.getMonth() +
-      "-" +
-      date.getFullYear() +
-      " " +
-      date.toLocaleTimeString()
-    );
+    let year = date.getFullYear();
+    let month = date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth();
+    let day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+    let hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+    let minutes =
+      date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+    return year + "-" + month + "-" + day + "T" + hours + ":" + minutes;
   };
 }
 

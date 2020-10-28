@@ -24,19 +24,19 @@ class PrivateEvents extends Component {
     this.showEventsRef = createRef();
   }
 
-  // state = {
-  //   events: exampleEvents,
-  //   fetched: true,
-  // };
-
   state = {
-    events: [],
-    fetched: false,
+    events: exampleEvents,
+    fetched: true,
   };
 
-  componentDidMount() {
-    this.getEvents();
-  }
+  // state = {
+  //   events: [],
+  //   fetched: false,
+  // };
+
+  // componentDidMount() {
+  //   this.getEvents();
+  // }
 
   getEvents = () => {
     this.eventregistryApi.cache.reset();
