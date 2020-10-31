@@ -284,7 +284,10 @@ class PrivateSettingsChangeProjectContent extends Component {
       });
     }
 
-    let githubRepo = project.githubRepo == null ? "#" : project.githubRepo.url;
+    let githubRepo =
+      project.githubRepo == null || project.githubRepo.url === ""
+        ? "#"
+        : project.githubRepo.url;
 
     return {
       name: project.name,
@@ -348,7 +351,7 @@ class PrivateSettingsChangeProjectContent extends Component {
             variables,
           })
           .then((result) => {
-            if (isNaN(result)) {
+            if (isNaN(result.data.addProject.value)) {
               this.setState({ projectStatus: "Error" });
               setTimeout(() => {
                 this.setState({ projectStatus: "None" });
@@ -394,7 +397,7 @@ class PrivateSettingsChangeProjectContent extends Component {
             }
           `,
           variables: {
-            id: currentProject.id,
+            id: currentProject.id.toString(),
             token,
           },
         })
