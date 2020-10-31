@@ -60,6 +60,11 @@ class PrivateProjects extends Component {
     }
   };
 
+  getPubDateFormated = (pubdate) => {
+    let elems = pubdate.split("-");
+    return elems[2] + "-" + elems[1] + "-" + elems[0];
+  };
+
   render() {
     return (
       <div style={allProjectsStyle} className="all-projects">
@@ -83,7 +88,7 @@ class PrivateProjects extends Component {
                     {this.getPrivateIconIndicator(project._private)}
                   </h4>
                   <h6 className="card-subtitle mb-2 text-muted">
-                    <small>{project.pubDate}</small>
+                    <small>{this.getPubDateFormated(project.pubDate)}</small>
                   </h6>
 
                   <p

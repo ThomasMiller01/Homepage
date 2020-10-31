@@ -36,6 +36,7 @@ class AllProjects extends Component {
                   url
                 }
               }
+              pubDate
             }
           }
         `,
@@ -43,6 +44,11 @@ class AllProjects extends Component {
       .then((result) => {
         this.setState({ projects: result.data.getPublicProjects });
       });
+  };
+
+  getPubDateFormated = (pubdate) => {
+    let elems = pubdate.split("-");
+    return elems[2] + "-" + elems[1] + "-" + elems[0];
   };
 
   render() {
@@ -65,7 +71,7 @@ class AllProjects extends Component {
                 <div className="card-body">
                   <h4 className="card-title">{project.name}</h4>
                   <h6 className="card-subtitle mb-2 text-muted">
-                    <small>{project.pubDate}</small>
+                    <small>{this.getPubDateFormated(project.pubDate)}</small>
                   </h6>
                   <p
                     className="card-text"
