@@ -64,6 +64,9 @@ class AllProjects extends Component {
                 />
                 <div className="card-body">
                   <h4 className="card-title">{project.name}</h4>
+                  <h6 className="card-subtitle mb-2 text-muted">
+                    <small>{project.pubDate}</small>
+                  </h6>
                   <p
                     className="card-text"
                     dangerouslySetInnerHTML={{

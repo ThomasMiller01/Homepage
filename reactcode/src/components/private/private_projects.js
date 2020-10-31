@@ -41,6 +41,7 @@ class PrivateProjects extends Component {
                 }
               }
               _private
+              pubDate
             }
           }
         `,
@@ -81,6 +82,9 @@ class PrivateProjects extends Component {
                     {project.name}{" "}
                     {this.getPrivateIconIndicator(project._private)}
                   </h4>
+                  <h6 className="card-subtitle mb-2 text-muted">
+                    <small>{project.pubDate}</small>
+                  </h6>
 
                   <p
                     className="card-text"
@@ -96,7 +100,7 @@ class PrivateProjects extends Component {
                   >
                     See more
                   </NavLink>
-                </div>{" "}
+                </div>
               </div>
             ))}
           </div>
