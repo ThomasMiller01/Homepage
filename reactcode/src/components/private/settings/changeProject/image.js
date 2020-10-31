@@ -134,24 +134,32 @@ class Image extends Component {
             ref={this.imageRef}
           />
           <div className="media-body" style={mediaBodyStyle}>
-            {this.state.alt}
-            <button
-              type="button"
-              className="close"
-              onClick={this.onImageDelete}
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <div style={fileDivStyle}>
-              <input
-                type="file"
-                style={fileInputStyle}
-                id={this.state.unique}
-                onChange={this.onImageChange}
-              />
-              <label htmlFor={this.state.unique} style={fileLabelstyle}>
-                <i className="fas fa-file-upload fileUploadIcon"></i>
-              </label>
+            <div style={altDiv}>{this.state.alt}</div>
+            <div style={buttonsDiv}>
+              <div style={updateButtonDiv}>
+                <input
+                  type="file"
+                  style={fileInputStyle}
+                  id={this.state.unique}
+                  onChange={this.onImageChange}
+                />
+                <label htmlFor={this.state.unique} style={updateButtonStyle}>
+                  <i
+                    className="fas fa-file-upload fileUploadIcon"
+                    style={{ cursor: "pointer" }}
+                  ></i>
+                </label>
+              </div>
+              <div style={deleteButtonDiv}>
+                <button
+                  type="button"
+                  class="close"
+                  style={deleteButtonStyle}
+                  onClick={this.onImageDelete}
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -160,22 +168,46 @@ class Image extends Component {
   }
 }
 
-const fileLabelstyle = {
+// styles
+const deleteButtonStyle = {
   cursor: "pointer",
+  width: "100%",
+};
+
+const deleteButtonDiv = {
+  width: "50%",
+  textAlign: "center",
+  display: "inline-block",
+};
+
+const updateButtonStyle = {
+  width: "100%",
+};
+
+const updateButtonDiv = {
+  width: "50%",
+  textAlign: "center",
+  display: "inline-block",
+};
+
+const buttonsDiv = {
+  display: "inline-block",
+  width: "30%",
+  float: "right",
+};
+
+const altDiv = {
+  display: "inline-block",
+  width: "70%",
+  float: "left",
 };
 
 const fileInputStyle = {
   zIndex: "2",
   width: "0px",
+  height: "0px",
   opacity: "0",
-};
-
-const fileDivStyle = {
-  width: "auto",
-  height: "auto",
-  display: "inline-block",
-  float: "right",
-  marginRight: "10px",
+  overflow: "auto",
 };
 
 const mediaStyle = {
