@@ -311,11 +311,13 @@ class PrivateSettingsChangeProjectContent extends Component {
 
     this.getInputProject(currentProject).then((project) => {
       if (project.name !== "") {
+        let add = currentProject.id === -1;
+
         // check if add or update project
         let mutation;
         let variables;
         let token = this.Auth.getToken();
-        if (currentProject.id === -1) {
+        if (add) {
           mutation = gql`
             mutation($project: ProjectInputType!, $token: String!) {
               addProject(project: $project, token: $token) {
@@ -328,6 +330,7 @@ class PrivateSettingsChangeProjectContent extends Component {
             token,
           };
         } else {
+          console.log("currentProject", currentProject);
           mutation = gql`
             mutation(
               $id: String!
@@ -341,7 +344,7 @@ class PrivateSettingsChangeProjectContent extends Component {
           `;
           variables = {
             project,
-            id: currentProject.id,
+            id: currentProject.id.toString(),
             token,
           };
         }
@@ -351,7 +354,10 @@ class PrivateSettingsChangeProjectContent extends Component {
             variables,
           })
           .then((result) => {
-            if (isNaN(result.data.addProject.value)) {
+            let value = add
+              ? result.data.addProject.value
+              : result.data.updateProject.value;
+            if (isNaN(value)) {
               this.setState({ projectStatus: "Error" });
               setTimeout(() => {
                 this.setState({ projectStatus: "None" });
@@ -359,7 +365,7 @@ class PrivateSettingsChangeProjectContent extends Component {
             } else {
               setTimeout(() => {
                 this.homepageApi.cache.reset();
-                this.reloadProjects(parseInt(result.data.addProject.value));
+                this.reloadProjects(parseInt(value));
               }, 5000);
 
               this.setState({ projectStatus: "Success" });
@@ -616,7 +622,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                       style={addButtonStyle}
                       onClick={this.addImage}
                     >
-                      <i class="fas fa-plus"></i> <b>Image</b>
+                      <i className="fas fa-plus"></i> <b>Image</b>
                     </button>
                   </div>
                   {this.state.currentProject.images.images.map((image) => (
