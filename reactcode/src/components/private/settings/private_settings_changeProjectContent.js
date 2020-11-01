@@ -330,7 +330,6 @@ class PrivateSettingsChangeProjectContent extends Component {
             token,
           };
         } else {
-          console.log("currentProject", currentProject);
           mutation = gql`
             mutation(
               $id: String!
