@@ -153,7 +153,7 @@ class Image extends Component {
               <div style={deleteButtonDiv}>
                 <button
                   type="button"
-                  class="close"
+                  className="close"
                   style={deleteButtonStyle}
                   onClick={this.onImageDelete}
                 >
