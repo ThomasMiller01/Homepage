@@ -14,6 +14,8 @@ import PrivateChangeProjectPreview from "./changeProject/preview";
 
 import { homepage_url } from "../../api_urls";
 
+let lzstring = require("lz-string");
+
 class PrivateSettingsChangeProjectContent extends Component {
   constructor() {
     super();
@@ -206,7 +208,24 @@ class PrivateSettingsChangeProjectContent extends Component {
     });
   };
 
+  compressBase64String = (base64string) => {
+    var compressed = lzstring.compressToUTF16(base64string);
+    return compressed;
+  };
+
+  fileToBase64 = (filename, filepath) => {
+    return new Promise((resolve) => {
+      var file = new File([filename], filepath);
+      var reader = new FileReader();
+      reader.onload = function (event) {
+        resolve(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
   async getInputProject(project) {
+    let compression = true;
     let thumbnailFile;
     if (project.images.thumbnail.url.includes("http")) {
       thumbnailFile = await fetch(project.images.thumbnail.url)
@@ -222,13 +241,24 @@ class PrivateSettingsChangeProjectContent extends Component {
     } else {
       thumbnailFile = await this.dataURLtoBlob(project.images.thumbnail.url);
     }
-    let thumbnailFileBase64 = await this.fileToBase64(thumbnailFile);
+    let thumbnailFileBase64string = await this.fileToBase64(thumbnailFile);
+    let thumbnailFileCompressed;
+    if (compression) {
+      thumbnailFileCompressed = this.compressBase64String(
+        thumbnailFileBase64string
+      );
+    } else {
+      thumbnailFileCompressed = thumbnailFileBase64string;
+    }
+
+    console.log("base64", thumbnailFileBase64string.length);
+    console.log("compressed", thumbnailFileCompressed.length);
 
     let thumbnail = {
       name: project.images.thumbnail.name,
       file: {
         name: thumbnailFile.name,
-        base64string: thumbnailFileBase64,
+        base64string: thumbnailFileCompressed,
       },
       size: project.images.thumbnail.size,
     };
@@ -247,12 +277,21 @@ class PrivateSettingsChangeProjectContent extends Component {
       headerImgFile = await this.dataURLtoBlob(project.images.headerImg.url);
     }
 
-    let headerImgFileBase64 = await this.fileToBase64(headerImgFile);
+    let headerImgFileBase64string = await this.fileToBase64(thumbnailFile);
+    let headerImgFileCompressed;
+    if (compression) {
+      headerImgFileCompressed = this.compressBase64String(
+        headerImgFileBase64string
+      );
+    } else {
+      headerImgFileCompressed = headerImgFileBase64string;
+    }
+
     let headerImg = {
       name: project.images.headerImg.name,
       file: {
         name: headerImgFile.name,
-        base64string: headerImgFileBase64,
+        base64string: headerImgFileCompressed,
       },
       size: project.images.headerImg.size,
     };
@@ -273,12 +312,19 @@ class PrivateSettingsChangeProjectContent extends Component {
       } else {
         imageFile = await this.dataURLtoBlob(image.url);
       }
-      let imageFileBase64 = await this.fileToBase64(imageFile);
+      let imageFileBase64string = await this.fileToBase64(imageFile);
+      let imageFileCompressed;
+      if (compression) {
+        imageFileCompressed = this.compressBase64String(imageFileBase64string);
+      } else {
+        imageFileCompressed = imageFileBase64string;
+      }
+
       images.push({
         name: image.name,
         file: {
           name: imageFile.name,
-          base64string: imageFileBase64,
+          base64string: imageFileCompressed,
         },
         size: image.size,
       });
@@ -487,17 +533,6 @@ class PrivateSettingsChangeProjectContent extends Component {
     currentProject.images.images[index].url = imageUrl;
     currentProject.images.images[index].size = imageSize;
     this.setState({ currentProject });
-  };
-
-  fileToBase64 = (filename, filepath) => {
-    return new Promise((resolve) => {
-      var file = new File([filename], filepath);
-      var reader = new FileReader();
-      reader.onload = function (event) {
-        resolve(event.target.result);
-      };
-      reader.readAsDataURL(file);
-    });
   };
 
   dataURLtoBlob = (dataurl) => {
