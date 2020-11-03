@@ -37,12 +37,20 @@ class AllProjects extends Component {
                 }
               }
               pubDate
+              position
             }
           }
         `,
       })
       .then((result) => {
-        this.setState({ projects: result.data.getPublicProjects });
+        // sort projects based on position attribute
+        let projects = JSON.parse(
+          JSON.stringify(result.data.getPublicProjects)
+        );
+        projects.sort(function (a, b) {
+          return a.position > b.position ? 1 : b.position > a.position ? -1 : 0;
+        });
+        this.setState({ projects });
       });
   };
 

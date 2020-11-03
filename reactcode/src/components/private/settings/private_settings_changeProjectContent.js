@@ -165,6 +165,9 @@ class PrivateSettingsChangeProjectContent extends Component {
       })
       .then((result) => {
         let parsed = JSON.parse(JSON.stringify(result.data.getAllProjects));
+        parsed.sort(function (a, b) {
+          return a.position > b.position ? 1 : b.position > a.position ? -1 : 0;
+        });
         parsed.unshift(firstProject);
         parsed.forEach((project) => {
           for (let i = 0; i < project.images.images.length; i++) {

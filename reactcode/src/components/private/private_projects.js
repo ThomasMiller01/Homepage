@@ -42,13 +42,19 @@ class PrivateProjects extends Component {
               }
               _private
               pubDate
+              position
             }
           }
         `,
         variables: { token },
       })
       .then((result) => {
-        this.setState({ projects: result.data.getAllProjects });
+        // sort projects based on position attribute
+        let projects = JSON.parse(JSON.stringify(result.data.getAllProjects));
+        projects.sort(function (a, b) {
+          return a.position > b.position ? 1 : b.position > a.position ? -1 : 0;
+        });
+        this.setState({ projects });
       });
   };
 
@@ -97,6 +103,7 @@ class PrivateProjects extends Component {
                       __html: project.description,
                     }}
                   />
+                  <p>pos: {project.position}</p>
                   <NavLink
                     to={{
                       pathname: "/projects/" + project.name,
