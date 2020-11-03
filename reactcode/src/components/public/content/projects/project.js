@@ -186,7 +186,12 @@ class Project extends Component {
                 }}
               />
             </div>
-            <div style={githubStyle}>{this.getCommits()}</div>
+            <div style={githubStyle}>
+              <h5 style={{ textAlign: "right" }}>
+                Published [{this.state.project.pubDate}]
+              </h5>
+              {this.getCommits()}
+            </div>
           </div>
           <div
             style={galleryDivStyle}
