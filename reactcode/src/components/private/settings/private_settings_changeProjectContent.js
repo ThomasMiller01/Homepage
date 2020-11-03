@@ -251,9 +251,6 @@ class PrivateSettingsChangeProjectContent extends Component {
       thumbnailFileCompressed = thumbnailFileBase64string;
     }
 
-    console.log("base64", thumbnailFileBase64string.length);
-    console.log("compressed", thumbnailFileCompressed.length);
-
     let thumbnail = {
       name: project.images.thumbnail.name,
       file: {
