@@ -277,7 +277,7 @@ class PrivateSettingsChangeProjectContent extends Component {
       headerImgFile = await this.dataURLtoBlob(project.images.headerImg.url);
     }
 
-    let headerImgFileBase64string = await this.fileToBase64(thumbnailFile);
+    let headerImgFileBase64string = await this.fileToBase64(headerImgFile);
     let headerImgFileCompressed;
     if (compression) {
       headerImgFileCompressed = this.compressBase64String(
