@@ -36,12 +36,16 @@ class HomeContent extends Component {
                 }
               }
               favourite
+              position
             }
           }
         `,
       })
       .then((result) => {
-        let data = result.data.getPublicProjects;
+        let data = JSON.parse(JSON.stringify(result.data.getPublicProjects));
+        data.sort(function (a, b) {
+          return a.position > b.position ? 1 : b.position > a.position ? -1 : 0;
+        });
         var favProjects = [];
         var i = 1;
         data.forEach(function (project) {
