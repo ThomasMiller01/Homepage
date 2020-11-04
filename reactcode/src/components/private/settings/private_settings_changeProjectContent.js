@@ -34,6 +34,16 @@ class PrivateSettingsChangeProjectContent extends Component {
       link: new createUploadLink({
         uri: homepage_url,
       }),
+      defaultOptions: {
+        watchQuery: {
+          fetchPolicy: "no-cache",
+          errorPolicy: "ignore",
+        },
+        query: {
+          fetchPolicy: "no-cache",
+          errorPolicy: "all",
+        },
+      },
     });
 
     this.thumbnailImageRef = React.createRef();
