@@ -103,7 +103,6 @@ class PrivateProjects extends Component {
                       __html: project.description,
                     }}
                   />
-                  <p>pos: {project.position}</p>
                   <NavLink
                     to={{
                       pathname: "/projects/" + project.name,
