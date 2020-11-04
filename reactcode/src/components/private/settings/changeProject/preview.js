@@ -4,35 +4,20 @@ const PrivateChangeProjectPreview = (props) => {
   if (!props.isMobile || props.renderPreview) {
     return (
       <div className="input-group input_both" style={inputRenderStyle}>
-        <h1 style={inputGroupH1Style}>Preview</h1>
-        <span style={{ visibility: "hidden" }}>
-          <h2 style={inputGroupH2Style}>Name</h2>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Name"
-            style={inputGroupInputStyle}
-            name="_name"
-          />
-          <h2 style={inputGroupH2Style}>GitHub Repo</h2>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="GitHub Repo"
-            style={inputGroupInputStyle}
-            name="_githubRepo"
-          />
-        </span>
+        <h1 style={inputGroupH1Style}>
+          <b>Preview</b>
+        </h1>
+        {getTopHiddenFields(props.isMobile)}
         <h2 style={inputGroupH2Style}>Description</h2>
         <div
-          style={rendereTextboxStyle}
+          style={rendereTextboxStyle(props.isMobile)}
           dangerouslySetInnerHTML={{
             __html: props._description,
           }}
         />
         <h2 style={inputGroupH2Style}>Description Big</h2>
         <div
-          style={rendereTextboxStyle}
+          style={rendereTextboxStyle(props.isMobile)}
           dangerouslySetInnerHTML={{
             __html: props._description_big,
           }}
@@ -41,6 +26,33 @@ const PrivateChangeProjectPreview = (props) => {
     );
   } else {
     return <span />;
+  }
+};
+
+const getTopHiddenFields = (mobile) => {
+  if (mobile) {
+    return <span></span>;
+  } else {
+    return (
+      <span style={{ visibility: "hidden" }}>
+        <h2 style={inputGroupH2Style}>Name</h2>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Name"
+          style={inputGroupInputStyle}
+          name="_name"
+        />
+        <h2 style={inputGroupH2Style}>GitHub Repo</h2>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="GitHub Repo"
+          style={inputGroupInputStyle}
+          name="_githubRepo"
+        />
+      </span>
+    );
   }
 };
 
@@ -61,13 +73,19 @@ const inputGroupH1Style = {
   marginBottom: "10px",
 };
 
-const rendereTextboxStyle = {
-  width: "100%",
-  backgroundColor: "white",
-  padding: "10px",
-  marginTop: "75px",
-  textAlign: "left",
-  minHeight: "325px",
+const rendereTextboxStyle = (mobile) => {
+  let style = {
+    width: "100%",
+    backgroundColor: "white",
+    padding: "10px",
+    textAlign: "left",
+    minHeight: "325px",
+    overflow: "scroll",
+  };
+  if (!mobile) {
+    style.marginTop = "75px";
+  }
+  return style;
 };
 
 const inputRenderStyle = {

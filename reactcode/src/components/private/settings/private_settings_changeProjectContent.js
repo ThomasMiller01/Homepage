@@ -65,6 +65,7 @@ class PrivateSettingsChangeProjectContent extends Component {
       pubDate: "",
       favourite: false,
       _private: false,
+      position: 0,
     };
   };
 
@@ -158,6 +159,7 @@ class PrivateSettingsChangeProjectContent extends Component {
               favourite
               _private
               pubDate
+              position
             }
           }
         `,
@@ -347,6 +349,7 @@ class PrivateSettingsChangeProjectContent extends Component {
       },
       favourite: project.favourite.toString(),
       _private: project._private.toString(),
+      position: parseInt(project.position),
     };
   }
 
@@ -717,6 +720,17 @@ class PrivateSettingsChangeProjectContent extends Component {
                       Private
                     </label>
                   </div>
+                  <h2 style={inputGroupH2Style}>
+                    Position
+                    <input
+                      type="number"
+                      style={positionInputStyle}
+                      placeholder="position"
+                      value={this.state.currentProject.position}
+                      name="position"
+                      onChange={this.handleContentChange}
+                    />
+                  </h2>
                 </div>
                 <PrivateChangeProjectPreview
                   isMobile={this.state.isMobile}
@@ -833,6 +847,11 @@ const GetProjectStatusMessage = (props) => {
 };
 
 // Styles
+const positionInputStyle = {
+  margin: "10px",
+  width: "50px",
+};
+
 const addImageButtonDivStyle = {
   widht: "100%",
   textAlign: "left",
