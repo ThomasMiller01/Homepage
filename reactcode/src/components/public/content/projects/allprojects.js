@@ -71,11 +71,17 @@ class AllProjects extends Component {
                 className="card my-3"
                 style={projectCardStyle}
               >
-                <img
-                  src={project.images.thumbnail.url}
-                  className="card-img-top"
-                  alt="Loading ..."
-                />
+                <NavLink
+                  to={{
+                    pathname: "/projects/" + project.name,
+                  }}
+                >
+                  <img
+                    src={project.images.thumbnail.url}
+                    className="card-img-top"
+                    alt="Loading ..."
+                  />
+                </NavLink>
                 <div className="card-body">
                   <h4 className="card-title">{project.name}</h4>
                   <h6 className="card-subtitle mb-2 text-muted">
