@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
 import AuthService from "../../authService";
 import Other from "../../other";
 import TinyEditor from "../../editor/tiny_editor";
@@ -575,21 +574,11 @@ class PrivateSettingsChangeProjectContent extends Component {
   render() {
     return (
       <React.Fragment>
-        <title>Private Settings ChangeProject</title>
         <div style={privateSettingsStyle}>
-          <center>
-            <h1 className="top_text" style={privateSettingsH1Style}>
-              Settings - Change Project
-            </h1>
-          </center>
-          <NavLink
-            to="/private/settings"
-            className="btn btn-outline-primary"
-            style={settingsBackStyle}
-          >
-            Back
-          </NavLink>
-          <div style={changeProjectContentStyle}>
+          <div style={{ textAlign: "left", marginLeft: "3%" }}>
+            <h2>Projects</h2>
+          </div>
+          <div style={changeProjectContentStyle(this.state.isMobile)}>
             <form onSubmit={this.handleUpdateEvent}>
               <center>
                 <div
@@ -610,7 +599,9 @@ class PrivateSettingsChangeProjectContent extends Component {
                 </div>
                 <div style={borderBottomStyle} />
                 <div className="input-group input_both" style={inputGroupStyle}>
-                  <h1 style={inputGroupH1Style}>Code</h1>
+                  <h1 style={inputGroupH1Style}>
+                    <b>Code</b>
+                  </h1>
                   <h2 style={inputGroupH2Style}>Name</h2>
                   <input
                     type="text"
@@ -913,29 +904,22 @@ const borderBottomStyle = {
   borderBottom: "solid 2px rgb(161, 161, 161)",
 };
 
-const changeProjectContentStyle = {
-  width: "90%",
-  padding: "15px",
-  margin: "20px auto 0 auto",
-  backgroundColor: "rgb(216, 216, 216)",
+const changeProjectContentStyle = (isMobile) => {
+  let style = {
+    padding: "15px",
+    margin: "20px auto 0 auto",
+    backgroundColor: "rgb(216, 216, 216)",
+  };
+  if (!isMobile) {
+    style.width = "90%";
+  }
+  return style;
 };
-
-const settingsBackStyle = {
-  position: "absolute",
-  margin: "10px",
-  top: "0",
-  right: "0",
-  color: "#007bff",
-  backgroundColor: "transparent",
-};
-
-const privateSettingsH1Style = { margin: "0" };
 
 const privateSettingsStyle = {
   width: "100%",
-  minHeight: "93.5vh",
   backgroundColor: "rgb(230, 230, 230)",
-  padding: "10px",
+  textAlign: "left",
 };
 
 const FormGroupStyle = {

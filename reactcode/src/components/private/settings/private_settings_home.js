@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+
+import PrivateSettingsChangeProjectContent from "./private_settings_changeProjectContent";
+import PrivateSettingsChangeProfileContent from "./private_settings_changeProfile";
 
 class PrivateSettingsHome extends Component {
   render() {
@@ -7,15 +9,6 @@ class PrivateSettingsHome extends Component {
       <div style={settingsStyle}>
         <title>Private Settings Home</title>
         <center>
-          <h1 style={settingsH1Style}>Settings - Home</h1>
-          <div style={borderBottomStyle} />
-          <NavLink
-            to="settings/changeProject"
-            style={settingsBtnStyle}
-            className="btn btn-outline-primary"
-          >
-            Change Project
-          </NavLink>
           <a
             className="btn btn-outline-primary"
             style={settingsBtnStyle}
@@ -46,6 +39,9 @@ class PrivateSettingsHome extends Component {
           >
             ButterCms
           </a>
+          <div style={borderBottomStyle} />
+          <PrivateSettingsChangeProfileContent />
+          <PrivateSettingsChangeProjectContent />
         </center>
       </div>
     );
