@@ -1,56 +1,117 @@
-import React from "react";
+import React, { Component, createRef } from "react";
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { gql } from "apollo-boost";
+
+import { homepage_url } from "../../../api_urls";
 
 import Header from "../../header";
 import Footer from "../../footer";
 
 import SocialMediaIcons from "../../socialMediaIcons";
 
-const AboutMe = () => {
-  return (
-    <React.Fragment>
-      <title>About Me</title>
-      <Header />
-      <div style={topDivStyle}>
-        <table style={topTableStyle}>
-          <tbody>
-            <tr>
-              <td>
-                <div style={topTextDivStyle}>
-                  <h1 style={topH1Style}>
-                    <span style={topSpanStyle}>Thomas</span> Miller
-                  </h1>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div style={aboutmeDivStyle} className="aboutMeDivStyle">
-        <div style={imageDivStyle} className="imageDivStyle">
-          <img
-            src="/images/profile_pic.png"
-            alt="Loading ..."
-            style={imgStyle}
-            className="imgStyle"
-          />
+class AboutMe extends Component {
+  constructor() {
+    super();
+    this.homepageApi = new ApolloClient({
+      cache: new InMemoryCache(),
+      link: new HttpLink({
+        uri: homepage_url,
+      }),
+    });
+
+    this.linksRef = createRef();
+  }
+
+  state = {
+    profile: {
+      id: 0,
+      name: "",
+      aboutme: "",
+      image: "",
+      links: [],
+    },
+  };
+
+  componentDidMount() {
+    this.loadProfile();
+  }
+
+  loadProfile = () => {
+    this.homepageApi
+      .query({
+        query: gql`
+          query {
+            getProfile {
+              id
+              name
+              aboutme
+              image
+              links {
+                id
+                name
+                url
+                color
+                icon
+              }
+            }
+          }
+        `,
+      })
+      .then((result) => {
+        // sort projects based on position attribute
+        let profile = JSON.parse(JSON.stringify(result.data.getProfile));
+        this.linksRef.current.updateLinks(profile.links);
+        this.setState({ profile });
+      });
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <title>About Me</title>
+        <Header />
+        <div style={topDivStyle}>
+          <table style={topTableStyle}>
+            <tbody>
+              <tr>
+                <td>
+                  <div style={topTextDivStyle}>
+                    <h1 style={topH1Style}>
+                      <span style={topSpanStyle}>Thomas</span> Miller
+                    </h1>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div style={descriptionDivStyle} className="descriptionDivStyle">
-          <h1>About me</h1>
-          <p style={pDescriptionStyle}>
-            My name is Thomas Miller, I am {alter()} years old and currently a
-            student in germany. When I am not in school, I do all kind of
-            different projects, some of the best are featured on this website.
-            <br />
-            <br />
-            My main interests are: Python, C#, Java, TypeScript, JavaScript
-          </p>
-          <SocialMediaIcons />
+        <div style={aboutmeDivStyle} className="aboutMeDivStyle">
+          <div style={imageDivStyle} className="imageDivStyle">
+            <img
+              src={this.state.profile.image}
+              alt="Loading ..."
+              style={imgStyle}
+              className="imgStyle"
+            />
+          </div>
+          <div style={descriptionDivStyle} className="descriptionDivStyle">
+            <p
+              style={pDescriptionStyle}
+              dangerouslySetInnerHTML={{
+                __html: this.state.profile.aboutme,
+              }}
+            ></p>
+            <SocialMediaIcons
+              links={this.state.profile.links}
+              ref={this.linksRef}
+            />
+          </div>
         </div>
-      </div>
-      <Footer />
-    </React.Fragment>
-  );
-};
+        <Footer />
+      </React.Fragment>
+    );
+  }
+}
 
 const topTableStyle = {
   width: "100%",
@@ -74,11 +135,6 @@ const topTextDivStyle = {
   width: "100%",
   textAlign: "center",
   fontFamily: "DejaVuSansMono",
-};
-
-const alter = () => {
-  var birthday = +new Date("2001-12-10");
-  return ~~((Date.now() - birthday) / 31557600000);
 };
 
 const pDescriptionStyle = {

@@ -1,73 +1,87 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faStackOverflow,
-  faDiscord,
-  faGithub,
-  faXing,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 import "./socialMediaIcons.scss";
 
 class SocialMediaIcons extends Component {
-  state = {};
+  constructor(props) {
+    super();
+    let links = props.links;
+    links.forEach((link) => {
+      link.hover = false;
+    });
+    this.state.links = links;
+  }
+
+  state = {
+    links: [],
+  };
+
+  updateLinks = (links) => {
+    links.forEach((link) => {
+      link.hover = false;
+    });
+    this.setState({ links });
+  };
+
+  getLinkStyle = (link) => {
+    let style = {
+      color: link.color,
+      borderColor: link.color,
+    };
+    if (link.hover) {
+      style.color = "#fff";
+      style.backgroundColor = link.color;
+    }
+    return style;
+  };
+
+  handleHover = (id, value) => {
+    let links = this.state.links;
+    let index = links.findIndex((link) => link.id === id);
+    links[index].hover = value;
+    this.setState({ links });
+  };
+
+  renderLink = (link) => {
+    if (link.url === "#") {
+      return (
+        <span
+          className="button is-outlined is-rounded"
+          style={this.getLinkStyle(link)}
+          onMouseEnter={() => this.handleHover(link.id, true)}
+          onMouseLeave={() => this.handleHover(link.id, false)}
+        >
+          <span className="icon">
+            <i className={link.icon} style={iconStyle}></i>
+          </span>
+          <span className="text">{link.name}</span>
+        </span>
+      );
+    } else {
+      return (
+        <a
+          href={link.url}
+          className="button is-outlined is-rounded"
+          style={this.getLinkStyle(link)}
+          onMouseEnter={() => this.handleHover(link.id, true)}
+          onMouseLeave={() => this.handleHover(link.id, false)}
+        >
+          <span className="icon">
+            <i className={link.icon} style={iconStyle}></i>
+          </span>
+          <span className="text">{link.name}</span>
+        </a>
+      );
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
         <div className="post-social">
-          <a
-            href="mailto:info@thomasmiller.info"
-            className="button is-outlined is-rounded email"
-          >
-            <span className="icon">
-              <FontAwesomeIcon icon={faEnvelope} style={iconStyle} />
-            </span>
-            <span className="text">info@thomasmiller.info</span>
-          </a>
-          <a
-            href="https://www.xing.com/profile/Thomas_Miller108"
-            className="button is-outlined is-rounded xing"
-          >
-            <span className="icon">
-              <FontAwesomeIcon icon={faXing} style={iconStyle} />
-            </span>
-            <span className="text">Xing</span>
-          </a>
-          <a
-            href="https://github.com/ThomasMiller01"
-            className="button is-outlined is-rounded github"
-          >
-            <span className="icon">
-              <FontAwesomeIcon icon={faGithub} style={iconStyle} />
-            </span>
-            <span className="text">GitHub</span>
-          </a>
-          <span className="button is-outlined is-rounded discord">
-            <span className="icon">
-              <FontAwesomeIcon icon={faDiscord} style={iconStyle} />
-            </span>
-            <span className="text">Thomas#5888</span>
-          </span>
-          <a
-            href="https://stackoverflow.com/users/11328656/thomas?tab=profile"
-            className="button is-outlined is-rounded stackoverflow"
-          >
-            <span className="icon">
-              <FontAwesomeIcon icon={faStackOverflow} style={iconStyle} />
-            </span>
-            <span className="text">Stack Overflow</span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/thomas-miller-2a13991b1/"
-            className="button is-outlined is-rounded linkedin"
-          >
-            <span className="icon">
-              <FontAwesomeIcon icon={faLinkedin} style={iconStyle} />
-            </span>
-            <span className="text">LinkedIn</span>
-          </a>
+          {this.state.links.map((link, index) => (
+            <span key={index}>{this.renderLink(link)}</span>
+          ))}
         </div>
       </React.Fragment>
     );
@@ -75,8 +89,7 @@ class SocialMediaIcons extends Component {
 }
 
 const iconStyle = {
-  width: "90%",
-  height: "90%",
+  fontSize: "20px",
 };
 
 export default SocialMediaIcons;
