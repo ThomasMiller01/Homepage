@@ -4,6 +4,63 @@ import PrivateSettingsChangeProjectContent from "./private_settings_changeProjec
 import PrivateSettingsChangeProfileContent from "./private_settings_changeProfile";
 
 class PrivateSettingsHome extends Component {
+  state = {
+    profile: {
+      isVisible: true,
+    },
+    projects: {
+      isVisible: false,
+    },
+  };
+
+  getCollapseIcon = (isVisible) => {
+    if (isVisible) {
+      return <i className="fas fa-caret-down"></i>;
+    } else {
+      return <i className="fas fa-caret-right"></i>;
+    }
+  };
+
+  getContent = (isVisible, contentType) => {
+    if (isVisible) {
+      switch (contentType) {
+        case "profile":
+          return <PrivateSettingsChangeProfileContent />;
+        case "projects":
+          return <PrivateSettingsChangeProjectContent />;
+        default:
+          return <span></span>;
+      }
+    } else {
+      return <span></span>;
+    }
+  };
+
+  flipContentVisibility = (contentType) => {
+    switch (contentType) {
+      case "profile":
+        let profile = this.state.profile;
+        if (profile.isVisible) {
+          profile.isVisible = false;
+        } else {
+          profile.isVisible = true;
+        }
+        this.setState({ profile });
+        break;
+      case "projects":
+        let projects = this.state.projects;
+        if (projects.isVisible) {
+          projects.isVisible = false;
+        } else {
+          projects.isVisible = true;
+        }
+        this.setState({ projects });
+        break;
+      default:
+        break;
+    }
+  };
+
   render() {
     return (
       <div style={settingsStyle}>
@@ -40,8 +97,28 @@ class PrivateSettingsHome extends Component {
             ButterCms
           </a>
           <div style={borderBottomStyle} />
-          <PrivateSettingsChangeProfileContent />
-          <PrivateSettingsChangeProjectContent />
+          <div style={settingTabStyle}>
+            <div
+              onClick={() => this.flipContentVisibility("profile")}
+              style={collapseButtonStyle}
+            >
+              <h2>
+                Profile {this.getCollapseIcon(this.state.profile.isVisible)}
+              </h2>
+            </div>
+            {this.getContent(this.state.profile.isVisible, "profile")}
+          </div>
+          <div style={settingTabStyle}>
+            <div
+              onClick={() => this.flipContentVisibility("projects")}
+              style={collapseButtonStyle}
+            >
+              <h2>
+                Projects {this.getCollapseIcon(this.state.projects.isVisible)}
+              </h2>
+            </div>
+            {this.getContent(this.state.projects.isVisible, "projects")}
+          </div>
         </center>
       </div>
     );
@@ -49,8 +126,14 @@ class PrivateSettingsHome extends Component {
 }
 
 // Styles
-const settingsH1Style = {
-  margin: "0",
+const collapseButtonStyle = {
+  textAlign: "left",
+  marginLeft: "3%",
+  cursor: "pointer",
+};
+
+const settingTabStyle = {
+  margin: "10px",
 };
 
 const settingsStyle = {

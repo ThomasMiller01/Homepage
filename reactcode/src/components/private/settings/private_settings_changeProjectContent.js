@@ -575,9 +575,6 @@ class PrivateSettingsChangeProjectContent extends Component {
     return (
       <React.Fragment>
         <div style={privateSettingsStyle}>
-          <div style={{ textAlign: "left", marginLeft: "3%" }}>
-            <h2>Projects</h2>
-          </div>
           <div style={changeProjectContentStyle(this.state.isMobile)}>
             <form onSubmit={this.handleUpdateEvent}>
               <center>

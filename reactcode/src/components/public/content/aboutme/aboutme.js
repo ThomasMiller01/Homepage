@@ -65,6 +65,20 @@ class AboutMe extends Component {
       });
   };
 
+  getProfileNameFormated = () => {
+    let splitted = this.state.profile.name.split(" ");
+    if (splitted.length > 1) {
+      let first = splitted[0];
+      console.log("splitted", splitted);
+      splitted.shift();
+      console.log("splitted", splitted);
+      let everythingElse = splitted.join(" ");
+      return [first, everythingElse];
+    } else {
+      return [splitted[0], ""];
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -77,7 +91,10 @@ class AboutMe extends Component {
                 <td>
                   <div style={topTextDivStyle}>
                     <h1 style={topH1Style}>
-                      <span style={topSpanStyle}>Thomas</span> Miller
+                      <span style={topSpanStyle}>
+                        {this.getProfileNameFormated()[0]}
+                      </span>{" "}
+                      {this.getProfileNameFormated()[1]}
                     </h1>
                   </div>
                 </td>
