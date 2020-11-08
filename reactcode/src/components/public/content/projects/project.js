@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import { PhotoSwipeGallery } from "react-photoswipe";
 import { PhotoSwipe } from "react-photoswipe";
 import "react-photoswipe/lib/photoswipe.css";
@@ -24,6 +24,8 @@ class Project extends Component {
         uri: homepage_url,
       }),
     });
+
+    this.descriptionContainerRef = createRef();
   }
 
   state = {
@@ -150,6 +152,34 @@ class Project extends Component {
     }
   };
 
+  parseDecription = (description) => {
+    let maxWidth = this.descriptionContainerRef.current
+      ? this.descriptionContainerRef.current.clientWidth
+      : 0;
+    let parser = new DOMParser();
+    let htmlParsed = parser.parseFromString(description, "text/html");
+
+    // set all images max width
+    let imgElements = htmlParsed.getElementsByTagName("img");
+    for (let i = 0; i < imgElements.length; i++) {
+      // get old width and height
+      let oldWidth = imgElements[i].width;
+      let oldHeight = imgElements[i].height;
+
+      // only set new width, if image is bigger than display field
+      if (oldWidth > maxWidth) {
+        // calculate new width and height
+        let ratio = oldWidth / oldHeight;
+        let newWidth = maxWidth;
+        let newHeight = newWidth / ratio;
+
+        imgElements[i].width = newWidth;
+        imgElements[i].height = newHeight;
+      }
+    }
+    return htmlParsed.documentElement.innerHTML;
+  };
+
   render() {
     const projectHeaderStyle = {
       backgroundImage: "url(" + this.state.project.images.headerImg.url + ")",
@@ -179,10 +209,12 @@ class Project extends Component {
             <GithubLink link={this.state.project.githubRepo} />
           </h1>
           <div style={this.getStyle()} className="descGitStyle">
-            <div style={projectDescription}>
+            <div style={projectDescription} ref={this.descriptionContainerRef}>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: this.state.project.description_big,
+                  __html: this.parseDecription(
+                    this.state.project.description_big
+                  ),
                 }}
               />
             </div>
@@ -270,6 +302,7 @@ const projectContent = { width: "100%", minHeight: "37vh", paddingTop: "20px" };
 const projectDescription = {
   gridColumn: "1",
   textAlign: "left",
+  minWidth: "67vw",
 };
 
 const projectContentH1Style = { width: "100%", textAlign: "center" };
