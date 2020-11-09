@@ -423,7 +423,7 @@ class PrivateSettingsChangeProjectContent extends Component {
               setTimeout(() => {
                 this.homepageApi.cache.reset();
                 this.reloadProjects(parseInt(value));
-              }, 5000);
+              }, 1000);
 
               this.setState({ projectStatus: "Success" });
               setTimeout(() => {
