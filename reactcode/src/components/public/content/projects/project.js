@@ -14,6 +14,8 @@ import AuthService from "../../../authService";
 
 import { homepage_url } from "../../../api_urls";
 
+let hljs = require("highlight.js");
+
 class Project extends Component {
   constructor() {
     super();
@@ -53,6 +55,10 @@ class Project extends Component {
 
   componentDidMount() {
     this.fetchProjectByName(this.props.match.params.projectName);
+  }
+
+  componentDidUpdate() {
+    hljs.initHighlighting();
   }
 
   fetchProjectByName(value) {
@@ -177,6 +183,17 @@ class Project extends Component {
         imgElements[i].height = newHeight;
       }
     }
+
+    // replace code class markup with markdown
+    let codeElements = htmlParsed.getElementsByTagName("pre");
+    for (let i = 0; i < codeElements.length; i++) {
+      let classname = codeElements[i].className;
+      if (classname.includes("markup")) {
+        classname = classname.replaceAll("markup", "html");
+        codeElements[i].className = classname;
+      }
+    }
+
     return htmlParsed.documentElement.innerHTML;
   };
 
