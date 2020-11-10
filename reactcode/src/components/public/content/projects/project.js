@@ -59,7 +59,21 @@ class Project extends Component {
 
   componentDidUpdate() {
     hljs.initHighlighting();
+    this.handleScrollAnchor();
   }
+
+  handleScrollAnchor = () => {
+    const element = document.getElementById(
+      this.props.location.hash.replace("#", "")
+    );
+
+    setTimeout(() => {
+      window.scrollTo({
+        behavior: element ? "smooth" : "auto",
+        top: element ? element.offsetTop : 0,
+      });
+    }, 100);
+  };
 
   fetchProjectByName(value) {
     let token = !this.auth.loggedIn() ? "" : this.auth.getToken();

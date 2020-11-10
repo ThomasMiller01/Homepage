@@ -13,12 +13,12 @@ import Private from "./components/private/private";
 import Login from "./components/public/login";
 import Error from "./components/error";
 import ProtectedRoute from "./components/ProtectedRoute";
-import ScrollToTop from "./components/scrollToTop";
+import ScrollHandler from "./components/scrollHandler";
 
 const Router = ({ history }) => {
   return (
     <BrowserRouter history={history}>
-      <ScrollToTop>
+      <ScrollHandler>
         <Switch>
           <Redirect exact from="/" to="/home" />
           <Route path="/home" component={Home} />
@@ -47,7 +47,7 @@ const Router = ({ history }) => {
             )}
           />
         </Switch>
-      </ScrollToTop>
+      </ScrollHandler>
     </BrowserRouter>
   );
 };
