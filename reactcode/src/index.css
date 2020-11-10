@@ -24,6 +24,16 @@ code {
   text-align: center !important;
 }
 
+.btn-outline-dark {
+  color: #212529;
+  border-color: #212529;
+}
+
+.btn-outline-dark:hover {
+  color: white;
+  background: #212529;
+}
+
 .descriptionDivStyle {
   width: 100%;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const HomeTop = () => {
   return (
@@ -15,7 +16,7 @@ const HomeTop = () => {
         <table style={tableStyle}>
           <tbody>
             <tr>
-              <td>
+              <td style={{ verticalAlign: "bottom" }}>
                 <h1 style={middelTextH1Style}>
                   Hi, I am a <div> </div>Software Developer
                 </h1>
@@ -26,9 +27,30 @@ const HomeTop = () => {
             </tr>
           </tbody>
         </table>
+        <table style={buttonTabelStyle}>
+          <tbody>
+            <tr>
+              <td>
+                <NavLink
+                  to={{ pathname: "/projects/all" }}
+                  style={middelTextButtonStyle}
+                >
+                  <button type="button" class="btn btn-outline-dark btn-lg">
+                    See All Projects
+                  </button>
+                </NavLink>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );
+};
+
+const buttonTabelStyle = {
+  width: "100%",
+  height: "40%",
 };
 
 const homeTopStyle = {
@@ -39,7 +61,7 @@ const homeTopStyle = {
   backgroundRepeat: "no-repeat",
   backgroundAttachment: "fixed",
   backgroundPosition: "center",
-  backgroundSize: "cover"
+  backgroundSize: "cover",
 };
 
 const nameDivStyle = {
@@ -47,7 +69,7 @@ const nameDivStyle = {
   width: "167px",
   position: "absolute",
   right: "15px",
-  top: "5px"
+  top: "5px",
 };
 
 const nameStyle = {
@@ -55,43 +77,50 @@ const nameStyle = {
   fontSize: "24px",
   fontWeight: "300",
   fontFamily: "'Work Sans', sans-serif",
-  margin: "0"
+  margin: "0",
 };
 
 const belowNameStyle = {
   fontSize: "18px",
   fontWeight: "300",
   color: "white",
-  fontFamily: "'Rajdhani', sans-serif"
+  fontFamily: "'Rajdhani', sans-serif",
 };
 
 const tableStyle = {
   width: "100%",
-  height: "80%"
+  height: "40%",
 };
 
 const firstNameColorStyle = {
-  color: "#76D5D1"
+  color: "#76D5D1",
 };
 
 const middleTextStyle = {
   width: "100%",
   height: "100%",
-  textAlign: "center"
+  textAlign: "center",
 };
 
 const middelTextH1Style = {
   fontSize: "2.3rem",
   margin: "0 auto",
   width: "90vw",
-  verticalAlign: "middle"
+  verticalAlign: "middle",
 };
 
 const middelTextH3Style = {
   fontSize: "1.25rem",
   margin: "10px auto 0 auto",
   width: "90vw",
-  verticalAlign: "middle"
+  verticalAlign: "middle",
+};
+
+const middelTextButtonStyle = {
+  fontSize: "1.25rem",
+  margin: "10px auto 0 auto",
+  width: "90vw",
+  verticalAlign: "bottom",
 };
 
 export default HomeTop;
