@@ -9,6 +9,7 @@ import TinyEditor from "../../editor/tiny_editor";
 import Other from "../../other";
 import AuthService from "../../authService";
 import Image from "./changeProject/image";
+import ProfileLink from "./changeProfile/link";
 
 let lzstring = require("lz-string");
 
@@ -37,7 +38,12 @@ class PrivateSettingsChangeProfileContent extends Component {
       id: 0,
       name: "",
       aboutme: "",
-      image: "",
+      image: {
+        id: 0,
+        name: "",
+        url: "",
+        size: "",
+      },
       links: [],
     },
     profileStatus: "None",
@@ -62,7 +68,12 @@ class PrivateSettingsChangeProfileContent extends Component {
               id
               name
               aboutme
-              image
+              image {
+                id
+                name
+                url
+                size
+              }
               links {
                 id
                 name
@@ -75,12 +86,11 @@ class PrivateSettingsChangeProfileContent extends Component {
         `,
       })
       .then((result) => {
-        // sort projects based on position attribute
         let profile = JSON.parse(JSON.stringify(result.data.getProfile));
         this.EditorAboutMe.updateContent(profile.aboutme);
         this.profileImageRef.current.setState({
-          src: profile.image,
-          alt: profile.name,
+          src: profile.image.url,
+          alt: profile.image.name,
           dimensions: { x: -1, y: -1 },
         });
         this.setState({ profile });
@@ -90,8 +100,8 @@ class PrivateSettingsChangeProfileContent extends Component {
   async getInputProfile(profile) {
     let compression = true;
     let profileImageFile;
-    if (profile.image.includes("http")) {
-      profileImageFile = await fetch(profile.image)
+    if (profile.image.url.includes("http")) {
+      profileImageFile = await fetch(profile.image.url)
         .then((res) => {
           return res.blob();
         })
@@ -102,7 +112,7 @@ class PrivateSettingsChangeProfileContent extends Component {
           return file;
         });
     } else {
-      profileImageFile = await this.dataURLtoBlob(profile.image);
+      profileImageFile = await this.dataURLtoBlob(profile.image.url);
     }
     let profileImageFileBase64string = await this.fileToBase64(
       profileImageFile
@@ -116,66 +126,88 @@ class PrivateSettingsChangeProfileContent extends Component {
       profileImageFileCompressed = profileImageFileBase64string;
     }
 
+    let links = [];
+    profile.links.forEach((link) => {
+      links.push({
+        id: link.id,
+        name: link.name,
+        url: link.url,
+        color: link.color,
+        icon: link.icon,
+      });
+    });
+
     return {
-      id: profile.id,
       name: profile.name,
       aboutme: profile.aboutme,
       image: {
+        name: "profile_pic.png",
         file: {
           name: profileImageFile.name,
           base64string: profileImageFileCompressed,
         },
+        size: "-1x-1",
       },
+      links,
     };
   }
 
   handleUpdateEvent = (event) => {
     event.preventDefault();
-    alert("profile update not implemented yet ...");
-    // var profile = this.state.profile;
+    var profile = this.state.profile;
+    console.log("profile", profile.image);
 
-    // this.getInputProfile(profile).then((profile) => {
-    //   let token = this.Auth.getToken();
-    //   this.homepageApi
-    //     .mutate({
-    //       mutation: gql`
-    //         mutation($profile: ProfileInputType!, $token: String!) {
-    //           updateProfile(profile: $profile, token: $token) {
-    //             value
-    //           }
-    //         }
-    //       `,
-    //       variables: {
-    //         profile,
-    //         token,
-    //       },
-    //     })
-    //     .then((result) => {
-    //       let value = result.data.updateProfile.value;
-    //       if (isNaN(value)) {
-    //         this.setState({ profileStatus: "Error" });
-    //         setTimeout(() => {
-    //           this.setState({ profileStatus: "None" });
-    //         }, 3000);
-    //       } else {
-    //         setTimeout(() => {
-    //           this.homepageApi.cache.reset();
-    //           this.loadProfile();
-    //         }, 5000);
+    this.getInputProfile(profile).then((profile) => {
+      let token = this.Auth.getToken();
+      this.homepageApi
+        .mutate({
+          mutation: gql`
+            mutation(
+              $profile: ProfileInputType!
+              $profile_id: String!
+              $token: String!
+            ) {
+              updateProfile(
+                profile: $profile
+                profile_id: $profile_id
+                token: $token
+              ) {
+                value
+              }
+            }
+          `,
+          variables: {
+            profile,
+            profile_id: "1",
+            token,
+          },
+        })
+        .then((result) => {
+          let value = result.data.updateProfile.value;
+          if (isNaN(value)) {
+            this.setState({ profileStatus: "Error" });
+            setTimeout(() => {
+              this.setState({ profileStatus: "None" });
+            }, 3000);
+          } else {
+            setTimeout(() => {
+              this.homepageApi.cache.reset();
+              this.loadProfile();
+            }, 5000);
 
-    //         this.setState({ profileStatus: "Success" });
-    //         setTimeout(() => {
-    //           this.setState({ profileStatus: "None" });
-    //         }, 3000);
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       this.setState({ profileStatus: "Error" });
-    //       setTimeout(() => {
-    //         this.setState({ profileStatus: "None" });
-    //       }, 3000);
-    //     });
-    // });
+            this.setState({ profileStatus: "Success" });
+            setTimeout(() => {
+              this.setState({ profileStatus: "None" });
+            }, 3000);
+          }
+        })
+        .catch((error) => {
+          this.setState({ profileStatus: "Error" });
+          setTimeout(() => {
+            this.setState({ profileStatus: "None" });
+          }, 3000);
+        });
+    });
   };
 
   getEditorAboutMeOutput = (content) => {
@@ -194,13 +226,13 @@ class PrivateSettingsChangeProfileContent extends Component {
 
   onChangeProfileImageUpdate = (imageName, imageUrl, imageSize) => {
     let profile = this.state.profile;
-    profile.image = imageUrl;
+    profile.image.url = imageUrl;
     this.setState({ profile });
   };
 
   onChangeProfileImageDelete = (imageName, imageUrl, imageSize) => {
     let profile = this.state.profile;
-    profile.image =
+    profile.image.url =
       "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png";
     this.setState({ profile });
   };
@@ -255,8 +287,8 @@ class PrivateSettingsChangeProfileContent extends Component {
               </div>
               <h2 style={inputGroupH2Style}>Profile Image</h2>
               <Image
-                src={this.state.profile.image}
-                alt={this.state.profile.name}
+                src={this.state.profile.image.url}
+                alt={this.state.profile.image.name}
                 size={"100x100"}
                 onChange={this.onChangeProfileImageUpdate}
                 onDelete={this.onChangeProfileImageDelete}
@@ -264,11 +296,15 @@ class PrivateSettingsChangeProfileContent extends Component {
               ></Image>
               <h2 style={inputGroupH2Style}>Links</h2>
               {this.state.profile.links.map((link, index) => (
-                <div key={index}>
-                  {link.name}: {link.url}
-                </div>
+                <ProfileLink
+                  key={index}
+                  name={link.name}
+                  url={link.url}
+                  color={link.color}
+                  icon={link.icon}
+                />
               ))}
-              <GetProfileStatusMessage message={this.state.projectStatus} />
+              <GetProfileStatusMessage message={this.state.profileStatus} />
               <button
                 type="submit"
                 className="btn btn-outline-primary"

@@ -6,7 +6,7 @@ import PrivateSettingsChangeProfileContent from "./private_settings_changeProfil
 class PrivateSettingsHome extends Component {
   state = {
     profile: {
-      isVisible: false,
+      isVisible: true,
     },
     projects: {
       isVisible: false,

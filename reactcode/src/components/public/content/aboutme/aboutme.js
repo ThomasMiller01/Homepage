@@ -45,7 +45,12 @@ class AboutMe extends Component {
               id
               name
               aboutme
-              image
+              image {
+                id
+                name
+                url
+                size
+              }
               links {
                 id
                 name
@@ -105,7 +110,7 @@ class AboutMe extends Component {
         <div style={aboutmeDivStyle} className="aboutMeDivStyle">
           <div style={imageDivStyle} className="imageDivStyle">
             <img
-              src={this.state.profile.image}
+              src={this.state.profile.image.url}
               alt="Loading ..."
               style={imgStyle}
               className="imgStyle"
