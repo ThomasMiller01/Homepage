@@ -109,6 +109,14 @@ code {
   height: 20vh;
 }
 
+.changeProfileIcons {
+  width: 60%;
+}
+
+.changeProfileLinkContent {
+  width: 100%;
+}
+
 /* Media Querys */
 
 @media (max-width: 324px) {
@@ -148,6 +156,9 @@ code {
   .projectTable {
     height: 25vh;
   }
+  .changeProfileLinkContent {
+    width: 80%;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -186,6 +197,13 @@ code {
     width: 200px !important;
     height: 200px !important;
   }
+
+  .changeProfileIcons {
+    width: 40%;
+  }
+  .changeProfileLinkContent {
+    width: 70%;
+  }
 }
 
 @media (min-width: 600px) {
@@ -212,6 +230,12 @@ code {
 
   .projectTable {
     height: 30vh;
+  }
+  .changeProfileIcons {
+    width: 30%;
+  }
+  .changeProfileLinkContent {
+    width: 60%;
   }
 }
 
@@ -303,6 +327,12 @@ code {
   .cardTitle {
     width: 70% !important;
   }
+  .changeProfileIcons {
+    width: 20%;
+  }
+  .changeProfileLinkContent {
+    width: 50%;
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -335,6 +365,9 @@ code {
   .projectTable {
     height: 40vh;
   }
+  .changeProfileLinkContent {
+    width: 30%;
+  }
 }
 
 @media (min-width: 1500px) {
@@ -353,6 +386,12 @@ code {
 
   .projectTable {
     height: 45vh;
+  }
+  .changeProfileIcons {
+    width: 15%;
+  }
+  .changeProfileLinkContent {
+    width: 20%;
   }
 }
 

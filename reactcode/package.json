@@ -27,6 +27,7 @@
     "react": "^16.8.6",
     "react-art": "^16.8.6",
     "react-bootstrap": "^1.0.1",
+    "react-color": "^2.19.3",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-load-script": "^0.0.6",
