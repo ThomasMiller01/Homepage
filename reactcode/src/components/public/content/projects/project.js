@@ -67,12 +67,14 @@ class Project extends Component {
       this.props.location.hash.replace("#", "")
     );
 
-    setTimeout(() => {
-      window.scrollTo({
-        behavior: element ? "smooth" : "auto",
-        top: element ? element.offsetTop : 0,
-      });
-    }, 100);
+    if (element) {
+      setTimeout(() => {
+        window.scrollTo({
+          behavior: element ? "smooth" : "auto",
+          top: element ? element.offsetTop : 0,
+        });
+      }, 100);
+    }
   };
 
   fetchProjectByName(value) {

@@ -16,12 +16,14 @@ class ScrollToTop extends Component {
         this.props.location.hash.replace("#", "")
       );
 
-      setTimeout(() => {
-        window.scrollTo({
-          behavior: element ? "smooth" : "auto",
-          top: element ? element.offsetTop : 0,
-        });
-      }, 100);
+      if (element) {
+        setTimeout(() => {
+          window.scrollTo({
+            behavior: element ? "smooth" : "auto",
+            top: element ? element.offsetTop : 0,
+          });
+        }, 100);
+      }
     } else if (this.props.location !== prevProps.location) {
       window.scrollTo(0, 0);
     }
