@@ -239,7 +239,7 @@ class PrivateSettingsChangeProjectContent extends Component {
   };
 
   async getInputProject(project) {
-    let compression = false;
+    let compression = true;
     let thumbnailFile;
     if (project.images.thumbnail.url.includes("http")) {
       thumbnailFile = await fetch(project.images.thumbnail.url)
