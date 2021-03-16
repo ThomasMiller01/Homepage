@@ -7,6 +7,10 @@ import Content from "./content";
 class ProfileLink extends Component {
   constructor(props) {
     super();
+
+    this.onLinkChange = props.onLinkChange;
+    this.index = props.index;
+
     this.state.link = {
       name: props.name,
       url: props.url,
@@ -36,24 +40,28 @@ class ProfileLink extends Component {
     let link = this.state.link;
     link.icon = icon;
     this.setState({ link });
+    this.onLinkChange(this.index, "icon", icon);
   };
 
   onColorChange = (color) => {
     let link = this.state.link;
     link.color = color;
     this.setState({ link });
+    this.onLinkChange(this.index, "color", color);
   };
 
   onTextChange = (text) => {
     let link = this.state.link;
     link.name = text;
     this.setState({ link });
+    this.onLinkChange(this.index, "text", text);
   };
 
   onUrlChange = (url) => {
     let link = this.state.link;
     link.url = url;
     this.setState({ link });
+    this.onLinkChange(this.index, "url", url);
   };
 
   render() {

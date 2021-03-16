@@ -155,7 +155,6 @@ class PrivateSettingsChangeProfileContent extends Component {
   handleUpdateEvent = (event) => {
     event.preventDefault();
     var profile = this.state.profile;
-    console.log("profile", profile.image);
 
     this.getInputProfile(profile).then((profile) => {
       let token = this.Auth.getToken();
@@ -265,6 +264,20 @@ class PrivateSettingsChangeProfileContent extends Component {
     return new Blob([u8arr], { type: mime });
   };
 
+  handleLinkChange = (index, type, data) => {
+    let profile = this.state.profile;
+    if (type === "icon") {
+      profile.links[index].icon = data;
+    } else if (type === "color") {
+      profile.links[index].color = data;
+    } else if (type === "text") {
+      profile.links[index].text = data;
+    } else if (type === "url") {
+      profile.links[index].url = data;
+    }
+    this.setState({ profile });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -298,10 +311,12 @@ class PrivateSettingsChangeProfileContent extends Component {
               {this.state.profile.links.map((link, index) => (
                 <ProfileLink
                   key={index}
+                  index={index}
                   name={link.name}
                   url={link.url}
                   color={link.color}
                   icon={link.icon}
+                  onLinkChange={this.handleLinkChange}
                 />
               ))}
               <GetProfileStatusMessage message={this.state.profileStatus} />

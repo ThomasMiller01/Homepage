@@ -74,9 +74,7 @@ class AboutMe extends Component {
     let splitted = this.state.profile.name.split(" ");
     if (splitted.length > 1) {
       let first = splitted[0];
-      console.log("splitted", splitted);
       splitted.shift();
-      console.log("splitted", splitted);
       let everythingElse = splitted.join(" ");
       return [first, everythingElse];
     } else {
