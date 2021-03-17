@@ -13,6 +13,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import AuthService from "../../../authService";
 
 import { homepage_url } from "../../../api_urls";
+import { faCaretSquareLeft } from "@fortawesome/free-solid-svg-icons";
 
 let hljs = require("highlight.js");
 
@@ -53,7 +54,7 @@ class Project extends Component {
     isOpen: false,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.fetchProjectByName(this.props.match.params.projectName);
   }
 
@@ -120,15 +121,27 @@ class Project extends Component {
         let data = result.data.getProjectByName;
         if (data != null) {
           let items = [];
-          data.images.images.forEach((image) => {
-            let sizeSplit = image.size.split("x");
-            items.push({
-              src: image.url,
-              thumbnail: image.url,
-              w: sizeSplit[0],
-              h: sizeSplit[1],
-              title: image.name,
-            });
+          data.images.images.forEach((image, index) => {
+            if (image.url.includes(".mp4")) {
+              items.push({
+                html:
+                  "<div class='wrapper'><div class='video-wrapper'><video class='pswp__video' controls><source src='" +
+                  image.url +
+                  "' type='video/mp4'/></video></div></div>",
+                item: image,
+                thumbnail: "http://placehold.it/960x640?text=MP4",
+                is_video: true,
+              });
+            } else {
+              let sizeSplit = image.size.split("x");
+              items.push({
+                src: image.url,
+                thumbnail: image.url,
+                w: sizeSplit[0],
+                h: sizeSplit[1],
+                title: image.name,
+              });
+            }
           });
           this.setState({ project: data, items: items });
         } else {
@@ -213,6 +226,18 @@ class Project extends Component {
     return htmlParsed.documentElement.innerHTML;
   };
 
+  handleBeforeChange = (ps) => {
+    let all_videos = document.getElementsByClassName("pswp__video");
+    for (let i = 0; i < all_videos.length; i++) {
+      all_videos[i].pause();
+    }
+    let currItem = ps.currItem.container.getElementsByTagName("video");
+    if (currItem.length !== 0) {
+      currItem = currItem[0];
+      currItem.load();
+    }
+  };
+
   render() {
     const projectHeaderStyle = {
       backgroundImage: "url(" + this.state.project.images.headerImg.url + ")",
@@ -274,6 +299,7 @@ class Project extends Component {
             items={this.state.items}
             options={this.state.options}
             thumbnailContent={this.getThumbnailContent}
+            beforeChange={this.handleBeforeChange}
           />
         </div>
       </div>
