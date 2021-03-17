@@ -13,7 +13,6 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import AuthService from "../../../authService";
 
 import { homepage_url } from "../../../api_urls";
-import { faCaretSquareLeft } from "@fortawesome/free-solid-svg-icons";
 
 let hljs = require("highlight.js");
 
@@ -50,6 +49,15 @@ class Project extends Component {
     items: [],
     options: {
       //http://photoswipe.com/documentation/options.html
+      closeElClasses: [
+        "item",
+        "caption",
+        "zoom-wrap",
+        "ui",
+        "top-bar",
+        "wrapper",
+        "video-wrapper",
+      ],
     },
     isOpen: false,
   };
@@ -125,11 +133,10 @@ class Project extends Component {
             if (image.url.includes(".mp4")) {
               items.push({
                 html:
-                  "<div class='wrapper'><div class='video-wrapper'><video class='pswp__video' controls><source src='" +
+                  "<div class='wrapper pswp__item'><div class='video-wrapper pswp__item'><video class='pswp__video' controls><source src='" +
                   image.url +
                   "' type='video/mp4'/></video></div></div>",
-                item: image,
-                thumbnail: "http://placehold.it/960x640?text=MP4",
+                thumbnail: image.url,
                 is_video: true,
               });
             } else {
@@ -151,6 +158,17 @@ class Project extends Component {
   }
 
   getThumbnailContent = (item) => {
+    if ("is_video" in item) {
+      return (
+        <div>
+          <div className="video-play-button">
+            <i className="far fa-play-circle video-play-icon"></i>
+            <video width="300" height="250" src={item.thumbnail} />
+          </div>
+          <img alt="" />
+        </div>
+      );
+    }
     return (
       <img src={item.thumbnail} width={120} height={90} alt="Loading ..." />
     );
