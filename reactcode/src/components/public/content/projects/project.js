@@ -231,6 +231,25 @@ class Project extends Component {
       }
     }
 
+    // set all videos max width
+    let videoElements = htmlParsed.getElementsByTagName("video");
+    for (let i = 0; i < videoElements.length; i++) {
+      // get old width and height
+      let oldWidth = videoElements[i].width;
+      let oldHeight = videoElements[i].height;
+
+      // only set new width, if image is bigger than display field
+      if (oldWidth > maxWidth) {
+        // calculate new width and height
+        let ratio = oldWidth / oldHeight;
+        let newWidth = maxWidth;
+        let newHeight = newWidth / ratio;
+
+        videoElements[i].width = newWidth;
+        videoElements[i].height = newHeight;
+      }
+    }
+
     // replace code class markup with markdown
     let codeElements = htmlParsed.getElementsByTagName("pre");
     for (let i = 0; i < codeElements.length; i++) {
