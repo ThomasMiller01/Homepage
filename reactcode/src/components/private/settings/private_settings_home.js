@@ -9,7 +9,7 @@ class PrivateSettingsHome extends Component {
       isVisible: false,
     },
     projects: {
-      isVisible: false,
+      isVisible: true,
     },
   };
 
