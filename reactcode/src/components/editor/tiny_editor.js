@@ -16,7 +16,7 @@ class TinyEditor extends Component {
       toolbar:
         "undo redo | bold italic underline | formatselect  | alignleft aligncenter alignright alignjustify | bullist numlist | table link",
       quickbars_selection_toolbar:
-        "bold italic underline | alignleft aligncenter alignright alignjustify | blockquote",
+        "bold italic underline | alignleft aligncenter alignright alignjustify | link blockquote",
       fontsize_formats: "8pt 9pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt 48pt",
       codesample_languages: [
         { text: "Python", value: "python" },
