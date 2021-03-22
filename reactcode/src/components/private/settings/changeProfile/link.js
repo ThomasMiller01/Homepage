@@ -32,6 +32,7 @@ class ProfileLink extends Component {
     let style = {
       color: link.color,
       borderColor: link.color,
+      display: "inline-block",
     };
     return style;
   };
@@ -67,7 +68,7 @@ class ProfileLink extends Component {
   render() {
     return (
       <div style={linkStyle}>
-        <div>
+        <div style={divStyle}>
           <Content
             text={this.state.link.name}
             url={this.state.link.url}
@@ -78,10 +79,7 @@ class ProfileLink extends Component {
         <div style={colorStyle}>
           <Color color={this.state.link.color} onChange={this.onColorChange} />
         </div>
-        <div
-          className="changeProfileIcons"
-          style={this.getLinkStyle(this.state.link)}
-        >
+        <div style={this.getLinkStyle(this.state.link)}>
           <Icon icon={this.state.link.icon} onChange={this.onIconChange} />
         </div>
       </div>
@@ -93,10 +91,15 @@ const linkStyle = {
   background: "#CACACA",
   margin: "5px",
   padding: "5px",
+  width: "fit-content",
 };
+
+const divStyle = { display: "inline-block" };
 
 const colorStyle = {
   margin: "10px",
+  display: "inline-block",
+  verticalAlign: "middle",
 };
 
 export default ProfileLink;

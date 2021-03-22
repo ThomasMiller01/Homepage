@@ -57,7 +57,7 @@ class Content extends Component {
 }
 
 const divStyle = {
-  //   width: "fit-content",
+  width: "fit-content",
   display: "inline-block",
   margin: "10px",
 };

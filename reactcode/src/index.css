@@ -151,6 +151,11 @@ code {
   width: 100%;
 }
 
+.innerColorDiv {
+  position: relative;
+  left: 0;
+}
+
 /* Media Querys */
 
 @media (max-width: 324px) {
@@ -231,12 +236,14 @@ code {
     width: 200px !important;
     height: 200px !important;
   }
-
-  .changeProfileIcons {
-    width: 40%;
-  }
   .changeProfileLinkContent {
     width: 70%;
+  }
+}
+
+@media (min-width: 580px) {
+  .innerColorDiv {
+    left: -190px;
   }
 }
 
@@ -265,11 +272,12 @@ code {
   .projectTable {
     height: 30vh;
   }
-  .changeProfileIcons {
-    width: 30%;
-  }
   .changeProfileLinkContent {
     width: 60%;
+  }
+
+  .innerColorDiv {
+    left: 0;
   }
 }
 
@@ -361,9 +369,6 @@ code {
   .cardTitle {
     width: 70% !important;
   }
-  .changeProfileIcons {
-    width: 20%;
-  }
   .changeProfileLinkContent {
     width: 50%;
   }
@@ -420,9 +425,6 @@ code {
 
   .projectTable {
     height: 45vh;
-  }
-  .changeProfileIcons {
-    width: 15%;
   }
   .changeProfileLinkContent {
     width: 20%;

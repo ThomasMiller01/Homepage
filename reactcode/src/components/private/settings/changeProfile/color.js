@@ -32,15 +32,22 @@ class Color extends Component {
   render() {
     if (this.state.pickerVisible) {
       return (
-        <div>
+        <React.Fragment>
           <div
             onClick={this.changePickerVisibility}
             style={getColorSquareStyle("#1C00ff00", this.state.color)}
           >
             <i className="fas fa-check"></i>
           </div>
-          <SketchPicker color={this.state.color} onChange={this.handleChange} />
-        </div>
+          <div style={ColorPickerStyle}>
+            <div className="innerColorDiv">
+              <SketchPicker
+                color={this.state.color}
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+        </React.Fragment>
       );
     } else {
       return (
@@ -65,6 +72,11 @@ const getColorSquareStyle = (color, currentColor = null) => {
     margin: "5px",
     cursor: "pointer",
   };
+};
+
+const ColorPickerStyle = {
+  position: "absolute",
+  width: 0,
 };
 
 export default Color;
