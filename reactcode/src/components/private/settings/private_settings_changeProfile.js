@@ -271,10 +271,27 @@ class PrivateSettingsChangeProfileContent extends Component {
     } else if (type === "color") {
       profile.links[index].color = data;
     } else if (type === "text") {
-      profile.links[index].text = data;
+      profile.links[index].name = data;
     } else if (type === "url") {
       profile.links[index].url = data;
     }
+    this.setState({ profile });
+  };
+
+  handleLinkDelete = (index) => {
+    let profile = this.state.profile;
+    profile.links.splice(index, 1);
+    this.setState({ profile });
+  };
+
+  handleLinkAdd = () => {
+    let profile = this.state.profile;
+    profile.links.push({
+      name: "",
+      url: "",
+      color: "#fff",
+      icon: "fas fa-exclamation-triangle",
+    });
     this.setState({ profile });
   };
 
@@ -308,6 +325,16 @@ class PrivateSettingsChangeProfileContent extends Component {
                 ref={this.profileImageRef}
               ></Image>
               <h2 style={inputGroupH2Style}>Links</h2>
+              <div style={addImageButtonDivStyle}>
+                <button
+                  type="button"
+                  className="btn"
+                  style={addButtonStyle}
+                  onClick={this.handleLinkAdd}
+                >
+                  <i className="fas fa-plus"></i> <b>Link</b>
+                </button>
+              </div>
               {this.state.profile.links.map((link, index) => (
                 <ProfileLink
                   key={index}
@@ -317,6 +344,7 @@ class PrivateSettingsChangeProfileContent extends Component {
                   color={link.color}
                   icon={link.icon}
                   onLinkChange={this.handleLinkChange}
+                  onLinkDelete={this.handleLinkDelete}
                 />
               ))}
               <GetProfileStatusMessage message={this.state.profileStatus} />
@@ -355,6 +383,17 @@ const GetProfileStatusMessage = (props) => {
 };
 
 // Styles
+const addButtonStyle = {
+  border: "solid",
+  padding: "2px 7px",
+};
+
+const addImageButtonDivStyle = {
+  widht: "100%",
+  textAlign: "left",
+  margin: "15px 0",
+};
+
 const textDescriptionStyle = { width: "100%" };
 
 const inputGroupInputStyle = { width: "100%" };

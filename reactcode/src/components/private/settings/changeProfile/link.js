@@ -9,6 +9,7 @@ class ProfileLink extends Component {
     super();
 
     this.onLinkChange = props.onLinkChange;
+    this.onLinkDelete = props.onLinkDelete;
     this.index = props.index;
 
     this.state.link = {
@@ -17,6 +18,21 @@ class ProfileLink extends Component {
       color: props.color,
       icon: props.icon,
     };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.name !== this.state.link.name) {
+      this.index = nextProps.index;
+      this.setState({
+        link: {
+          name: nextProps.name,
+          url: nextProps.url,
+          color: nextProps.color,
+          icon: nextProps.icon,
+        },
+      });
+    }
+    return true;
   }
 
   state = {
@@ -65,6 +81,10 @@ class ProfileLink extends Component {
     this.onLinkChange(this.index, "url", url);
   };
 
+  onDelete = () => {
+    this.onLinkDelete(this.index);
+  };
+
   render() {
     return (
       <div style={linkStyle}>
@@ -82,10 +102,35 @@ class ProfileLink extends Component {
         <div style={this.getLinkStyle(this.state.link)}>
           <Icon icon={this.state.link.icon} onChange={this.onIconChange} />
         </div>
+        <div style={deleteDivStyle}>
+          <button
+            type="button"
+            className="close"
+            style={deleteButtonStyle}
+            onClick={this.onDelete}
+          >
+            <span aria-hidden="true" style={deleteIconStyle}>
+              &times;
+            </span>
+          </button>
+        </div>
       </div>
     );
   }
 }
+
+const deleteIconStyle = {
+  fontSize: "35px",
+};
+
+const deleteDivStyle = {
+  display: "inline-block",
+  verticalAlign: "baseline",
+};
+
+const deleteButtonStyle = {
+  cursor: "pointer",
+};
 
 const linkStyle = {
   background: "#CACACA",

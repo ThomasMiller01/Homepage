@@ -19,6 +19,15 @@ class Color extends Component {
     this.setState({ color: color.hex });
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.color !== this.state.color) {
+      this.setState({
+        color: nextProps.color,
+      });
+    }
+    return true;
+  }
+
   changePickerVisibility = () => {
     let pickerVisible = this.state.pickerVisible;
     if (pickerVisible) {

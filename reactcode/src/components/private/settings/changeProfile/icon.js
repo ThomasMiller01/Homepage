@@ -19,6 +19,15 @@ class Icon extends Component {
     this.setState({ icon });
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.icon !== this.state.icon) {
+      this.setState({
+        icon: nextProps.icon,
+      });
+    }
+    return true;
+  }
+
   render() {
     return (
       <div style={divStyle}>

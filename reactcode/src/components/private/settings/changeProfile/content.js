@@ -21,6 +21,16 @@ class Content extends Component {
     }
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.text !== this.state.text) {
+      this.setState({ text: nextProps.text });
+    }
+    if (nextProps.url !== this.state.url) {
+      this.setState({ url: nextProps.url });
+    }
+    return true;
+  }
+
   state = {
     text: "",
     url: "",
