@@ -561,12 +561,21 @@ class PrivateSettingsChangeProjectContent extends Component {
 
   addImage = () => {
     let currentProject = this.state.currentProject;
+    let image_id;
+    if (currentProject.images.images.length === 0) {
+      image_id = 0;
+    } else {
+      image_id =
+        currentProject.images.images[currentProject.images.images.length - 1]
+          .id + 1;
+    }
+
     currentProject.images.images.push({
       name: "none.png",
       url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png",
       size: "979x979",
-      id: currentProject.images.images.length,
+      id: image_id,
     });
     this.setState(currentProject);
   };

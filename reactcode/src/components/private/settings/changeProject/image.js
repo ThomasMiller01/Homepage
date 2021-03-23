@@ -39,6 +39,34 @@ class Image extends Component {
     isNotSpecialImage: { value: false, id: null },
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      nextProps.id !== this.state.isNotSpecialImage.id &&
+      this.state.isNotSpecialImage.id !== null &&
+      this.state.isNotSpecialImage.value !== "delete"
+    ) {
+      let isNotSpecialImage = "id" in nextProps ? true : false;
+      let id = null;
+      if (isNotSpecialImage) {
+        id = nextProps.id;
+      }
+
+      let dimensions = { x: -1, y: -1 };
+      let unique = "unique#" + id + Math.random();
+
+      this.setState({
+        src: nextProps.src,
+        alt: nextProps.alt,
+        dimensions,
+        unique,
+        onChange: nextProps.onChange,
+        onDelete: nextProps.onDelete,
+        isNotSpecialImage: { value: isNotSpecialImage, id },
+      });
+    }
+    return true;
+  }
+
   onImageChange = (e) => {
     let file = e.target.files[0];
     e.target.value = null;
@@ -124,6 +152,7 @@ class Image extends Component {
   render() {
     return (
       <div style={imageDivStyle}>
+        {this.state.isNotSpecialImage.id}
         <div className="media" style={mediaStyle}>
           <img
             className="align-self-center mr-3"
