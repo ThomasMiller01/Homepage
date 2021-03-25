@@ -14,6 +14,8 @@ class Image extends Component {
       let dimensions = { x: -1, y: -1 };
       let unique = "unique#" + id + Math.random();
 
+      this.isSpecial = props.isSpecial;
+
       this.state = {
         src: props.src,
         alt: props.alt,
@@ -54,6 +56,8 @@ class Image extends Component {
       let dimensions = { x: -1, y: -1 };
       let unique = "unique#" + id + Math.random();
 
+      this.isSpecial = nextProps.isSpecial;
+
       this.setState({
         src: nextProps.src,
         alt: nextProps.alt,
@@ -66,6 +70,18 @@ class Image extends Component {
     }
     return true;
   }
+
+  onAltChange = (e) => {
+    let value = e.target.value;
+    let id = this.state.isNotSpecialImage.id;
+    this.state.onChange(
+      value,
+      this.state.src,
+      this.imageRef.current.width + "x" + this.imageRef.current.height,
+      id
+    );
+    this.setState({ alt: value });
+  };
 
   onImageChange = (e) => {
     let file = e.target.files[0];
@@ -153,7 +169,7 @@ class Image extends Component {
     return (
       <div style={imageDivStyle}>
         {this.state.isNotSpecialImage.id}
-        <div className="media" style={mediaStyle}>
+        <div className="media mediaStyle">
           <img
             className="align-self-center mr-3"
             src={this.state.src}
@@ -163,7 +179,15 @@ class Image extends Component {
             ref={this.imageRef}
           />
           <div className="media-body" style={mediaBodyStyle}>
-            <div style={altDiv}>{this.state.alt}</div>
+            <div style={altDiv}>
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.alt}
+                onChange={this.onAltChange}
+                readOnly={this.isSpecial}
+              />
+            </div>
             <div style={buttonsDiv}>
               <div style={updateButtonDiv}>
                 <input
@@ -237,10 +261,6 @@ const fileInputStyle = {
   height: "0px",
   opacity: "0",
   overflow: "auto",
-};
-
-const mediaStyle = {
-  width: "250px",
 };
 
 const mediaBodyStyle = {

@@ -58,13 +58,13 @@ class PrivateSettingsChangeProjectContent extends Component {
       description_big: "",
       images: {
         thumbnail: {
-          name: "none.png",
+          name: "Thumbnail",
           url:
             "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png",
           size: "979x979",
         },
         headerImg: {
-          name: "none.png",
+          name: "HeaderImg",
           url:
             "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png",
           size: "979x979",
@@ -247,7 +247,11 @@ class PrivateSettingsChangeProjectContent extends Component {
           return res.blob();
         })
         .then((blob) => {
-          const file = new File([blob], project.images.thumbnail.name, {
+          let filename = project.images.thumbnail.name;
+          if (!filename.endsWith(".jpg") || filename.endsWith(".png")) {
+            filename = filename + ".png";
+          }
+          const file = new File([blob], filename, {
             type: "image/png",
           });
           return file;
@@ -279,7 +283,11 @@ class PrivateSettingsChangeProjectContent extends Component {
       headerImgFile = await fetch(project.images.headerImg.url)
         .then((res) => res.blob())
         .then((blob) => {
-          const file = new File([blob], project.images.headerImg.name, {
+          let filename = project.images.headerImg.name;
+          if (!filename.endsWith(".jpg") || filename.endsWith(".png")) {
+            filename = filename + ".png";
+          }
+          const file = new File([blob], filename, {
             type: "image/png",
           });
           return file;
@@ -315,7 +323,11 @@ class PrivateSettingsChangeProjectContent extends Component {
         imageFile = await fetch(image.url)
           .then((res) => res.blob())
           .then((blob) => {
-            const file = new File([blob], image.name, {
+            let filename = image.name;
+            if (!filename.endsWith(".jpg") || filename.endsWith(".png")) {
+              filename = filename + ".png";
+            }
+            const file = new File([blob], filename, {
               type: "image/png",
             });
             return file;
@@ -648,6 +660,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                     onChange={this.onChangeThumbnailImage}
                     onDelete={this.handleThumbnailDelete}
                     ref={this.thumbnailImageRef}
+                    isSpecial={true}
                   ></Image>
                   <h2 style={inputGroupH2Style}>Header Img</h2>
                   <Image
@@ -657,6 +670,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                     onChange={this.onChangeHeaderImgImage}
                     onDelete={this.handleHeaderImgDelete}
                     ref={this.headerImageRef}
+                    isSpecial={true}
                   ></Image>
                   <h2 style={inputGroupH2Style}>Images</h2>
                   <div style={addImageButtonDivStyle}>
@@ -680,6 +694,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                       id={image.id}
                       onChange={this.onChangeImage}
                       onDelete={this.handleImageDelete}
+                      isSpecial={false}
                     ></Image>
                   ))}
                   <div
