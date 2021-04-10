@@ -287,6 +287,7 @@ class PrivateSettingsChangeProfileContent extends Component {
   handleLinkAdd = () => {
     let profile = this.state.profile;
     profile.links.push({
+      id: -1,
       name: "",
       url: "",
       color: "#fff",
