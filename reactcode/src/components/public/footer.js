@@ -12,7 +12,7 @@ class Footer extends Component {
 
   render() {
     return (
-      <footer style={footerStyle}>
+      <footer style={footerStyle} className="footer">
         <div
           className="text-center py-3 divFooterStyle"
           style={divFooterLeftSideStyle}
@@ -44,24 +44,24 @@ class Footer extends Component {
 
 // Styles
 const div1Style = {
-  margin: "0 auto"
+  margin: "0 auto",
 };
 
 const divFooterLeftSideStyle = {
   display: "flex",
-  justifyContent: "space-between"
+  justifyContent: "space-between",
 };
 
 const buttercms_linkStyle = {};
 
 const buttercms_imgStyle = {
-  width: "150px"
+  width: "150px",
 };
 
 const footerStyle = {
   backgroundColor: "rgb(39, 52, 58)",
   color: "#c6c6c6",
-  minHeight: "6.5vh"
+  minHeight: "6.5vh",
 };
 
 export default Footer;
