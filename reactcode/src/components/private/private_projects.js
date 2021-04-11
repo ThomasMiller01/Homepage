@@ -80,7 +80,7 @@ class PrivateProjects extends Component {
             {this.state.projects.map((project) => (
               <div
                 key={project.id}
-                className="card my-3"
+                className="card my-3 project-card"
                 style={projectCardStyle}
               >
                 <NavLink
@@ -99,7 +99,7 @@ class PrivateProjects extends Component {
                     {project.name}{" "}
                     {this.getPrivateIconIndicator(project._private)}
                   </h4>
-                  <h6 className="card-subtitle mb-2 text-muted">
+                  <h6 className="card-subtitle mb-2 text-muted card-date">
                     <small>{this.getPubDateFormated(project.pubDate)}</small>
                   </h6>
 
@@ -113,7 +113,7 @@ class PrivateProjects extends Component {
                     to={{
                       pathname: "/projects/" + project.name,
                     }}
-                    className="btn btn-outline-primary"
+                    className="btn btn-outline-primary see-more-btn"
                   >
                     See more
                   </NavLink>
