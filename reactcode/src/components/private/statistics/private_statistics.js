@@ -73,6 +73,9 @@ class PrivateStatistics extends Component {
         }
         this.setState({ services });
         this.setState({ fetched: true });
+      })
+      .catch((e) => {
+        this.setState({ fetched: true });
       });
   };
 
