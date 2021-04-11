@@ -35,7 +35,10 @@ const HomeTop = () => {
                   to={{ pathname: "/projects/all" }}
                   style={middelTextButtonStyle}
                 >
-                  <button type="button" className="btn btn-outline-dark btn-lg">
+                  <button
+                    type="button"
+                    className="btn btn-outline-dark btn-lg see-all-project-btn"
+                  >
                     See All Projects
                   </button>
                 </NavLink>
