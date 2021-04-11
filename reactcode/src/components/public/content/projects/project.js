@@ -283,7 +283,7 @@ class Project extends Component {
       textAlign: "center",
     };
     return (
-      <div style={projectContainerStyle}>
+      <div style={projectContainerStyle} className="project-main">
         <title>{this.state.project.name}</title>
         <div style={projectHeaderStyle}>
           <table className="projectTable">
@@ -384,7 +384,6 @@ const GithubLink = (props) => {
 const projectContainerStyle = {
   width: "100%",
   minHeight: "87vh",
-  backgroundColor: "white",
 };
 
 const projectHeaderTopStyle = {

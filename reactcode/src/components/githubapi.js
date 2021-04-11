@@ -39,18 +39,22 @@ class Commits extends Component {
         <h4>Commit - History</h4>
         <div className="pre-scrollable">
           {this.state.allCommits.map((commit) => (
-            <div className="card mb-3" key={commit.sha}>
+            <div className="card mb-3 github-stats" key={commit.sha}>
               <div className="row no-gutters">
                 <div style={{ width: "100%" }}>
                   <div className="card-body">
                     <small className="text-muted">
-                      <a href={commit.author.url}>{commit.author.name}</a>
+                      <a href={commit.author.url} className="github-text">
+                        {commit.author.name}
+                      </a>
                     </small>
                     <p className="card-text">
-                      <a href={commit.url}>{commit.message}</a>
+                      <a href={commit.url} className="github-text">
+                        {commit.message}
+                      </a>
                     </p>
                     <p className="card-text">
-                      <small className="text-muted">
+                      <small className="text-muted github-text">
                         <time dateTime={commit.date}>{commit.date}</time>
                       </small>
                     </p>
@@ -109,7 +113,7 @@ class Statistics extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="card mb-3">
+        <div className="card mb-3 github-stats">
           <div className="row no-gutters">
             <div style={{ width: "100%" }}>
               <div className="card-body">

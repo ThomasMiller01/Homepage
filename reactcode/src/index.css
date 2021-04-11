@@ -149,6 +149,35 @@ a {
   color: var(--c4);
 }
 
+.project-main {
+  background-color: var(--c2);
+  color: var(--c4);
+}
+
+hr {
+  background-color: var(--c4);
+}
+
+.githubLinkBtn {
+  color: var(--c4) !important;
+  border-color: var(--c4) !important;
+}
+
+.githubLinkBtn:hover {
+  color: var(--c1) !important;
+  border-color: var(--c1) !important;
+  background-color: var(--c4) !important;
+}
+
+.github-stats {
+  background-color: var(--c1);
+  color: var(--c4);
+}
+
+.github-text {
+  color: var(--c4) !important;
+}
+
 html,
 body {
   min-height: 100vh;
