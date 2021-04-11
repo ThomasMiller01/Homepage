@@ -8,7 +8,7 @@ const Impressum = () => {
     <React.Fragment>
       <title>Impressum</title>
       <Header />
-      <div style={impressumContainerStyle}>
+      <div style={impressumContainerStyle} className="impressum-main">
         <div style={impressumStyle} className="impressum">
           <h1>Impressum</h1>
           <p>Angaben gemäß § 5 TMG</p>
@@ -178,13 +178,11 @@ const impressumStyle = {
   margin: "0 auto",
   fontSize: "15px",
   borderStyle: "solid",
-  backgroundColor: "rgb(211, 211, 211)"
 };
 
 const impressumContainerStyle = {
   width: "100%",
-  backgroundColor: "rgb(44, 34, 34)",
-  padding: "25px 0"
+  padding: "25px 0",
 };
 
 export default Impressum;

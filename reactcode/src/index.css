@@ -129,6 +129,16 @@ a {
   color: var(--c4);
 }
 
+.impressum-main {
+  background-color: var(--c2);
+}
+
+.impressum {
+  background-color: var(--c5);
+  border-color: var(--c3);
+  color: var(--c1);
+}
+
 html,
 body {
   min-height: 100vh;
