@@ -144,6 +144,11 @@ a {
   color: var(--c4);
 }
 
+.private-home-main {
+  background-color: var(--c2) !important;
+  color: var(--c4);
+}
+
 html,
 body {
   min-height: 100vh;

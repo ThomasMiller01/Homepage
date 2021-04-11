@@ -17,12 +17,12 @@ class PrivateHome extends Component {
 
   render() {
     return (
-      <div style={privateHomeStyle}>
+      <div style={privateHomeStyle} className="private-home-main">
         <title>Private Home</title>
         <center>
           <button
             type="button"
-            className="btn btn-outline-primary"
+            className="btn btn-outline-primary see-more-btn"
             style={logoutBtnStyle}
             onClick={this.handleLogout}
           >
