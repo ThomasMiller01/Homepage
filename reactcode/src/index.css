@@ -1,3 +1,117 @@
+/* Standard Color Palettes */
+:root {
+  --c1: var(--dark_grey_c1);
+  --c2: var(--dark_grey_c2);
+  --c3: var(--dark_grey_c3);
+  --c4: var(--dark_grey_c4);
+  --c5: var(--dark_grey_c5);
+}
+
+.navbar-main {
+  background-color: var(--c1);
+}
+
+.active {
+  color: var(--c5) !important;
+}
+
+.nav-item a {
+  color: var(--c4);
+}
+
+.nav-item a:hover {
+  color: var(--c5);
+}
+
+.homeBelowNames {
+  color: var(--c4) !important;
+}
+
+.homeMiddleText {
+  color: var(--c1);
+}
+
+.see-all-project-btn {
+  color: var(--c1) !important;
+  border-color: var(--v1) !important;
+}
+
+.see-all-project-btn:hover {
+  background-color: var(--c5) !important;
+}
+
+.footer {
+  background-color: var(--c1) !important;
+}
+
+.divFooterStyle {
+  color: var(--c4);
+}
+
+.project-card {
+  background-color: var(--c2);
+  color: var(--c4);
+}
+
+.card-date {
+  color: var(--c4) !important;
+}
+
+.see-more-btn {
+  color: var(--c5);
+  border-color: var(--c4);
+  background-color: var(--c2);
+}
+
+.see-more-btn:hover {
+  color: var(--c1) !important;
+  border-color: var(--c1) !important;
+  background-color: var(--c2) !important;
+}
+
+.blog-main {
+  background-color: var(--c2) !important;
+}
+
+.blog-text {
+  color: var(--c1) !important;
+}
+
+.blog-card {
+  background-color: var(--c2) !important;
+  color: var(--c4);
+}
+
+.metaData {
+  color: var(--c4) !important;
+}
+
+a {
+  color: var(--c3);
+}
+
+.border-main {
+  border-color: var(--c1) !important;
+}
+
+.border-main-2 {
+  border-color: var(--c4) !important;
+}
+
+.rightCard {
+  color: var(--c4);
+  border-color: var(--c4) !important;
+}
+
+.link-text {
+  color: var(--c4) !important;
+}
+
+.post-container {
+  background-color: var(--c2) !important;
+  color: var(--c4);
+}
+
 html,
 body {
   min-height: 100vh;

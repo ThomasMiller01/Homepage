@@ -33,6 +33,7 @@ class GetCategories extends Component {
               to={`/blog/category/${category.slug}`}
               key={key}
               style={CategoryNameStyle}
+              className="link-text"
             >
               <p style={{ margin: "5px 0" }}>~ {category.name}</p>
             </Link>

@@ -51,7 +51,7 @@ export default class extends React.Component {
           <meta name="description" content={post.meta_description} />
           <meta name="og:image" content={post.featured_image} />
           <h1 style={postTitleStyle}>{post.title}</h1>
-          <div style={borderBottomStyle} />
+          <div style={borderBottomStyle} className="border-main-2" />
           <div
             dangerouslySetInnerHTML={{ __html: post.body }}
             style={postBodyStyle}

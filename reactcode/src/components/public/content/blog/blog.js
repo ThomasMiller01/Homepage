@@ -13,7 +13,7 @@ import "./blog.scss";
 class Blog extends Component {
   state = {
     meta: {},
-    data: []
+    data: [],
   };
 
   async componentDidMount() {
@@ -31,12 +31,13 @@ class Blog extends Component {
         <title>Blog</title>
         <h2>Recent Posts</h2>
         <span>
-          {recentPosts.map(post => {
+          {recentPosts.map((post) => {
             return (
               <Link
                 to={`/blog/posts/${post.slug}`}
                 key={post.slug}
                 style={RecentPostStyle}
+                className="link-text"
               >
                 <p style={{ margin: "20px 0" }}>
                   <strong>{post.title}</strong>
@@ -55,7 +56,11 @@ class Blog extends Component {
     return (
       <React.Fragment>
         <h2>
-          <Link to={`/blog/categories`} style={RecentPostStyle}>
+          <Link
+            to={`/blog/categories`}
+            style={RecentPostStyle}
+            className="link-text"
+          >
             Categories <small>[View]</small>
           </Link>
         </h2>
@@ -79,7 +84,9 @@ class Blog extends Component {
                 <td>
                   <div style={topTextDivStyle}>
                     <h1 style={topH1Style}>
-                      <span style={topSpanStyle}>Blog</span>
+                      <span style={topSpanStyle} className="blog-text">
+                        Blog
+                      </span>
                     </h1>
                   </div>
                 </td>
@@ -87,13 +94,13 @@ class Blog extends Component {
             </tbody>
           </table>
         </div>
-        <div style={blogStyle}>
+        <div style={blogStyle} className="blog-main">
           <div style={blogPostsStyle} className="blogPost">
             <GetPostsRendered posts={this.state.data} />
           </div>
           <div style={rightCardStyle} className="rightCard">
             {this.getRecentPostsRendered()}
-            <div style={borderBottomStyle2} />
+            <div style={borderBottomStyle2} className="border-main-2" />
             {this.getCategories()}
           </div>
 
@@ -126,18 +133,18 @@ class Blog extends Component {
 }
 
 const RecentPostStyle = {
-  color: "black"
+  color: "black",
 };
 
 const topTableStyle = {
   width: "100%",
-  height: "30vh"
+  height: "30vh",
 };
 
 const topH1Style = {
   color: "#E2E07B",
   marginBottom: "0",
-  fontFamily: "'Work Sans',sans-serif"
+  fontFamily: "'Work Sans',sans-serif",
 };
 
 const topSpanStyle = {
@@ -145,13 +152,13 @@ const topSpanStyle = {
   width: "0",
   margin: "0",
   height: "0",
-  fontSize: "1.5em"
+  fontSize: "1.5em",
 };
 
 const topTextDivStyle = {
   width: "100%",
   textAlign: "center",
-  fontFamily: "DejaVuSansMono"
+  fontFamily: "DejaVuSansMono",
 };
 
 const topDivStyle = {
@@ -159,7 +166,7 @@ const topDivStyle = {
   minHeight: "30vh",
   backgroundColor: "#272822",
   backgroundImage: "url('./images/blog_header.png')",
-  padding: "0"
+  padding: "0",
 };
 
 const rightCardStyle = {
@@ -168,28 +175,28 @@ const rightCardStyle = {
   display: "inline-block",
   verticalAlign: "top",
   padding: "10px",
-  border: "solid 1px #323232"
+  border: "solid 1px #323232",
 };
 
 const blogPostsStyle = {
   width: "65%",
   margin: "10px 0 10px 10%",
   display: "inline-block",
-  padding: "10px"
+  padding: "10px",
 };
 
 const blogStyle = {
   width: "100%",
   minHeight: "87vh",
   backgroundColor: "#E6E6E6",
-  padding: "20px"
+  padding: "20px",
 };
 
 const borderBottomStyle2 = {
   width: "100%",
   margin: "10px auto 10px auto",
   height: "1px",
-  borderBottom: "solid 1px rgb(161, 161, 161)"
+  borderBottom: "solid 1px rgb(161, 161, 161)",
 };
 
 export default Blog;
