@@ -152,7 +152,6 @@ class Image extends Component {
   render() {
     return (
       <div style={imageDivStyle}>
-        {this.state.isNotSpecialImage.id}
         <div className="media" style={mediaStyle}>
           <img
             className="align-self-center mr-3"
