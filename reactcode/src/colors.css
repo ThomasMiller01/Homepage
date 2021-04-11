@@ -1,0 +1,44 @@
+﻿/* Dark - Grey */
+:root {
+  --dark_grey_c1: #262a30;
+  --dark_grey_c2: #2d323c;
+  --dark_grey_c3: #cba81a;
+  --dark_grey_c4: #c7c7c7;
+  --dark_grey_c5: #f1f1f1;
+}
+
+/* Dark - Blue */
+:root {
+  --dark_blue_c1: #000833;
+  --dark_blue_c2: #073b4c;
+  --dark_blue_c3: #f5c400;
+  --dark_blue_c4: #e6cfad;
+  --dark_blue_c5: #edddd4;
+}
+
+/* Dark - Green */
+:root {
+  --dark_green_c1: #2f3e46;
+  --dark_green_c2: #354f52;
+  --dark_green_c3: #1a9375;
+  --dark_green_c4: #9eb7a4;
+  --dark_green_c5: #cad2c5;
+}
+
+/* Light - Green */
+:root {
+  --light_green_c1: #cad2c5;
+  --light_green_c2: #a7b9ab;
+  --light_green_c3: #3aa187;
+  --light_green_c4: #354f52;
+  --light_green_c5: #2f3e46;
+}
+
+/* Light - Pink */
+:root {
+  --light_pink_c1: #dd2273;
+  --light_pink_c2: #ea619f;
+  --light_pink_c3: #ff5d8f;
+  --light_pink_c4: #ffcad4;
+  --light_pink_c5: #fbdfe4;
+}
