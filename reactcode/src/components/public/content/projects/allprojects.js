@@ -68,7 +68,7 @@ class AllProjects extends Component {
             {this.state.projects.map((project) => (
               <div
                 key={project.id}
-                className="card my-3"
+                className="card my-3 project-card"
                 style={projectCardStyle}
               >
                 <NavLink
@@ -84,7 +84,7 @@ class AllProjects extends Component {
                 </NavLink>
                 <div className="card-body">
                   <h4 className="card-title">{project.name}</h4>
-                  <h6 className="card-subtitle mb-2 text-muted">
+                  <h6 className="card-subtitle mb-2 text-muted card-date">
                     <small>{this.getPubDateFormated(project.pubDate)}</small>
                   </h6>
                   <p
@@ -97,7 +97,7 @@ class AllProjects extends Component {
                     to={{
                       pathname: "/projects/" + project.name,
                     }}
-                    className="btn btn-outline-primary"
+                    className="btn btn-outline-primary see-more-btn"
                   >
                     See more
                   </NavLink>
