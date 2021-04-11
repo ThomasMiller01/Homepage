@@ -112,6 +112,23 @@ a {
   color: var(--c4);
 }
 
+.about-me-main {
+  border-top: solid 2px var(--c2);
+  background-color: var(--c1) !important;
+}
+
+.aboutMeDivStyle {
+  background-color: var(--c2) !important;
+}
+
+.imgStyle {
+  border: solid 2px var(--c3);
+}
+
+.descriptionDivStyle {
+  color: var(--c4);
+}
+
 html,
 body {
   min-height: 100vh;

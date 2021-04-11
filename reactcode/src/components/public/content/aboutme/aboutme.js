@@ -87,7 +87,7 @@ class AboutMe extends Component {
       <React.Fragment>
         <title>About Me</title>
         <Header />
-        <div style={topDivStyle}>
+        <div style={topDivStyle} className="about-me-main">
           <table style={topTableStyle}>
             <tbody>
               <tr>
