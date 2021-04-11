@@ -84,6 +84,7 @@ class PrivateSettingsChangeProjectContent extends Component {
     projectStatus: "None",
     isMobile: false,
     renderPreview: false,
+    updateState: null,
   };
 
   getEditorDescriptionOutput = (content) => {
@@ -365,11 +366,15 @@ class PrivateSettingsChangeProjectContent extends Component {
   handleUpdateEvent = (event) => {
     event.preventDefault();
 
+    this.setState({ updateState: "Waiting for project" });
+
     var currentProject = this.state.currentProject;
 
     this.getInputProject(currentProject).then((project) => {
       if (project.name !== "") {
         let add = currentProject.id === -1;
+
+        this.setState({ updateState: "Waiting for server" });
 
         // check if add or update project
         let mutation;
@@ -411,6 +416,7 @@ class PrivateSettingsChangeProjectContent extends Component {
             variables,
           })
           .then((result) => {
+            this.setState({ updateState: null });
             let value = add
               ? result.data.addProject.value
               : result.data.updateProject.value;
@@ -432,12 +438,14 @@ class PrivateSettingsChangeProjectContent extends Component {
             }
           })
           .catch((error) => {
+            this.setState({ updateState: null });
             this.setState({ projectStatus: "Error" });
             setTimeout(() => {
               this.setState({ projectStatus: "None" });
             }, 3000);
           });
       } else {
+        this.setState({ updateState: null });
         this.setState({ projectStatus: "Error" });
         setTimeout(() => {
           this.setState({ projectStatus: "None" });
@@ -747,6 +755,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                 />
               </center>
               <div style={borderBottomStyle} />
+              <GetUpdateStatus status={this.state.updateState} />
               <GetProjectStatusMessage message={this.state.projectStatus} />
               <button
                 type="submit"
@@ -834,6 +843,25 @@ const PreviewButton = (props) => {
   }
 };
 
+const GetUpdateStatus = (props) => {
+  let status = props.status;
+
+  if (status) {
+    return (
+      <div style={updateStateStyle}>
+        {status}{" "}
+        <div
+          style={updateStateSpinnerStyle}
+          className="spinner-border"
+          role="status"
+        ></div>
+      </div>
+    );
+  } else {
+    return <span />;
+  }
+};
+
 const GetProjectStatusMessage = (props) => {
   var status = props.message;
   if (status === "Error") {
@@ -854,6 +882,22 @@ const GetProjectStatusMessage = (props) => {
 };
 
 // Styles
+const updateStateSpinnerStyle = {
+  verticalAlign: "middle",
+  fontSize: "15px",
+  margin: "0 10px",
+};
+
+const updateStateStyle = {
+  width: "fit-content",
+  fontSize: "20px",
+  padding: "10px 30px",
+  backgroundColor: "#C7C7C7",
+  borderRadius: "3px",
+  border: "solid #B1B1B1 1px",
+  color: "#575757",
+};
+
 const positionInputStyle = {
   margin: "10px",
   width: "50px",
