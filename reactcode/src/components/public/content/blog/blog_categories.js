@@ -12,7 +12,7 @@ export default class extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <div style={blogStyle}>
+        <div style={blogStyle} className="blog-main">
           <h1>Categories</h1>
           <GetCategories />
         </div>
@@ -26,5 +26,5 @@ const blogStyle = {
   width: "100%",
   minHeight: "87vh",
   backgroundColor: "#E6E6E6",
-  padding: "20px"
+  padding: "20px",
 };

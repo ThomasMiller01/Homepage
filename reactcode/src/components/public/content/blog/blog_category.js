@@ -29,7 +29,11 @@ export default class extends React.Component {
     return (
       <React.Fragment>
         <h2>
-          <Link to={`/blog/categories`} style={RecentPostStyle}>
+          <Link
+            to={`/blog/categories`}
+            style={RecentPostStyle}
+            className="link-text"
+          >
             Categories <small>[View]</small>
           </Link>
         </h2>
@@ -45,9 +49,9 @@ export default class extends React.Component {
 
     return (
       <React.Fragment>
-      <title>Blog - Categories</title>
+        <title>Blog - Categories</title>
         <Header />
-        <div style={blogStyle}>
+        <div style={blogStyle} className="blog-main">
           <h1 style={h1style}>Category: {category.name}</h1>
           <div style={blogPostsStyle} className="blogPost">
             <GetPostsRendered posts={category.recent_posts} />
