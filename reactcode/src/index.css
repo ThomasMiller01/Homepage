@@ -139,6 +139,11 @@ a {
   color: var(--c1);
 }
 
+.login-main {
+  background-color: var(--c1);
+  color: var(--c4);
+}
+
 html,
 body {
   min-height: 100vh;

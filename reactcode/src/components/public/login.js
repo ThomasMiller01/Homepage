@@ -43,7 +43,7 @@ class Login extends Component {
           <tbody>
             <tr>
               <td>
-                <div style={loginContainerStyle}>
+                <div style={loginContainerStyle} className="login-main">
                   <h3>Login</h3>
                   <form onSubmit={this.handleFormSubmit}>
                     <span style={spanStyle}>
@@ -74,7 +74,7 @@ class Login extends Component {
                     </span>
                     <button
                       type="submit"
-                      className="btn btn-primary"
+                      className="btn btn-primary see-more-btn"
                       style={btnStyle}
                     >
                       Sign in
@@ -113,7 +113,6 @@ const loginContainerStyle = {
   padding: "30px",
   maxWidth: "350px",
   width: "100%",
-  backgroundColor: "#F7F7F7",
   borderRadius: "2px",
   baxShadow: "0 2px 2px rgba(0, 0, 0, 0.3)",
   overflow: "hidden",
