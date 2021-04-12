@@ -233,6 +233,28 @@ hr {
   background-color: var(--c2);
 }
 
+.commits-main {
+  scrollbar-color: var(--c1) var(--c2);
+}
+
+.commits-main::-webkit-scrollbar {
+  width: 15px;
+}
+
+.commits-main::-webkit-scrollbar-track {
+  background: var(--c2);
+}
+
+.commits-main::-webkit-scrollbar-thumb {
+  background-color: var(--c1);
+  border-radius: 10px;
+  border: 5px solid var(--c2);
+}
+
+.commits-main::-webkit-scrollbar-corner {
+  background-color: var(--c2);
+}
+
 .text-input:enabled {
   background-color: var(--c2);
   color: var(--c4);

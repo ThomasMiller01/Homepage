@@ -37,7 +37,7 @@ class Commits extends Component {
     return (
       <React.Fragment>
         <h4>Commit - History</h4>
-        <div className="pre-scrollable">
+        <div className="pre-scrollable commits-main">
           {this.state.allCommits.map((commit) => (
             <div className="card mb-3 github-stats" key={commit.sha}>
               <div className="row no-gutters">
