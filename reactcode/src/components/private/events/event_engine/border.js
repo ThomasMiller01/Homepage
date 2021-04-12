@@ -55,7 +55,7 @@ class BorderSide extends Component {
     return (
       <div style={style}>
         <div style={borderSideTimelineStyle} ref={this.boxRef}>
-          <table style={this.tableStyle}>
+          <table style={this.tableStyle} className="events-border">
             <tbody>
               {this.state.fields.map((field, index) => (
                 <tr style={this.getFieldStyle(index)} key={index}>
@@ -72,14 +72,14 @@ class BorderSide extends Component {
   getFieldStyle = (index) => {
     return {
       height: this.state.height.toString() + "px",
-      border: "dotted 1px #C5C3C6",
+      border: "dotted 1px",
     };
   };
 
   tableStyle = {
     width: "100%",
     minHeight: "70vh",
-    border: "solid 1px #C5C3C6",
+    border: "solid 1px",
   };
 
   tdStyle = {
@@ -123,7 +123,7 @@ class BorderBottom extends Component {
     return (
       <div style={borderBottomStyle}>
         <div style={borderBottomTimelineStyle} ref={this.boxRef}>
-          <table style={this.tableStyle}>
+          <table style={this.tableStyle} className="events-border">
             <tbody>
               <tr>
                 {this.state.fields.map((field, index) => (
@@ -144,7 +144,7 @@ class BorderBottom extends Component {
       width: this.state.width.toString() + "px",
       maxWidth: this.state.width.toString() + "px",
       textAlign: "center",
-      border: "dotted 1px #C5C3C6",
+      border: "dotted 1px",
       overflow: "visible",
     };
   };
@@ -152,7 +152,7 @@ class BorderBottom extends Component {
   tableStyle = {
     width: "100%",
     minHeight: "2vh",
-    border: "solid 1px #C5C3C6",
+    border: "solid 1px",
   };
 }
 

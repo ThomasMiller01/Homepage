@@ -9,7 +9,11 @@ class DrawTimeline extends Component {
 
   render() {
     return (
-      <table style={gridOutsideBox} ref={this.gridTimelineRef}>
+      <table
+        style={gridOutsideBox}
+        ref={this.gridTimelineRef}
+        className="events-timeline"
+      >
         <tbody>
           <tr>
             <td>
@@ -26,7 +30,6 @@ class DrawTimeline extends Component {
 const gridOutsideBox = {
   width: "100%",
   height: "10vh",
-  backgroundColor: "lightGray",
 };
 
 export default DrawTimeline;

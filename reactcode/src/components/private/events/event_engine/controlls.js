@@ -65,21 +65,23 @@ class DrawControls extends Component {
     return (
       <div style={controlsBox}>
         <div style={controlsStyle}>
-          <div style={controlsTimeStyle}>
+          <div style={controlsTimeStyle} className="events-controls">
             <b>start:</b>{" "}
             <input
               type="datetime-local"
+              className="events-controls-datetime-input"
               value={this.formatDate(this.state.time.start)}
               onChange={this.onChangeStart}
             />
             , <b>end:</b>{" "}
             <input
               type="datetime-local"
+              className="events-controls-datetime-input"
               value={this.formatDate(this.state.time.end)}
               onChange={this.onChangeStart}
             />
           </div>
-          <div style={controlsTimeIntervallStyle}>
+          <div style={controlsTimeIntervallStyle} className="events-controls">
             <div className="row">
               <div className="col-sm">
                 <b>intervall:</b>
@@ -87,7 +89,7 @@ class DrawControls extends Component {
               <div className="col-sm">
                 <input
                   type="number"
-                  className="form-control"
+                  className="form-control text-input"
                   style={intervallInputStyle}
                   placeholder="intervall"
                   value={parseInt(this.state.intervall.value)}
@@ -96,7 +98,7 @@ class DrawControls extends Component {
               </div>
               <div className="col-sm">
                 <select
-                  className="custom-select"
+                  className="custom-select project-select"
                   id="inputGroupSelect03"
                   aria-label="Example select with button addon"
                   value={this.state.intervall.type}
@@ -113,10 +115,14 @@ class DrawControls extends Component {
             </div>
           </div>
         </div>
-        <div style={legendStyle}>
+        <div style={legendStyle} className="events-controls">
           <div style={legendItemsStyle}>
             {Object.keys(this.state.legend).map((key, index) => (
-              <div style={legendKeyStyle} key={index}>
+              <div
+                style={legendKeyStyle}
+                key={index}
+                className="events-legend-item"
+              >
                 <b>{key}</b>: {this.state.legend[key]}
               </div>
             ))}
@@ -185,7 +191,6 @@ const controlsBox = {
 const controlsStyle = {
   width: "69.5%",
   minHeight: "10vh",
-  backgroundColor: "lightGray",
   marginRight: "0.5%",
   display: "inline-block",
   float: "left",
@@ -196,7 +201,6 @@ const legendStyle = {
   width: "29.5%",
   minHeight: "10vh",
   marginLeft: "0.5%",
-  backgroundColor: "lightGray",
   display: "inline-block",
   float: "right",
 };

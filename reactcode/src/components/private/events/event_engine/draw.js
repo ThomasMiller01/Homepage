@@ -89,7 +89,11 @@ class Draw extends Component {
                 <tbody>
                   {this.state.loaded &&
                     this.state.grid.map((y, y_index) => (
-                      <tr style={this.getGridXBoxStyle()} key={y_index}>
+                      <tr
+                        style={this.getGridXBoxStyle()}
+                        key={y_index}
+                        className="events-border"
+                      >
                         {y.map((x, x_index) => (
                           <td
                             style={this.getGridYBoxStyle(
@@ -104,6 +108,7 @@ class Draw extends Component {
                               "_" +
                               x_index.toString()
                             }
+                            className="events-border"
                           >
                             <div style={this.getGridItemStyle()}>
                               {x.content}
@@ -154,7 +159,7 @@ class Draw extends Component {
       overflow: "visible",
       backgroundColor: backgroundColor,
       fontSize: fontSize.toString() + "px",
-      border: "dotted 1px #C5C3C6",
+      border: "dotted 1px",
       textAlign: "center",
       height: this.state.size.height.toString() + "px",
       maxHeight: this.state.size.height.toString() + "px",
@@ -165,7 +170,7 @@ class Draw extends Component {
   getGridXBoxStyle = () => {
     return {
       width: "100%",
-      border: "solid 1px #C5C3C6",
+      border: "solid 1px",
       height: this.state.size.height.toString() + "px",
       maxHeight: this.state.size.height.toString() + "px",
       minHeight: this.state.size.height.toString() + "px",

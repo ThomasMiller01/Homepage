@@ -56,7 +56,7 @@ class PrivateEvents extends Component {
 
   render() {
     return (
-      <div style={privateEventsShowStyle}>
+      <div style={privateEventsShowStyle} className="events-main">
         <title>Private Events</title>
         <PrivateEventsShow
           events={this.state.events}
@@ -71,7 +71,6 @@ class PrivateEvents extends Component {
 const privateEventsShowStyle = {
   width: "100%",
   minHeight: "93.5vh",
-  backgroundColor: "rgb(230, 230, 230)",
   padding: "10px",
 };
 

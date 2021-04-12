@@ -123,7 +123,7 @@ class PrivateEventsShow extends Component {
             events.forEach((event) => {
               content += "[" + event.received.id + ", " + event.sent.id + "]";
             });
-            color = "lightGray";
+            color = "var(--c1)";
           }
           grid[x].push({ content, color: color });
         }
