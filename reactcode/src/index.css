@@ -71,6 +71,7 @@
 
 .blog-main {
   background-color: var(--c2) !important;
+  color: var(--c4);
 }
 
 .blog-text {
