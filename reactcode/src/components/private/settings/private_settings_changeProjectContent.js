@@ -592,7 +592,10 @@ class PrivateSettingsChangeProjectContent extends Component {
     return (
       <React.Fragment>
         <div style={privateSettingsStyle}>
-          <div style={changeProjectContentStyle(this.state.isMobile)}>
+          <div
+            style={changeProjectContentStyle(this.state.isMobile)}
+            className="change-project"
+          >
             <form onSubmit={this.handleUpdateEvent}>
               <center>
                 <div
@@ -600,7 +603,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                   style={FormGroupStyle}
                 >
                   <select
-                    className="form-control"
+                    className="form-control project-select"
                     onChange={this.projectChanged}
                     value={this.state.currentProject.id}
                   >
@@ -611,7 +614,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                     ))}
                   </select>
                 </div>
-                <div style={borderBottomStyle} />
+                <div style={borderBottomStyle} className="border-main-2" />
                 <div className="input-group input_both" style={inputGroupStyle}>
                   <h1 style={inputGroupH1Style}>
                     <b>Code</b>
@@ -619,7 +622,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                   <h2 style={inputGroupH2Style}>Name</h2>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control text-input"
                     placeholder="Name"
                     style={inputGroupInputStyle}
                     value={this.state.currentProject.name}
@@ -629,7 +632,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                   <h2 style={inputGroupH2Style}>GitHub Repo</h2>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control text-input"
                     placeholder="GitHub Repo"
                     style={inputGroupInputStyle}
                     value={
@@ -670,7 +673,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                   <div style={addImageButtonDivStyle}>
                     <button
                       type="button"
-                      className="btn"
+                      className="btn see-more-btn"
                       style={addButtonStyle}
                       onClick={this.addImage}
                     >
@@ -718,7 +721,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                     htmlFor="favourite"
                   >
                     <input
-                      className="custom-control-input"
+                      className="custom-control-input custom-checkbox"
                       style={checkboxInputStyle}
                       type="checkbox"
                       checked={this.state.currentProject._private}
@@ -738,6 +741,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                   <h2 style={inputGroupH2Style}>
                     Position
                     <input
+                      className="text-input"
                       type="number"
                       style={positionInputStyle}
                       placeholder="position"
@@ -754,19 +758,19 @@ class PrivateSettingsChangeProjectContent extends Component {
                   _description_big={this.state.currentProject.description_big}
                 />
               </center>
-              <div style={borderBottomStyle} />
+              <div style={borderBottomStyle} className="border-main-2" />
               <GetUpdateStatus status={this.state.updateState} />
               <GetProjectStatusMessage message={this.state.projectStatus} />
               <button
                 type="submit"
-                className="btn btn-outline-primary"
+                className="btn btn-outline-primary see-more-btn"
                 style={changeProjectBtn}
               >
                 Update
               </button>
               <button
                 type="button"
-                className="btn btn-outline-primary"
+                className="btn btn-outline-primary see-more-btn"
                 style={changeProjectBtn}
                 data-toggle="modal"
                 data-target="#deleteyousure"
@@ -793,7 +797,7 @@ class PrivateSettingsChangeProjectContent extends Component {
                 <h5 className="modal-title">Delete</h5>
                 <button
                   type="button"
-                  className="close"
+                  className="close close-btn"
                   data-dismiss="modal"
                   aria-label="Close"
                 >
@@ -804,14 +808,14 @@ class PrivateSettingsChangeProjectContent extends Component {
               <div className="modal-footer">
                 <button
                   type="button"
-                  className="btn btn-secondary"
+                  className="btn btn-secondary see-more-btn"
                   data-dismiss="modal"
                 >
                   Close
                 </button>
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn btn-primary see-more-btn-2"
                   data-dismiss="modal"
                   onClick={this.handleDeleteEvent}
                 >
@@ -910,7 +914,7 @@ const addImageButtonDivStyle = {
 };
 
 const addButtonStyle = {
-  border: "solid",
+  border: "solid 1px",
   padding: "2px 7px",
 };
 
@@ -958,7 +962,6 @@ const changeProjectContentStyle = (isMobile) => {
   let style = {
     padding: "15px",
     margin: "20px auto 0 auto",
-    backgroundColor: "rgb(216, 216, 216)",
   };
   if (!isMobile) {
     style.width = "90%";
@@ -968,7 +971,6 @@ const changeProjectContentStyle = (isMobile) => {
 
 const privateSettingsStyle = {
   width: "100%",
-  backgroundColor: "rgb(230, 230, 230)",
   textAlign: "left",
 };
 

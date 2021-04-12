@@ -10,6 +10,7 @@ const PrivateChangeProjectPreview = (props) => {
         {getTopHiddenFields(props.isMobile)}
         <h2 style={inputGroupH2Style}>Description</h2>
         <div
+          className="textbox-main"
           style={rendereTextboxStyle(props.isMobile)}
           dangerouslySetInnerHTML={{
             __html: props._description,
@@ -17,6 +18,7 @@ const PrivateChangeProjectPreview = (props) => {
         />
         <h2 style={inputGroupH2Style}>Description Big</h2>
         <div
+          className="textbox-main"
           style={rendereTextboxStyle(props.isMobile)}
           dangerouslySetInnerHTML={{
             __html: props._description_big,
@@ -76,7 +78,6 @@ const inputGroupH1Style = {
 const rendereTextboxStyle = (mobile) => {
   let style = {
     width: "100%",
-    backgroundColor: "white",
     padding: "10px",
     textAlign: "left",
     minHeight: "325px",

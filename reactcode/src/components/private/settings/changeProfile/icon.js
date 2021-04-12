@@ -33,7 +33,7 @@ class Icon extends Component {
       <div style={divStyle}>
         <input
           type="text"
-          className="form-control"
+          className="form-control text-input"
           placeholder="Icon"
           value={this.state.icon}
           name="icon"

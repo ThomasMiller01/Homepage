@@ -300,12 +300,15 @@ class PrivateSettingsChangeProfileContent extends Component {
     return (
       <React.Fragment>
         <div style={privateSettingsStyle}>
-          <div style={changeProfileContentStyle(this.state.isMobile)}>
+          <div
+            style={changeProfileContentStyle(this.state.isMobile)}
+            className="change-profile"
+          >
             <form onSubmit={this.handleUpdateEvent}>
               <h2 style={inputGroupH2Style}>Name</h2>
               <input
                 type="text"
-                className="form-control"
+                className="form-control text-input"
                 placeholder="Name"
                 style={inputGroupInputStyle}
                 value={this.state.profile.name}
@@ -329,7 +332,7 @@ class PrivateSettingsChangeProfileContent extends Component {
               <div style={addImageButtonDivStyle}>
                 <button
                   type="button"
-                  className="btn"
+                  className="btn see-more-btn"
                   style={addButtonStyle}
                   onClick={this.handleLinkAdd}
                 >
@@ -351,7 +354,7 @@ class PrivateSettingsChangeProfileContent extends Component {
               <GetProfileStatusMessage message={this.state.profileStatus} />
               <button
                 type="submit"
-                className="btn btn-outline-primary"
+                className="btn btn-outline-primary see-more-btn"
                 style={changeProfileBtn}
               >
                 Update
@@ -385,7 +388,7 @@ const GetProfileStatusMessage = (props) => {
 
 // Styles
 const addButtonStyle = {
-  border: "solid",
+  border: "solid 1px",
   padding: "2px 7px",
 };
 
@@ -413,7 +416,6 @@ const changeProfileContentStyle = (isMobile) => {
   let style = {
     padding: "15px",
     margin: "20px auto 0 auto",
-    backgroundColor: "rgb(216, 216, 216)",
   };
   if (!isMobile) {
     style.width = "90%";
@@ -423,7 +425,6 @@ const changeProfileContentStyle = (isMobile) => {
 
 const privateSettingsStyle = {
   width: "100%",
-  backgroundColor: "rgb(230, 230, 230)",
   textAlign: "left",
 };
 

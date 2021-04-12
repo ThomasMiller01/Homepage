@@ -71,6 +71,7 @@ class TinyEditor extends Component {
       link_title: false,
       quickbars_image_toolbar: false,
       quickbars_insert_toolbar: false,
+      content_css: "/editor.css",
     };
 
     this.init = props.init ? props.init : init_default;

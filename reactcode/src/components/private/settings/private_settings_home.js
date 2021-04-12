@@ -63,11 +63,11 @@ class PrivateSettingsHome extends Component {
 
   render() {
     return (
-      <div style={settingsStyle}>
+      <div style={settingsStyle} className="settings-main">
         <title>Private Settings Home</title>
         <center>
           <a
-            className="btn btn-outline-primary"
+            className="btn btn-outline-primary see-more-btn"
             style={settingsBtnStyle}
             href="https://api.thomasmiller.info/phpmyadmin/"
             role="button"
@@ -77,7 +77,7 @@ class PrivateSettingsHome extends Component {
             Database
           </a>
           <a
-            className="btn btn-outline-primary"
+            className="btn btn-outline-primary see-more-btn"
             style={settingsBtnStyle}
             href="http://thomasmiller.info:9040"
             role="button"
@@ -87,7 +87,7 @@ class PrivateSettingsHome extends Component {
             Seq
           </a>
           <a
-            className="btn btn-outline-primary"
+            className="btn btn-outline-primary see-more-btn"
             style={settingsBtnStyle}
             href="https://buttercms.com/blog_home/"
             role="button"
@@ -96,7 +96,7 @@ class PrivateSettingsHome extends Component {
           >
             ButterCms
           </a>
-          <div style={borderBottomStyle} />
+          <div style={borderBottomStyle} className="border-main-2" />
           <div style={settingTabStyle}>
             <div
               onClick={() => this.flipContentVisibility("profile")}
@@ -139,7 +139,6 @@ const settingTabStyle = {
 const settingsStyle = {
   width: "100%",
   minHeight: "93.5vh",
-  backgroundColor: "rgb(230, 230, 230)",
   padding: "10px",
 };
 

@@ -87,7 +87,7 @@ class ProfileLink extends Component {
 
   render() {
     return (
-      <div style={linkStyle}>
+      <div style={linkStyle} className="profile-link-main">
         <div style={divStyle}>
           <Content
             text={this.state.link.name}
@@ -105,7 +105,7 @@ class ProfileLink extends Component {
         <div style={deleteDivStyle}>
           <button
             type="button"
-            className="close"
+            className="close delete-image-btn"
             style={deleteButtonStyle}
             onClick={this.onDelete}
           >
@@ -133,7 +133,6 @@ const deleteButtonStyle = {
 };
 
 const linkStyle = {
-  background: "#CACACA",
   margin: "5px",
   padding: "5px",
   width: "fit-content",

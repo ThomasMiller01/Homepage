@@ -43,7 +43,7 @@ class Content extends Component {
           <b>Text</b>
           <input
             type="text"
-            className="form-control"
+            className="form-control text-input"
             placeholder="Text"
             value={this.state.text}
             name="text"
@@ -54,7 +54,7 @@ class Content extends Component {
           <b>Url</b>
           <input
             type="text"
-            className="form-control"
+            className="form-control text-input"
             placeholder="Url"
             value={this.state.url}
             name="url"

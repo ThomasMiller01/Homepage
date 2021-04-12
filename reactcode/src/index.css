@@ -178,6 +178,154 @@ hr {
   color: var(--c4) !important;
 }
 
+.settings-main {
+  background-color: var(--c2);
+  color: var(--c4);
+}
+
+.change-project {
+  background-color: var(--c1);
+}
+
+.project-select {
+  color: var(--c4) !important;
+}
+
+.project-select:enabled {
+  background-color: var(--c2) !important;
+  border: 0 !important;
+}
+
+.project-select option:active {
+  background-color: red !important;
+  color: red !important;
+}
+
+.project-select option {
+  background-color: var(--c1);
+}
+
+.project-select option:not(:checked) {
+  background-color: var(--c2);
+}
+
+.textbox-main {
+  background-color: var(--c2);
+  color: var(--c4);
+  scrollbar-color: var(--c1) var(--c2);
+}
+
+.textbox-main::-webkit-scrollbar {
+  width: 15px;
+}
+
+.textbox-main::-webkit-scrollbar-track {
+  background: var(--c2);
+}
+
+.textbox-main::-webkit-scrollbar-thumb {
+  background-color: var(--c1);
+  border-radius: 10px;
+  border: 5px solid var(--c2);
+}
+
+.textbox-main::-webkit-scrollbar-corner {
+  background-color: var(--c2);
+}
+
+.text-input:enabled {
+  background-color: var(--c2);
+  color: var(--c4);
+  border: 0;
+}
+
+.text-input::placeholder {
+  color: var(--c4);
+}
+
+.text-input:-ms-input-placeholder {
+  color: var(--c4);
+}
+
+.text-input::-ms-input-placeholder {
+  color: var(--c4);
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  border-color: var(--c3);
+  background-color: var(--c2);
+}
+.custom-checkbox .custom-control-input ~ .custom-control-label::before {
+  border-color: var(--c2);
+  background-color: var(--c5);
+}
+
+.fileUploadIcon {
+  color: var(--c4);
+}
+
+.fileUploadIcon:hover {
+  color: var(--c3);
+}
+
+.delete-image-btn {
+  color: var(--c4);
+}
+
+.delete-image-btn:hover {
+  color: var(--c3);
+}
+
+.modal-dialog {
+  background-color: var(--c2);
+}
+
+.modal-content {
+  background-color: var(--c2);
+  color: var(--c4);
+}
+
+.modal-footer {
+  border-top-color: var(---c4);
+}
+
+.see-more-btn-2 {
+  color: var(--c5);
+  border-color: var(--c4);
+  background-color: var(--c3);
+}
+
+.see-more-btn-2:hover {
+  color: var(--c1) !important;
+  border-color: var(--c1) !important;
+  background-color: var(--c3) !important;
+}
+
+.close-btn {
+  color: var(--c4);
+}
+
+.close-btn:hover {
+  color: var(--c3);
+}
+
+.change-profile {
+  background-color: var(--c1);
+}
+
+.profile-link-main {
+  border: solid 1px var(--c2);
+  border-radius: 5px;
+}
+
+.color-picker-main {
+  border: solid 1px var(--c4);
+}
+
+.check-icon-main {
+  color: var(--c4);
+}
+
 html,
 body {
   min-height: 100vh;
@@ -308,14 +456,6 @@ code {
 
 .divFooterStyle {
   display: block !important;
-}
-
-.fileUploadIcon {
-  color: grey;
-}
-
-.fileUploadIcon:hover {
-  color: #404040;
 }
 
 .projectTable {

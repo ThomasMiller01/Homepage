@@ -46,7 +46,10 @@ class Color extends Component {
             onClick={this.changePickerVisibility}
             style={getColorSquareStyle("#1C00ff00", this.state.color)}
           >
-            <i className="fas fa-check"></i>
+            <i
+              className="fas fa-check check-icon-main"
+              style={checkIconStyle}
+            ></i>
           </div>
           <div style={ColorPickerStyle}>
             <div className="innerColorDiv">
@@ -63,6 +66,7 @@ class Color extends Component {
         <div
           onClick={this.changePickerVisibility}
           style={getColorSquareStyle(this.state.color)}
+          className="color-picker-main"
         ></div>
       );
     }
@@ -81,6 +85,10 @@ const getColorSquareStyle = (color, currentColor = null) => {
     margin: "5px",
     cursor: "pointer",
   };
+};
+
+const checkIconStyle = {
+  verticalAlign: "text-top",
 };
 
 const ColorPickerStyle = {
