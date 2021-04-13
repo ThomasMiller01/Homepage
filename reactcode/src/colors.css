@@ -42,3 +42,12 @@
   --light_pink_c4: #ffcad4;
   --light_pink_c5: #fbdfe4;
 }
+
+/* Dark - Test */
+:root {
+  --dark_test_c1: #242424;
+  --dark_test_c2: #303134;
+  --dark_test_c3: #c2812d;
+  --dark_test_c4: #d3d3d3;
+  --dark_test_c5: #ffd297;
+}

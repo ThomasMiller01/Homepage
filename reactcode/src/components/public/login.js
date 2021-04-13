@@ -53,7 +53,7 @@ class Login extends Component {
                         <input
                           type="text"
                           name="username"
-                          className="form-control"
+                          className="form-control text-input"
                           placeholder="Username"
                           required
                           autoFocus
@@ -65,7 +65,7 @@ class Login extends Component {
                         <input
                           type="password"
                           name="password"
-                          className="form-control"
+                          className="form-control text-input"
                           placeholder="Password"
                           required
                           onChange={this.handleChange}

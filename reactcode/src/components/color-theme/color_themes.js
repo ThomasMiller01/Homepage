@@ -26,6 +26,11 @@ class ColorThemes {
         value: "light_pink",
         default: false,
       },
+      {
+        name: "Dark Test",
+        value: "dark_test",
+        default: false,
+      },
     ];
   }
 

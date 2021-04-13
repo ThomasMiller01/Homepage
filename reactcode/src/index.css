@@ -7,213 +7,224 @@
   --c5: var(--dark_grey_c5);
 }
 
+:root {
+  --background-main: var(--c1);
+  --background-second: var(--c2);
+  --background-light: var(--c4);
+  --header: var(--c1);
+  --footer: var(--c1);
+  --link-active: var(--c3);
+  --text-dark: var(--c1);
+  --text-light: var(--c4);
+  --highlight: var(--c3);
+}
+
 .navbar-main {
-  background-color: var(--c1);
+  background-color: var(--header);
 }
 
 .active {
-  color: var(--c5) !important;
+  color: var(--link-active) !important;
 }
 
 .nav-item a {
-  color: var(--c4);
+  color: var(--text-light);
 }
 
 .nav-item a:hover {
-  color: var(--c5);
+  color: var(--link-active);
 }
 
 .homeBelowNames {
-  color: var(--c4) !important;
+  color: var(--text-light) !important;
 }
 
 .homeMiddleText {
-  color: var(--c1);
+  color: var(--text-dark);
 }
 
 .see-all-project-btn {
-  color: var(--c1) !important;
-  border-color: var(--v1) !important;
+  color: var(--text-dark) !important;
+  border-color: var(--text-dark) !important;
 }
 
 .see-all-project-btn:hover {
-  background-color: var(--c5) !important;
+  border-color: var(--text-light) !important;
+  color: var(--text-light) !important;
+  background-color: var(--link-active) !important;
 }
 
 .footer {
-  background-color: var(--c1) !important;
+  background-color: var(--footer) !important;
 }
 
 .divFooterStyle {
-  color: var(--c4);
+  color: var(--text-light);
 }
 
 .project-card {
-  background-color: var(--c2);
-  color: var(--c4);
+  background-color: var(--background-second);
+  color: var(--text-light);
 }
 
 .card-date {
-  color: var(--c4) !important;
+  color: var(--text-light) !important;
 }
 
 .see-more-btn {
-  color: var(--c5);
-  border-color: var(--c4);
-  background-color: var(--c2);
+  color: var(--text-light);
+  border-color: var(--text-light);
+  background-color: var(--background-second);
 }
 
 .see-more-btn:hover {
-  color: var(--c1) !important;
-  border-color: var(--c1) !important;
-  background-color: var(--c2) !important;
+  color: var(--link-active) !important;
+  border-color: var(--link-active) !important;
+  background-color: var(--background-second) !important;
 }
 
 .blog-main {
-  background-color: var(--c2) !important;
-  color: var(--c4);
+  background-color: var(--background-second) !important;
+  color: var(--text-light);
 }
 
 .blog-text {
-  color: var(--c1) !important;
+  color: var(--background-main) !important;
 }
 
 .blog-card {
-  background-color: var(--c2) !important;
-  color: var(--c4);
+  background-color: var(--background-second) !important;
+  color: var(--text-light);
 }
 
 .metaData {
-  color: var(--c4) !important;
+  color: var(--text-light) !important;
 }
 
 a {
-  color: var(--c3);
+  color: var(--highlight);
 }
 
 .border-main {
-  border-color: var(--c1) !important;
+  border-color: var(--text-dark) !important;
 }
 
 .border-main-2 {
-  border-color: var(--c4) !important;
+  border-color: var(--text-light) !important;
 }
 
 .rightCard {
-  color: var(--c4);
-  border-color: var(--c4) !important;
+  color: var(--text-light);
+  border-color: var(--text-light) !important;
 }
 
 .link-text {
-  color: var(--c4) !important;
+  color: var(--text-light) !important;
 }
 
 .post-container {
-  background-color: var(--c2) !important;
-  color: var(--c4);
+  background-color: var(--background-second) !important;
+  color: var(--text-light);
 }
 
 .about-me-main {
-  border-top: solid 2px var(--c2);
-  background-color: var(--c1) !important;
+  border-top: solid 2px var(--background-second);
+  background-color: var(--background-main) !important;
 }
 
 .aboutMeDivStyle {
-  background-color: var(--c2) !important;
+  background-color: var(--background-second) !important;
 }
 
 .imgStyle {
-  border: solid 2px var(--c3);
+  border: solid 2px var(--highlight);
 }
 
 .descriptionDivStyle {
-  color: var(--c4);
+  color: var(--text-light);
 }
 
 .impressum-main {
-  background-color: var(--c2);
+  background-color: var(--background-second);
 }
 
 .impressum {
-  background-color: var(--c5);
-  border-color: var(--c3);
-  color: var(--c1);
+  background-color: var(--text-light);
+  border-color: var(--highlight);
+  color: var(--text-dark);
 }
 
 .login-main {
-  background-color: var(--c1);
-  color: var(--c4);
+  background-color: var(--background-main);
+  color: var(--text-light);
 }
 
 .private-home-main {
-  background-color: var(--c2) !important;
-  color: var(--c4);
+  background-color: var(--background-second) !important;
+  color: var(--text-light);
 }
 
 .project-main {
-  background-color: var(--c2);
-  color: var(--c4);
+  background-color: var(--background-second);
+  color: var(--text-light);
 }
 
 hr {
-  background-color: var(--c4);
+  background-color: var(--highlight);
 }
 
 .githubLinkBtn {
-  color: var(--c4) !important;
-  border-color: var(--c4) !important;
+  color: var(--text-light) !important;
+  border-color: var(--text-light) !important;
 }
 
 .githubLinkBtn:hover {
-  color: var(--c1) !important;
-  border-color: var(--c1) !important;
-  background-color: var(--c4) !important;
+  color: var(--text-dark) !important;
+  border-color: var(--text-dark) !important;
+  background-color: var(--background-light) !important;
 }
 
 .github-stats {
-  background-color: var(--c1);
-  color: var(--c4);
+  background-color: var(--background-main);
+  color: var(--text-light);
 }
 
 .github-text {
-  color: var(--c4) !important;
+  color: var(--text-light) !important;
 }
 
 .settings-main {
-  background-color: var(--c2);
-  color: var(--c4);
+  background-color: var(--background-second);
+  color: var(--text-light);
 }
 
 .change-project {
-  background-color: var(--c1);
+  background-color: var(--background-main);
 }
 
 .project-select {
-  color: var(--c4) !important;
+  color: var(--text-light) !important;
 }
 
 .project-select:enabled {
-  background-color: var(--c2) !important;
+  background-color: var(--background-second) !important;
   border: 0 !important;
 }
 
-.project-select option:active {
-  background-color: red !important;
-  color: red !important;
-}
-
 .project-select option {
-  background-color: var(--c1);
+  color: var(--text-dark);
+  background-color: var(--highlight);
 }
 
 .project-select option:not(:checked) {
-  background-color: var(--c2);
+  color: var(--text-light);
+  background-color: var(--background-second);
 }
 
 .textbox-main {
-  background-color: var(--c2);
-  color: var(--c4);
-  scrollbar-color: var(--c1) var(--c2);
+  background-color: var(--background-second);
+  color: var(--text-light);
+  scrollbar-color: var(--background-main) var(--background-second);
 }
 
 .textbox-main::-webkit-scrollbar {
@@ -221,21 +232,21 @@ hr {
 }
 
 .textbox-main::-webkit-scrollbar-track {
-  background: var(--c2);
+  background: var(--background-second);
 }
 
 .textbox-main::-webkit-scrollbar-thumb {
-  background-color: var(--c1);
+  background-color: var(--background-main);
   border-radius: 10px;
-  border: 5px solid var(--c2);
+  border: 5px solid var(--background-second);
 }
 
 .textbox-main::-webkit-scrollbar-corner {
-  background-color: var(--c2);
+  background-color: var(--background-second);
 }
 
 .commits-main {
-  scrollbar-color: var(--c1) var(--c2);
+  scrollbar-color: var(--background-main) var(--background-second);
 }
 
 .commits-main::-webkit-scrollbar {
@@ -243,137 +254,137 @@ hr {
 }
 
 .commits-main::-webkit-scrollbar-track {
-  background: var(--c2);
+  background: var(--background-second);
 }
 
 .commits-main::-webkit-scrollbar-thumb {
-  background-color: var(--c1);
+  background-color: var(--background-main);
   border-radius: 10px;
-  border: 5px solid var(--c2);
+  border: 5px solid var(--background-second);
 }
 
 .commits-main::-webkit-scrollbar-corner {
-  background-color: var(--c2);
+  background-color: var(--background-second);
 }
 
 .text-input:enabled {
-  background-color: var(--c2);
-  color: var(--c4);
+  background-color: var(--background-second) !important;
+  color: var(--text-light);
   border: 0;
 }
 
 .text-input::placeholder {
-  color: var(--c4);
+  color: var(--text-light);
 }
 
 .text-input:-ms-input-placeholder {
-  color: var(--c4);
+  color: var(--text-light);
 }
 
 .text-input::-ms-input-placeholder {
-  color: var(--c4);
+  color: var(--text-light);
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  border-color: var(--c3);
-  background-color: var(--c2);
+  border-color: var(--highlight);
+  background-color: var(--background-second);
 }
 .custom-checkbox .custom-control-input ~ .custom-control-label::before {
-  border-color: var(--c2);
-  background-color: var(--c5);
+  border-color: var(--text-dark);
+  background-color: var(--background-light);
 }
 
 .fileUploadIcon {
-  color: var(--c4);
+  color: var(--text-light);
 }
 
 .fileUploadIcon:hover {
-  color: var(--c3);
+  color: var(--link-active);
 }
 
 .delete-image-btn {
-  color: var(--c4);
+  color: var(--text-light);
 }
 
 .delete-image-btn:hover {
-  color: var(--c3);
+  color: var(--link-active);
 }
 
 .modal-dialog {
-  background-color: var(--c2);
+  background-color: var(--background-second);
 }
 
 .modal-content {
-  background-color: var(--c2);
-  color: var(--c4);
+  background-color: var(--background-second);
+  color: var(--text-light);
 }
 
 .modal-footer {
-  border-top-color: var(---c4);
+  border-top-color: var(--text-light);
 }
 
 .see-more-btn-2 {
-  color: var(--c5);
-  border-color: var(--c4);
-  background-color: var(--c3);
+  color: var(--text-light);
+  border-color: var(--text-light);
+  background-color: var(--link-active);
 }
 
 .see-more-btn-2:hover {
-  color: var(--c1) !important;
-  border-color: var(--c1) !important;
-  background-color: var(--c3) !important;
+  color: var(--text-dark) !important;
+  border-color: var(--text-dark) !important;
+  background-color: var(--link-active) !important;
 }
 
 .close-btn {
-  color: var(--c4);
+  color: var(--text-light);
 }
 
 .close-btn:hover {
-  color: var(--c3);
+  color: var(--link-active);
 }
 
 .change-profile {
-  background-color: var(--c1);
+  background-color: var(--background-main);
 }
 
 .profile-link-main {
-  border: solid 1px var(--c2);
+  border: solid 1px var(--background-second);
   border-radius: 5px;
 }
 
 .color-picker-main {
-  border: solid 1px var(--c4);
+  border: solid 1px var(--text-light);
 }
 
 .check-icon-main {
-  color: var(--c4);
+  color: var(--text-light);
 }
 
 .events-main {
-  background-color: var(--c2);
-  color: var(--c4);
+  background-color: var(--background-second);
+  color: var(--text-light);
 }
 
 .events-controls {
-  background-color: var(--c1);
-  border-color: var(--c5);
+  background-color: var(--background-main);
+  border-color: var(--text-light);
 }
 
 .events-legend-item {
-  border-color: var(--c5);
+  border-color: var(--text-light);
 }
 
 .events-timeline {
-  background-color: var(--c1);
+  background-color: var(--background-main);
 }
 
 .events-border {
-  border-color: var(--c5);
+  border-color: var(--text-light);
 }
 
 .events-controls-datetime-input {
-  background-color: var(--c2);
-  color: var(--c4);
+  background-color: var(--background-second);
+  color: var(--text-light);
   border: 0;
 }
 
