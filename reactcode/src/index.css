@@ -11,8 +11,6 @@
   --background-main: var(--c1);
   --background-second: var(--c2);
   --background-light: var(--c4);
-  --header: var(--c1);
-  --footer: var(--c1);
   --link-active: var(--c3);
   --text-dark: var(--c1);
   --text-light: var(--c4);
@@ -20,7 +18,7 @@
 }
 
 .navbar-main {
-  background-color: var(--header);
+  background-color: var(--background-main);
 }
 
 .active {
@@ -55,7 +53,7 @@
 }
 
 .footer {
-  background-color: var(--footer) !important;
+  background-color: var(--background-main) !important;
 }
 
 .divFooterStyle {
