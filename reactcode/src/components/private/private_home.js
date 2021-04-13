@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import AuthService from "../authService";
 
 import PrivateStatistics from "./statistics/private_statistics";
+import ColorThemePicker from "../color-theme/color_theme_picker";
 
 class PrivateHome extends Component {
   constructor() {
@@ -29,6 +30,9 @@ class PrivateHome extends Component {
             Logout
           </button>
         </center>
+
+        <ColorThemePicker />
+
         <PrivateStatistics />
       </div>
     );

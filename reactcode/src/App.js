@@ -15,39 +15,43 @@ import Error from "./components/error";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ScrollHandler from "./components/scrollHandler";
 
+import ColorThemeHook from "./components/color-theme/color_theme_hook";
+
 const Router = ({ history }) => {
   return (
     <BrowserRouter history={history}>
-      <ScrollHandler>
-        <Switch>
-          <Redirect exact from="/" to="/home" />
-          <Route path="/home" component={Home} />
-          <Route path="/projects" component={Projects} />
-          <Route path="/about" component={AboutMe} />
-          <Route path="/blog" exact component={Blog} />
-          <Route path="/blog/categories" exact component={blog_categories} />
-          <Route path="/blog/:page" exact component={Blog} />
-          <Route path="/blog/posts/:post" exact component={BlogPost} />
-          <Route
-            path="/blog/category/:category"
-            exact
-            component={blog_category}
-          />
-          <Route path="/impressum" component={Impressum} />
-          <Route path="/login" component={Login} />
-          <ProtectedRoute path="/private" component={Private} />
-          <Route
-            render={() => (
-              <Error
-                file="App.js"
-                error_title="Bad Request"
-                error_number="404"
-                error_description="The server cannot process the request due to something that is perceived to be a client error."
-              />
-            )}
-          />
-        </Switch>
-      </ScrollHandler>
+      <ColorThemeHook>
+        <ScrollHandler>
+          <Switch>
+            <Redirect exact from="/" to="/home" />
+            <Route path="/home" component={Home} />
+            <Route path="/projects" component={Projects} />
+            <Route path="/about" component={AboutMe} />
+            <Route path="/blog" exact component={Blog} />
+            <Route path="/blog/categories" exact component={blog_categories} />
+            <Route path="/blog/:page" exact component={Blog} />
+            <Route path="/blog/posts/:post" exact component={BlogPost} />
+            <Route
+              path="/blog/category/:category"
+              exact
+              component={blog_category}
+            />
+            <Route path="/impressum" component={Impressum} />
+            <Route path="/login" component={Login} />
+            <ProtectedRoute path="/private" component={Private} />
+            <Route
+              render={() => (
+                <Error
+                  file="App.js"
+                  error_title="Bad Request"
+                  error_number="404"
+                  error_description="The server cannot process the request due to something that is perceived to be a client error."
+                />
+              )}
+            />
+          </Switch>
+        </ScrollHandler>
+      </ColorThemeHook>
     </BrowserRouter>
   );
 };

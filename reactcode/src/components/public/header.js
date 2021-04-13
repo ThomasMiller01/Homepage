@@ -11,15 +11,6 @@ const Header = () => {
   );
 };
 
-const set_color_theme = (theme) => {
-  let root = document.documentElement;
-  root.style.setProperty("--c1", "var(--" + theme + "_c1)");
-  root.style.setProperty("--c2", "var(--" + theme + "_c2)");
-  root.style.setProperty("--c3", "var(--" + theme + "_c3)");
-  root.style.setProperty("--c4", "var(--" + theme + "_c4)");
-  root.style.setProperty("--c5", "var(--" + theme + "_c5)");
-};
-
 const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-main">
@@ -33,17 +24,6 @@ const NavBar = () => {
         <span className="navbar-toggler-icon" />
       </button>
       <div className="collapse navbar-collapse" id="navbar">
-        <button onClick={() => set_color_theme("dark_grey")}>dark_grey</button>
-        <button onClick={() => set_color_theme("dark_blue")}>dark_blue</button>
-        <button onClick={() => set_color_theme("dark_green")}>
-          dark_green
-        </button>
-        <button onClick={() => set_color_theme("light_green")}>
-          light_green
-        </button>
-        <button onClick={() => set_color_theme("light_pink")}>
-          light_pink
-        </button>
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0" style={ulListStyle}>
           <li className="nav-item" style={liItemStyle}>
             <NavLink to="/home" style={headerLink} className="nav-link">
