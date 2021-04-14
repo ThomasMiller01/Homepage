@@ -20,8 +20,11 @@ const NavBar = () => {
         type="button"
         data-toggle="collapse"
         data-target="#navbar"
+        style={headerButtonStyle}
       >
-        <span className="navbar-toggler-icon" />
+        <span className="navbar-toggler-icon">
+          <i class="fas fa-bars navbar-button"></i>
+        </span>
       </button>
       <div className="collapse navbar-collapse" id="navbar">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0" style={ulListStyle}>
@@ -62,6 +65,11 @@ const NavBar = () => {
 };
 
 // Styles
+const headerButtonStyle = {
+  margin: "2px 0px",
+  padding: 0,
+};
+
 const headerStyle = {
   width: "100%",
   fontSize: "20px",

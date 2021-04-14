@@ -17,6 +17,11 @@
   background-color: var(--background-main);
 }
 
+.navbar-button {
+  font-size: 30px;
+  color: var(--text-second);
+}
+
 .active {
   color: var(--link-active) !important;
 }
