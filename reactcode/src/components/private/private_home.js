@@ -23,16 +23,16 @@ class PrivateHome extends Component {
         <center>
           <button
             type="button"
-            className="btn btn-outline-primary see-more-btn"
+            className="btn btn-outline-primary logout-btn"
             style={logoutBtnStyle}
             onClick={this.handleLogout}
           >
             Logout
           </button>
         </center>
-
-        <ColorThemePicker />
-
+        <center>
+          <ColorThemePicker />
+        </center>
         <PrivateStatistics />
       </div>
     );

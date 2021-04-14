@@ -58,7 +58,11 @@ class BorderSide extends Component {
           <table style={this.tableStyle} className="events-border">
             <tbody>
               {this.state.fields.map((field, index) => (
-                <tr style={this.getFieldStyle(index)} key={index}>
+                <tr
+                  style={this.getFieldStyle(index)}
+                  key={index}
+                  className="events-border-item"
+                >
                   <td style={this.tdStyle}>{field}</td>
                 </tr>
               ))}
@@ -127,7 +131,11 @@ class BorderBottom extends Component {
             <tbody>
               <tr>
                 {this.state.fields.map((field, index) => (
-                  <td style={this.getFieldStyle(index)} key={index}>
+                  <td
+                    style={this.getFieldStyle(index)}
+                    key={index}
+                    className="events-border-item"
+                  >
                     {field}
                   </td>
                 ))}

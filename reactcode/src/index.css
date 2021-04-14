@@ -1,20 +1,16 @@
 /* Standard Color Palettes */
 :root {
-  --c1: var(--dark_grey_c1);
-  --c2: var(--dark_grey_c2);
-  --c3: var(--dark_grey_c3);
-  --c4: var(--dark_grey_c4);
-  --c5: var(--dark_grey_c5);
-}
-
-:root {
-  --background-main: var(--c1);
-  --background-second: var(--c2);
-  --background-light: var(--c4);
-  --link-active: var(--c3);
-  --text-dark: var(--c1);
-  --text-light: var(--c4);
-  --highlight: var(--c3);
+  --background-main: var(--main_background-main);
+  --background-second: var(--main_background-second);
+  --background-third: var(--main_background-third);
+  --background-fourth: var(--main_background-fourth);
+  --background-top: var(--main_background-top);
+  --background-top-border: var(--main_background-top-border);
+  --background-light: var(--main_background-light);
+  --link-active: var(--main_link-active);
+  --text-main: var(--main_text-main);
+  --text-second: var(--main_text-second);
+  --highlight: var(--main_highlight);
 }
 
 .navbar-main {
@@ -26,7 +22,7 @@
 }
 
 .nav-item a {
-  color: var(--text-light);
+  color: var(--text-second);
 }
 
 .nav-item a:hover {
@@ -34,21 +30,21 @@
 }
 
 .homeBelowNames {
-  color: var(--text-light) !important;
+  color: var(--text-second) !important;
 }
 
 .homeMiddleText {
-  color: var(--text-dark);
+  color: var(--background-main);
 }
 
 .see-all-project-btn {
-  color: var(--text-dark) !important;
-  border-color: var(--text-dark) !important;
+  color: var(--background-main) !important;
+  border-color: var(--background-main) !important;
 }
 
 .see-all-project-btn:hover {
-  border-color: var(--text-light) !important;
-  color: var(--text-light) !important;
+  border-color: var(--text-second) !important;
+  color: var(--text-second) !important;
   background-color: var(--link-active) !important;
 }
 
@@ -57,33 +53,45 @@
 }
 
 .divFooterStyle {
-  color: var(--text-light);
+  color: var(--text-second);
 }
 
 .project-card {
-  background-color: var(--background-second);
-  color: var(--text-light);
+  background-color: var(--background-third);
+  color: var(--text-main);
 }
 
 .card-date {
-  color: var(--text-light) !important;
+  color: var(--text-main) !important;
 }
 
 .see-more-btn {
-  color: var(--text-light);
-  border-color: var(--text-light);
-  background-color: var(--background-second);
+  color: var(--text-main);
+  border-color: var(--text-main);
+  background-color: var(--background-third);
 }
 
 .see-more-btn:hover {
   color: var(--link-active) !important;
   border-color: var(--link-active) !important;
-  background-color: var(--background-second) !important;
+  background-color: var(--background-third) !important;
+}
+
+.logout-btn {
+  color: var(--text-second);
+  border-color: var(--text-second);
+  background-color: var(--background-main);
+}
+
+.logout-btn:hover {
+  color: var(--link-active) !important;
+  border-color: var(--link-active) !important;
+  background-color: var(--background-main) !important;
 }
 
 .blog-main {
   background-color: var(--background-second) !important;
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 .blog-text {
@@ -92,11 +100,10 @@
 
 .blog-card {
   background-color: var(--background-second) !important;
-  color: var(--text-light);
 }
 
 .metaData {
-  color: var(--text-light) !important;
+  color: var(--text-main) !important;
 }
 
 a {
@@ -104,30 +111,30 @@ a {
 }
 
 .border-main {
-  border-color: var(--text-dark) !important;
+  border-color: var(--text-second) !important;
 }
 
 .border-main-2 {
-  border-color: var(--text-light) !important;
+  border-color: var(--text-second) !important;
 }
 
 .rightCard {
-  color: var(--text-light);
-  border-color: var(--text-light) !important;
+  color: var(--text-main);
+  border-color: var(--text-main) !important;
 }
 
 .link-text {
-  color: var(--text-light) !important;
+  color: var(--text-main) !important;
 }
 
 .post-container {
   background-color: var(--background-second) !important;
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 .about-me-main {
-  border-top: solid 2px var(--background-second);
-  background-color: var(--background-main) !important;
+  border-top: solid 2px var(--background-top-border);
+  background-color: var(--background-top) !important;
 }
 
 .aboutMeDivStyle {
@@ -139,7 +146,7 @@ a {
 }
 
 .descriptionDivStyle {
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 .impressum-main {
@@ -147,24 +154,24 @@ a {
 }
 
 .impressum {
-  background-color: var(--text-light);
+  background-color: var(--background-third);
   border-color: var(--highlight);
-  color: var(--text-dark);
+  color: var(--text-main);
 }
 
 .login-main {
-  background-color: var(--background-main);
-  color: var(--text-light);
+  background-color: var(--background-third);
+  color: var(--text-main);
 }
 
 .private-home-main {
   background-color: var(--background-second) !important;
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 .project-main {
   background-color: var(--background-second);
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 hr {
@@ -172,36 +179,35 @@ hr {
 }
 
 .githubLinkBtn {
-  color: var(--text-light) !important;
+  color: var(--text-main) !important;
   border-color: var(--text-light) !important;
 }
 
 .githubLinkBtn:hover {
-  color: var(--text-dark) !important;
-  border-color: var(--text-dark) !important;
-  background-color: var(--background-light) !important;
+  color: var(--link-active) !important;
+  border-color: var(--link-active) !important;
 }
 
 .github-stats {
-  background-color: var(--background-main);
+  background-color: var(--background-third);
   color: var(--text-light);
 }
 
 .github-text {
-  color: var(--text-light) !important;
+  color: var(--text-main) !important;
 }
 
 .settings-main {
   background-color: var(--background-second);
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 .change-project {
-  background-color: var(--background-main);
+  background-color: var(--background-fourth);
 }
 
 .project-select {
-  color: var(--text-light) !important;
+  color: var(--text-main) !important;
 }
 
 .project-select:enabled {
@@ -210,18 +216,18 @@ hr {
 }
 
 .project-select option {
-  color: var(--text-dark);
+  color: var(--text-main);
   background-color: var(--highlight);
 }
 
 .project-select option:not(:checked) {
-  color: var(--text-light);
+  color: var(--text-main);
   background-color: var(--background-second);
 }
 
 .textbox-main {
   background-color: var(--background-second);
-  color: var(--text-light);
+  color: var(--text-main);
   scrollbar-color: var(--background-main) var(--background-second);
 }
 
@@ -267,33 +273,33 @@ hr {
 
 .text-input:enabled {
   background-color: var(--background-second) !important;
-  color: var(--text-light);
+  color: var(--text-main);
   border: 0;
 }
 
 .text-input::placeholder {
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 .text-input:-ms-input-placeholder {
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 .text-input::-ms-input-placeholder {
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
   border-color: var(--highlight);
-  background-color: var(--background-second);
+  background-color: var(--background-fourth);
 }
 .custom-checkbox .custom-control-input ~ .custom-control-label::before {
-  border-color: var(--text-dark);
+  border-color: var(--text-second);
   background-color: var(--background-light);
 }
 
 .fileUploadIcon {
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 .fileUploadIcon:hover {
@@ -301,7 +307,7 @@ hr {
 }
 
 .delete-image-btn {
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 .delete-image-btn:hover {
@@ -318,23 +324,27 @@ hr {
 }
 
 .modal-footer {
-  border-top-color: var(--text-light);
+  border-top-color: var(--text-main);
+}
+
+.modal-header {
+  border-bottom-color: var(--text-main);
 }
 
 .see-more-btn-2 {
-  color: var(--text-light);
-  border-color: var(--text-light);
+  color: var(--text-main);
+  border-color: var(--text-main);
   background-color: var(--link-active);
 }
 
 .see-more-btn-2:hover {
-  color: var(--text-dark) !important;
-  border-color: var(--text-dark) !important;
+  color: var(--text-second) !important;
+  border-color: var(--text-second) !important;
   background-color: var(--link-active) !important;
 }
 
 .close-btn {
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 .close-btn:hover {
@@ -351,38 +361,41 @@ hr {
 }
 
 .color-picker-main {
-  border: solid 1px var(--text-light);
+  border: solid 1px var(--text-main);
 }
 
 .check-icon-main {
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 .events-main {
   background-color: var(--background-second);
-  color: var(--text-light);
+  color: var(--text-main);
 }
 
 .events-controls {
-  background-color: var(--background-main);
-  border-color: var(--text-light);
+  background-color: var(--background-fourth);
 }
 
 .events-legend-item {
-  border-color: var(--text-light);
+  border-color: var(--text-second);
 }
 
 .events-timeline {
-  background-color: var(--background-main);
+  background-color: var(--background-fourth);
 }
 
 .events-border {
-  border-color: var(--text-light);
+  border-color: var(--text-second) !important;
+}
+
+.events-border-item {
+  border-color: var(--text-second) !important;
 }
 
 .events-controls-datetime-input {
   background-color: var(--background-second);
-  color: var(--text-light);
+  color: var(--text-main);
   border: 0;
 }
 

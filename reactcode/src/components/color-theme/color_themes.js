@@ -2,33 +2,23 @@ class ColorThemes {
   constructor() {
     this.themes = [
       {
-        name: "Dark Grey",
-        value: "dark_grey",
+        name: "Normal",
+        value: "main",
         default: true,
       },
       {
-        name: "Dark Blue",
-        value: "dark_blue",
+        name: "Darkmode",
+        value: "darkmode",
         default: false,
       },
       {
-        name: "Dark Green",
-        value: "dark_green",
+        name: "Pink World",
+        value: "pink_world",
         default: false,
       },
       {
-        name: "Light Green",
-        value: "light_green",
-        default: false,
-      },
-      {
-        name: "Light Pink",
-        value: "light_pink",
-        default: false,
-      },
-      {
-        name: "Dark Test",
-        value: "dark_test",
+        name: "Test Mode",
+        value: "test_mode",
         default: false,
       },
     ];
@@ -56,11 +46,38 @@ class ColorThemes {
 
   setTheme = (theme) => {
     let root = document.documentElement;
-    root.style.setProperty("--c1", "var(--" + theme + "_c1)");
-    root.style.setProperty("--c2", "var(--" + theme + "_c2)");
-    root.style.setProperty("--c3", "var(--" + theme + "_c3)");
-    root.style.setProperty("--c4", "var(--" + theme + "_c4)");
-    root.style.setProperty("--c5", "var(--" + theme + "_c5)");
+    root.style.setProperty(
+      "--background-main",
+      "var(--" + theme + "_background-main)"
+    );
+    root.style.setProperty(
+      "--background-second",
+      "var(--" + theme + "_background-second)"
+    );
+    root.style.setProperty(
+      "--background-third",
+      "var(--" + theme + "_background-third)"
+    );
+    root.style.setProperty(
+      "--background-fourth",
+      "var(--" + theme + "_background-fourth)"
+    );
+    root.style.setProperty(
+      "--background-top",
+      "var(--" + theme + "_background-top)"
+    );
+    root.style.setProperty(
+      "--background-top-border",
+      "var(--" + theme + "_background-top-border)"
+    );
+    root.style.setProperty(
+      "--background-light",
+      "var(--" + theme + "_background-light)"
+    );
+    root.style.setProperty("--link-active", "var(--" + theme + "_link-active)");
+    root.style.setProperty("--text-main", "var(--" + theme + "_text-main)");
+    root.style.setProperty("--text-second", "var(--" + theme + "_text-second)");
+    root.style.setProperty("--highlight", "var(--" + theme + "_highlight)");
   };
 
   setLocalstorage(color_scheme) {

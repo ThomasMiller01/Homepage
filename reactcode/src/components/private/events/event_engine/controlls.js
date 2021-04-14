@@ -64,8 +64,8 @@ class DrawControls extends Component {
   render() {
     return (
       <div style={controlsBox}>
-        <div style={controlsStyle}>
-          <div style={controlsTimeStyle} className="events-controls">
+        <div style={controlsStyle} className="events-controls">
+          <div style={controlsTimeStyle}>
             <b>start:</b>{" "}
             <input
               type="datetime-local"
@@ -81,7 +81,7 @@ class DrawControls extends Component {
               onChange={this.onChangeStart}
             />
           </div>
-          <div style={controlsTimeIntervallStyle} className="events-controls">
+          <div style={controlsTimeIntervallStyle}>
             <div className="row">
               <div className="col-sm">
                 <b>intervall:</b>

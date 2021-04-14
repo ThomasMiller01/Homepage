@@ -23,8 +23,14 @@ class ColorThemePicker extends Component {
   render() {
     return (
       <div>
+        <h3>Color-Theme-Picker</h3>
         {this.state.themes.map((theme, index) => (
-          <button key={index} onClick={() => this.set(theme.value)}>
+          <button
+            key={index}
+            onClick={() => this.set(theme.value)}
+            style={buttonStyle}
+            className="btn btn-info"
+          >
             {theme.name}
           </button>
         ))}
@@ -32,5 +38,9 @@ class ColorThemePicker extends Component {
     );
   }
 }
+
+const buttonStyle = {
+  margin: "5px",
+};
 
 export default ColorThemePicker;
