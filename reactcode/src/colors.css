@@ -12,6 +12,7 @@
   --main_background-second: var(--main_c2);
   --main_background-third: var(--main_c5);
   --main_background-fourth: var(--main_c7);
+  --main_background-fifth: var(--main_c5);
   --main_background-top: var(--main_c6);
   --main_background-top-border: var(--main_c6);
   --main_background-light: var(--main_c3);
@@ -32,6 +33,7 @@
   --darkmode_background-second: var(--darkmode_c2);
   --darkmode_background-third: var(--darkmode_c1);
   --darkmode_background-fourth: var(--darkmode_c1);
+  --darkmode_background-fifth: var(--darkmode_c2);
   --darkmode_background-top: var(--darkmode_c1);
   --darkmode_background-top-border: var(--darkmode_c2);
   --darkmode_background-light: var(--darkmode_c3);
@@ -52,6 +54,7 @@
   --pink_world_background-second: var(--pink_world_c2);
   --pink_world_background-third: var(--pink_world_c1);
   --pink_world_background-fourth: var(--pink_world_c1);
+  --pink_world_background-fifth: var(--pink_world_c2);
   --pink_world_background-top: var(--pink_world_c1);
   --pink_world_background-top-border: var(--pink_world_c2);
   --pink_world_background-light: var(--pink_world_c3);
@@ -72,6 +75,7 @@
   --test_mode_background-second: var(--test_mode_c2);
   --test_mode_background-third: var(--test_mode_c1);
   --test_mode_background-fourth: var(--test_mode_c1);
+  --test_mode_background-fifth: var(--test_mode_c2);
   --test_mode_background-top: var(--test_mode_c1);
   --test_mode_background-top-border: var(--test_mode_c2);
   --test_mode_background-light: var(--test_mode_c3);

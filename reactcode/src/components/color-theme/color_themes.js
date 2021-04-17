@@ -63,6 +63,10 @@ class ColorThemes {
       "var(--" + theme + "_background-fourth)"
     );
     root.style.setProperty(
+      "--background-fifth",
+      "var(--" + theme + "_background-fifth)"
+    );
+    root.style.setProperty(
       "--background-top",
       "var(--" + theme + "_background-top)"
     );
