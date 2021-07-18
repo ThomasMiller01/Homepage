@@ -1,0 +1,25 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        // "include": ["@babel/transform-classes"],
+        // // "modules": "commonjs",
+        // "shippedProposals": true,
+        // "useBuiltIns": "usage",
+        // "corejs": 3
+      }
+    ],
+    "@babel/react"
+  ],
+  "plugins": [
+    // [
+    //   "@babel/transform-runtime",
+    //   {
+    //     "corejs": 3
+    //   }
+    // ]
+  ],
+  "ignore": ["**/assets/**/*.js", "/node_modules/"],
+  "exclude": "/node_modules/"
+}
