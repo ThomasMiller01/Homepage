@@ -66,6 +66,13 @@
   color: var(--text-main);
 }
 
+.button-link {
+  border: 0;
+  color: var(--link-active);
+  background-color: transparent;
+  padding: 0;
+}
+
 .card-date {
   color: var(--text-main) !important;
 }

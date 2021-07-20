@@ -23,7 +23,7 @@ const NavBar = () => {
         style={headerButtonStyle}
       >
         <span className="navbar-toggler-icon">
-          <i class="fas fa-bars navbar-button"></i>
+          <i className="fas fa-bars navbar-button"></i>
         </span>
       </button>
       <div className="collapse navbar-collapse" id="navbar">
