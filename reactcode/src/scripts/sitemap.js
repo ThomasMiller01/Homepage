@@ -2,8 +2,8 @@
 //   extends: "babel.config.json",
 // });
 
-// require.extensions[".scss"] = () => {};
-// require.extensions[".css"] = () => {};
+require.extensions[".scss"] = () => {};
+require.extensions[".css"] = () => {};
 
 const router = require("../components/router").default;
 const Sitemap = require("../assets/sitemap").default;
