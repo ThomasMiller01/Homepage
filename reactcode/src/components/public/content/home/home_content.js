@@ -55,7 +55,7 @@ class HomeContent extends Component {
               project
             );
             if (i === 3) {
-              i = 0;
+              i = 1;
             } else {
               i++;
             }
