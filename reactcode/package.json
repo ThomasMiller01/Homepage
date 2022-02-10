@@ -23,7 +23,7 @@
     "highlight.js": "^10.3.2",
     "jwt-decode": "^2.2.0",
     "lz-string": "^1.4.4",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-art": "^16.8.6",
     "react-bootstrap": "^1.0.1",
