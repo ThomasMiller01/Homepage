@@ -1,27 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <!-- Google Analytics -->
-    <script> 
-      var gaProperty = 'UA-135522330-1'; 
-      var disableStr = 'ga-disable-' + gaProperty; 
-      if (document.cookie.indexOf(disableStr + '=true') > -1) { 
-          window[disableStr] = true;
-      } 
-      function gaOptout() { 
-          document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/'; 
-          window[disableStr] = true; 
-          alert('Das Tracking ist jetzt deaktiviert'); 
-      }       
-
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-
-      ga('create', 'UA-135522330-1', 'auto'); 
-      ga('set', 'anonymizeIp', true); 
-      ga('send', 'pageview');             
-    </script>    
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
+  <head>    
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/icon.ico" />
     <meta
@@ -51,19 +30,7 @@
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Quicksand|Work+Sans"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Inconsolata"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Rajdhani"
-      rel="stylesheet"
-    />
+    />    
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
